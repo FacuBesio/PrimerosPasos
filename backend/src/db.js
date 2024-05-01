@@ -1,4 +1,4 @@
-const { DB_DEPLOY } = require("./config");
+const { DATA_BASE } = require("./config");
 const { Sequelize } = require("sequelize");
 const AdminModel = require("./models/Admin");
 const CategoryModel = require("./models/Category");
@@ -9,15 +9,9 @@ const UserModel = require("./models/User");
 const Order_ProductModel = require("./models/Order_Product");
 
 //? CONNECTION
-const dataBase = new Sequelize(DB_DEPLOY, {
+const dataBase = new Sequelize(DATA_BASE, {
   logging: false,
-  native: false,
-    dialectOptions:{
-      ssl:{
-        require: true,
-      }
-  }
-
+  native: false
 });
 
 //* MODELS
