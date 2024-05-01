@@ -1,4 +1,4 @@
-const { OWNER_EMAIL } = require("../../../adminCredentials");
+const { OWNER_EMAIL } = require("../../../config/ownerCredentials");
 
 const ownerRoleValidator = (userRequesting) => {
   if (userRequesting.email !== OWNER_EMAIL) {

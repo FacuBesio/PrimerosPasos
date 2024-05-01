@@ -9,7 +9,7 @@ const {
   OWNER_STREET_NUMBER,
   OWNER_ZIP_CODE,
   OWNER_PHONE,
-} = require("../../adminCredentials");
+} = require("../../config/ownerCredentials");
 
 const createUser = async () => {
   const email = OWNER_EMAIL;

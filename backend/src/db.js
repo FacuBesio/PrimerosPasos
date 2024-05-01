@@ -1,4 +1,4 @@
-const { DATA_BASE } = require("./config");
+const { DATA_BASE } = require("./config/config");
 const { Sequelize } = require("sequelize");
 const AdminModel = require("./models/Admin");
 const CategoryModel = require("./models/Category");

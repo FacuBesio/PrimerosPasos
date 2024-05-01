@@ -1,7 +1,7 @@
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const stripe = require("stripe")(STRIPE_SECRET_KEY);
 const { Product } = require("../../db");
-const { FRONTEND_URL } = require("../../config");
+const { FRONTEND_URL } = require("../../config/config");
 
 const createPaymentSession = async (products, origin, customerEmail) => {
   try {

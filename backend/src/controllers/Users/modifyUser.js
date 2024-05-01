@@ -1,6 +1,6 @@
 const { User } = require("../../db");
 const findUserbyId  = require("./findUserbyId");
-const { OWNER_EMAIL, OWNER_NAME } = require("../../adminCredentials");
+const { OWNER_EMAIL, OWNER_NAME } = require("../../config/ownerCredentials");
 
 
 const modifyUser = async (id, userBody) => {
