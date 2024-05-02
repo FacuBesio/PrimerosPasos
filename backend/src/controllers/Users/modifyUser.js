@@ -1,15 +1,16 @@
 const { User } = require("../../db");
-const findUserbyId  = require("./findUserbyId");
-const { OWNER_EMAIL, OWNER_NAME } = require("../../config/ownerCredentials");
-
+const { OWNER_EMAIL } = require("../../config/ownerCredentials");
+const findUserbyId = require("./findUserbyId");
+const duplicateKeyValidator = require("../../utils/validators/users/duplicateKeyValidator");
 
 const modifyUser = async (id, userBody) => {
-  const { email, name } = userBody;
   const user = await findUserbyId(id);
 
-  if (user && user.email === OWNER_EMAIL) return  { message: `Los datos del Administrador no pueden ser modificados por este medio.` };
-  
-  
+  if (user && user.email === OWNER_EMAIL)
+    return {
+      message: `Los datos del Owner no pueden ser modificados por este medio.`,
+    };
+
   try {
     let updatedUser = await User.update(userBody, { where: { id: id } });
     if (updatedUser[0] === 0) {
@@ -18,7 +19,11 @@ const modifyUser = async (id, userBody) => {
     updatedUser = await findUserbyId(id);
     return updatedUser.dataValues;
   } catch (error) {
-    console.log(`Error al actualizar el usuario ${id}: `, error.message);
+    const duplicateKey = duplicateKeyValidator(error, userBody);
+    if (duplicateKey.result) {
+      return { message: duplicateKey.message };
+    }
+    return `Error al actualizar el usuario ${id}: ${error.message}`;
   }
 };
 

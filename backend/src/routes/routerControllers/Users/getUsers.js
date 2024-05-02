@@ -13,17 +13,14 @@ const getUsers = async (req, res) => {
     sortId = "",
   } = req.query;
   const paginated = { page, pageSize };
-  const queryInputs = {
-    name_or_email,
-    sortId,
-  };
+  const queryInputs = { name_or_email, sortId };
   let users;
   const emptyTable = `No se ha encontrado ningún Usuario registrado en la base de datos`;
 
   const queryError = inputValidator(queryInputs);
   if (queryError.error) {
     const message = jsonUsersError(queryError.message);
-    return res.status(404).json(message);
+    return res.status(200).json(message);
   }
   const inputsActive = activeInputsValidator(queryInputs);
 
@@ -33,13 +30,13 @@ const getUsers = async (req, res) => {
       if (users.totalResults === 0) {
         const notFound_Products = notFoundValidator(queryInputs);
         const message = jsonUsersError(notFound_Products);
-        return res.status(404).json(message);
+        return res.status(200).json(message);
       }
     } else {
       users = await findAllUsers(paginated);
       if (users.totalResults === 0) {
         const message = jsonUsersError(emptyTable);
-        return res.status(404).json(message);
+        return res.status(200).json(message);
       }
     }
 
@@ -49,12 +46,11 @@ const getUsers = async (req, res) => {
       currentPage,
       pageSize,
       usersDB,
-      status,
       message,
     } = users;
 
     const usersResult = formattedUsers(usersDB);
-    return res.status(status).json({
+    return res.status(200).json({
       totalResults: totalResults,
       totalPages: totalPages,
       currentPage: currentPage,

@@ -1,6 +1,5 @@
 const { DATA_BASE } = require("./config/config");
 const { Sequelize } = require("sequelize");
-const AdminModel = require("./models/Admin");
 const CategoryModel = require("./models/Category");
 const OrderModel = require("./models/Order");
 const ProductModel = require("./models/Product");
@@ -15,7 +14,6 @@ const dataBase = new Sequelize(DATA_BASE, {
 });
 
 //* MODELS
-AdminModel(dataBase);
 CategoryModel(dataBase);
 OrderModel(dataBase);
 ProductModel(dataBase);
@@ -24,17 +22,11 @@ UserModel(dataBase);
 Order_ProductModel(dataBase);
 
 // ASSOCIATIONS
-const { Admin, Category, Order, Product, Purchase, User } = dataBase.models;
-// Product - Admin (n a n)
-Admin.belongsToMany(Product, { through: "Admin_Product" });
-Product.belongsToMany(Admin, { through: "Admin_Product" });
+const { Category, Order, Product, Purchase, User } = dataBase.models;
+
 // Product - Category (n a n)
 Category.belongsToMany(Product, { through: "Category_Product" });
 Product.belongsToMany(Category, { through: "Category_Product" });
-
-//Product - Order (n a n)
-// Order.belongsToMany(Product, { through: "Order_Product" });
-// Product.belongsToMany(Order, { through: "Order_Product" });
 
 //Product - Order (n a n)
 Order.belongsToMany(Product, {

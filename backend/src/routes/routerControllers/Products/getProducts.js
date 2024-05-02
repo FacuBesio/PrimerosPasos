@@ -1,5 +1,5 @@
 const createBulkProducts = require("../../../controllers/Products/createBulkProducts");
-const createUser_Admin = require("../../../controllers/Admin/createUser_Admin");
+const createUser_Owner = require("../../../controllers/Admin/createUser_Owner");
 const findAllProducts = require("../../../controllers/Products/findAllProducts");
 const formattedProducts = require("../../../utils/formatted/formattedProducts");
 const activeInputsValidator = require("../../../utils/validators/products/activeInputsValidator");
@@ -57,7 +57,7 @@ const getProducts = async (req, res) => {
     } else {
       products = await findAllProducts(paginated);
       if (products.totalResults === 0) {
-        await createUser_Admin();
+        await createUser_Owner();
         await createBulkProducts();
         products = await findAllProducts(paginated);
       }

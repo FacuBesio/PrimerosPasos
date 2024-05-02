@@ -1,8 +1,7 @@
 const { User } = require("../../db");
 const findUserbyId = require("../Users/findUserbyId");
-const createOrder = require("../Orders/createOrder");
-const modifyOrder = require("../Orders/modifyOrder");
 const formattedUser = require("../../utils/formatted/formattedUser");
+const orderGenerator = require("./users_utils/orderGenerator");
 
 const createUser = async (email, name) => {
   const [user, created] = await User.findOrCreate({
@@ -10,17 +9,7 @@ const createUser = async (email, name) => {
     defaults: { email, name },
   });
 
-  if (created) {
-    let products = [[1]];
-    const newOrder = await createOrder(products, user.id);
-    let productsToAdd;
-    let productsToRemove = [[1]];
-    const updatedOrder = await modifyOrder(
-      newOrder.id,
-      productsToAdd,
-      productsToRemove
-    );
-  }
+  created && (await orderGenerator(user));
   const userWithOrder = formattedUser(await findUserbyId(user.id));
 
   return { userWithOrder, created };

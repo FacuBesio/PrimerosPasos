@@ -1,23 +1,12 @@
-const { OWNER_EMAIL } = require("../../../config/ownerCredentials");
-
 const ownerRoleValidator = (userRequesting) => {
-  if (userRequesting.email !== OWNER_EMAIL) {
+  if (userRequesting.role !== "owner") {
     return {
       error: true,
-      message: `Se necesitan permisos de Owner para ingresar. El usuario con id '${userRequesting.id}' no posee los permisos correspondientes.`,
+      message: `Se necesitan permisos de Owner para ingresar. El usuario con id '${userRequesting.id}' actualmente es '${userRequesting.role}'.`,
     };
   }
 
-  const adminPermissions = userRequesting.enabled;
-  if (!adminPermissions) {
-    return {
-      error: true,
-      message: `Se necesitan permisos de Admin para ingresar. El usuario con id '${userRequesting.id}' no posee permisos de administrador.`,
-    };
-  }
-
-  const userEnable = userRequesting.enabled;
-  if (!userEnable) {
+  if (!userRequesting.enabled) {
     return {
       error: true,
       message: `El usuario debe estar activo para ingresar. El usuario con id '${userRequesting.id}' actualmente se encuntra inhabilitado.`,

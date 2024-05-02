@@ -11,7 +11,7 @@ const {
   OWNER_PHONE,
 } = require("../../config/ownerCredentials");
 
-const createUser = async () => {
+const createUser_Owner = async () => {
   const email = OWNER_EMAIL;
   const name = OWNER_NAME;
   const country = OWNER_COUNTRY;
@@ -24,7 +24,7 @@ const createUser = async () => {
   const [user, created] = await User.findOrCreate({
     where: { email },
     defaults: {
-      admin: true,
+      role: 'owner',
       email,
       name,
       country,
@@ -40,4 +40,4 @@ const createUser = async () => {
   return { user, created };
 };
 
-module.exports = createUser;
+module.exports = createUser_Owner;

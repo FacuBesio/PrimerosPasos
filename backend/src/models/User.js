@@ -9,9 +9,9 @@ module.exports = (dataBase) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      admin: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false, 
+      role: {
+        type: DataTypes.ENUM('user', 'admin', 'owner'),
+        defaultValue: 'user', 
       },
       enabled: {
         type: DataTypes.BOOLEAN,

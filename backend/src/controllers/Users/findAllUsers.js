@@ -31,7 +31,7 @@ const findAllUsers = async (paginated, queryInputs) => {
 
   const { count, rows } = users;
   const totalPages = Math.ceil(count / pageSize);
-  const { message, status } = findAll_returnValidator(rows, page, totalPages);
+  const { message } = findAll_returnValidator(rows, page, totalPages);
 
   return {
     totalResults: count,
@@ -40,7 +40,6 @@ const findAllUsers = async (paginated, queryInputs) => {
     pageSize: pageSize,
     usersDB: rows,
     message: message,
-    status: status,
   };
 };
 

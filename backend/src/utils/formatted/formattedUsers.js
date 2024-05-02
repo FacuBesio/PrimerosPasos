@@ -2,7 +2,7 @@ const formattedUsers = (users) => {
   return users.map((user) => {
     const {
       id,
-      admin,
+      role,
       enabled,
       name,
       email,
@@ -22,7 +22,7 @@ const formattedUsers = (users) => {
 
     return {
       id,
-      admin,
+      role,
       enabled,
       name,
       email,
