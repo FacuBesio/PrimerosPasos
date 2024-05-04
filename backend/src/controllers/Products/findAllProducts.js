@@ -35,7 +35,7 @@ const findAllProducts = async (paginated, queryInputs) => {
 
   const { count, rows } = products;
   const totalPages = Math.ceil(count / pageSize);
-  const { message, status } = findAll_returnValidator(rows, page, totalPages);
+  const { message } = findAll_returnValidator(rows, page, totalPages);
 
   return {
     totalResults: count,
@@ -44,7 +44,6 @@ const findAllProducts = async (paginated, queryInputs) => {
     pageSize: pageSize,
     productsDB: rows,
     message: message,
-    status: status,
   };
 };
 

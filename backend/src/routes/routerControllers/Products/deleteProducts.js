@@ -4,14 +4,15 @@ const deleteProducts = async (req, res) => {
   try {
     const { id } = req.params;
     let message;
-    let status;
+    let removed = false;
 
     const productDeleted = await removeProduct(id);
-    productDeleted
-      ? (message = `Producto '${id}' eliminado correctamente`) && (status = 200)
-      : (message = `No existe un Producto con el id '${id}' para eliminar`) && (status = 400);
+    productDeleted === 1
+      ? (message = `Producto '${id}' eliminado correctamente`) &&
+        (removed = true)
+      : (message = `No existe un Producto con el id '${id}' para eliminar`);
 
-    res.status(status).json({ message: message });
+    res.status(200).json({ removed: removed, message: message });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

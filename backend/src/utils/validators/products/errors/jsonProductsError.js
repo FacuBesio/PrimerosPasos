@@ -7,7 +7,6 @@ const jsonProductsError = (message) => {
         products: [],
         message: message,
     }
-
 };
 
 module.exports = jsonProductsError;

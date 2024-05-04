@@ -14,9 +14,10 @@ const postProduct = async (req, res) => {
   } = req.body;
 
   if (!categories || categories.length === 0) {
-    return res.status(500).json({
+    return res.status(200).json({
+      created: false,
       error:
-        "Para crear un producto, debe tener al menos una categoria asociada",
+        "Para crear un producto, debe tener al menos una categoría asociada",
     });
   }
 
@@ -34,8 +35,8 @@ const postProduct = async (req, res) => {
   try {
     const newProduct = await createProduct({ product, categories });
     newProduct.hasOwnProperty("name")
-      ? res.status(201).json(newProduct)
-      : res.status(404).json({ message: newProduct.message });
+      ? res.status(201).json({created: true, product: newProduct})
+      : res.status(200).json({ created: false, message: newProduct.message });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

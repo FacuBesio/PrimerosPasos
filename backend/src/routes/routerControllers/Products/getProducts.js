@@ -5,7 +5,6 @@ const formattedProducts = require("../../../utils/formatted/formattedProducts");
 const activeInputsValidator = require("../../../utils/validators/products/activeInputsValidator");
 const notFoundValidator = require("../../../utils/validators/products/notFoundValidator");
 const inputValidator = require("../../../utils/validators/products/inputValidator");
-const jsonProductsError = require("../../../utils/validators/products/errors/jsonProductsError");
 
 const getProducts = async (req, res) => {
   const {
@@ -41,7 +40,7 @@ const getProducts = async (req, res) => {
   const queryError = inputValidator(queryInputs);
   if (queryError.error) {
     const message = jsonProductsError(queryError.message);
-    return res.status(404).json(message);
+    return res.status(200).json(message);
   }
   const inputsActive = activeInputsValidator(queryInputs);
   let products;
@@ -50,9 +49,8 @@ const getProducts = async (req, res) => {
     if (inputsActive) {
       products = await findAllProducts(paginated, queryInputs);
       if (products.totalResults === 0) {
-        const notFound_Products = notFoundValidator(queryInputs);
-        const message = jsonProductsError(notFound_Products);
-        return res.status(404).json(message);
+        const message = notFoundValidator(queryInputs);
+        return res.status(200).json(message);
       }
     } else {
       products = await findAllProducts(paginated);
@@ -69,12 +67,11 @@ const getProducts = async (req, res) => {
       currentPage,
       pageSize,
       productsDB,
-      status,
       message,
     } = products;
 
     const productsResult = formattedProducts(productsDB);
-    return res.status(status).json({
+    return res.status(200).json({
       totalResults: totalResults,
       totalPages: totalPages,
       currentPage: currentPage,
