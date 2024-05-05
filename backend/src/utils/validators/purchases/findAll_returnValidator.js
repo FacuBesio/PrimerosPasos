@@ -11,7 +11,7 @@ if (rows.length === 0) {
       status = 404;
     }
   } else {
-    message = "Se ha completado el pedido exitosamente.";
+    message = "Se ha completado la consulta exitosamente.";
     status = 200;
   }
   return {message, status}

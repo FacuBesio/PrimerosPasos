@@ -8,7 +8,7 @@ const findAll_returnValidator = (rows, page, totalPages) => {
       message = "No se encontraron resultados para esta búsqueda.";
     }
   } else {
-    message = "Se ha completado el pedido exitosamente.";
+    message = "Se ha completado la consulta exitosamente.";
   }
   return { message };
 };

@@ -43,12 +43,11 @@ const getOrders = async (req, res) => {
       currentPage,
       pageSize,
       ordersDB,
-      status,
       message,
     } = orders;
 
     const ordersResult = formattedOrders(ordersDB);
-    return res.status(status).json({
+    return res.status(200).json({
       totalResults: totalResults,
       totalPages: totalPages,
       currentPage: currentPage,

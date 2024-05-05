@@ -4,14 +4,15 @@ const deleteCategory = async (req, res) => {
   try {
     const { id } = req.params;
     let message;
-    let status;
+    let removed = false;
+
     const categoryDeleted = await removeCategory(id);
-    categoryDeleted
+    categoryDeleted === 1
       ? (message = `Categoria '${id}' eliminada correctamente`) &&
-        (status = 200)
-      : (message = `No existe una Categoria con el id '${id}' para eliminar`) &&
-        (status = 404);
-    res.status(status).send(message);
+        (removed = true)
+      : (message = categoryDeleted.message);
+
+    res.status(200).json({ removed: removed, message: message });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -18,7 +18,7 @@ const findAllOrders = async (paginated, queryInputs) => {
     orderClause = SortByQuery(queryInputs);
     orderClause.length === 0 && (orderClause = [["id", "ASC"]]);
   }
-  
+
   const purchaseModel = purchaseModelCreator(includePurchasesClause, Purchase);
 
   const orders = await Order.findAndCountAll({
@@ -44,7 +44,7 @@ const findAllOrders = async (paginated, queryInputs) => {
 
   const { count, rows } = orders;
   const totalPages = Math.ceil(count / pageSize);
-  const { message, status } = findAll_returnValidator(rows, page, totalPages);
+  const { message } = findAll_returnValidator(rows, page, totalPages);
 
   return {
     totalResults: count,
@@ -53,7 +53,6 @@ const findAllOrders = async (paginated, queryInputs) => {
     pageSize: pageSize,
     ordersDB: rows,
     message: message,
-    status: status,
   };
 };
 
