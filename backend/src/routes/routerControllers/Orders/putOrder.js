@@ -23,7 +23,7 @@ const putOrder = async (req, res) => {
 
   if (paramsInputError) {
     return res
-      .status(404)
+      .status(200)
       .json({ message: `Se admiten únicamente números (id)` });
   }
 
@@ -31,7 +31,7 @@ const putOrder = async (req, res) => {
     const updatedOrder = await modifyOrder(id, productsToAdd, productsToRemove);
     updatedOrder.hasOwnProperty("id")
       ? res.status(201).json({updated: true, order: formattedOrder(updatedOrder)})
-      : res.status(404).json({ updated: false, message: updatedOrder.message });
+      : res.status(200).json({ updated: false, message: updatedOrder.message });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

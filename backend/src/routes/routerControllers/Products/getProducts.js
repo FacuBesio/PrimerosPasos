@@ -7,6 +7,8 @@ const notFoundValidator = require("../../../utils/validators/products/notFoundVa
 const inputValidator = require("../../../utils/validators/products/inputValidator");
 
 const getProducts = async (req, res) => {
+  let products;
+
   const {
     page = 1,
     pageSize = 15,
@@ -24,8 +26,6 @@ const getProducts = async (req, res) => {
   const paginated = { page, pageSize };
 
   const queryInputs = {
-    page,
-    pageSize,
     brand_or_name,
     filterBrands,
     filterCategories,
@@ -37,13 +37,12 @@ const getProducts = async (req, res) => {
     sortRating,
   };
 
-  const queryError = inputValidator(queryInputs);
+  const queryError = inputValidator(queryInputs, paginated);
   if (queryError.error) {
-    const message = jsonProductsError(queryError.message);
-    return res.status(200).json(message);
+    return res.status(200).json(queryError.message);
   }
+
   const inputsActive = activeInputsValidator(queryInputs);
-  let products;
 
   try {
     if (inputsActive) {

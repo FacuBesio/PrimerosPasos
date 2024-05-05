@@ -4,15 +4,14 @@ const deleteOrder = async (req, res) => {
   try {
     const { id } = req.params;
     let message;
-    let status;
-    let removed;
-    const orderDeleted = await removeOrder(id);
-    orderDeleted
-      ? (message = `Orden '${id}' eliminada correctamente`) && (status = 200) && (removed = true)
-      : (message = `No existe una Orden con el id '${id}' para eliminar`) &&
-        (status = 404) && (removed = false);
+    let removed = false;
 
-    res.status(status).json({ removed: removed, message: message });
+    const orderDeleted = await removeOrder(id);
+    orderDeleted === 1
+      ? (message = `Orden '${id}' eliminada correctamente`) && (removed = true)
+      : (message = orderDeleted.message);
+
+    res.status(200).json({ removed: removed, message: message });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

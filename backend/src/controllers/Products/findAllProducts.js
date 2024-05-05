@@ -29,7 +29,7 @@ const findAllProducts = async (paginated, queryInputs) => {
       },
     },
     order: orderClause,
-    limit: pageSize, // Especifica cuántos resultados devolver/mostrar
+    limit: pageSize, 
     offset: offset, // Especifica cuántos resultados omitir
   });
 

@@ -3,7 +3,7 @@ const findAll_returnValidator = (rows, page, totalPages) => {
 
   if (rows.length === 0) {
     if (page > totalPages) {
-      message = `Se ha ingresado un número de página(${page}) superior al la última(${totalPages}). No se encontraron resultados para esta búsqueda.`;
+      message = `No se encontraron resultados para esta búsqueda. Se ha ingresado un número de página(${page}) superior al la última(${totalPages}).`;
     } else {
       message = "No se encontraron resultados para esta búsqueda.";
     }

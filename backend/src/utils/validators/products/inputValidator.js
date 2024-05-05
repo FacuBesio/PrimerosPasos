@@ -1,20 +1,26 @@
-const inputValidator = (queryInputs) => {
+const jsonProductsError = require("./errors/jsonProductsError");
+
+const inputValidator = (queryInputs, paginated) => {
   const {
     filterCategories,
     filterPrice,
-    page,
-    pageSize,
     sortBrand,
     sortId,
     sortName,
     sortPrice,
     sortRating,
   } = queryInputs;
+  const { page, pageSize } = paginated;
 
   const query = {
     error: false,
     message: "",
   };
+
+  if (isNaN(page) || isNaN(pageSize)) {
+    query.error = true;
+    query.message = `Los únicos valores válidos para la paginación son números. Se ha ingresado: 'page: ${page}' & 'pageSize: ${pageSize}'`;
+  }
 
   if (filterCategories instanceof Array && filterCategories.length > 0) {
     filterCategories.forEach((element) => {
@@ -35,11 +41,6 @@ const inputValidator = (queryInputs) => {
   } else if (filterPrice.length > 2) {
     query.error = true;
     query.message = `Debe ingresar únicamente dos valores para utilizar el filtrado por precios.`;
-  }
-
-  if (isNaN(page) || isNaN(pageSize)) {
-    query.error = true;
-    query.message = `Los únicos valores válidos para la paginación son números. Se ha ingresado: 'page: ${page}' & 'pageSize: ${pageSize}'`;
   }
 
   if (
@@ -87,6 +88,7 @@ const inputValidator = (queryInputs) => {
     query.message = `Los únicos valores válidos para ordenar los productos por rating son 'ASC' o 'DESC'. Se ha ingresado como valor: '${sortRating}'`;
   }
 
+  query.message = jsonProductsError(query.message);
   return query;
 };
 
