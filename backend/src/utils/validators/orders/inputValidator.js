@@ -12,7 +12,7 @@ const inputValidator = (queryInputs, paginated) => {
 
   if (isNaN(page) || isNaN(pageSize)) {
     query.error = true;
-    query.message = `Los únicos valores válidos para la paginación son números. Se ha ingresado: 'page: ${page}' & 'pageSize: ${pageSize}'`;
+    query.message = `Los únicos valores válidos para la paginación son números. Se ha ingresado: 'page: ${page}' & 'pageSize: ${pageSize}'.`;
   }
 
   if (
@@ -21,7 +21,7 @@ const inputValidator = (queryInputs, paginated) => {
     sortId.toUpperCase() !== "DESC"
   ) {
     query.error = true;
-    query.message = `Los únicos valores válidos para organizar las ordenes por id son 'ASC' o 'DESC'. Se ha ingresado como valor: '${sortId}'`
+    query.message = `Los únicos valores válidos para organizar las ordenes por id son 'ASC' o 'DESC'. Se ha ingresado como valor: '${sortId}'.`
   }
 
   query.message = jsonOrdersError(query.message);

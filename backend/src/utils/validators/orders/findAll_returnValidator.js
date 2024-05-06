@@ -1,6 +1,5 @@
 const findAll_returnValidator = (rows, page, totalPages) => {
   let message;
-  let status;
 
   if (rows.length === 0) {
     if (page > totalPages) {
@@ -11,7 +10,7 @@ const findAll_returnValidator = (rows, page, totalPages) => {
   } else {
     message = "Se ha completado la consulta exitosamente.";
   }
-  return { message, status };
+  return { message };
 };
 
 module.exports = findAll_returnValidator;

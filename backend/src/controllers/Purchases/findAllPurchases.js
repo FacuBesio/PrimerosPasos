@@ -41,11 +41,7 @@ const findAllPurchases = async (paginated, queryInputs) => {
 
   const { count, rows } = purchases;
   const totalPages = Math.ceil(count / pageSize);
-  const { message, status } = findAll_returnValidator(
-    purchases,
-    page,
-    totalPages
-  );
+  const { message } = findAll_returnValidator(rows, page, totalPages);
 
   let purchase_CompletedData;
   let purchasesCompletedData = [];
@@ -65,7 +61,7 @@ const findAllPurchases = async (paginated, queryInputs) => {
       }
       purchasesCompletedData = [
         ...purchasesCompletedData,
-        purchase_CompletedData
+        purchase_CompletedData,
       ];
     }
   }
@@ -77,7 +73,6 @@ const findAllPurchases = async (paginated, queryInputs) => {
     pageSize: pageSize,
     purchasesDB: purchasesCompletedData,
     message: message,
-    status: status,
   };
 };
 
