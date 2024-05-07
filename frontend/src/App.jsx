@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import {
+  Marquee, Title, Navbar,Banner,AditionalInfo,Categories,Footer
+} from "./components"
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1 className='text-red-200 text-center text-2xl'>Hola mundo</h1>
-    </>
-  )
+    <main className="bg-[#eae0f5]  overflow-hidden">
+     <Marquee />
+     <Title />
+     <Navbar />
+     <Banner />
+     <AditionalInfo />
+     <Categories />
+     <Footer />
+    </main>
+  );
 }
 
-export default App
+export default App;
