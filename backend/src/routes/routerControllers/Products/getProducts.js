@@ -5,9 +5,10 @@ const formattedProducts = require("../../../utils/formatted/formattedProducts");
 const activeInputsValidator = require("../../../utils/validators/products/activeInputsValidator");
 const notFoundValidator = require("../../../utils/validators/products/notFoundValidator");
 const inputValidator = require("../../../utils/validators/products/inputValidator");
-const jsonProductsError = require("../../../utils/validators/products/errors/jsonProductsError");
 
 const getProducts = async (req, res) => {
+  let products;
+
   const {
     page = 1,
     pageSize = 15,
@@ -25,8 +26,6 @@ const getProducts = async (req, res) => {
   const paginated = { page, pageSize };
 
   const queryInputs = {
-    page,
-    pageSize,
     brand_or_name,
     filterBrands,
     filterCategories,
@@ -38,21 +37,19 @@ const getProducts = async (req, res) => {
     sortRating,
   };
 
-  const queryError = inputValidator(queryInputs);
+  const queryError = inputValidator(queryInputs, paginated);
   if (queryError.error) {
-    const message = jsonProductsError(queryError.message);
-    return res.status(404).json(message);
+    return res.status(200).json(queryError.message);
   }
+
   const inputsActive = activeInputsValidator(queryInputs);
-  let products;
 
   try {
     if (inputsActive) {
       products = await findAllProducts(paginated, queryInputs);
       if (products.totalResults === 0) {
-        const notFound_Products = notFoundValidator(queryInputs);
-        const message = jsonProductsError(notFound_Products);
-        return res.status(404).json(message);
+        const message = notFoundValidator(queryInputs);
+        return res.status(200).json(message);
       }
     } else {
       products = await findAllProducts(paginated);
@@ -69,12 +66,11 @@ const getProducts = async (req, res) => {
       currentPage,
       pageSize,
       productsDB,
-      status,
       message,
     } = products;
 
     const productsResult = formattedProducts(productsDB);
-    return res.status(status).json({
+    return res.status(200).json({
       totalResults: totalResults,
       totalPages: totalPages,
       currentPage: currentPage,

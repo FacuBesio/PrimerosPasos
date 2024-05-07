@@ -3,9 +3,10 @@ const formattedUsers = require("../../../utils/formatted/formattedUsers");
 const activeInputsValidator = require("../../../utils/validators/users/activeInputsValidator");
 const inputValidator = require("../../../utils/validators/users/inputValidator");
 const notFoundValidator = require("../../../utils/validators/users/notFoundValidator");
-const jsonUsersError = require("../../../utils/validators/users/errors/jsonUsersError");
+const emptyTable = require("../../../utils/validators/users/errors/emptyTable");
 
 const getUsers = async (req, res) => {
+  let users;
   const {
     page = 1,
     pageSize = 15,
@@ -14,29 +15,25 @@ const getUsers = async (req, res) => {
   } = req.query;
   const paginated = { page, pageSize };
   const queryInputs = { name_or_email, sortId };
-  let users;
-  const emptyTable = `No se ha encontrado ningún Usuario registrado en la base de datos`;
 
-  const queryError = inputValidator(queryInputs);
+  const queryError = inputValidator(queryInputs, paginated);
   if (queryError.error) {
-    const message = jsonUsersError(queryError.message);
-    return res.status(200).json(message);
+    return res.status(200).json(queryError.message);
   }
+
   const inputsActive = activeInputsValidator(queryInputs);
 
   try {
     if (inputsActive) {
       users = await findAllUsers(paginated, queryInputs);
       if (users.totalResults === 0) {
-        const notFound_Products = notFoundValidator(queryInputs);
-        const message = jsonUsersError(notFound_Products);
+        const message = notFoundValidator(queryInputs);
         return res.status(200).json(message);
       }
     } else {
       users = await findAllUsers(paginated);
       if (users.totalResults === 0) {
-        const message = jsonUsersError(emptyTable);
-        return res.status(200).json(message);
+        return res.status(200).json(emptyTable());
       }
     }
 

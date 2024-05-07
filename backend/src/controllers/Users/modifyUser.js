@@ -23,7 +23,9 @@ const modifyUser = async (id, userBody) => {
     if (duplicateKey.result) {
       return { message: duplicateKey.message };
     }
-    return `Error al actualizar el usuario ${id}: ${error.message}`;
+    return {
+      message: `Error al actualizar el usuario ${id}: ${error.message}`,
+    };
   }
 };
 

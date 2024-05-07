@@ -33,11 +33,9 @@ const modifyProduct = async (putBody) => {
       return { message: `Producto ${id} no encontrado` };
     }
     updatedProduct = await Product.findByPk(id);
-    // Actualiza las categorías asociadas al producto
     await updatedProduct.setCategories(categories);
-
-    // Obtiene el producto actualizado con las categorías
     updatedProduct = await findProductbyId(id);
+    
     return updatedProduct.dataValues;
   } catch (error) {
     console.error("Error al actualizar el producto:", error.message);
