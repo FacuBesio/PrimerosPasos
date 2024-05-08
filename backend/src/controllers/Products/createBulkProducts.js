@@ -15,6 +15,8 @@ const createBulkProducts = async () => {
       const {
         brand,
         name,
+        color,
+        size,
         description,
         price,
         stock,
@@ -22,7 +24,17 @@ const createBulkProducts = async () => {
         img,
         categories,
       } = jsonProduct;
-      const product = { brand, name, img, description, price, stock, rating };
+      const product = {
+        brand,
+        name,
+        color,
+        size,
+        img,
+        description,
+        price,
+        stock,
+        rating,
+      };
       const newProduct = await Product.create(product);
       await newProduct.addCategories(categories);
     }
