@@ -1,9 +1,13 @@
 const jsonProductsError = require("./errors/jsonProductsError");
+const multipleInputValidator = require("./multipleInputValidator");
 
 
 const notFoundValidator = (queryInputs) => {
   const {
     brand_or_name,
+    filterName,
+    filterColor,
+    filterSize,
     filterBrands,
     filterCategories,
     filterPrice,
@@ -13,20 +17,25 @@ const notFoundValidator = (queryInputs) => {
     sortPrice,
     sortRating,
   } = queryInputs;
-
-  if (
-    (brand_or_name !== "" &&
-      filterCategories.length > 0 &&
-      filterPrice.length === 2) ||
-    (brand_or_name !== "" && filterCategories.length > 0) ||
-    (brand_or_name !== "" && filterPrice.length > 0) ||
-    (filterCategories.length > 0 && filterPrice.length > 0)
-  ) {
+ 
+  if(multipleInputValidator(queryInputs)){
     return jsonProductsError(`No existen resultados para esa combinación de valores en los filtros.`);
   }
-
+  
   if (brand_or_name !== "") {
     return jsonProductsError(`No se ha encontrado ningún Producto que contenga una marca o nombre que coincida con la palabra '${brand_or_name}'`);
+  }
+
+  if (filterName !== "") {
+    return jsonProductsError(`No se ha encontrado ningún Producto que coincida con el nombre '${filterName}'`);
+  }
+
+  if (filterColor !== "") {
+    return jsonProductsError(`No se ha encontrado ningún Producto que coincida con el color '${filterColor}'`);
+  }
+
+  if (filterSize !== "") {
+    return jsonProductsError(`No se ha encontrado ningún Producto que coincida con el talle '${filterSize}'`);
   }
 
   if (filterBrands !== "" || filterBrands.length > 0) {

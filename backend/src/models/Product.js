@@ -9,40 +9,82 @@ module.exports = (dataBase) => {
         autoIncrement: true,
         primaryKey: true,
       },
+
+      enabled: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+
       brand: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+
       name: {
         type: DataTypes.STRING,
-        unique: true,
         allowNull: false,
       },
-      img: {
-        type: DataTypes.STRING,
+
+      color: {
+        type: DataTypes.ENUM(
+          "black",
+          "blue",
+          "brown",
+          "gray",
+          "green",
+          "orange",
+          "pink",
+          "purple",
+          "red",
+          "white",
+          "yellow"
+        ),
+        allowNull: false,
       },
+
+      size: {
+        type: DataTypes.ENUM(
+          "extra small",
+          "small",
+          "medium",
+          "large",
+          "extra large",
+          "extra extra large"
+        ),
+        allowNull: false,
+      },
+
       description: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+
       price: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+
       stock: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        defaultValue: 1,
       },
+
       rating: {
         type: DataTypes.FLOAT,
-        allowNull: false,
+        defaultValue: 3,
       },
-      enabled: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true, // Establecer el valor predeterminado como true
+
+      img: {
+        type: DataTypes.STRING,
       },
     },
     {
+      indexes: [
+        {
+          unique: true,
+          fields: ["name", "color", "size"],
+        },
+      ],
       timestamps: false,
     }
   );

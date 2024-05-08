@@ -1,7 +1,14 @@
 const { Op, literal } = require("sequelize");
 
 const findByQuery = (queryInputs) => {
-  const { brand_or_name, filterBrands, filterPrice } = queryInputs;
+  const {
+    brand_or_name,
+    filterName,
+    filterColor,
+    filterSize,
+    filterBrands,
+    filterPrice,
+  } = queryInputs;
   let whereClause = {};
 
   // FIND BY QUERY BRAND OR NAME
@@ -18,6 +25,21 @@ const findByQuery = (queryInputs) => {
         },
       },
     ];
+  }
+
+  // FILTER BY QUERY NAME
+  if (filterName) {
+    whereClause.name = filterName;
+  }
+
+  // FILTER BY QUERY COLOR
+  if (filterColor) {
+    whereClause.color = filterColor;
+  }
+
+  // FILTER BY QUERY SIZE
+  if (filterSize) {
+    whereClause.size = filterSize;
   }
 
   // FILTER BY QUERY BRAND
@@ -45,6 +67,8 @@ const findByQuery = (queryInputs) => {
       [Op.between]: [prices[0], prices[1]],
     };
   }
+
+  // console.log(whereClause);
 
   return whereClause;
 };
