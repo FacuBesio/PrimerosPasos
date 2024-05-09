@@ -1,4 +1,5 @@
 const { Category } = require("../../db");
+const errorsValidator = require("../../utils/validators/categories/errorsValidator");
 
 const createCategory = async (name) => {
   try {
@@ -6,7 +7,8 @@ const createCategory = async (name) => {
     return newCategory.dataValues;;
   } catch (error) {
     console.log("error: ", error.message);
-    return { message: error.message };
+   const errorMessage = errorsValidator(name, error);
+    return { message: errorMessage };
   }
 };
 

@@ -1,11 +1,16 @@
-const productsValidator = (products_db, products) => {
-  const productsQuantityValidator = products_db.length === products.length;
+const productsValidator = async (Product, id_products) => {
+  const products_db = await Product.findAll({ where: { id: id_products } });
+  const productsQuantityValidator = products_db.length === id_products.length;
 
   if (!productsQuantityValidator) {
-    return {
-      error: true,
-      message: `No se pudo crear o actualizar la Orden. Uno de los siguientes Productos no se ha encontrado: '${products}'`,
-    };
+    for (const id of id_products) {
+      const existingTest = await Product.findByPk(id);
+      if (!existingTest)
+        return {
+          error: true,
+          message: `No se pudo crear o actualizar la Orden. El producto con id '${id}' no existe.`,
+        };
+    }
   }
   return { error: false };
 };

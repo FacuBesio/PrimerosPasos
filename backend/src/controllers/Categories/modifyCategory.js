@@ -1,4 +1,5 @@
 const { Category } = require("../../db");
+const errorsValidator = require("../../utils/validators/categories/errorsValidator");
 
 const modifyCategory = async (id, name) => {
   try {
@@ -16,9 +17,9 @@ const modifyCategory = async (id, name) => {
     updatedCategory = await Category.findByPk(id);
     return updatedCategory.dataValues;
   } catch (error) {
-    return {
-      message: `Error al actualizar la Categoría ${id}: ${error.message}`,
-    };
+    console.log("error: ", error.message);
+   const errorMessage = errorsValidator({name}, error);
+    return { message: errorMessage };
   }
 };
 

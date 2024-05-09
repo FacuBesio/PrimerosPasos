@@ -9,7 +9,7 @@ const postOrder = async (req, res) => {
       .status(200)
       .json({
         created: false,
-        error: `Para crear una Orden, debe tener al menos un Producto y un usuario asociado`,
+        message: `Para crear una Orden, debe tener al menos un Producto y un usuario asociado`,
       });
   }
 
