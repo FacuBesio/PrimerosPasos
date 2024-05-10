@@ -25,12 +25,12 @@ const Banner = () => {
     <Carousel
       swipeable={false}
       draggable={false}
-      showDots={true}
+      showDots={false}
       responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
+      ssr={true} 
       infinite={true}
       autoPlay={true}
-      autoPlaySpeed={5000}
+      autoPlaySpeed={8000}
       keyBoardControl={true}
       customTransition="all .5"
       transitionDuration={500}
@@ -39,11 +39,12 @@ const Banner = () => {
       deviceType={null} // assuming you're not passing deviceType as a prop
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
+      className=''
     >
-      <div className='w-full bg-red-200 h-[620px] '>Item 1</div>
-      <div className='w-full bg-blue-200  h-[620px] '>Item 2</div>
-      <div className='w-full bg-green-200  h-[620px] '>Item 3</div>
-      <div className='w-full bg-yellow-200  h-[620px] '>Item 4</div>
+      <div className='w-full bg-red-200 h-[620px] '><img className='object-cover w-full' src="/src/assets/banner1.png" alt="" /></div>
+      <div className='w-full bg-blue-200  h-[620px] '><img className='object-cover  w-full' src="/src/assets/banner2.png" alt="" /></div>
+      <div className='w-full bg-green-200  h-[620px] '><img className='object-cover  w-full' src="/src/assets/banner3.png" alt="" /></div>
+      <div className='w-full bg-yellow-200  h-[620px] '><img className='object-cover  w-full' src="/src/assets/banner4.png" alt="" /></div>
     </Carousel>
   );
 }

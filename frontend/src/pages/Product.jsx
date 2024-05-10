@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Footer, Marquee, Navbar, Title } from '../components'
 
 const Product = () => {

@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
+    "@emailjs/browser": "^4.3.3",
     "@gsap/react": "^2.1.1",
+    "emailjs": "^4.0.3",
     "gsap": "^3.12.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

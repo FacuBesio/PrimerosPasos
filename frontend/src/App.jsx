@@ -7,10 +7,12 @@ import {
 function App() {
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
+      <div className="h-screen">
      <Marquee />
      <Title />
      <Navbar />
      <Banner />
+     </div>
      <AditionalInfo />
      <Categories />
      <Footer />

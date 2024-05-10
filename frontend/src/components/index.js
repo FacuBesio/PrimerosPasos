@@ -8,7 +8,7 @@ import Hero from "./Hero/Hero";
 import Login from "./Login/Login";
 import Marquee from "./Marquee/Marquee";
 import Navbar from "./Navbar/Navbar";
-import Product from "./Product/Product"
+import Product from "./ProductComponent/Product"
 import SideFilter from "./SideFilter/SideFilter";
 import Title from "./Title/Title";
 
