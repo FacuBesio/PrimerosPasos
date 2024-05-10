@@ -14,8 +14,7 @@ const createOrder = async (products, userId) => {
   try {
     let newOrder;
     const userFound = await findUserbyId(userId);
-    const products_db = await Product.findAll({ where: { id: id_products } });
-    const existing_products = productsValidator(products_db, id_products);
+    const existing_products = await productsValidator(Product, id_products);
     const existing_amounts = await amountsValidator(products);
 
 

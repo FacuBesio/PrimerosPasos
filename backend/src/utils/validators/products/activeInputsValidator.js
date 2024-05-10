@@ -1,6 +1,9 @@
 const activeInputsValidator = (queryInputs) => {
   const {
     brand_or_name,
+    filterName,
+    filterColor,
+    filterSize,
     filterBrands,
     filterCategories,
     filterPrice,
@@ -15,6 +18,9 @@ const activeInputsValidator = (queryInputs) => {
 
   if (
     brand_or_name !== "" ||
+    filterName !== "" ||
+    filterColor !== "" ||
+    filterSize !== "" ||
     filterBrands.length > 0 ||
     filterCategories.length > 0 ||
     filterPrice.length > 0 ||

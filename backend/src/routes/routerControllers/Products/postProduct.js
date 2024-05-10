@@ -4,6 +4,8 @@ const postProduct = async (req, res) => {
   const {
     brand,
     name,
+    color,
+    size,
     img,
     description,
     price,
@@ -24,6 +26,8 @@ const postProduct = async (req, res) => {
   const product = {
     brand,
     name,
+    color,
+    size,
     img,
     description,
     price,
@@ -35,7 +39,7 @@ const postProduct = async (req, res) => {
   try {
     const newProduct = await createProduct({ product, categories });
     newProduct.hasOwnProperty("name")
-      ? res.status(201).json({created: true, product: newProduct})
+      ? res.status(201).json({ created: true, product: newProduct })
       : res.status(200).json({ created: false, message: newProduct.message });
   } catch (error) {
     res.status(500).json({ error: error.message });

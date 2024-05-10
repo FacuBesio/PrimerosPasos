@@ -35,28 +35,8 @@ const postPurchase = async (req, res) => {
       stripe_payment_status
     );
     newPurchase.hasOwnProperty("id")
-      ? res.status(201).json({ created: true, purchase: newPurchase})
+      ? res.status(201).json({ created: true, purchase: newPurchase })
       : res.status(200).json({ created: false, message: newPurchase.message });
-
-    // if (!newPurchase.hasOwnProperty("id")) {
-    //   return res
-    //     .status(400)
-    //     .json({ created: false, message: newPurchase.message });
-    // }
-
-    // // Busca la compra recién creada con el usuario asociado incluido
-    // const purchaseWithUser = await Purchase.findOne({
-    //   where: { id: newPurchase.id },
-    //   include: { model: User },
-    // });
-
-    // if (!purchaseWithUser) {
-    //   return res
-    //     .status(404)
-    //     .json({ created: false, message: "Compra no encontrada" });
-    // }
-
-    // res.status(201).json({ created: true, purchase: newPurchase });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

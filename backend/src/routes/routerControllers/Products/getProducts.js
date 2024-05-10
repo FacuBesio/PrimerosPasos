@@ -13,6 +13,9 @@ const getProducts = async (req, res) => {
     page = 1,
     pageSize = 15,
     brand_or_name = "",
+    filterName = "",
+    filterColor = "",
+    filterSize = "",
     filterBrands = "",
     filterCategories = [],
     filterPrice = [],
@@ -27,6 +30,9 @@ const getProducts = async (req, res) => {
 
   const queryInputs = {
     brand_or_name,
+    filterName,
+    filterColor,
+    filterSize,
     filterBrands,
     filterCategories,
     filterPrice,

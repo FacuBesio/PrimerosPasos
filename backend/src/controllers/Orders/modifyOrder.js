@@ -18,8 +18,7 @@ const modifyOrder = async (id, productsToAdd, productsToRemove) => {
     });
   }
 
-  const products_db = await Product.findAll({ where: { id: id_products } });
-  const existing_products = productsValidator(products_db, id_products);
+  const existing_products = await productsValidator(Product, id_products);
   const existing_amounts = productsToAdd && await amountsValidator(productsToAdd);
    
   if (existing_products.error) {
