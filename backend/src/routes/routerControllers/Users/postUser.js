@@ -1,5 +1,7 @@
 const createUser = require("../../../controllers/Users/createUser");
 const nodemailer = require("nodemailer");
+const transporter = require("../../../config/mailer");
+const welcomeMail = require("../../../utils/mails/users/welcomeMail");
 const fs = require("fs");
 const path = require("path");
 
@@ -17,12 +19,14 @@ const postUser = async (req, res) => {
 
   //? --> NodeMailer <--
 
+
   try {
     let status = 200;
     const { userWithOrder, created } = await createUser(email, name);
     if (created) {
       status = 201;
-      // await transporter.sendMail(message);
+      const message = welcomeMail(email)
+      await transporter.sendMail(message);
     }
     res.status(status).json({ created: created, user: userWithOrder });
   } catch (error) {

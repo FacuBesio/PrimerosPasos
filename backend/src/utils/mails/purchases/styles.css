@@ -1,0 +1,41 @@
+/* Estilos CSS */
+body {
+  width: 100%;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 16px; /* Tamaño de texto más grande para la tabla */
+}
+th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 12px; /* Aumenta el espacio entre el texto y los bordes */
+}
+th {
+  background-color: #d8bfd8; /* Morado más claro para los encabezados */
+  color: #000000; /* Texto negro para los encabezados */
+}
+.product-img {
+  width: 50px; /* Tamaño original de las imágenes */
+  height: auto;
+}
+.total-price {
+  font-weight: bold;
+  border-top: 2px solid #d8bfd8; /* Línea divisoria morada más clara para el total price */
+  padding-top: 12px; /* Añade espacio superior al total price */
+}
+/* Textos centralizados */
+h1,
+h2,
+h3 {
+  text-align: center;
+}
