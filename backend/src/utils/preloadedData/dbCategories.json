@@ -1,34 +1,31 @@
 {
   "categories": [
     {
-      "name": "Accessories"
+      "name": "Baño"
     },
     {
-      "name": "Bowls"
+      "name": "Bolsos y Mochilas"
     },
     {
-      "name": "Clothes"
+      "name": "Butacas"
     },
     {
-      "name": "Food"
+      "name": "Cochecitos"
     },
     {
-      "name": "Leashes"
+      "name": "Cunas"
     },
     {
-      "name": "Pet bath"
+      "name": "Diversión"
     },
     {
-      "name": "Pet beds"
+      "name": "Lactancia"
     },
     {
-      "name": "Pet houses"
+      "name": "Mecedoras"
     },
     {
-      "name": "Pet Toilets"
-    },
-    {
-      "name": "Pet toys"
+      "name": "Sillas"
     }
   ]
 }

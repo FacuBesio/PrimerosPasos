@@ -27,9 +27,14 @@ module.exports = (dataBase) => {
 
       color: {
         type: DataTypes.ENUM(
+          "aquamarine",
+          "beige",
           "black",
           "blue",
           "brown",
+          "burgundy",
+          "dark gray",
+          "emerald",
           "gray",
           "green",
           "orange",
@@ -51,7 +56,6 @@ module.exports = (dataBase) => {
           "extra large",
           "extra extra large"
         ),
-        allowNull: false,
       },
 
       description: {

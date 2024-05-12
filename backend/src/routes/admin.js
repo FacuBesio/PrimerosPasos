@@ -6,10 +6,6 @@ const routerAdmin = express.Router();
 
 //? GET "/admin"
 routerAdmin.get("/", getAdmin);
-// routerProducts.get("/:id", getProductsById);
-
-//? POST "/admin"
-// routerProducts.post("/", postProduct);
 
 //? PUT "/admin/users"
 routerAdmin.put("/users", putUser_Admin);
