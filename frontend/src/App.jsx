@@ -1,18 +1,14 @@
 import "./App.css";
 import {
-  Marquee, Title, Navbar,Banner,AditionalInfo,Categories,Footer
+  AditionalInfo,Categories,Footer,
+  Hero
 } from "./components"
 
 
 function App() {
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
-      <div className="h-screen">
-     <Marquee />
-     <Title />
-     <Navbar />
-     <Banner />
-     </div>
+     <Hero />
      <AditionalInfo />
      <Categories />
      <Footer />

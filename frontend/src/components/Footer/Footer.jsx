@@ -1,17 +1,16 @@
-import React from "react";
 
 const Footer = () => {
   return (
     <section className="flex justify-between p-6">
       <div className="flex flex-col">
-        <a href="">Home</a>
-        <a href="">Contacto</a>
-        <a href="">Categorias</a>
+        <a className=" hover:text-[#DBB1BC] " href="/">Home</a>
+        <a className=" hover:text-[#DBB1BC]" href="/contacto">Contacto</a>
+        <a className=" hover:text-[#DBB1BC]" href="/shop">Categorias</a>
       </div>
       <div>
-        <h2>+351 682044125</h2>
-        <h2>babyshop@gmail.com</h2>
-        <h2>Buenos Aires, Argentina.</h2>
+        <h2 className=" hover:text-[#DBB1BC]">+351 682044125</h2>
+        <h2 className=" hover:text-[#DBB1BC]">babyshop@gmail.com</h2>
+        <h2 className=" hover:text-[#DBB1BC]">Buenos Aires, Argentina.</h2>
       </div>
     </section>
   );
