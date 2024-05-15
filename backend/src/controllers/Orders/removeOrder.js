@@ -6,7 +6,7 @@ const removeOrder = async (id) => {
   const order = await findOrderbyId(id);
   if (!order) {
     return {
-      message: `No existe una Orden con el id '${id}' para eliminar`,
+      message: `No existe una Orden con id '${id}' para eliminar`,
     };
   }
 

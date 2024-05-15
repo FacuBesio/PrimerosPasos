@@ -5,7 +5,7 @@ const removePurchase = async (id) => {
   const purchase = await findPurchasebyId(id);
   if (!purchase) {
     return {
-      message: `No existe una Compra con el id '${id}' para eliminar`,
+      message: `No existe una Compra con id '${id}' para eliminar`,
     };
   }
 

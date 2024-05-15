@@ -9,6 +9,12 @@ module.exports = (dataBase) => {
         autoIncrement: true,
         primaryKey: true,
       },
+      
+      enabled: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+      
       name: {
         type: DataTypes.STRING,
         unique: true,

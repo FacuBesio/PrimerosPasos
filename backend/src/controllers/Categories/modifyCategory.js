@@ -1,10 +1,11 @@
 const { Category } = require("../../db");
+const findCategorybyId = require("./findCategorybyId");
 const errorsValidator = require("../../utils/validators/categories/errorsValidator");
 
-const modifyCategory = async (id, name) => {
+const modifyCategory = async (id, enabled, name) => {
   try {
     let updatedCategory = await Category.update(
-      { name },
+      { enabled, name },
       {
         where: {
           id: id,
@@ -14,11 +15,11 @@ const modifyCategory = async (id, name) => {
     if (updatedCategory[0] === 0) {
       return { message: `Categoría ${id} no encontrada` };
     }
-    updatedCategory = await Category.findByPk(id);
+    updatedCategory = await findCategorybyId(id);
     return updatedCategory.dataValues;
   } catch (error) {
     console.log("error: ", error.message);
-   const errorMessage = errorsValidator({name}, error);
+    const errorMessage = errorsValidator({ name }, error);
     return { message: errorMessage };
   }
 };

@@ -9,6 +9,7 @@ const getCategories = async (req, res) => {
       await createBulkCategories();
       categories = await findAllCategories();
     }
+
     categories = formattedCategories(categories);
     return res.status(200).json({
       totalResults: categories.length,

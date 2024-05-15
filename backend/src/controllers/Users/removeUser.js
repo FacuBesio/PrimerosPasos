@@ -6,7 +6,7 @@ const removeUser = async (id) => {
   const user = await findUserbyId(id);
   if (!user) {
     return {
-      message: `No existe un Usuario con el id '${id}' para eliminar`,
+      message: `No existe un Usuario con id '${id}' para eliminar`,
     };
   } else if (user.email === OWNER_EMAIL) {
     return {

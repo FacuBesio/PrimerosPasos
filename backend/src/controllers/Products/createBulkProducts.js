@@ -2,12 +2,21 @@ const { Product } = require("../../db");
 const findJsonProducts = require("../../utils/json/findJsonProducts");
 const findAllCategories = require("../../controllers/Categories/findAllCategories");
 const createBulkCategories = require("../../controllers/Categories/createBulkCategories");
+const findAllSubcategories = require("../../controllers/Subcategories/findAllSubcategories");
+const createBulkSubcategories = require("../../controllers/Subcategories/createBulkSubcategories");
+
+
 
 const createBulkProducts = async () => {
   try {
-    let categories = await findAllCategories();
+    const categories = await findAllCategories();
     if (categories.length === 0) {
       await createBulkCategories();
+    }
+
+    const subcategories = await findAllSubcategories();
+    if (subcategories.length === 0) {
+      await createBulkSubcategories();
     }
 
     const jsonProducts = await findJsonProducts();

@@ -21,7 +21,7 @@ const findByQuery = (queryInputs) => {
       },
     ];
   }
-  // console.log(whereClause);
+
   return whereClause;
 };
 
