@@ -11,7 +11,7 @@ const removeSubcategory = async (id) => {
   } 
 
   try {
-    subcategoryDestroyed = await Subcategory.destroy({
+    const subcategoryDestroyed = await Subcategory.destroy({
       where: { id: id },
     });
     return subcategoryDestroyed;

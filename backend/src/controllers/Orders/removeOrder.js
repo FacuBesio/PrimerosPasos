@@ -11,7 +11,7 @@ const removeOrder = async (id) => {
   }
 
   try {
-    orderDestroyed = await Order.destroy({
+    const orderDestroyed = await Order.destroy({
       where: { id: id },
     });
     return orderDestroyed;

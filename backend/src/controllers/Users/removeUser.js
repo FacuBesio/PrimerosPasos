@@ -15,7 +15,7 @@ const removeUser = async (id) => {
   }
 
   try {
-    userDestroyed = await User.destroy({
+    const userDestroyed = await User.destroy({
       where: { id: id },
       include: [Order, Purchase],
     });

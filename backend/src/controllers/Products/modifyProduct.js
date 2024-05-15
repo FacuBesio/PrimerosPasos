@@ -22,7 +22,7 @@ const modifyProduct = async (putBody) => {
     categories,
   } = putBody;
 
-    if (categories) {
+  if (categories) {
     const categoriesResult = await categoriesValidator(categories);
     if (categoriesResult.error) {
       return { message: categoriesResult.message };

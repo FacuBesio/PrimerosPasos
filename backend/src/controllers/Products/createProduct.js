@@ -10,7 +10,9 @@ const categoriesValidator = require("../../utils/validators/products/categoriesV
 const createProduct = async ({ product, categories }) => {
   try {
     if (!categories || categories.length === 0) {
-      return { message: `Para crear un producto, debe tener al menos una categoría asociada` };
+      return {
+        message: `Para crear un producto, debe tener al menos una categoría asociada`,
+      };
     }
 
     const categoriesResult = await categoriesValidator(categories);

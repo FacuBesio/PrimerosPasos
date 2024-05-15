@@ -10,7 +10,7 @@ const removePurchase = async (id) => {
   }
 
   try {
-    purchaseDestroyed = await Purchase.destroy({
+    const purchaseDestroyed = await Purchase.destroy({
       where: { id: id },
     });
     return purchaseDestroyed;
