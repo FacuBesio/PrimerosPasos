@@ -16,14 +16,6 @@ const postProduct = async (req, res) => {
     categories,
   } = req.body;
 
-  if (!categories || categories.length === 0) {
-    return res.status(200).json({
-      created: false,
-      error:
-        "Para crear un producto, debe tener al menos una categoría asociada",
-    });
-  }
-
   const product = {
     brand,
     name,

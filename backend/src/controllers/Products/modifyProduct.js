@@ -1,10 +1,12 @@
 const { Product, Category } = require("../../db");
 const findProductbyId = require("../../controllers/Products/findProductbyId");
-const findCategorybyId = require("../../controllers/Categories/findCategorybyId");
-const findSubcategorybyId = require("../../controllers/Subcategories/findSubcategorybyId");
 const errorsValidator = require("../../utils/validators/products/errors/errorsValidator");
+const categoriesValidator = require("../../utils/validators/products/categoriesValidator");
 
 const modifyProduct = async (putBody) => {
+  let category_id;
+  let subcategory_id;
+
   const {
     id,
     brand,
@@ -20,29 +22,13 @@ const modifyProduct = async (putBody) => {
     categories,
   } = putBody;
 
-  if (categories.length > 2) {
-    throw new Error(
-      "Se admiten como máximo hasta dos valores de categorías. El primer valor corresponderá a una categoría y el segundo valor a una subcategoría (opcional)."
-    );
-  }
-  let category;
-  if (categories && categories.length > 0) {
-    category = categories[0];
-    const categoryTest = await findCategorybyId(category);
-    if (!categoryTest)
-      throw new Error(
-        `La categoría con id '${category}' no existe. Por favor ingresa un categoría válida.`
-      );
-  }
-
-  let subcategory;
-  if (categories && categories.length === 2) {
-    subcategory = categories[1];
-    const subcategoryTest = await findSubcategorybyId(subcategory);
-    if (!subcategoryTest)
-      throw new Error(
-        `La subcategoría con id '${subcategory}' no existe. Por favor ingresa un subcategoría válida.`
-      );
+    if (categories) {
+    const categoriesResult = await categoriesValidator(categories);
+    if (categoriesResult.error) {
+      return { message: categoriesResult.message };
+    }
+    category_id = categories[0];
+    subcategory_id = categories.length === 2 ? categories[1] : null;
   }
 
   try {
@@ -66,8 +52,8 @@ const modifyProduct = async (putBody) => {
       return { message: `Producto ${id} no encontrado` };
     }
     updatedProduct = await Product.findByPk(id);
-    category && (await updatedProduct.setCategories(category));
-    subcategory && (await updatedProduct.setSubcategories(subcategory));
+    category_id && (await updatedProduct.setCategories(category_id));
+    subcategory_id && (await updatedProduct.setSubcategories(subcategory_id));
     updatedProduct = await findProductbyId(id);
     return updatedProduct.dataValues;
   } catch (error) {
