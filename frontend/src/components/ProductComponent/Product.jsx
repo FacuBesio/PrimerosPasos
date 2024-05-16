@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import axios from "axios";
+import Paginated from '../Paginated/Paginated';
 
 const ProductComponent = () => {
   const [allProducts, setAllProducts] = useState(null);
@@ -40,13 +41,11 @@ const ProductComponent = () => {
         </a>
       ))}
        </div>
-          <div className='flex justify-center items-center  gap-4 pb-4'>
-            <button className="border border-red-200 px-1 rounded-md ">Primera</button>
-            <button className='border border-red-200 p-1 rounded-md'><img className='w-[24px]' src="/src/assets/leftArrow.png" alt="flecha" /></button>
-            <h4>Página 1 de 2</h4>
-            <button className='border border-red-200 p-1 rounded-md'><img className='w-[24px]' src="/src/assets/rightArrow.png" alt="flecha" /></button>
-            <button className='border border-red-200 px-1 rounded-md'>Última</button>
-          </div>
+         <Paginated 
+         currentPage={1}
+         totalPages={15}
+         onPageChange={1 + 1}
+          />
     </section>
   );
 };
