@@ -5,8 +5,6 @@ const createBulkCategories = require("../../controllers/Categories/createBulkCat
 const findAllSubcategories = require("../../controllers/Subcategories/findAllSubcategories");
 const createBulkSubcategories = require("../../controllers/Subcategories/createBulkSubcategories");
 
-
-
 const createBulkProducts = async () => {
   try {
     const categories = await findAllCategories();
@@ -44,8 +42,12 @@ const createBulkProducts = async () => {
         stock,
         rating,
       };
+
+      const category_id = categories[0];
+      const subcategory_id = categories[1];
       const newProduct = await Product.create(product);
-      await newProduct.addCategories(categories);
+      await newProduct.addCategories(category_id);
+      await newProduct.addSubcategories(subcategory_id);
     }
   } catch (error) {
     console.log(error);
