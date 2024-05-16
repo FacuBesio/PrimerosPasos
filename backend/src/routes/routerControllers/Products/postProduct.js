@@ -1,4 +1,5 @@
 const createProduct = require("../../../controllers/Products/createProduct");
+const formattedProduct = require("../../../utils/formatted/formattedProduct");
 
 const postProduct = async (req, res) => {
   const {
@@ -14,14 +15,6 @@ const postProduct = async (req, res) => {
     enabled,
     categories,
   } = req.body;
-
-  if (!categories || categories.length === 0) {
-    return res.status(200).json({
-      created: false,
-      error:
-        "Para crear un producto, debe tener al menos una categoría asociada",
-    });
-  }
 
   const product = {
     brand,
@@ -39,7 +32,9 @@ const postProduct = async (req, res) => {
   try {
     const newProduct = await createProduct({ product, categories });
     newProduct.hasOwnProperty("name")
-      ? res.status(201).json({ created: true, product: newProduct })
+      ? res
+          .status(201)
+          .json({ created: true, product: formattedProduct(newProduct) })
       : res.status(200).json({ created: false, message: newProduct.message });
   } catch (error) {
     res.status(500).json({ error: error.message });

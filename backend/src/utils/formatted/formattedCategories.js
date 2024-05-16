@@ -1,7 +1,9 @@
 const formattedCategories = (categories) => {
   return categories.map((category) => {
-    const { id, name, Products } = category;
+    const { id, enabled, name, Products, Subcategories } = category;
     let message;
+
+    const subcategories = Subcategories;
 
     const products = Products.map((product) => product.name);
     if (products.length === 0)
@@ -9,7 +11,9 @@ const formattedCategories = (categories) => {
 
     return {
       id,
+      enabled,
       name,
+      subcategories,
       products,
       message
     };

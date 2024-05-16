@@ -1,5 +1,7 @@
 const modifyProduct = require("../../../controllers/Products/modifyProduct");
 const categorySitnaxError = require("../../../utils/validators/products/errors/categorySitnaxError");
+const formattedProduct = require("../../../utils/formatted/formattedProduct");
+
 
 const putProduct = async (req, res) => {
   const {
@@ -35,7 +37,7 @@ const putProduct = async (req, res) => {
   try {
     const updatedProduct = await modifyProduct(putBody);
     updatedProduct.hasOwnProperty("name")
-      ? res.status(200).json({ updated: true, updatedProduct: updatedProduct })
+      ? res.status(200).json({ updated: true, updatedProduct: formattedProduct(updatedProduct) })
       : res
           .status(200)
           .json({ updated: false, message: updatedProduct.message });

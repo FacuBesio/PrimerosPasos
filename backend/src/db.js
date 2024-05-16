@@ -31,8 +31,8 @@ Category.belongsToMany(Product, { through: "Category_Product" });
 Product.belongsToMany(Category, { through: "Category_Product" });
 
 // Category - SubCategory (1 a n)
-Category.hasMany(Subcategory);
-Subcategory.belongsTo(Category);
+Category.hasMany(Subcategory, { foreignKey: "categoryId" });
+Subcategory.belongsTo(Category, { foreignKey: "categoryId" });
 
 // Product - Subcategory (n a n)
 Subcategory.belongsToMany(Product, { through: "Subcategory_Product" });

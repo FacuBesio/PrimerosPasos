@@ -1,4 +1,4 @@
-const { Product, Category } = require("../../db");
+const { Product, Category, Subcategory } = require("../../db");
 const filterByCategories = require("./product_utils/filterByCategories");
 const findByQuery = require("./product_utils/findByQuery");
 const SortByQuery = require("./product_utils/SortByQuery");
@@ -20,16 +20,25 @@ const findAllProducts = async (paginated, queryInputs) => {
 
   const products = await Product.findAndCountAll({
     where: whereClause,
-    include: {
-      model: Category,
-      attributes: ["id", "name"],
-      where: includeCategoriesClause,
-      through: {
-        attributes: [],
+    include: [
+      {
+        model: Category,
+        attributes: ["id", "name"],
+        where: includeCategoriesClause,
+        through: {
+          attributes: [],
+        },
       },
-    },
+      {
+        model: Subcategory,
+        attributes: ["id", "name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
     order: orderClause,
-    limit: pageSize, 
+    limit: pageSize,
     offset: offset, // Especifica cuántos resultados omitir
   });
 

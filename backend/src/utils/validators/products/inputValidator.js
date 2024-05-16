@@ -30,7 +30,6 @@ const inputValidator = (queryInputs, paginated) => {
       }
     });
   } else if (isNaN(filterCategories)) {
-    console.log("test");
     query.error = true;
     query.message = `Los únicos valores válidos para filtrar por Categorías son números (id). Se ha ingresado: '${filterCategories}'`;
   }

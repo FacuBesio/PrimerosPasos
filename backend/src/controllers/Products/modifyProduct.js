@@ -1,7 +1,7 @@
 const { Product, Category } = require("../../db");
 const findProductbyId = require("../../controllers/Products/findProductbyId");
-const findCategorybyId = require("../../controllers/Categories/findCategorybyId");
 const errorsValidator = require("../../utils/validators/products/errors/errorsValidator");
+const paramsValidator = require("../../utils/validators/products/paramsValidator");
 
 const modifyProduct = async (putBody) => {
   const {
@@ -19,14 +19,20 @@ const modifyProduct = async (putBody) => {
     categories,
   } = putBody;
 
-  if (categories) {
-    for (const category of categories) {
-      const categoryTest = await findCategorybyId(category);
-      if (!categoryTest)
-        return {
-          message: `La categoría con id '${category}' no existe. Por favor ingresa un categoría válida.`,
-        };
-    }
+  const statusToUpdate = await paramsValidator(id, categories);
+  if (statusToUpdate.error) {
+    return { message: statusToUpdate.message };
+  }
+  const { currentProduct, category_id, subcategory_id, isCategoryNew } =
+    statusToUpdate;
+
+  let clearSubcaterogies = false;
+  let currentSubcategories;
+  if (currentProduct.subcategories.length > 0 && isCategoryNew) {
+    clearSubcaterogies = true;
+    currentSubcategories = currentProduct.subcategories.map((subcategorie) => {
+      return subcategorie.id;
+    });
   }
 
   try {
@@ -46,15 +52,12 @@ const modifyProduct = async (putBody) => {
       { where: { id: id } }
     );
 
-    if (updatedProduct[0] === 0) {
-      return { message: `Producto ${id} no encontrado` };
-    }
     updatedProduct = await Product.findByPk(id);
-    categories &&
-      categories.length > 0 &&
-      (await updatedProduct.setCategories(categories));
+    clearSubcaterogies &&
+      (await updatedProduct.removeSubcategories(currentSubcategories));
+    category_id && (await updatedProduct.setCategories(category_id));
+    subcategory_id && (await updatedProduct.setSubcategories(subcategory_id));
     updatedProduct = await findProductbyId(id);
-
     return updatedProduct.dataValues;
   } catch (error) {
     console.log("error: ", error.message);
