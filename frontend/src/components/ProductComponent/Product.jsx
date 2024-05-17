@@ -3,20 +3,16 @@ import getProducts from "../../utils/products/getProducts.js";
 import getCategories from "../../utils/categories/getCategories.js";
 import Paginated from "../Paginated/Paginated";
 
-
-
-const ProductComponent = ({filter}) => {
-  
+const ProductComponent = ({ filter }) => {
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
-  
+
   useEffect(() => {
-    getProducts(setAllProducts, page, filter)
-    }, [page, filter]);
+    getProducts(setAllProducts, page, filter);
+  }, [page, filter]);
 
   return (
     <section>
-     
       <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (
           <a
@@ -43,7 +39,11 @@ const ProductComponent = ({filter}) => {
           </a>
         ))}
       </div>
-      <Paginated  page={page} setPage={setPage} totalPages={allProducts?.totalPages} />
+      <Paginated
+        page={page}
+        setPage={setPage}
+        totalPages={allProducts?.totalPages}
+      />
     </section>
   );
 };
