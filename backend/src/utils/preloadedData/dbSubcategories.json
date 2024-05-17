@@ -1,37 +1,28 @@
 {
   "subcategories": [
     {
-      "name": "Calzado mini", 
-      "categoryId": 4
-    }, 
-    {
-      "name": "Calzado juniors", 
-      "categoryId": 4
-    }, 
-    {
-      "name": "Ajuar", 
+      "name": "Ajuar",
       "categoryId": 10
-    }, 
+    },
     {
-      "name": "Bebé mínima", 
+      "name": "Bebé mínima",
       "categoryId": 10
-    }, 
+    },
     {
-      "name": "Bebé mínimo", 
+      "name": "Bebé mínimo",
       "categoryId": 10
-    }, 
+    },
     {
-      "name": "Bebé Unisex", 
+      "name": "Bebé Unisex",
       "categoryId": 10
-    }, 
+    },
     {
-      "name": "Pequeñas", 
+      "name": "Pequeñas",
       "categoryId": 10
-    }, 
+    },
     {
-      "name": "Pequeños", 
+      "name": "Pequeños",
       "categoryId": 10
     }
-
   ]
 }
