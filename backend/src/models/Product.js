@@ -38,6 +38,7 @@ module.exports = (dataBase) => {
           "emerald",
           "gray",
           "green",
+          "light blue",
           "military green",
           "olive green",
           "orange",
