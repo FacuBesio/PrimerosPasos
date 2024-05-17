@@ -10,8 +10,6 @@ const Shop = () => {
 
   const [filter, setFilter] = useState([]);
 
-  console.log(filter);
-
   useEffect(() => {
     getCategories(setAllCategories);
     getBrands(setAllBrands);

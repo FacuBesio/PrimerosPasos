@@ -8,16 +8,11 @@ import Paginated from "../Paginated/Paginated";
 const ProductComponent = ({filter}) => {
   
   const [allProducts, setAllProducts] = useState(null);
-  const [categories, setCategories] = useState(null);
   const [page, setPage] = useState(1);
-
-
   
   useEffect(() => {
     getProducts(setAllProducts, page, filter)
-    
-    getCategories(setCategories)
-    }, [page]);
+    }, [page, filter]);
 
   return (
     <section>
