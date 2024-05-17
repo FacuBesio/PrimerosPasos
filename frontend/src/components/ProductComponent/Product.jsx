@@ -5,25 +5,23 @@ import Paginated from "../Paginated/Paginated";
 
 
 
-const ProductComponent = () => {
+const ProductComponent = ({filter}) => {
+  
   const [allProducts, setAllProducts] = useState(null);
   const [categories, setCategories] = useState(null);
   const [page, setPage] = useState(1);
- 
-  const handlerNextPage = () => {
-    setPage(page + 1)
-  };
 
-  console.log(categories);
+
   
   useEffect(() => {
-    getProducts(setAllProducts, page)
+    getProducts(setAllProducts, page, filter)
+    
     getCategories(setCategories)
     }, [page]);
 
   return (
     <section>
-      <button onClick={handlerNextPage}> Next </button>
+     
       <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (
           <a
@@ -50,7 +48,7 @@ const ProductComponent = () => {
           </a>
         ))}
       </div>
-      <Paginated currentPage={1} totalPages={15} onPageChange={1 + 1} />
+      <Paginated  page={page} setPage={setPage} totalPages={allProducts?.totalPages} />
     </section>
   );
 };

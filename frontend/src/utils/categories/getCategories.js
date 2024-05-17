@@ -1,9 +1,9 @@
 import axios from "../../config/axios";
 
-const getCategories = async (setCategories) => {
+const getCategories = async (setAllCategories) => {
   try {
     const response = await axios.get(`/categories`);
-    setCategories(response.data);
+    setAllCategories(response.data);
   } catch (error) {
     console.error("Error al obtener Categorías:", error);
   }

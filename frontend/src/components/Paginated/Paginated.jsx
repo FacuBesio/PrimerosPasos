@@ -1,26 +1,32 @@
 import React from 'react'
 
-const Paginated = ({currentPage,totalPages,onPageChange}) => {
+const Paginated = ({page,setPage, totalPages}) => {
+
+
 
     const goToFirstPage = () => {
-        onPageChange(1);
+        setPage(1)
       };
     
       const goToLastPage = () => {
-        onPageChange(totalPages);
+       setPage(totalPages)
       };
     
       const goToPreviousPage = () => {
-        const previousPage = currentPage - 1;
-        if (previousPage >= 1) {
-          onPageChange(previousPage);
+        const previousPage = page - 1;
+        if (page === 1) {
+          console.log("no se puede seguir bajando");  
+        } else {
+          setPage(previousPage)
         }
       };
     
       const goToNextPage = () => {
-        const nextPage = currentPage + 1;
-        if (nextPage <= totalPages) {
-          onPageChange(nextPage);
+        const nextPage = page + 1;
+        if(page === totalPages){
+          console.log("nose puede seguir avanzando");
+        }else{
+          setPage(nextPage)
         }
       };
 
@@ -28,7 +34,7 @@ const Paginated = ({currentPage,totalPages,onPageChange}) => {
     <div className='flex justify-center items-center  gap-4 pb-4'>
             <button  onClick={goToFirstPage} className="border border-red-200 px-1 rounded-md ">Primera</button>
             <button  onClick={goToPreviousPage} className='border border-red-200 p-1 rounded-md'><img className='w-[24px]' src="/src/assets/leftArrow.png" alt="flecha" /></button>
-            <h4>Pagina {currentPage} de {totalPages}</h4>
+            <h4>Pagina {page} de {totalPages}</h4>
             <button   onClick={goToNextPage} className='border border-red-200 p-1 rounded-md'><img className='w-[24px]' src="/src/assets/rightArrow.png" alt="flecha" /></button>
             <button  onClick={goToLastPage} className='border border-red-200 px-1 rounded-md'>Última</button>
     </div>
