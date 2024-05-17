@@ -2,6 +2,8 @@ import React,{useEffect,useState} from 'react';
 import axios from "axios";
 import Paginated from '../Paginated/Paginated';
 
+
+
 const ProductComponent = () => {
   const [allProducts, setAllProducts] = useState(null);
   const [loading, setLoading] = useState(true);
