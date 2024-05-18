@@ -11,7 +11,7 @@ const getProducts = async (req, res) => {
 
   const {
     page = 1,
-    pageSize = 15,
+    pageSize = 12,
     brand_or_name = "",
     filterName = "",
     filterColor = "",
