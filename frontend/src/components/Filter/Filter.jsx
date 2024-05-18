@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from "react";
-import getProducts from "../../utils/products/getProducts";
 import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
+import filterValidator from "../../utils/filter/filterValidator";
 
-const CategoryFilter = ({allBrands,allCategories,setFilter}) => {
+const Filter = ({ setFilter }) => {
+  const [allBrands, setAllBrands] = useState(null);
+  const [filterBrands, setfilterBrands] = useState(null);
+  const [allCategories, setAllCategories] = useState(null);
+  const [filterCategories, setfilterCategories] = useState(null);
 
-  const [allProducts, setAllProducts] = useState(null);
- 
-  
-  const [page, setPage] = useState(1);
+  const handleClickBrands = (brand) => {
+    return () => setfilterBrands(brand);
+  };
 
+  const handleClickCategories = (category) => {
+    return () => setfilterCategories(category.id);
+  };
 
-    const handleClick = (cat)=> {
-        setFilter(cat.id)
-      
-    }
   useEffect(() => {
-    getProducts(setAllProducts, page);
-   
-  }, [page]);
+    getBrands(setAllBrands);
+    getCategories(setAllCategories);
+    const filterQuery = filterValidator(filterBrands, filterCategories);
+    filterQuery.filterActive && setFilter(filterQuery.result);
+  }, [filterBrands, filterCategories]);
 
   return (
     <section className="left-side  border-red-200 border-r-2 md:min-w-[240px] min-w-[160px]  w-[15%] p-6">
@@ -28,13 +32,13 @@ const CategoryFilter = ({allBrands,allCategories,setFilter}) => {
         </h2>
         <li className="list-none">
           <ul>
-            {allCategories?.categories?.map((cat) => (
+            {allCategories?.categories?.map((category) => (
               <h3
-                key={cat.id}
-                onClick={() => handleClick(cat)}
+                key={category.id}
+                onClick={handleClickCategories(category)}
                 className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter "
               >
-                {cat.name}
+                {category.name}
               </h3>
             ))}
           </ul>
@@ -46,11 +50,15 @@ const CategoryFilter = ({allBrands,allCategories,setFilter}) => {
         </h2>
         <li className="list-none">
           <ul>
-            {allBrands?.brands.map((brand)=> (
-                <h3 key={brand} className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter ">
+            {allBrands?.brands.map((brand) => (
+              <h3
+                key={brand}
+                onClick={handleClickBrands(brand)}
+                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter "
+              >
                 {brand}
               </h3>
-            ))}   
+            ))}
           </ul>
         </li>
       </div>
@@ -71,7 +79,6 @@ const CategoryFilter = ({allBrands,allCategories,setFilter}) => {
               className="w-full rounded-md border"
               type="text"
               placeholder="max"
-
             />
           </label>
         </form>
@@ -102,4 +109,4 @@ const CategoryFilter = ({allBrands,allCategories,setFilter}) => {
   );
 };
 
-export default CategoryFilter;
+export default Filter;

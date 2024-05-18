@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import getProducts from "../../utils/products/getProducts.js";
-import getCategories from "../../utils/categories/getCategories.js";
 import Paginated from "../Paginated/Paginated";
 
 const ProductComponent = ({ filter }) => {
