@@ -1,9 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState ,useRef} from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
+import productInitializer from "../../utils/products/productInitializer";
+import newUserdata from "../../utils/navbar/newUserdata";
 
 const Navbar = () => {
-  const { loginWithRedirect } = useAuth0();
 
+  const [userData, setUserData] = useState(null);
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
 
@@ -11,7 +15,20 @@ const Navbar = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  console.log("userData: ", userData);
 
+  const handleLogout = () => {
+    window.localStorage.removeItem("userData");
+    setUserData(null);
+    logout();
+  };
+
+  useEffect(() => {
+    productInitializer();
+    if (isAuthenticated && user && !userData) {
+      newUserdata(setUserData, user);
+    }
+  }, [isAuthenticated, user]);
 
   return (
     <nav className="flex flex-col md:flex-row gap-4 justify-center items pb-6 ">
@@ -34,12 +51,21 @@ const Navbar = () => {
         >
           Contacto
         </a>
-        <button
-          className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a] "
-          onClick={() => loginWithRedirect()}
-        >
-          Login
-        </button>
+        {!isAuthenticated ? (
+          <button
+            className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a] "
+            onClick={() => loginWithRedirect()}
+          >
+            Login
+          </button>
+        ) : (
+          <button
+            className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a] "
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        )}
       </div>
       <div className="flex justify-center   ">
         <form className="flex gap-2" action="">
@@ -67,6 +93,15 @@ const Navbar = () => {
           >
             <div className="fixed right-0 top-0 h-screen w-[20%] bg-white z-50 pt-10 px-6 text-center flex flex-col gap-12 transition-all "></div>
           </div>
+        )}
+          {isAuthenticated && (
+          <Link to="/profile/personalInfo">
+            <img
+              src={userData?.picture}
+              alt={userData?.name}
+              className="w-8 h-8 cursor-pointer"
+            />
+          </Link>
         )}
       </div>
     </nav>
