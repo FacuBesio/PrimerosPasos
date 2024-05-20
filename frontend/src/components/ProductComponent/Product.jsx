@@ -5,13 +5,31 @@ import Paginated from "../Paginated/Paginated";
 const ProductComponent = ({ filter }) => {
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState(null)
 
   useEffect(() => {
     getProducts(setAllProducts, page, filter);
   }, [page, filter]);
 
-  return (
+  const handleFilterClick = (selectedFilter) => {
+    setSelectedFilter(selectedFilter)
+  }
+  const handleRemoveFilter = () => {
+    setSelectedFilter(null)
+  }
+  console.log(selectedFilter);
+  return ( 
     <section>
+      <div >
+        
+        {selectedFilter && 
+        <h2 
+        onClick={handleRemoveFilter}
+          className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+          {selectedFilter} 
+        </h2>}
+
+      </div>
       <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (
           <a
