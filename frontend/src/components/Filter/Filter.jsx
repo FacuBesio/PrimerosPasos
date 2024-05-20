@@ -3,36 +3,53 @@ import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
 import filterValidator from "../../utils/filter/filterValidator";
 
-const Filter = ({ setFilter, setFilterBrandsName, setFilterCategoriesName }) => {
-
+const Filter = ({
+  setFilter,
+  setFilterBrandsName,
+  setFilterCategoriesName,
+}) => {
   const [allBrands, setAllBrands] = useState(null);
   const [filterBrands, setFilterBrands] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
-   const [filterCategories, setFilterCategories] = useState(null);
-
- 
+  const [filterCategories, setFilterCategories] = useState(null);
+  const [minPrice, setMinPrice] = useState(null);
+  const [maxPrice, setMaxPrice] = useState(null);
+  const [filterPrices, setFilterPrices] = useState([]);
 
   const handleClickBrands = (brand) => {
     return () => {
       setFilterBrands(brand);
-      setFilterBrandsName(brand)
-    }
+      setFilterBrandsName(brand);
+    };
   };
 
   const handleClickCategories = (category) => {
     return () => {
       setFilterCategories(category.id);
-      setFilterCategoriesName(category.name)
+      setFilterCategoriesName(category.name);
+    };
+  };
 
-    }
+  const onChangeMinPrice = (event) => {
+    const arrayPrices = [event.target.value, filterPrices[1]];
+    setFilterPrices(arrayPrices);
+  };
+
+  const onChangeMaxPrice = (event) => {
+    const arrayPrices = [filterPrices[0], event.target.value];
+    setFilterPrices(arrayPrices);
   };
 
   useEffect(() => {
     getBrands(setAllBrands);
     getCategories(setAllCategories);
-    const filterQuery = filterValidator(filterBrands, filterCategories);
+    const filterQuery = filterValidator(
+      filterBrands,
+      filterCategories,
+      filterPrices
+    );
     filterQuery.filterActive && setFilter(filterQuery.result);
-  }, [filterBrands, filterCategories]);
+  }, [filterBrands, filterCategories, filterPrices]);
 
   return (
     <section className="left-side  border-red-200 border-r-2 md:min-w-[240px] min-w-[160px]  w-[15%] p-6">
@@ -82,6 +99,8 @@ const Filter = ({ setFilter, setFilterBrandsName, setFilterCategoriesName }) => 
               className="w-full border rounded-md "
               type="text"
               placeholder="min"
+              value={minPrice}
+              onChange={onChangeMinPrice}
             />
           </label>
           <label htmlFor="">
@@ -89,6 +108,8 @@ const Filter = ({ setFilter, setFilterBrandsName, setFilterCategoriesName }) => 
               className="w-full rounded-md border"
               type="text"
               placeholder="max"
+              value={maxPrice}
+              onChange={onChangeMaxPrice}
             />
           </label>
         </form>
