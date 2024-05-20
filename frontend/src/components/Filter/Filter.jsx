@@ -3,18 +3,28 @@ import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
 import filterValidator from "../../utils/filter/filterValidator";
 
-const Filter = ({ setFilter }) => {
+const Filter = ({ setFilter, setFilterBrandsName, setFilterCategoriesName }) => {
+
   const [allBrands, setAllBrands] = useState(null);
-  const [filterBrands, setfilterBrands] = useState(null);
+  const [filterBrands, setFilterBrands] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
-  const [filterCategories, setfilterCategories] = useState(null);
+   const [filterCategories, setFilterCategories] = useState(null);
+
+ 
 
   const handleClickBrands = (brand) => {
-    return () => setfilterBrands(brand);
+    return () => {
+      setFilterBrands(brand);
+      setFilterBrandsName(brand)
+    }
   };
 
   const handleClickCategories = (category) => {
-    return () => setfilterCategories(category.id);
+    return () => {
+      setFilterCategories(category.id);
+      setFilterCategoriesName(category.name)
+
+    }
   };
 
   useEffect(() => {

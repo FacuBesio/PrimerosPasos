@@ -4,8 +4,8 @@ import ProductComponent from "../components/ProductComponent/Product";
 import Filter from "../components/Filter/Filter";
 const Shop = () => {
   const [filter, setFilter] = useState([]);
-
-  useEffect(() => {}, []);
+  const [filterCategoriesName, setFilterCategoriesName] = useState(null);
+  const [filterBrandsName, setFilterBrandsName] = useState(null);
 
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
@@ -13,8 +13,16 @@ const Shop = () => {
       <Title />
       <Navbar />
       <div className="flex border-y-2 border-red-200 mt-4">
-        <Filter setFilter={setFilter} />
-        <ProductComponent filter={filter} />
+        <Filter
+          setFilter={setFilter}
+          setFilterCategoriesName={setFilterCategoriesName}
+          setFilterBrandsName={setFilterBrandsName}
+        />
+        <ProductComponent
+          filter={filter}
+          filterBrandsName={filterBrandsName}
+          filterCategoriesName={filterCategoriesName}
+        />
       </div>
       <Footer />
     </main>

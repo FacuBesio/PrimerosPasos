@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import getProducts from "../../utils/products/getProducts.js";
 import Paginated from "../Paginated/Paginated";
 
-const ProductComponent = ({ filter }) => {
+const ProductComponent = ({ filter,filterCategoriesName,filterBrandsName }) => {
+
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
   const [selectedFilter, setSelectedFilter] = useState(null)
@@ -12,21 +13,19 @@ const ProductComponent = ({ filter }) => {
   }, [page, filter]);
 
   const handleFilterClick = (selectedFilter) => {
-    setSelectedFilter(selectedFilter)
+    setSelectedFilter(filter)
   }
   const handleRemoveFilter = () => {
     setSelectedFilter(null)
   }
-  console.log(selectedFilter);
+  console.log(filterCategoriesName, filterBrandsName);
   return ( 
     <section>
-      <div >
-        
-        {selectedFilter && 
+      <div > 
+        {filterCategoriesName && 
         <h2 
-        onClick={handleRemoveFilter}
           className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
-          {selectedFilter} 
+          {filterCategoriesName} 
         </h2>}
 
       </div>
