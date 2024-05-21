@@ -1,11 +1,10 @@
-import React, { useEffect, useState ,useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import productInitializer from "../../utils/products/productInitializer";
 import newUserdata from "../../utils/navbar/newUserdata";
 
 const Navbar = () => {
-
   const [userData, setUserData] = useState(null);
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -14,8 +13,6 @@ const Navbar = () => {
   const handleButtonCart = () => {
     setIsCartOpen(!isCartOpen);
   };
-
-  console.log("userData: ", userData);
 
   const handleLogout = () => {
     window.localStorage.removeItem("userData");
@@ -94,7 +91,7 @@ const Navbar = () => {
             <div className="fixed right-0 top-0 h-screen w-[20%] bg-white z-50 pt-10 px-6 text-center flex flex-col gap-12 transition-all "></div>
           </div>
         )}
-          {isAuthenticated && (
+        {isAuthenticated && (
           <Link to="/profile/personalInfo">
             <img
               src={userData?.picture}

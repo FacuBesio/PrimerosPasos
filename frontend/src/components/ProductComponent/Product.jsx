@@ -2,32 +2,46 @@ import React, { useEffect, useState } from "react";
 import getProducts from "../../utils/products/getProducts.js";
 import Paginated from "../Paginated/Paginated";
 
-const ProductComponent = ({ filter,filterCategoriesName,filterBrandsName }) => {
-
+const ProductComponent = ({ allFilters }) => {
+  const {
+    filter,
+    sorter,
+    filterCategoriesName,
+    filterBrandsName,
+    filterPricesValues,
+   } = allFilters;
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
-  const [selectedFilter, setSelectedFilter] = useState(null)
+
+  let pricesValues;
+  if (filterPricesValues[0] && filterPricesValues[1]) {
+    pricesValues = `${filterPricesValues[0]} - ${filterPricesValues[1]}`;
+  }
 
   useEffect(() => {
-    getProducts(setAllProducts, page, filter);
-  }, [page, filter]);
+    getProducts(setAllProducts, page, filter, sorter);
+  }, [page, filter, sorter]);
 
-  const handleFilterClick = (selectedFilter) => {
-    setSelectedFilter(filter)
-  }
-  const handleRemoveFilter = () => {
-    setSelectedFilter(null)
-  }
-  console.log(filterCategoriesName, filterBrandsName);
-  return ( 
+  return (
     <section>
-      <div > 
-        {filterCategoriesName && 
-        <h2 
-          className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
-          {filterCategoriesName} 
-        </h2>}
+      <div>
+        {filterBrandsName && (
+          <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+            {filterBrandsName}
+          </h2>
+        )}
 
+        {filterCategoriesName && (
+          <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+            {filterCategoriesName}
+          </h2>
+        )}
+
+        {pricesValues && (
+          <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+            {pricesValues}
+          </h2>
+        )}
       </div>
       <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (

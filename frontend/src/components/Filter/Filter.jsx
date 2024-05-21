@@ -2,19 +2,26 @@ import React, { useState, useEffect } from "react";
 import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
 import filterValidator from "../../utils/filter/filterValidator";
+import sorterValidator from "../../utils/sorter/sorterValidator";
 
-const Filter = ({
-  setFilter,
-  setFilterBrandsName,
-  setFilterCategoriesName,
-}) => {
+const Filter = ({ allSetters }) => {
+  const {
+    setFilter,
+    setFilterBrandsName,
+    setFilterCategoriesName,
+    setFilterPricesValues,
+    setSorter,
+  } = allSetters;
+
   const [allBrands, setAllBrands] = useState(null);
-  const [filterBrands, setFilterBrands] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
+
+  const [filterBrands, setFilterBrands] = useState(null);
   const [filterCategories, setFilterCategories] = useState(null);
-  const [minPrice, setMinPrice] = useState(null);
-  const [maxPrice, setMaxPrice] = useState(null);
   const [filterPrices, setFilterPrices] = useState([]);
+
+  const [sorterByPrice, setSorterByPrice] = useState("");
+  const [sorterByRating, setSorterByRating] = useState("");
 
   const handleClickBrands = (brand) => {
     return () => {
@@ -33,23 +40,43 @@ const Filter = ({
   const onChangeMinPrice = (event) => {
     const arrayPrices = [event.target.value, filterPrices[1]];
     setFilterPrices(arrayPrices);
+    setFilterPricesValues(arrayPrices);
   };
 
   const onChangeMaxPrice = (event) => {
     const arrayPrices = [filterPrices[0], event.target.value];
     setFilterPrices(arrayPrices);
+    setFilterPricesValues(arrayPrices);
+  };
+
+  const onChangeSorterPrice = (event) => {
+    setSorterByPrice(event.target.value);
+  };
+
+  const onChangeSorterRating = (event) => {
+    setSorterByRating(event.target.value);
   };
 
   useEffect(() => {
     getBrands(setAllBrands);
     getCategories(setAllCategories);
+
     const filterQuery = filterValidator(
       filterBrands,
       filterCategories,
       filterPrices
     );
     filterQuery.filterActive && setFilter(filterQuery.result);
-  }, [filterBrands, filterCategories, filterPrices]);
+
+    const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
+    sorterQuery.sorterActive && setSorter(sorterQuery.result);
+  }, [
+    filterBrands,
+    filterCategories,
+    filterPrices,
+    sorterByPrice,
+    sorterByRating,
+  ]);
 
   return (
     <section className="left-side  border-red-200 border-r-2 md:min-w-[240px] min-w-[160px]  w-[15%] p-6">
@@ -99,7 +126,7 @@ const Filter = ({
               className="w-full border rounded-md "
               type="text"
               placeholder="min"
-              value={minPrice}
+              value={filterPrices[0]}
               onChange={onChangeMinPrice}
             />
           </label>
@@ -108,7 +135,7 @@ const Filter = ({
               className="w-full rounded-md border"
               type="text"
               placeholder="max"
-              value={maxPrice}
+              value={filterPrices[1]}
               onChange={onChangeMaxPrice}
             />
           </label>
@@ -119,20 +146,32 @@ const Filter = ({
           <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
             Ordenar por precio
           </h3>
-          <select className="rounded-md w-full" name="" id="">
+          <select
+            className="rounded-md w-full"
+            name="sorterByPrice"
+            id="sorterByPrice"
+            onChange={onChangeSorterPrice}
+            value={sorterByPrice}
+          >
             <option value="">Precio</option>
-            <option value="">Menor precio</option>
-            <option value="">Mayor precio</option>
+            <option value="asc">Menor precio</option>
+            <option value="desc">Mayor precio</option>
           </select>
         </div>
         <div>
           <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
             Ordenar por rating
           </h3>
-          <select className="rounded-md w-full" name="" id="">
+          <select
+            className="rounded-md w-full"
+            name="sorterByRating"
+            id="sorterByRating"
+            onChange={onChangeSorterRating}
+            value={sorterByRating}
+          >
             <option value="">Sin rating</option>
-            <option value="">Menor rating</option>
-            <option value="">Mayor rating</option>
+            <option value="asc">Menor rating</option>
+            <option value="desc">Mayor rating</option>
           </select>
         </div>
       </div>
