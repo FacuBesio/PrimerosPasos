@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AppContext } from "../../context/context.jsx";
 import getProducts from "../../utils/products/getProducts.js";
 import Paginated from "../Paginated/Paginated";
 
@@ -9,7 +10,9 @@ const ProductComponent = ({ allFilters }) => {
     filterCategoriesName,
     filterBrandsName,
     filterPricesValues,
-   } = allFilters;
+  } = allFilters;
+  const { state } = useContext(AppContext);
+  const { searchBar } = state
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
 
@@ -19,8 +22,8 @@ const ProductComponent = ({ allFilters }) => {
   }
 
   useEffect(() => {
-    getProducts(setAllProducts, page, filter, sorter);
-  }, [page, filter, sorter]);
+    getProducts(setAllProducts, page, searchBar, filter, sorter);
+  }, [page, searchBar, filter, sorter]);
 
   return (
     <section>

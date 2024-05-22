@@ -22,6 +22,7 @@ const Filter = ({ allSetters }) => {
 
   const [sorterByPrice, setSorterByPrice] = useState("");
   const [sorterByRating, setSorterByRating] = useState("");
+  
 
   const handleClickBrands = (brand) => {
     return () => {

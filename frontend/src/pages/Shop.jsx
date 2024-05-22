@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
 import Filter from "../components/Filter/Filter";
