@@ -1,21 +1,25 @@
-import React, { useEffect, useState ,useRef} from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
+import { AppContext } from "../../context/context";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import productInitializer from "../../utils/products/productInitializer";
 import newUserdata from "../../utils/navbar/newUserdata";
 
 const Navbar = () => {
-
-  const [userData, setUserData] = useState(null);
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { state, setState } = useContext(AppContext);
+  const [userData, setUserData] = useState();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
+
 
   const handleButtonCart = () => {
     setIsCartOpen(!isCartOpen);
   };
 
-  console.log("userData: ", userData);
+  const onChangeSearchBar = (event) => {
+    const searchBar = event.target.value
+    setState((prevState) => ({ ...prevState, searchBar }));
+  };
 
   const handleLogout = () => {
     window.localStorage.removeItem("userData");
@@ -24,7 +28,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    productInitializer();
     if (isAuthenticated && user && !userData) {
       newUserdata(setUserData, user);
     }
@@ -74,6 +77,8 @@ const Navbar = () => {
             placeholder="Buscar"
             className="px-1 rounded-md border border-red-200"
             type="text"
+            value={state.searchBar}
+            onChange={onChangeSearchBar}
           />
           <button>
             <img
@@ -95,7 +100,7 @@ const Navbar = () => {
             <div className="fixed right-0 top-0 h-screen w-[20%] bg-white z-50 pt-10 px-6 text-center flex flex-col gap-12 transition-all "></div>
           </div>
         )}
-          {isAuthenticated && (
+        {isAuthenticated && (
           <Link to="/profile/personalInfo">
             <img
               src={userData?.picture}

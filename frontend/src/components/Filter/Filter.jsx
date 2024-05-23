@@ -2,55 +2,72 @@ import React, { useState, useEffect } from "react";
 import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
 import filterValidator from "../../utils/filter/filterValidator";
-import SortComponent from "../SortComponent/SortComponent";
+import sorterValidator from "../../utils/sorter/sorterValidator";
+import {
+  handlerClickBrands,
+  handlerClickCategories,
+  handlerMinPrice,
+  handlerMaxPrice,
+} from "../../utils/filter/filterHandlers";
 
-const Filter = ({
-  setFilter,
-  setFilterBrandsName,
-  setFilterCategoriesName,
-}) => {
+const Filter = ({ allShopSetters }) => {
+  const { setFilter, setSorter } = allShopSetters;
+
   const [allBrands, setAllBrands] = useState(null);
-  const [filterBrands, setFilterBrands] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
+
+  const [filterBrands, setFilterBrands] = useState(null);
   const [filterCategories, setFilterCategories] = useState(null);
-  const [minPrice, setMinPrice] = useState(null);
-  const [maxPrice, setMaxPrice] = useState(null);
-  const [filterPrices, setFilterPrices] = useState([]);
+  const [filterPrices, setFilterPrices] = useState([0, 0]);
 
-  const handleClickBrands = (brand) => {
-    return () => {
-      setFilterBrands(brand);
-      setFilterBrandsName(brand);
-    };
-  };
+  const [sorterByPrice, setSorterByPrice] = useState("");
+  const [sorterByRating, setSorterByRating] = useState("");
 
-  const handleClickCategories = (category) => {
-    return () => {
-      setFilterCategories(category.id);
-      setFilterCategoriesName(category.name);
-    };
+  const allSetters = {
+    ...allShopSetters,
+    setAllBrands,
+    setAllCategories,
+    setFilterBrands,
+    setFilterCategories,
+    setFilterPrices,
   };
 
   const onChangeMinPrice = (event) => {
-    const arrayPrices = [event.target.value, filterPrices[1]];
-    setFilterPrices(arrayPrices);
+    handlerMinPrice(event, filterPrices, allSetters);
   };
 
   const onChangeMaxPrice = (event) => {
-    const arrayPrices = [filterPrices[0], event.target.value];
-    setFilterPrices(arrayPrices);
+    handlerMaxPrice(event, filterPrices, allSetters);
+  };
+
+  const onChangeSorterPrice = (event) => {
+    setSorterByPrice(event.target.value);
+  };
+
+  const onChangeSorterRating = (event) => {
+    setSorterByRating(event.target.value);
   };
 
   useEffect(() => {
     getBrands(setAllBrands);
     getCategories(setAllCategories);
+
     const filterQuery = filterValidator(
       filterBrands,
       filterCategories,
       filterPrices
     );
     filterQuery.filterActive && setFilter(filterQuery.result);
-  }, [filterBrands, filterCategories, filterPrices]);
+
+    const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
+    sorterQuery.sorterActive && setSorter(sorterQuery.result);
+  }, [
+    filterBrands,
+    filterCategories,
+    filterPrices,
+    sorterByPrice,
+    sorterByRating,
+  ]);
 
   return (
     <section className="left-side  border-red-200 border-r-2 md:min-w-[240px] min-w-[160px]  w-[15%] p-6">
@@ -63,8 +80,8 @@ const Filter = ({
             {allCategories?.categories?.map((category) => (
               <h3
                 key={category.id}
-                onClick={handleClickCategories(category)}
-                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer "
+                onClick={handlerClickCategories(allSetters, category)}
+                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter "
               >
                 {category.name}
               </h3>
@@ -81,8 +98,8 @@ const Filter = ({
             {allBrands?.brands.map((brand) => (
               <h3
                 key={brand}
-                onClick={handleClickBrands(brand)}
-                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer "
+                onClick={handlerClickBrands(allSetters, brand)}
+                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter "
               >
                 {brand}
               </h3>
@@ -99,8 +116,8 @@ const Filter = ({
             <input
               className="w-full border rounded-md "
               type="text"
-              placeholder="min"
-              value={minPrice}
+              placeholder="mín"
+              value={filterPrices[0] === 0 ? "" : filterPrices[0]}
               onChange={onChangeMinPrice}
             />
           </label>
@@ -108,12 +125,46 @@ const Filter = ({
             <input
               className="w-full rounded-md border"
               type="text"
-              placeholder="max"
-              value={maxPrice}
+              placeholder="máx"
+              value={filterPrices[1] === 0 ? "" : filterPrices[1]}
               onChange={onChangeMaxPrice}
             />
           </label>
         </form>
+      </div>
+      <div className="category-section">
+        <div>
+          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
+            Ordenar por precio
+          </h3>
+          <select
+            className="rounded-md w-full"
+            name="sorterByPrice"
+            id="sorterByPrice"
+            onChange={onChangeSorterPrice}
+            value={sorterByPrice}
+          >
+            <option value="">Precio</option>
+            <option value="asc">Menor precio</option>
+            <option value="desc">Mayor precio</option>
+          </select>
+        </div>
+        <div>
+          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
+            Ordenar por rating
+          </h3>
+          <select
+            className="rounded-md w-full"
+            name="sorterByRating"
+            id="sorterByRating"
+            onChange={onChangeSorterRating}
+            value={sorterByRating}
+          >
+            <option value="">Sin rating</option>
+            <option value="asc">Menor rating</option>
+            <option value="desc">Mayor rating</option>
+          </select>
+        </div>
       </div>
     </section>
   );

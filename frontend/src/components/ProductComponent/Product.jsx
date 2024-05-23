@@ -1,47 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AppContext } from "../../context/context.jsx";
 import getProducts from "../../utils/products/getProducts.js";
 import Paginated from "../Paginated/Paginated";
-import SortComponent from "../SortComponent/SortComponent.jsx";
 
-const ProductComponent = ({
-  filter,
-  filterCategoriesName,
-  filterBrandsName,
-}) => {
+const ProductComponent = ({ allFilters }) => {
+  const {
+    filter,
+    sorter,
+    filterCategoriesName,
+    filterBrandsName,
+    filterPricesValues,
+  } = allFilters;
+  const { state } = useContext(AppContext);
+  const { searchBar } = state
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
-  const [selectedFilter, setSelectedFilter] = useState(null);
+
+  let pricesValues;
+  if (filterPricesValues[0] && filterPricesValues[1]) {
+    pricesValues =`${filterPricesValues[0]} - ${filterPricesValues[1]}`
+  }
 
   useEffect(() => {
-    getProducts(setAllProducts, page, filter);
-  }, [page, filter]);
+    getProducts(setAllProducts, page, searchBar, filter, sorter);
+  }, [page, searchBar, filter, sorter]);
 
-  const handleFilterClick = (selectedFilter) => {
-    setSelectedFilter(filter);
-  };
-  const handleRemoveFilter = () => {
-    setSelectedFilter(null);
-  };
-  console.log(filterCategoriesName, filterBrandsName);
   return (
-    <section className="">
-      <div className="sort-section flex justify-between p-4">
-      <div className="flex">
+    <section>
+      <div>
+        {filterBrandsName && (
+          <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+            {filterBrandsName}
+          </h2>
+        )}
+
         {filterCategoriesName && (
           <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
             {filterCategoriesName}
             <img className="w-2 h-2" src="./assets/cross.png" alt="" />
           </h2>
         )}
+
+        {pricesValues && (
+          <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+            {pricesValues}
+          </h2>
+        )}
       </div>
-      <SortComponent />
-      </div>
-      <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-screen min-w-screen">
+      <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (
           <a
             href={`/productDetail/${product.id}`}
             key={product.id}
-            className="bg-white rounded-lg flex flex-col items-center hover:shadow-xl hover:shadow-[#fdd9e3] ease-in duration-200 max-h-[640px]"
+            className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#82525e] ease-in duration-200"
           >
             <img
               className=" object-contain rounded-lg h-full p-2"
