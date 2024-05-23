@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
 import filterValidator from "../../utils/filter/filterValidator";
+import SortComponent from "../SortComponent/SortComponent";
 
 const Filter = ({
   setFilter,
@@ -63,7 +64,7 @@ const Filter = ({
               <h3
                 key={category.id}
                 onClick={handleClickCategories(category)}
-                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter "
+                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer "
               >
                 {category.name}
               </h3>
@@ -81,7 +82,7 @@ const Filter = ({
               <h3
                 key={brand}
                 onClick={handleClickBrands(brand)}
-                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter "
+                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer "
               >
                 {brand}
               </h3>
@@ -113,28 +114,6 @@ const Filter = ({
             />
           </label>
         </form>
-      </div>
-      <div className="category-section">
-        <div>
-          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
-            Ordenar por precio
-          </h3>
-          <select className="rounded-md w-full" name="" id="">
-            <option value="">Precio</option>
-            <option value="">Menor precio</option>
-            <option value="">Mayor precio</option>
-          </select>
-        </div>
-        <div>
-          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
-            Ordenar por rating
-          </h3>
-          <select className="rounded-md w-full" name="" id="">
-            <option value="">Sin rating</option>
-            <option value="">Menor rating</option>
-            <option value="">Mayor rating</option>
-          </select>
-        </div>
       </div>
     </section>
   );

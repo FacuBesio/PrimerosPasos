@@ -7,6 +7,7 @@ const Shop = () => {
   const [filterCategoriesName, setFilterCategoriesName] = useState(null);
   const [filterBrandsName, setFilterBrandsName] = useState(null);
 
+
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
       <Marquee />
@@ -24,6 +25,7 @@ const Shop = () => {
           filterCategoriesName={filterCategoriesName}
         />
       </div>
+     
       <Footer />
     </main>
   );

@@ -1,40 +1,47 @@
 import React, { useEffect, useState } from "react";
 import getProducts from "../../utils/products/getProducts.js";
 import Paginated from "../Paginated/Paginated";
+import SortComponent from "../SortComponent/SortComponent.jsx";
 
-const ProductComponent = ({ filter,filterCategoriesName,filterBrandsName }) => {
-
+const ProductComponent = ({
+  filter,
+  filterCategoriesName,
+  filterBrandsName,
+}) => {
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
-  const [selectedFilter, setSelectedFilter] = useState(null)
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
   useEffect(() => {
     getProducts(setAllProducts, page, filter);
   }, [page, filter]);
 
   const handleFilterClick = (selectedFilter) => {
-    setSelectedFilter(filter)
-  }
+    setSelectedFilter(filter);
+  };
   const handleRemoveFilter = () => {
-    setSelectedFilter(null)
-  }
+    setSelectedFilter(null);
+  };
   console.log(filterCategoriesName, filterBrandsName);
-  return ( 
-    <section>
-      <div > 
-        {filterCategoriesName && 
-        <h2 
-          className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
-          {filterCategoriesName} 
-        </h2>}
-
+  return (
+    <section className="">
+      <div className="sort-section flex justify-between p-4">
+      <div className="flex">
+        {filterCategoriesName && (
+          <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
+            {filterCategoriesName}
+            <img className="w-2 h-2" src="./assets/cross.png" alt="" />
+          </h2>
+        )}
       </div>
-      <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <SortComponent />
+      </div>
+      <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 min-h-screen min-w-screen">
         {allProducts?.products?.map((product) => (
           <a
             href={`/productDetail/${product.id}`}
             key={product.id}
-            className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#82525e] ease-in duration-200"
+            className="bg-white rounded-lg flex flex-col items-center hover:shadow-xl hover:shadow-[#fdd9e3] ease-in duration-200 max-h-[640px]"
           >
             <img
               className=" object-contain rounded-lg h-full p-2"

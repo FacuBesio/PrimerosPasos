@@ -53,6 +53,7 @@ const Navbar = () => {
         </a>
         {!isAuthenticated ? (
           <button
+            target="_blank"
             className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a] "
             onClick={() => loginWithRedirect()}
           >
@@ -83,7 +84,7 @@ const Navbar = () => {
           </button>
         </form>
         <button onClick={handleButtonCart}>
-          <img src="/src/assets/cart.png" className="w-[30px]" alt="" />
+          <img src="/src/assets/cart.png" className="w-[30px] ml-2" alt="" />
         </button>
         {isCartOpen && (
           <div

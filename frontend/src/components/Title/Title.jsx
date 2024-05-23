@@ -2,9 +2,9 @@ import title from "../../assets/title.png";
 const Title = () => {
   return (
     <section className="relative">
-      <div className="flex justify-center items-center p-4">
+      <a href="/" className="flex justify-center items-center p-4">
         <img src={title} alt="titulo" />
-      </div>
+      </a>
     </section>
   );
 };

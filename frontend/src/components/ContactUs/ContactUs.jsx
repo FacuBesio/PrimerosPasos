@@ -59,7 +59,7 @@ const ContactUs = () => {
           className="mt-12 flex flex-col gap-8"
         >
           <label className="flex flex-col">
-            <span className="  mb-4">Nombre</span>
+            <span className="text-[#5a5b5a]  mb-4">Nombre</span>
             <input
               type="text"
               name="name"
@@ -70,7 +70,7 @@ const ContactUs = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className=" font-medium mb-4">Email</span>
+            <span className="text-[#5a5b5a]  font-medium mb-4">Email</span>
             <input
               type="email"
               name="email"
@@ -81,7 +81,7 @@ const ContactUs = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className=" font-medium mb-4">Tu mensaje</span>
+            <span className="text-[#5a5b5a]  font-medium mb-4">Tu mensaje</span>
             <textarea
               rows="7"
               name="message"
@@ -93,7 +93,7 @@ const ContactUs = () => {
           </label>
 
           <button
-            className="bg-tertiary py-3 px-8 w-fit  bg-white border-2 border-red-200 rounded-xl"
+            className="bg-tertiary py-3 px-8 w-fit  bg-white border-2 border-red-200 rounded-xl text-[#5a5b5a] hover:bg-red-300"
             type="submit"
           >
             {loading ? " Sending..." : "Send"}
