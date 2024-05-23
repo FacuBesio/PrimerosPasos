@@ -46,7 +46,11 @@ const ProductComponent = ({ allFilters }) => {
             {pricesValues}
           </h2>
         )}
+          <div>
+        
+        </div>
       </div>
+    
       <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (
           <a

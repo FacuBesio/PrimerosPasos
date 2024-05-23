@@ -1,21 +1,41 @@
 import React from "react";
 
-const SortComponent = () => {
+const SortComponent = ({sorterByPrice,onChangeSorterPrice, onChangeSorterRating, sorterByRating}) => {
   return (
     <div className="sort-section flex p-2 gap-2 items-end ">
-      <div className="h-full">
-        <select className="rounded-md w-full h-full border-red-200 border text-[#5a5b5a]" name="" id="">
-          <option value="">Precio</option>
-          <option value="">Menor precio</option>
-          <option value="">Mayor precio</option>
-        </select>
-      </div>
-      <div className="h-full">
-        <select className="rounded-md w-full  h-full border-red-200 border text-[#5a5b5a] focus:border-red-400" name="" id="">
-          <option value="">Sin rating</option>
-          <option value="">Menor rating</option>
-          <option value="">Mayor rating</option>
-        </select>
+      <div className="category-section">
+        <div>
+          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
+            Ordenar por precio
+          </h3>
+          <select
+            className="rounded-md w-full"
+            name="sorterByPrice"
+            id="sorterByPrice"
+            onChange={onChangeSorterPrice}
+            value={sorterByPrice}
+          >
+            <option value="">Precio</option>
+            <option value="asc">Menor precio</option>
+            <option value="desc">Mayor precio</option>
+          </select>
+        </div>
+        <div>
+          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
+            Ordenar por rating
+          </h3>
+          <select
+            className="rounded-md w-full"
+            name="sorterByRating"
+            id="sorterByRating"
+            onChange={onChangeSorterRating}
+            value={sorterByRating}
+          >
+            <option value="">Sin rating</option>
+            <option value="asc">Menor rating</option>
+            <option value="desc">Mayor rating</option>
+          </select>
+        </div>
       </div>
     </div>
   );

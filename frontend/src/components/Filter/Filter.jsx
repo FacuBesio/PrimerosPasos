@@ -9,6 +9,7 @@ import {
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
+import SortComponent from "../SortComponent/SortComponent";
 
 const Filter = ({ allShopSetters }) => {
   const { setFilter, setSorter } = allShopSetters;
@@ -132,6 +133,7 @@ const Filter = ({ allShopSetters }) => {
           </label>
         </form>
       </div>
+      {/* <SortComponent sorterByRating={sorterByRating} sorterByPrice={sorterByPrice}  onChangeSorterPrice ={onChangeSorterPrice} onChangeSorterRating={onChangeSorterRating} />  */}
       <div className="category-section">
         <div>
           <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
