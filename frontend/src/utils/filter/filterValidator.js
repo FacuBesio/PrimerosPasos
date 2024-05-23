@@ -4,6 +4,7 @@ import queryPricesGenerator from "./queryPricesGenerator";
 
 function filterValidator(filterBrands, filterCategories, filterPrices) {
   let completeQuery = "";
+
   const validator = {
     filterActive: false,
     result: "",
@@ -29,9 +30,9 @@ function filterValidator(filterBrands, filterCategories, filterPrices) {
     }
   }
 
-  if (filterPrices[0] && filterPrices[1]) {
-    const queryPrices = queryPricesGenerator(filterPrices);
+  if (filterPrices[1] > 0 || filterPrices[0] === "" || filterPrices[1] === "") {
     validator.filterActive = true;
+    const queryPrices = queryPricesGenerator(filterPrices);
     if (completeQuery !== "") {
       completeQuery = completeQuery + "&" + queryPrices;
     } else {

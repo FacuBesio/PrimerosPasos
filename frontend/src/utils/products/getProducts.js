@@ -1,10 +1,16 @@
 import axios from "../../../src/config/axios";
+import querysGenerator from "./querysGenerator";
 
 const getProducts = async (setAllProducts, page, searchBar, filter, sorter) => {
-  const finder = `brand_or_name=${searchBar}`
+
+  const querys = querysGenerator(page, searchBar, filter, sorter);
+
    try {
-    const response = await axios.get(`/products?page=${page}&${finder}&${filter}&${sorter}`);
-    setAllProducts(response.data);
+    const response = await axios.get(`/products?${querys.result}`);
+      setAllProducts(response.data);
+    // setTimeout(() => {
+    //   setAllProducts(response.data);
+    // }, 200);
   } catch (error) {
     console.error("Error al obtener Productos:", error);
   }

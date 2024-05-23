@@ -17,7 +17,7 @@ const Shop = () => {
     filterPricesValues,
   };
 
-  const allSetters = {
+  const allShopSetters = {
     setFilter,
     setFilterBrandsName,
     setFilterCategoriesName,
@@ -31,7 +31,7 @@ const Shop = () => {
       <Title />
       <Navbar />
       <div className="flex border-y-2 border-red-200 mt-4">
-        <Filter allSetters={allSetters} />
+        <Filter allShopSetters={allShopSetters} />
         <ProductComponent allFilters={allFilters} />
       </div>
       <Footer />

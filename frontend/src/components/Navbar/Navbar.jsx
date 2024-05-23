@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import { AppContext } from "../../context/context";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import productInitializer from "../../utils/products/productInitializer";
 import newUserdata from "../../utils/navbar/newUserdata";
 
 const Navbar = () => {
@@ -29,7 +28,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    productInitializer();
     if (isAuthenticated && user && !userData) {
       newUserdata(setUserData, user);
     }

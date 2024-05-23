@@ -61,7 +61,7 @@ const findByQuery = (queryInputs) => {
   }
 
   // FILTER BY QUERY PRICE
-  if (filterPrice instanceof Array && filterPrice.length === 2) {
+  if (filterPrice instanceof Array && filterPrice.length === 2 && filterPrice[1] > 0) {
     const prices = filterPrice.map((price) => parseInt(price.trim()));
     whereClause.price = {
       [Op.between]: [prices[0], prices[1]],
