@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
 import Filter from "../components/Filter/Filter";
+
 const Shop = () => {
   const [filter, setFilter] = useState([]);
   const [sorter, setSorter] = useState();
@@ -25,7 +26,6 @@ const Shop = () => {
     setSorter,
   };
 
-
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
       <Marquee />
@@ -35,7 +35,6 @@ const Shop = () => {
         <Filter allShopSetters={allShopSetters} />
         <ProductComponent allFilters={allFilters} setSorter={setSorter} />
       </div>
-     
       <Footer />
     </main>
   );

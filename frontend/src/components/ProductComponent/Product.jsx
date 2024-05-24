@@ -14,33 +14,29 @@ const ProductComponent = ({ allFilters, setSorter }) => {
     filterPricesValues,
   } = allFilters;
   const { state } = useContext(AppContext);
+  const { searchBar } = state;
+
   const [sorterByPrice, setSorterByPrice] = useState("");
   const [sorterByRating, setSorterByRating] = useState("");
 
-  const { searchBar } = state;
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
-
-  let pricesValues;
-  if (filterPricesValues[0] && filterPricesValues[1]) {
-    pricesValues = `${filterPricesValues[0]} - ${filterPricesValues[1]}`;
-  }
-
+  
   const onChangeSorterPrice = (event) => {
     setSorterByPrice(event.target.value);
   };
-
+  
   const onChangeSorterRating = (event) => {
     setSorterByRating(event.target.value);
   };
-
+  
   const sortComponentParams = {
     sorterByPrice,
     onChangeSorterPrice,
     sorterByRating,
     onChangeSorterRating,
   };
-
+  
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     sorterQuery.sorterActive && setSorter(sorterQuery.result);
@@ -63,11 +59,12 @@ const ProductComponent = ({ allFilters, setSorter }) => {
           </h2>
         )}
 
-        {pricesValues && (
+        {filterPricesValues.length === 2 && filterPricesValues[1] > 0 && (
           <h2 className="border-2 bg-white  border-red-200 w-fit p-1 rounded-md m-2">
-            {pricesValues}
+            {filterPricesValues.join(" - ")}
           </h2>
         )}
+
         <SortComponent sortComponentParams={sortComponentParams} />
       </div>
 
