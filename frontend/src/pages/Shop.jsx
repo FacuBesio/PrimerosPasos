@@ -33,7 +33,7 @@ const Shop = () => {
       <Navbar />
       <div className="flex border-y-2 border-red-200 mt-4">
         <Filter allShopSetters={allShopSetters} />
-        <ProductComponent allFilters={allFilters} />
+        <ProductComponent allFilters={allFilters} setSorter={setSorter} />
       </div>
      
       <Footer />

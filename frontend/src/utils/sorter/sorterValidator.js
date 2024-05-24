@@ -26,6 +26,7 @@ function sorterValidator(sorterByPrice, sorterByRating) {
   }
 
   validator.result = completeQuery;
+  // console.log(validator);
   return validator;
 }
 

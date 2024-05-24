@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const SortComponent = ({sorterByPrice,onChangeSorterPrice, onChangeSorterRating, sorterByRating}) => {
+const SortComponent = ({ sortComponentParams }) => {
+  const {
+    sorterByPrice,
+    onChangeSorterPrice,
+    sorterByRating,
+    onChangeSorterRating,
+  } = sortComponentParams;
+
+  useEffect(() => {}, [
+    sorterByPrice,
+    onChangeSorterPrice,
+    sorterByRating,
+    onChangeSorterRating,
+  ]);
+
   return (
     <div className="sort-section flex p-2 gap-2 items-end ">
       <div className="category-section">

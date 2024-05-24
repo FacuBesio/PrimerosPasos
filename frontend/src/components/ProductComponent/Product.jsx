@@ -2,8 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import { AppContext } from "../../context/context.jsx";
 import getProducts from "../../utils/products/getProducts.js";
 import Paginated from "../Paginated/Paginated";
+import SortComponent from "../SortComponent/SortComponent.jsx";
+import sorterValidator from "../../utils/sorter/sorterValidator.js";
 
-const ProductComponent = ({ allFilters }) => {
+const ProductComponent = ({ allFilters, setSorter }) => {
   const {
     filter,
     sorter,
@@ -12,18 +14,38 @@ const ProductComponent = ({ allFilters }) => {
     filterPricesValues,
   } = allFilters;
   const { state } = useContext(AppContext);
-  const { searchBar } = state
+  const [sorterByPrice, setSorterByPrice] = useState("");
+  const [sorterByRating, setSorterByRating] = useState("");
+
+  const { searchBar } = state;
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
 
   let pricesValues;
   if (filterPricesValues[0] && filterPricesValues[1]) {
-    pricesValues =`${filterPricesValues[0]} - ${filterPricesValues[1]}`
+    pricesValues = `${filterPricesValues[0]} - ${filterPricesValues[1]}`;
   }
 
+  const onChangeSorterPrice = (event) => {
+    setSorterByPrice(event.target.value);
+  };
+
+  const onChangeSorterRating = (event) => {
+    setSorterByRating(event.target.value);
+  };
+
+  const sortComponentParams = {
+    sorterByPrice,
+    onChangeSorterPrice,
+    sorterByRating,
+    onChangeSorterRating,
+  };
+
   useEffect(() => {
+    const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
+    sorterQuery.sorterActive && setSorter(sorterQuery.result);
     getProducts(setAllProducts, page, searchBar, filter, sorter);
-  }, [page, searchBar, filter, sorter]);
+  }, [page, searchBar, filter, sorter, sorterByPrice, sorterByRating]);
 
   return (
     <section>
@@ -46,11 +68,9 @@ const ProductComponent = ({ allFilters }) => {
             {pricesValues}
           </h2>
         )}
-          <div>
-        
-        </div>
+        <SortComponent sortComponentParams={sortComponentParams} />
       </div>
-    
+
       <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {allProducts?.products?.map((product) => (
           <a

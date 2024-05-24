@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import getCategories from "../../utils/categories/getCategories";
 import getBrands from "../../utils/brands/getBrands";
 import filterValidator from "../../utils/filter/filterValidator";
-import sorterValidator from "../../utils/sorter/sorterValidator";
 import {
   handlerClickBrands,
   handlerClickCategories,
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
-import SortComponent from "../SortComponent/SortComponent";
+
 
 const Filter = ({ allShopSetters }) => {
-  const { setFilter, setSorter } = allShopSetters;
+  const { setFilter } = allShopSetters;
 
   const [allBrands, setAllBrands] = useState(null);
   const [allCategories, setAllCategories] = useState(null);
@@ -20,9 +19,6 @@ const Filter = ({ allShopSetters }) => {
   const [filterBrands, setFilterBrands] = useState(null);
   const [filterCategories, setFilterCategories] = useState(null);
   const [filterPrices, setFilterPrices] = useState([0, 0]);
-
-  const [sorterByPrice, setSorterByPrice] = useState("");
-  const [sorterByRating, setSorterByRating] = useState("");
 
   const allSetters = {
     ...allShopSetters,
@@ -41,14 +37,6 @@ const Filter = ({ allShopSetters }) => {
     handlerMaxPrice(event, filterPrices, allSetters);
   };
 
-  const onChangeSorterPrice = (event) => {
-    setSorterByPrice(event.target.value);
-  };
-
-  const onChangeSorterRating = (event) => {
-    setSorterByRating(event.target.value);
-  };
-
   useEffect(() => {
     getBrands(setAllBrands);
     getCategories(setAllCategories);
@@ -60,14 +48,10 @@ const Filter = ({ allShopSetters }) => {
     );
     filterQuery.filterActive && setFilter(filterQuery.result);
 
-    const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
-    sorterQuery.sorterActive && setSorter(sorterQuery.result);
   }, [
     filterBrands,
     filterCategories,
-    filterPrices,
-    sorterByPrice,
-    sorterByRating,
+    filterPrices
   ]);
 
   return (
@@ -132,41 +116,6 @@ const Filter = ({ allShopSetters }) => {
             />
           </label>
         </form>
-      </div>
-      {/* <SortComponent sorterByRating={sorterByRating} sorterByPrice={sorterByPrice}  onChangeSorterPrice ={onChangeSorterPrice} onChangeSorterRating={onChangeSorterRating} />  */}
-      <div className="category-section">
-        <div>
-          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
-            Ordenar por precio
-          </h3>
-          <select
-            className="rounded-md w-full"
-            name="sorterByPrice"
-            id="sorterByPrice"
-            onChange={onChangeSorterPrice}
-            value={sorterByPrice}
-          >
-            <option value="">Precio</option>
-            <option value="asc">Menor precio</option>
-            <option value="desc">Mayor precio</option>
-          </select>
-        </div>
-        <div>
-          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
-            Ordenar por rating
-          </h3>
-          <select
-            className="rounded-md w-full"
-            name="sorterByRating"
-            id="sorterByRating"
-            onChange={onChangeSorterRating}
-            value={sorterByRating}
-          >
-            <option value="">Sin rating</option>
-            <option value="asc">Menor rating</option>
-            <option value="desc">Mayor rating</option>
-          </select>
-        </div>
       </div>
     </section>
   );
