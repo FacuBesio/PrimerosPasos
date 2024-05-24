@@ -15,9 +15,9 @@ const Categories = () => {
             <h2 className=" text-[rgb(90,91,90)] md:text-3xl text-center  ">
               {cat.name}
             </h2>
-            <a className="text-[#Dbb1bc]  md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50 ">
+            <div className="text-[#Dbb1bc]  md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50 ">
               {cat.description}
-            </a>
+            </div>
           </div>
         </a>
       ))}

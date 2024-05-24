@@ -36,7 +36,7 @@ const ProductComponent = ({ allFilters, setSorter }) => {
     sorterByRating,
     onChangeSorterRating,
   };
-  
+
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     sorterQuery.sorterActive && setSorter(sorterQuery.result);
