@@ -1,24 +1,31 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { AppContext } from "../../context/context";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import newUserdata from "../../utils/navbar/newUserdata";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const { state, setState } = useContext(AppContext);
+  const { searchBar } = state;
   const [userData, setUserData] = useState();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
-
 
   const handleButtonCart = () => {
     setIsCartOpen(!isCartOpen);
   };
 
   const onChangeSearchBar = (event) => {
-    const searchBar = event.target.value
+    const searchBar = event.target.value;
     setState((prevState) => ({ ...prevState, searchBar }));
+  };
+
+  const onSubmitSearchBar = (event) => {
+    event.preventDefault();
+    setState((prevState) => ({ ...prevState }));
+    navigate("/shop");
   };
 
   const handleLogout = () => {
@@ -72,7 +79,7 @@ const Navbar = () => {
         )}
       </div>
       <div className="flex justify-center   ">
-        <form className="flex gap-2" action="">
+        <form className="flex gap-2" onSubmit={onSubmitSearchBar}>
           <input
             placeholder="Buscar"
             className="px-1 rounded-md border border-red-200"
