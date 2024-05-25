@@ -1,3 +1,5 @@
+
+
 //* FILTERS
 export const handlerClickBrands = (allSetters, brand) => {
   const { setFilterBrands, setFilterBrandsName } = allSetters;
@@ -7,11 +9,13 @@ export const handlerClickBrands = (allSetters, brand) => {
   };
 };
 
-export const handlerClickCategories = (allSetters, category) => {
-  const { setFilterCategories, setFilterCategoriesName } = allSetters;
+export const handlerClickCategories = (navigate,setFilterCategories, category) => {
+  // const { setFilterCategories, setFilterCategoriesName } = allSetters;
   return () => {
     setFilterCategories(category.id);
-    setFilterCategoriesName(category.name);
+    navigate("/shop")
+
+    // setFilterCategoriesName(category.name);
   };
 };
 

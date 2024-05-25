@@ -5,7 +5,7 @@ const Contact = () => {
     <div className="bg-[#eae0f5]  overflow-hidden">
       <Marquee />
       <Title />
-      <Navbar />
+      <Navbar  />
       <ContactUs />
       <Footer />
     </div>

@@ -7,18 +7,17 @@ import sorterValidator from "../../utils/sorter/sorterValidator.js";
 
 const ProductComponent = ({ allFilters, setSorter }) => {
   const {
-    filter,
     sorter,
     filterCategoriesName,
     filterBrandsName,
     filterPricesValues,
   } = allFilters;
   const { state } = useContext(AppContext);
-  const { searchBar } = state;
 
   const [sorterByPrice, setSorterByPrice] = useState("");
   const [sorterByRating, setSorterByRating] = useState("");
 
+  const { searchBar, filter } = state;
   const [allProducts, setAllProducts] = useState(null);
   const [page, setPage] = useState(1);
   

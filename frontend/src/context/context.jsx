@@ -5,10 +5,11 @@ export const AppContext = createContext();
 
 // Crear el proveedor del contexto
 export const AppProvider = ({ children }) => {
+
   const [state, setState] = useState({
     searchBar: "",
     filter: [],
-    sorter: ""
+    sorter: "",
   });
 
   return (

@@ -16,12 +16,10 @@ const SortComponent = ({ sortComponentParams }) => {
   ]);
 
   return (
-    <div className="sort-section flex p-2 gap-2 items-end ">
-      <div className="category-section">
+    <div className="sort-section flex p-2 gap-2  justify-end ">
+      <div className="category-section flex gap-4">
         <div>
-          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
-            Ordenar por precio
-          </h3>
+         
           <select
             className="rounded-md w-full"
             name="sorterByPrice"
@@ -35,9 +33,7 @@ const SortComponent = ({ sortComponentParams }) => {
           </select>
         </div>
         <div>
-          <h3 className="py-4 underline underline-offset-4 text-[#2e2e2e] ">
-            Ordenar por rating
-          </h3>
+         
           <select
             className="rounded-md w-full"
             name="sorterByRating"
