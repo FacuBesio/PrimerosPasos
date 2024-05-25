@@ -5,10 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 import newUserdata from "../../utils/navbar/newUserdata";
 
 const Navbar = () => {
-  const navigate = useNavigate();
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  
+  const navigate = useNavigate();
   const { state, setState } = useContext(AppContext);
+  
   const [userData, setUserData] = useState();
+  
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
 
