@@ -25,7 +25,6 @@ const Shop = () => {
     setSorter,
   };
 
-
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
       <Marquee />
@@ -35,7 +34,7 @@ const Shop = () => {
         <Filter allShopSetters={allShopSetters} />
         <ProductComponent allFilters={allFilters} setSorter={setSorter} />
       </div>
-     
+
       <Footer />
     </main>
   );
