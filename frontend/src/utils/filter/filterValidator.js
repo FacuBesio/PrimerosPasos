@@ -2,7 +2,7 @@ import queryBrandsGenerator from "./queryBrandsGenerator";
 import queryCategoriesGenerator from "./queryCategoriesGenerator";
 import queryPricesGenerator from "./queryPricesGenerator";
 
-function filterValidator(filterBrands, filterCategories, filterPrices) {
+function filterValidator( filterCategories=null, filterBrands=null, filterPrices=[]) {
   let completeQuery = "";
 
   const validator = {
@@ -19,7 +19,6 @@ function filterValidator(filterBrands, filterCategories, filterPrices) {
       completeQuery = queryBrands;
     }
   }
-
   if (filterCategories) {
     const queryCategories = queryCategoriesGenerator(filterCategories);
     validator.filterActive = true;
@@ -28,6 +27,7 @@ function filterValidator(filterBrands, filterCategories, filterPrices) {
     } else {
       completeQuery = queryCategories;
     }
+    
   }
 
   if (filterPrices[1] > 0 || filterPrices[0] === "" || filterPrices[1] === "") {

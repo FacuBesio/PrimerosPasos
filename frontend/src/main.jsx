@@ -7,6 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { AppProvider } from "./context/context.jsx";
 import App from "./App.jsx";
 
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
     domain={AUTH0_DOMAIN}
@@ -19,9 +21,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   >
     <React.StrictMode>
       <BrowserRouter>
+     
         <AppProvider> 
           <App />
         </AppProvider>
+      
       </BrowserRouter>
     </React.StrictMode>
   </Auth0Provider>
