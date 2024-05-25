@@ -8,7 +8,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const { state, setState } = useContext(AppContext);
-  const { searchBar } = state;
   const [userData, setUserData] = useState();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
