@@ -20,6 +20,17 @@ const responsive = {
 };
 
 const Banner = () => {
+  const carouselImg = [
+    {
+      image: "/src/assets/banner1.png",
+    },
+    {
+      image: "/src/assets/banner2.png",
+    },
+    { image: "/src/assets/banner3.png" },
+    { image: "/src/assets/banner4.png" },
+  ];
+
   return (
     <Carousel
       swipeable={false}
@@ -38,36 +49,13 @@ const Banner = () => {
       deviceType={null} // assuming you're not passing deviceType as a prop
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
-      className="max-h-[660px]"
+      className="max-h-[660px] h-full w-full"
     >
-      <div className="w-full  bg-red-200  ">
-        <img
-          className="object-contain w-full"
-          src="/src/assets/banner1.png"
-          alt=""
-        />
-      </div>
-      <div className="w-full  bg-blue-200   ">
-        <img
-          className="object-contain  w-full"
-          src="/src/assets/banner2.png"
-          alt=""
-        />
-      </div>
-      <div className="w-full  bg-green-200   ">
-        <img
-          className="object-contain  w-full"
-          src="/src/assets/banner3.png"
-          alt=""
-        />
-      </div>
-      <div className="w-full  bg-yellow-200   ">
-        <img
-          className="object-contain  w-full"
-          src="/src/assets/banner4.png"
-          alt=""
-        />
-      </div>
+      {carouselImg.map((car) => (
+        <div key={car} className="w-full h-full bg-red-200  ">
+          <img className=" w-full h-full " src={car.image} alt="" />
+        </div>
+      ))}
     </Carousel>
   );
 };

@@ -11,14 +11,14 @@ import filterValidator from "../../utils/filter/filterValidator";
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
-
+  const navigate = useNavigate()
 
   const { state, setState } = useContext(AppContext);
 
   const [userData, setUserData] = useState();
 
   const [allCategories, setAllCategories] = useState(null);
-  const [isCategoriesOpen, setCategoriesOpen] = useState(false);
+  const [isCategoriesOpen, setCategoriesOpen] = useState(true);
 
   const [filterBrands, setFilterBrands] = useState(null);
   const [filterCategories, setFilterCategories] = useState(null);
@@ -66,7 +66,9 @@ const Navbar = () => {
   }, [isAuthenticated, user, filterCategories]);
 
   return (
-    <nav className="flex flex-col  gap-4 justify-center items pb-6 ">
+    <div>
+
+    <nav className="flex items-center flex-col md:flex-row  gap-4 justify-center items pb-2 ">
       <div className="flex gap-4 justify-center">
         <a
           href="/"
@@ -75,7 +77,7 @@ const Navbar = () => {
           Home
         </a>
         <button
-          className="md:text-xl hover:text-[#DBB1BC] hover:scale-105  "
+          className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a]  "
           onClick={handleCategoriesOpen}
         >
           Categorias
@@ -142,10 +144,12 @@ const Navbar = () => {
           </Link>
         )}
       </div>
-      <div className="h-8 flex  justify-center items-center gap-4">
+      
+    </nav>
+    <div className=" flex  justify-center items-center gap-4 m-2 h-fit  overflow-x-auto">
         {isCategoriesOpen && (
-          <li className="list-none flex">
-            <ul className="flex gap-4">
+         
+            <div className="flex gap-2 items-center ">
               {allCategories?.categories?.map((category) => (
                 <h3
                   key={category.id}
@@ -154,16 +158,16 @@ const Navbar = () => {
                     setFilterCategories,
                     category
                   )}
-                  className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter"
+                  className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer  rounded-md p-1 "
                 >
                   {category.name}
                 </h3>
               ))}
-            </ul>
-          </li>
+            </div>
+      
         )}
       </div>
-    </nav>
+    </div>
   );
 };
 

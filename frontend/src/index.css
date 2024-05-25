@@ -9,6 +9,27 @@ h2,h3,a{
   color:#5a5b5a
 }
 
+/*! --------------- Propiedades del ScrollBar ----------------------  */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #f2d5dd; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #Dbb1bc; 
+ 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc9191; 
+}
+
 .stats {
     position: relative;
     overflow: hidden;
