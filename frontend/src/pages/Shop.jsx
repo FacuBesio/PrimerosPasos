@@ -1,30 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../context/context";
 import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
-import Filter from "../components/Filter/Filter";
+import getProducts from "../utils/products/getProducts";
+import getBrands from "../utils/brands/getBrands";
 
 const Shop = () => {
-  const [filter, setFilter] = useState([]);
-  const [sorter, setSorter] = useState();
-  const [filterBrandsName, setFilterBrandsName] = useState(null);
-  const [filterCategoriesName, setFilterCategoriesName] = useState(null);
-  const [filterPricesValues, setFilterPricesValues] = useState([]);
+  const { state, setState } = useContext(AppContext);
+  const { filter, searchBar, sorter, categoryTag } = state;
 
-  const allFilters = {
-    filter,
-    sorter,
-    filterBrandsName,
-    filterCategoriesName,
-    filterPricesValues,
+  const [page, setPage] = useState(1);
+  const [allProducts, setAllProducts] = useState(null);
+  const [allBrands, setAllBrands] = useState(null);
+
+  const productComponentProps = {
+    allProducts,
+    allBrands,
+    setState,
+    categoryTag,
+    page,
+    setPage,
   };
 
-  const allShopSetters = {
-    setFilter,
-    setFilterBrandsName,
-    setFilterCategoriesName,
-    setFilterPricesValues,
-    setSorter,
-  };
+  useEffect(() => {
+    getProducts(setAllProducts, page, searchBar, filter, sorter);
+    getBrands(setAllBrands);
+  }, [page, searchBar, filter, sorter,]);
 
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
@@ -32,8 +33,7 @@ const Shop = () => {
       <Title />
       <Navbar />
       <div className="flex border-y-2 border-red-200 mt-4">
-        <Filter allShopSetters={allShopSetters} />
-        <ProductComponent allFilters={allFilters} setSorter={setSorter} />
+        <ProductComponent productComponentProps= {productComponentProps}/>
       </div>
       <Footer />
     </main>

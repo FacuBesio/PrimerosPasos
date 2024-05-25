@@ -10,6 +10,8 @@ export const AppProvider = ({ children }) => {
     searchBar: "",
     filter: [],
     sorter: "",
+    filterCategories: "",
+    categoryTag: "",
   });
 
   return (
