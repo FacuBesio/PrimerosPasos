@@ -6,14 +6,14 @@ const querysGenerator = (page, searchBar, filter, sorter) => {
     result: "",
   };
 
-  if (page) {
+  if (page > 1) {
     validator.inputsActive = true;
     completeQuery !== ""
       ? (completeQuery = completeQuery + "&" + `page=${page}`)
       : (completeQuery = `page=${page}`);
   }
 
-  if (searchBar) {
+  if (searchBar !== "") {
     const brand_or_name = `brand_or_name=${searchBar}`;
     validator.inputsActive = true;
     completeQuery !== ""
@@ -28,7 +28,7 @@ const querysGenerator = (page, searchBar, filter, sorter) => {
       : (completeQuery = filter);
   }
 
-  if (sorter) {
+  if (sorter !== "") {
     validator.inputsActive = true;
     completeQuery !== ""
       ? (completeQuery = completeQuery + "&" + sorter)

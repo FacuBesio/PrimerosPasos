@@ -67,7 +67,7 @@ const Filter = ({ allTagsSetters, allBrands}) => {
         <h2 className=" pt-4  text-[#2e2e2e]">Marcas</h2>
         <li className="list-none">
           <ul>
-            {allBrands?.brands.map((brand) => (
+            {allBrands?.brands?.map((brand) => (
               <h3
                 key={brand}
                 onClick={handlerClickBrands(allSetters, brand)}

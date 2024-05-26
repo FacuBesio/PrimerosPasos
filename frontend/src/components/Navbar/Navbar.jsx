@@ -11,10 +11,10 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const { state, setState } = useContext(AppContext);
-  const { searchBar, filterCategories } = state;
+  const { allCategories, filterCategories, searchBar } = state;
   const [userData, setUserData] = useState();
 
-  const [allCategories, setAllCategories] = useState(null);
+  // const [allCategories, setAllCategories] = useState(null);
   const [isCategoriesOpen, setCategoriesOpen] = useState(true);
 
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -49,7 +49,7 @@ const Navbar = () => {
     if (isAuthenticated && user && !userData) {
       newUserdata(setUserData, user);
     }
-    getCategories(setAllCategories);
+    allCategories.length === 0 && getCategories(setState);
   }, [filterCategories, isAuthenticated, user]);
 
   return (

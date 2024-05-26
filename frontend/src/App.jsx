@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AditionalInfo, Categories, Footer, Hero } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Shop from "../src/pages/Shop.jsx";
@@ -9,8 +9,14 @@ import ProductDetail from "./pages/ProductDetail.jsx";
 import productInitializer from "./utils/products/productInitializer.js";
 
 function App() {
+
+  const [allProducts, setAllProducts] = useState([]);
+  const [allBrands, setAllBrands] = useState([]);
+
+  const test = { allProducts, setAllProducts, allBrands, setAllBrands };
+
   useEffect(() => {
-    productInitializer();
+    allProducts.length === 0 && productInitializer();
   }, []);
 
   return (
@@ -28,7 +34,7 @@ function App() {
           }
         />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop" element={<Shop test={test} />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/login" element={<Login />} />
       </Routes>
