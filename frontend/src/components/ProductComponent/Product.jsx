@@ -1,13 +1,17 @@
-/* eslint-disable react/prop-types */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, CSSProperties } from "react";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
 import sorterValidator from "../../utils/sorter/sorterValidator.js";
 import Filter from "../Filter/Filter.jsx";
+import { AppContext } from "../../context/context.jsx";
+import ClipLoader from "react-spinners/ClipLoader";
+import Loader from "../Loader/Loader.jsx";
 
-const ProductComponent = ({ productComponentProps }) => {
-  const { allProducts, allBrands, setState, page, setPage, categoryTag } =
-    productComponentProps;
+const ProductComponent = ({ appLocalStates, loaderStates }) => {
+  const { state, setState } = useContext(AppContext);
+  const { allProducts, categoryTag } = state;
+  const { allBrands, page, setPage } = appLocalStates;
+  const { loading, delayLoading } = loaderStates;
   const [sorterByPrice, setSorterByPrice] = useState("");
   const [sorterByRating, setSorterByRating] = useState("");
   const [brandsTag, setBrandsTag] = useState(null);
@@ -22,7 +26,7 @@ const ProductComponent = ({ productComponentProps }) => {
     setSorterByRating(event.target.value);
   };
 
-  const sortComponentParams = {
+  const sortComponentProps = {
     sorterByPrice,
     onChangeSorterPrice,
     sorterByRating,
@@ -37,10 +41,13 @@ const ProductComponent = ({ productComponentProps }) => {
 
   const productsAvailable = allProducts?.products?.length > 0;
 
+  if (loading || delayLoading) {
+    return <Loader delayLoading={delayLoading} />;
+  }
+
   return (
     <section className="w-full ">
       <Filter allTagsSetters={allTagsSetters} allBrands={allBrands} />
-
       <div className="flex w-full justify-end py-2">
         {categoryTag && (
           <h2 className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md m-1 ">
@@ -60,9 +67,8 @@ const ProductComponent = ({ productComponentProps }) => {
           </h2>
         )}
 
-        <SortComponent sortComponentParams={sortComponentParams} />
+        <SortComponent sortComponentProps={sortComponentProps} />
       </div>
-
       {productsAvailable ? (
         <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allProducts.products.map((product) => (

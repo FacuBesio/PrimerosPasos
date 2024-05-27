@@ -9,14 +9,22 @@ import ProductDetail from "./pages/ProductDetail.jsx";
 import productInitializer from "./utils/products/productInitializer.js";
 
 function App() {
-
-  const [allProducts, setAllProducts] = useState([]);
+  // const [allProducts, setAllProducts] = useState([]);
   const [allBrands, setAllBrands] = useState([]);
+  const [page, setPage] = useState(1);
+ 
 
-  const test = { allProducts, setAllProducts, allBrands, setAllBrands };
+  const appLocalStates = {
+    // allProducts,
+    // setAllProducts,
+    allBrands,
+    setAllBrands,
+    page,
+    setPage,
+  };
 
   useEffect(() => {
-    allProducts.length === 0 && productInitializer();
+    // allProducts.length === 0 && productInitializer();
   }, []);
 
   return (
@@ -34,7 +42,10 @@ function App() {
           }
         />
         <Route path="/productDetail/:id" element={<ProductDetail />} />
-        <Route path="/shop" element={<Shop test={test} />} />
+        <Route
+          path="/shop"
+          element={<Shop appLocalStates={appLocalStates} />}
+        />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/login" element={<Login />} />
       </Routes>

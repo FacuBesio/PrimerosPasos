@@ -7,12 +7,14 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
 
   const [state, setState] = useState({
-    searchBar: "",
-    filter: [],
-    sorter: "",
+    allBrands: [],
     allCategories: [],
-    filterCategories: "",
+    allProducts: [],
     categoryTag: "",
+    filter: [],
+    filterCategories: "",
+    searchBar: "",
+    sorter: "",
   });
 
   return (

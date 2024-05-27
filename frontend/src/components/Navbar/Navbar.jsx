@@ -8,17 +8,14 @@ import { handlerClickCategories } from "../../utils/filter/filterHandlers";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-
-  const navigate = useNavigate();
   const { state, setState } = useContext(AppContext);
-  const { allCategories, filterCategories, searchBar } = state;
+  const { allCategories, searchBar } = state;
   const [userData, setUserData] = useState();
 
-  // const [allCategories, setAllCategories] = useState(null);
   const [isCategoriesOpen, setCategoriesOpen] = useState(true);
-
   const [isCartOpen, setIsCartOpen] = useState(false);
   const cartRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleCategoriesOpen = () => {
     setCategoriesOpen(!isCategoriesOpen);
@@ -50,7 +47,7 @@ const Navbar = () => {
       newUserdata(setUserData, user);
     }
     allCategories.length === 0 && getCategories(setState);
-  }, [filterCategories, isAuthenticated, user]);
+  }, [isAuthenticated, user]);
 
   return (
     <div>

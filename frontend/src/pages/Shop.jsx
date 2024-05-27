@@ -5,27 +5,28 @@ import ProductComponent from "../components/ProductComponent/Product";
 import getProducts from "../utils/products/getProducts";
 import getBrands from "../utils/brands/getBrands";
 
-const Shop = ({ test }) => {
+const Shop = ({ appLocalStates }) => {
   const { state, setState } = useContext(AppContext);
-  const { filter, searchBar, sorter, categoryTag } = state;
-
-  const [page, setPage] = useState(1);
-  const { allProducts, setAllProducts, allBrands, setAllBrands} = test;
-  // const [allProducts, setAllProducts] = useState(null);
-  // const [allBrands, setAllBrands] = useState(null);
-
-  const productComponentProps = {
-    allProducts,
-    allBrands,
-    setState,
-    categoryTag,
-    page,
-    setPage,
-  };
+  const { filter, searchBar, sorter } = state;
+  const { setAllBrands, page } = appLocalStates;
+  const [loading, setLoading] = useState(true);
+  const [delayLoading, setDelayLoading] = useState(true);
+  const loaderStates = { loading, delayLoading };
 
   useEffect(() => {
-    getProducts(setAllProducts, page, searchBar, filter, sorter);
-    allBrands.length === 0 && getBrands(setAllBrands);
+    getBrands(setAllBrands);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDelayLoading(false);
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [loading]);
+
+  useEffect(() => {
+    getProducts(setState, page, searchBar, filter, sorter);
   }, [page, searchBar, filter, sorter]);
 
   return (
@@ -34,7 +35,10 @@ const Shop = ({ test }) => {
       <Title />
       <Navbar />
       <div className="flex border-y-2 border-red-200 mt-4">
-        <ProductComponent productComponentProps={productComponentProps} />
+        <ProductComponent
+          appLocalStates={appLocalStates}
+          loaderStates={loaderStates}
+        />
       </div>
       <Footer />
     </main>

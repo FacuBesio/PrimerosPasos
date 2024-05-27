@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-const SortComponent = ({ sortComponentParams }) => {
+const SortComponent = ({ sortComponentProps }) => {
   const {
     sorterByPrice,
     onChangeSorterPrice,
     sorterByRating,
     onChangeSorterRating,
-  } = sortComponentParams;
+  } = sortComponentProps;
 
   useEffect(() => {}, [
     sorterByPrice,
