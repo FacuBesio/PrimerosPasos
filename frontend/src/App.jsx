@@ -24,7 +24,7 @@ function App() {
   };
 
   useEffect(() => {
-    allProducts.length === 0 && productInitializer();
+   productInitializer();
   }, []);
 
   return (
