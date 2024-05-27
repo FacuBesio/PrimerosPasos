@@ -21,7 +21,7 @@ const SortComponent = ({ sortComponentParams }) => {
         <div>
          
           <select
-            className="rounded-md w-full"
+            className="rounded-md w-full border border-red-200"
             name="sorterByPrice"
             id="sorterByPrice"
             onChange={onChangeSorterPrice}
@@ -35,7 +35,7 @@ const SortComponent = ({ sortComponentParams }) => {
         <div>
          
           <select
-            className="rounded-md w-full"
+            className="rounded-md w-full border border-red-200 "
             name="sorterByRating"
             id="sorterByRating"
             onChange={onChangeSorterRating}
