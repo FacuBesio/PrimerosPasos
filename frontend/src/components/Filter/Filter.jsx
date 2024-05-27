@@ -1,27 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AppContext } from "../../context/context";
-
-import getCategories from "../../utils/categories/getCategories";
-import getBrands from "../../utils/brands/getBrands";
+// import { AppContext } from "../../context/context";
 import filterValidator from "../../utils/filter/filterValidator";
 import {
-
   handlerClickBrands,
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
+import { CategoriesContext } from "../../context/CategoriesContext.jsx";
+import { BrandsContext } from "../../context/BrandsContext.jsx";
+import { FilterContext } from "../../context/FilterContext.jsx";
 
-
-const Filter = ({ allShopSetters }) => {
-
-  const { setState } = useContext(AppContext); 
-  const [allBrands, setAllBrands] = useState(null);
+const Filter = ({ allTagsSetters }) => {
+  const { allBrands } = useContext(BrandsContext);
+  const { setFilter } = useContext(FilterContext);
+  const { filterCategories } = useContext(CategoriesContext);
   const [filterBrands, setFilterBrands] = useState(null);
   const [filterPrices, setFilterPrices] = useState([0, 0]);
 
   const allSetters = {
-    ...allShopSetters,
-    setAllBrands,
+    ...allTagsSetters,
     setFilterBrands,
     setFilterPrices,
   };
@@ -35,28 +32,18 @@ const Filter = ({ allShopSetters }) => {
   };
 
   useEffect(() => {
-    getBrands(setAllBrands);
-
-    const  pirulito = null
     const filterQuery = filterValidator(
-      pirulito,
       filterBrands,
+      filterCategories,
       filterPrices
     );
-    const filter = filterQuery.result
-    filterQuery.filterActive && setState((prevState) => ({ ...prevState, filter }));
-
-  }, [
-    filterBrands,
-    filterPrices
-  ]);
+    filterQuery.filterActive && setFilter(filterQuery.result);
+  }, [filterBrands, filterCategories, filterPrices]);
 
   return (
-    <section className="left-side p-2    "> 
+    <section className="left-side p-2    ">
       <div className="category-section">
-        <h2 className="py-2  text-[#2e2e2e]">
-          Rango de precio:
-        </h2>
+        <h2 className="py-2  text-[#2e2e2e]">Rango de precio:</h2>
         <form className="flex gap-2" action="">
           <label htmlFor="">
             <input
@@ -79,12 +66,10 @@ const Filter = ({ allShopSetters }) => {
         </form>
       </div>
       <div className="category-section">
-        <h2 className=" pt-4  text-[#2e2e2e]">
-          Marcas
-        </h2>
+        <h2 className=" pt-4  text-[#2e2e2e]">Marcas</h2>
         <li className="list-none">
           <ul>
-            {allBrands?.brands.map((brand) => (
+            {allBrands?.brands?.map((brand) => (
               <h3
                 key={brand}
                 onClick={handlerClickBrands(allSetters, brand)}

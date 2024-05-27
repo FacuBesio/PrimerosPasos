@@ -1,35 +1,30 @@
-
-
 //* FILTERS
 export const handlerClickBrands = (allSetters, brand) => {
-  const { setFilterBrands, setFilterBrandsName } = allSetters;
+  const { setFilterBrands, setBrandsTag } = allSetters;
   return () => {
     setFilterBrands(brand);
-    setFilterBrandsName(brand);
+    setBrandsTag(brand);
   };
 };
 
-export const handlerClickCategories = (navigate,setFilterCategories, category) => {
-  // const { setFilterCategories, setFilterCategoriesName } = allSetters;
+export const handlerClickCategories = (navigate, setFilterCategories, setCategoryTag, category) => {
   return () => {
-    setFilterCategories(category.id);
-    navigate("/shop")
-
-    // setFilterCategoriesName(category.name);
+    setFilterCategories(category.id)
+    setCategoryTag(category.name)
+    navigate("/shop");
   };
 };
 
 export const handlerMinPrice = (event, filterPrices, allSetters) => {
-  const { setFilterPrices, setFilterPricesValues } = allSetters;
+  const { setFilterPrices, setPricesTag } = allSetters;
   const arrayPrices = [event.target.value, filterPrices[1]];
   setFilterPrices(arrayPrices);
-  setFilterPricesValues(arrayPrices);
+  setPricesTag(arrayPrices);
 };
 
 export const handlerMaxPrice = (event, filterPrices, allSetters) => {
-  const { setFilterPrices, setFilterPricesValues } = allSetters;
+  const { setFilterPrices, setPricesTag } = allSetters;
   const arrayPrices = [filterPrices[0], event.target.value];
   setFilterPrices(arrayPrices);
-  setFilterPricesValues(arrayPrices);
+  setPricesTag(arrayPrices);
 };
-

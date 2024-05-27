@@ -2,7 +2,7 @@ import queryBrandsGenerator from "./queryBrandsGenerator";
 import queryCategoriesGenerator from "./queryCategoriesGenerator";
 import queryPricesGenerator from "./queryPricesGenerator";
 
-function filterValidator( filterCategories=null, filterBrands=null, filterPrices=[]) {
+function filterValidator( filterBrands, filterCategories, filterPrices) {
   let completeQuery = "";
 
   const validator = {

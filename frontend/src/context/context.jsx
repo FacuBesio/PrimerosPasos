@@ -1,20 +1,31 @@
-import React, { createContext, useState } from "react";
+import React from "react";
+import { BrandsProvider } from "./BrandsContext";
+import { CategoriesProvider } from "./CategoriesContext";
+import { FilterProvider } from "./FilterContext";
+import { PagesProvider } from "./PagesContext";
+import { ProductsProvider } from "./ProductsContext";
+import { SearchProvider } from "./SearchContext";
+import { SortProvider } from "./SortContext";
 
-// Crear el contexto
-export const AppContext = createContext();
 
-// Crear el proveedor del contexto
-export const AppProvider = ({ children }) => {
-
-  const [state, setState] = useState({
-    searchBar: "",
-    filter: [],
-    sorter: "",
-  });
-
+const AppProvider = ({ children }) => {
   return (
-    <AppContext.Provider value={{ state, setState }}>
-      {children}
-    </AppContext.Provider>
+    <BrandsProvider>
+      <CategoriesProvider>
+        <FilterProvider>
+          <PagesProvider>
+            <ProductsProvider>
+              <SearchProvider>
+                <SortProvider>
+                  {children}
+                </SortProvider>
+              </SearchProvider>
+            </ProductsProvider>
+          </PagesProvider>
+        </FilterProvider>
+      </CategoriesProvider>
+    </BrandsProvider>
   );
 };
+
+export default AppProvider;

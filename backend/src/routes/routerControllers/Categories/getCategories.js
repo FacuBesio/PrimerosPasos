@@ -1,12 +1,14 @@
 const findAllCategories = require("../../../controllers/Categories/findAllCategories");
 const formattedCategories = require("../../../utils/formatted/formattedCategories");
 const createBulkCategories = require("../../../controllers/Categories/createBulkCategories");
+const createBulkSubcategories = require("../../../controllers/Subcategories/createBulkSubcategories");
 
 const getCategories = async (req, res) => {
   try {
     let categories = await findAllCategories();
     if (categories.length === 0) {
       await createBulkCategories();
+      await createBulkSubcategories();
       categories = await findAllCategories();
     }
 

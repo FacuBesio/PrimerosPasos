@@ -1,30 +1,42 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
-import Filter from "../components/Filter/Filter";
+import getProducts from "../utils/products/getProducts";
+import getBrands from "../utils/brands/getBrands";
+import { BrandsContext } from "../context/BrandsContext";
+import { FilterContext } from "../context/FilterContext";
+import { PagesContext } from "../context/PagesContext";
+import { ProductsContext } from "../context/ProductsContext";
+import { SearchContext } from "../context/SearchContext";
+import { SortContext } from "../context/SortContext";
 
 const Shop = () => {
-  const [filter, setFilter] = useState([]);
-  const [sorter, setSorter] = useState();
-  const [filterBrandsName, setFilterBrandsName] = useState(null);
-  const [filterCategoriesName, setFilterCategoriesName] = useState(null);
-  const [filterPricesValues, setFilterPricesValues] = useState([]);
+  const { setAllBrands } = useContext(BrandsContext);
+  const { filter } = useContext(FilterContext);
+  const { page } = useContext(PagesContext);
+  const { setAllProducts } = useContext(ProductsContext);
+  const { searchBar } = useContext(SearchContext);
+  const { sorter } = useContext(SortContext);
 
-  const allFilters = {
-    filter,
-    sorter,
-    filterBrandsName,
-    filterCategoriesName,
-    filterPricesValues,
-  };
+  const [loading, setLoading] = useState(true);
+  const [delayLoading, setDelayLoading] = useState(true);
+  const loaderStates = { loading, delayLoading };
 
-  const allShopSetters = {
-    setFilter,
-    setFilterBrandsName,
-    setFilterCategoriesName,
-    setFilterPricesValues,
-    setSorter,
-  };
+  useEffect(() => {
+    getBrands(setAllBrands);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDelayLoading(false);
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [loading]);
+
+  useEffect(() => {
+    getProducts(setAllProducts, page, searchBar, filter, sorter);
+  }, [page, searchBar, filter, sorter]);
 
   return (
     <main className="bg-[#eae0f5]  overflow-hidden">
@@ -32,8 +44,7 @@ const Shop = () => {
       <Title />
       <Navbar />
       <div className="flex border-y-2 border-red-200 mt-4">
-        <Filter allShopSetters={allShopSetters} />
-        <ProductComponent allFilters={allFilters} setSorter={setSorter} />
+        <ProductComponent loaderStates={loaderStates} />
       </div>
       <Footer />
     </main>
