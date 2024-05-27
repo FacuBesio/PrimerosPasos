@@ -1,22 +1,28 @@
-import React, { useContext, useEffect, useState, CSSProperties } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
 import sorterValidator from "../../utils/sorter/sorterValidator.js";
 import Filter from "../Filter/Filter.jsx";
-import { AppContext } from "../../context/context.jsx";
-import ClipLoader from "react-spinners/ClipLoader";
 import Loader from "../Loader/Loader.jsx";
+import { CategoriesContext } from "../../context/CategoriesContext.jsx";
+import { PagesContext } from "../../context/PagesContext.jsx";
+import { ProductsContext } from "../../context/ProductsContext.jsx";
+import { SortContext } from "../../context/SortContext.jsx";
 
-const ProductComponent = ({ appLocalStates, loaderStates }) => {
-  const { state, setState } = useContext(AppContext);
-  const { allProducts, categoryTag } = state;
-  const { allBrands, page, setPage } = appLocalStates;
+const ProductComponent = ({ loaderStates }) => {
+  const { categoryTag } = useContext(CategoriesContext);
+  const { page, setPage } = useContext(PagesContext);
+  const { allProducts } = useContext(ProductsContext);
+  const { setSorter } = useContext(SortContext);
+
   const { loading, delayLoading } = loaderStates;
   const [sorterByPrice, setSorterByPrice] = useState("");
   const [sorterByRating, setSorterByRating] = useState("");
   const [brandsTag, setBrandsTag] = useState(null);
   const [pricesTag, setPricesTag] = useState([]);
   const allTagsSetters = { setBrandsTag, setPricesTag };
+
+  const productsAvailable = allProducts?.products?.length > 0;
 
   const onChangeSorterPrice = (event) => {
     setSorterByPrice(event.target.value);
@@ -35,19 +41,17 @@ const ProductComponent = ({ appLocalStates, loaderStates }) => {
 
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
-    sorterQuery.sorterActive &&
-      setState((prevState) => ({ ...prevState, sorter: sorterQuery.result }));
+    sorterQuery.sorterActive && setSorter(sorterQuery.result);
   }, [sorterByPrice, sorterByRating]);
 
-  const productsAvailable = allProducts?.products?.length > 0;
-
+7
   if (loading || delayLoading) {
     return <Loader delayLoading={delayLoading} />;
   }
 
   return (
     <section className="w-full ">
-      <Filter allTagsSetters={allTagsSetters} allBrands={allBrands} />
+      <Filter allTagsSetters={allTagsSetters} />
       <div className="flex w-full justify-end py-2">
         {categoryTag && (
           <h2 className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md m-1 ">

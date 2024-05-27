@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AppContext } from "../../context/context";
+// import { AppContext } from "../../context/context";
 import filterValidator from "../../utils/filter/filterValidator";
 import {
   handlerClickBrands,
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
+import { CategoriesContext } from "../../context/CategoriesContext.jsx";
+import { BrandsContext } from "../../context/BrandsContext.jsx";
+import { FilterContext } from "../../context/FilterContext.jsx";
 
-const Filter = ({ allTagsSetters, allBrands}) => {
-  const { state, setState } = useContext(AppContext);
-  const { filterCategories } = state;
+const Filter = ({ allTagsSetters }) => {
+  const { allBrands } = useContext(BrandsContext);
+  const { setFilter } = useContext(FilterContext);
+  const { filterCategories } = useContext(CategoriesContext);
   const [filterBrands, setFilterBrands] = useState(null);
   const [filterPrices, setFilterPrices] = useState([0, 0]);
 
@@ -33,9 +37,7 @@ const Filter = ({ allTagsSetters, allBrands}) => {
       filterCategories,
       filterPrices
     );
-    const filter = filterQuery.result;
-    filterQuery.filterActive &&
-      setState((prevState) => ({ ...prevState, filter }));
+    filterQuery.filterActive && setFilter(filterQuery.result);
   }, [filterBrands, filterCategories, filterPrices]);
 
   return (

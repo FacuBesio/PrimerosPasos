@@ -4,12 +4,15 @@ export const CategoriesContext = createContext();
 
 export const CategoriesProvider = ({ children }) => {
   const [allCategories, setAllCategories] = useState([]);
+  const [categoryTag, setCategoryTag] = useState("");
   const [filterCategories, setFilterCategories] = useState("");
 
   const value = useMemo(
     () => ({
       allCategories,
       setAllCategories,
+      categoryTag,
+      setCategoryTag,
       filterCategories,
       setFilterCategories,
     }),

@@ -1,15 +1,22 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { AppContext } from "../../context/context";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useNavigate } from "react-router-dom";
 import newUserdata from "../../utils/navbar/newUserdata";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
+import { CategoriesContext } from "../../context/CategoriesContext";
+import { SearchContext } from "../../context/SearchContext";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-  const { state, setState } = useContext(AppContext);
-  const { allCategories, searchBar } = state;
+  const { searchBar, setSearchBar } = useContext(SearchContext);
+  const {
+    allCategories,
+    setAllCategories,
+    setFilterCategories,
+    setCategoryTag,
+  } = useContext(CategoriesContext);
+
   const [userData, setUserData] = useState();
 
   const [isCategoriesOpen, setCategoriesOpen] = useState(true);
@@ -26,14 +33,12 @@ const Navbar = () => {
   };
 
   const onChangeSearchBar = (event) => {
-    const searchBar = event.target.value;
-    setState((prevState) => ({ ...prevState, searchBar }));
+    setSearchBar(event.target.value);
   };
 
   const onSubmitSearchBar = (event) => {
     event.preventDefault();
-    setState((prevState) => ({ ...prevState }));
-    navigate("/shop");
+     navigate("/shop");
   };
 
   const handleLogout = () => {
@@ -46,7 +51,7 @@ const Navbar = () => {
     if (isAuthenticated && user && !userData) {
       newUserdata(setUserData, user);
     }
-    allCategories.length === 0 && getCategories(setState);
+    allCategories.length === 0 && getCategories(setAllCategories);
   }, [isAuthenticated, user]);
 
   return (
@@ -134,7 +139,12 @@ const Navbar = () => {
             {allCategories?.categories?.map((category) => (
               <h3
                 key={category.id}
-                onClick={handlerClickCategories(navigate, setState, category)}
+                onClick={handlerClickCategories(
+                  navigate,
+                  setFilterCategories,
+                  setCategoryTag,
+                  category
+                )}
                 className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer  rounded-md p-1 "
               >
                 {category.name}

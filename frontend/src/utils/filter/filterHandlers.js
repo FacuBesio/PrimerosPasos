@@ -7,12 +7,10 @@ export const handlerClickBrands = (allSetters, brand) => {
   };
 };
 
-export const handlerClickCategories = (navigate, setState, category) => {
+export const handlerClickCategories = (navigate, setFilterCategories, setCategoryTag, category) => {
   return () => {
-    const filterCategories = category.id;
-    const categoryTag = category.name;
-    setState((prevState) => ({ ...prevState, filterCategories }));
-    setState((prevState) => ({ ...prevState, categoryTag }));
+    setFilterCategories(category.id)
+    setCategoryTag(category.name)
     navigate("/shop");
   };
 };
