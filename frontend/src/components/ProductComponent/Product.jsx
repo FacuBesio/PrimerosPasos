@@ -8,6 +8,7 @@ import Loader from "../Loader/Loader.jsx";
 import { CategoriesContext } from "../../context/CategoriesContext.jsx";
 import { PagesContext } from "../../context/PagesContext.jsx";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
+import { SearchContext } from "../../context/SearchContext.jsx";
 import { SortContext } from "../../context/SortContext.jsx";
 import { FilterContext } from "../../context/FilterContext.jsx";
 
@@ -15,6 +16,7 @@ const ProductComponent = ({ loaderStates }) => {
   const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
+  const { searchBarTag } = useContext(SearchContext);
   const { setSorter } = useContext(SortContext);
   const { setFilter } = useContext(FilterContext);
 
@@ -78,6 +80,17 @@ const ProductComponent = ({ loaderStates }) => {
   return (
     <section className="w-full">
       <div className="flex w-full p-4 gap-4 items-center justify-center">
+      {searchBarTag ? (
+          <h2
+            // onClick={handleRemoveCategoryTag}
+            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+          >
+            {searchBarTag}
+          </h2>
+        ) : (
+          <div className="hidden "></div>
+        )}
+
         {categoryTag ? (
           <h2
             onClick={handleRemoveCategoryTag}
