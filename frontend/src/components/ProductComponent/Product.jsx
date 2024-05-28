@@ -5,12 +5,15 @@ import SortComponent from "../SortComponent/SortComponent.jsx";
 import sorterValidator from "../../utils/sorter/sorterValidator.js";
 import Filter from "../Filter/Filter.jsx";
 import Loader from "../Loader/Loader.jsx";
-import { CategoriesContext } from "../../context/CategoriesContext.jsx";
-import { PagesContext } from "../../context/PagesContext.jsx";
-import { ProductsContext } from "../../context/ProductsContext.jsx";
-import { SearchContext } from "../../context/SearchContext.jsx";
-import { SortContext } from "../../context/SortContext.jsx";
-import { FilterContext } from "../../context/FilterContext.jsx";
+import {
+  CategoriesContext,
+  FilterContext,
+  PagesContext,
+  ProductsContext,
+  SearchContext,
+  SortContext,
+} from "../../context/index.js";
+
 
 const ProductComponent = ({ loaderStates }) => {
   const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
@@ -54,7 +57,6 @@ const ProductComponent = ({ loaderStates }) => {
   const handleRemoveCategoryTag = () => {
     setCategoryTag(null);
     setFilter({});
- 
   };
 
   const handleRemoveBrandTag = () => {
@@ -80,7 +82,7 @@ const ProductComponent = ({ loaderStates }) => {
   return (
     <section className="w-full">
       <div className="flex w-full p-4 gap-4 items-center justify-center">
-      {searchBarTag ? (
+        {searchBarTag ? (
           <h2
             // onClick={handleRemoveCategoryTag}
             className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"

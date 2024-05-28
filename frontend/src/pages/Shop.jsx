@@ -3,12 +3,15 @@ import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
 import getProducts from "../utils/products/getProducts";
 import getBrands from "../utils/brands/getBrands";
-import { BrandsContext } from "../context/BrandsContext";
-import { FilterContext } from "../context/FilterContext";
-import { PagesContext } from "../context/PagesContext";
-import { ProductsContext } from "../context/ProductsContext";
-import { SearchContext } from "../context/SearchContext";
-import { SortContext } from "../context/SortContext";
+import {
+  BrandsContext,
+  FilterContext,
+  PagesContext,
+  ProductsContext,
+  SearchContext,
+  SortContext,
+} from "../context/index";
+
 
 const Shop = () => {
   const { setAllBrands } = useContext(BrandsContext);

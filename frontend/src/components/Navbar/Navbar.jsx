@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import newUserdata from "../../utils/navbar/newUserdata";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
-import { CategoriesContext } from "../../context/CategoriesContext";
-import { SearchContext } from "../../context/SearchContext";
+import { CategoriesContext, SearchContext } from "../../context/index";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-  const { searchBar, setSearchBar, setSearchBarTag } = useContext(SearchContext);
+  const { searchBar, setSearchBar, setSearchBarTag } =
+    useContext(SearchContext);
   const {
     allCategories,
     setAllCategories,
@@ -68,7 +68,6 @@ const Navbar = () => {
           <a
             href="/shop"
             className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a]  "
-            
           >
             Shop
           </a>

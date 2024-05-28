@@ -10,8 +10,16 @@ import productInitializer from "./utils/products/productInitializer.js";
 import Profile from "./components/Profile/Profile.jsx";
 
 function App() {
+ 
   useEffect(() => {
     productInitializer();
+    if (window.localStorage.getItem("cart") === null) {
+      const cart = {
+        products: [],
+        total: 0,
+      };
+      window.localStorage.setItem("cart", JSON.stringify(cart));
+    }
   }, []);
 
   return (
