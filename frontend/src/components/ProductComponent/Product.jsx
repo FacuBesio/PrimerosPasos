@@ -16,12 +16,15 @@ import {
 
 
 const ProductComponent = ({ loaderStates }) => {
-  const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
+  const { categoryTag, setCategoryTag, setFilterCategories } =
+    useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
-  const { searchBarTag } = useContext(SearchContext);
+  const { searchBarTag,setSearchBarTag, setSearchBar  } = useContext(SearchContext);
   const { setSorter } = useContext(SortContext);
   const { setFilter } = useContext(FilterContext);
+
+  const [filterPrices, setFilterPrices] = useState([0, 0]);
 
   const { loading, delayLoading } = loaderStates;
   const [sorterByPrice, setSorterByPrice] = useState("");
@@ -54,9 +57,14 @@ const ProductComponent = ({ loaderStates }) => {
     }
   }, [sorterByPrice, sorterByRating, setSorter]);
 
+  const handleRemoveSearchBarTag = () => {
+    setSearchBarTag("");
+    setSearchBar([]);
+  };
+
   const handleRemoveCategoryTag = () => {
-    setCategoryTag(null);
-    setFilter({});
+    setCategoryTag("");
+    setFilterCategories([]);
   };
 
   const handleRemoveBrandTag = () => {
@@ -68,11 +76,8 @@ const ProductComponent = ({ loaderStates }) => {
   };
 
   const handleRemovePricesTag = () => {
-    setPricesTag([]);
-    setFilter((prevFilter) => ({
-      ...prevFilter,
-      price: [0, 0],
-    }));
+    setPricesTag("");
+    setFilterPrices([0, 0]);
   };
 
   if (loading || delayLoading) {
@@ -81,10 +86,15 @@ const ProductComponent = ({ loaderStates }) => {
 
   return (
     <section className="w-full">
-      <div className="flex w-full p-4 gap-4 items-center justify-center">
+      <div className="flex w-full p-4 gap-4 items-center justify-between">
+        <Filter
+          allTagsSetters={allTagsSetters}
+          filterPrices={filterPrices}
+          setFilterPrices={setFilterPrices}
+        />
         {searchBarTag ? (
           <h2
-            // onClick={handleRemoveCategoryTag}
+          onClick={handleRemoveSearchBarTag}
             className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
           >
             {searchBarTag}
@@ -93,7 +103,7 @@ const ProductComponent = ({ loaderStates }) => {
           <div className="hidden "></div>
         )}
 
-        {categoryTag ? (
+        {categoryTag !== "" ? (
           <h2
             onClick={handleRemoveCategoryTag}
             className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
@@ -126,22 +136,26 @@ const ProductComponent = ({ loaderStates }) => {
           <div className="hidden "></div>
         )}
 
-        <Filter allTagsSetters={allTagsSetters} />
         <SortComponent sortComponentProps={sortComponentProps} />
       </div>
       {productsAvailable ? (
         <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allProducts.products.map((product) => (
-            <a
-              href={`/productDetail/${product.id}`}
-              key={product.id}
-              className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
+            <div key={product.id}> 
+  
+            <div
+           
+            key={product.id}
+            className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
             >
+             <Button  />
+             <a  href={`/productDetail/${product.id}`}>
               <img
                 className="object-contain rounded-lg h-full p-2"
                 src={product.img}
                 alt={product.name}
               />
+             </a>
               <div className="text-center">
                 <h2 className="font-bold text-gray-400 text-[16px] md:text-[18px] lg:text-[22px] px-2">
                   {product.name}
@@ -153,7 +167,8 @@ const ProductComponent = ({ loaderStates }) => {
                   Stock: {product.stock}
                 </h2>
               </div>
-            </a>
+            </div>
+            </div>
           ))}
         </div>
       ) : (

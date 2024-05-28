@@ -11,12 +11,12 @@ import {
   FilterContext,
 } from "../../context/index.js";
 
-const Filter = ({ allTagsSetters }) => {
+const Filter = ({ allTagsSetters, filterPrices,setFilterPrices }) => {
   const { allBrands } = useContext(BrandsContext);
   const { setFilter } = useContext(FilterContext);
   const { filterCategories } = useContext(CategoriesContext);
   const [filterBrands, setFilterBrands] = useState([]);
-  const [filterPrices, setFilterPrices] = useState([0, 0]);
+ 
 
   const allSetters = {
     ...allTagsSetters,
@@ -84,6 +84,9 @@ const Filter = ({ allTagsSetters }) => {
       >
         <option value="" disabled>
           Marca:
+        </option>
+        <option value="">
+          All
         </option>
         {allBrands?.brands?.map((brand) => (
           <option key={brand} className="text-[#5a5b5a]" value={brand}>
