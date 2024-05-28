@@ -6,6 +6,8 @@ const Categories = () => {
     { name: "Cuna", image: "/src/assets/product13.webp", description: "Promos exclusivas" },
     { name: "Mochila", image: "/src/assets/product23.webp", description: "Descuentos" }
   ];
+
+
   return (
     <section className="sm:grid grid-rows-2 grid-cols-2 bg-[#Dbb1bc]">
       {categories.map((cat) => (
