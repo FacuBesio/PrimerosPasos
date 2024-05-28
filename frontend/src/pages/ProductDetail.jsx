@@ -40,7 +40,7 @@ const ProductDetail = () => {
         key={product.product.id}
       >
         <div className="w-full md:border-r">
-          <img src={product.product.img} alt="Imagen del producto" />
+          <img className=" rounded-lg" src={product.product.img} alt="Imagen del producto" />
         </div>
         <div className="flex flex-col w-full gap-4 pl-4">
           <h2 className=" text-2xl font-bold pb-12 text-center">

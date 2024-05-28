@@ -7,6 +7,7 @@ import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import productInitializer from "./utils/products/productInitializer.js";
+import Profile from "./components/Profile/Profile.jsx";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,8 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/personalInfo" element={<Profile />} />
       </Routes>
     </main>
   );

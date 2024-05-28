@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap/gsap-core';
-import SplitType from "split-type";
+
 
 const generateData = (count) => {
   const data = [];
@@ -15,7 +15,6 @@ const generateData = (count) => {
 const Marquee = () =>  {
 
   const app = useRef();
-  const text = new SplitType("#text_stats");
   const data = generateData(7); // Cambia este número según la cantidad de elementos que necesites
 
   useGSAP(() => {

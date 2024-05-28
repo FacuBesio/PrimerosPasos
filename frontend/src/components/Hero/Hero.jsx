@@ -5,11 +5,11 @@ import Navbar from "../Navbar/Navbar"
 
 const Hero = () => {
   return (
-   <div className="lg:h-screen">
+   <div className="">
     <Marquee />
     <Title />
     <Navbar />
-    <Banner />
+    <Banner className=""/>
     </div>
   )
 }

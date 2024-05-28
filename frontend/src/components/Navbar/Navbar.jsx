@@ -38,7 +38,7 @@ const Navbar = () => {
 
   const onSubmitSearchBar = (event) => {
     event.preventDefault();
-     navigate("/shop");
+    navigate("/shop");
   };
 
   const handleLogout = () => {
@@ -64,12 +64,13 @@ const Navbar = () => {
           >
             Home
           </a>
-          <button
+          <a
+            href="/shop"
             className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a]  "
-            onClick={handleCategoriesOpen}
+            
           >
-            Categorias
-          </button>
+            Shop
+          </a>
           <a
             href="/contacto"
             className="md:text-xl hover:text-[#DBB1BC] hover:scale-105  "
@@ -119,7 +120,11 @@ const Navbar = () => {
               className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm z-40 transition-all"
               onClick={handleButtonCart}
             >
-              <div className="fixed right-0 top-0 h-screen w-[20%] bg-white z-50 pt-10 px-6 text-center flex flex-col gap-12 transition-all "></div>
+              <div>
+                <div className="fixed  right-0 top-0 h-screen w-[50%] md:w-[20%] bg-white z-50 pt-10 px-6 text-center flex flex-col gap-12 transition-all ">
+                  <h2>Carrito de compras</h2>
+                </div>
+              </div>
             </div>
           )}
           {isAuthenticated && (
@@ -133,7 +138,7 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-      <div className=" flex  justify-center items-center gap-4 m-2 h-fit  overflow-x-auto">
+      <div className=" flex  justify-center items-center gap-4 m-2 h-fit pl-20 md:pl-0 overflow-x-auto">
         {isCategoriesOpen && (
           <div className="flex gap-2 items-center ">
             {allCategories?.categories?.map((category) => (

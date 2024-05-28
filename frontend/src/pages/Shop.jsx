@@ -39,11 +39,11 @@ const Shop = () => {
   }, [page, searchBar, filter, sorter]);
 
   return (
-    <main className="bg-[#eae0f5]  overflow-hidden">
+    <main className="bg-[#eae0f5]  overflow-hidden ">
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex border-y-2 border-red-200 mt-4">
+      <div className="flex border-y-2 border-red-200 mt-4 md:px-10">
         <ProductComponent loaderStates={loaderStates} />
       </div>
       <Footer />

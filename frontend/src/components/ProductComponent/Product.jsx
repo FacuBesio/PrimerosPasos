@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useEffect, useState } from "react";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
@@ -8,12 +9,14 @@ import { CategoriesContext } from "../../context/CategoriesContext.jsx";
 import { PagesContext } from "../../context/PagesContext.jsx";
 import { ProductsContext } from "../../context/ProductsContext.jsx";
 import { SortContext } from "../../context/SortContext.jsx";
+import { FilterContext } from "../../context/FilterContext.jsx";
 
 const ProductComponent = ({ loaderStates }) => {
-  const { categoryTag } = useContext(CategoriesContext);
+  const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
   const { setSorter } = useContext(SortContext);
+  const { setFilter } = useContext(FilterContext);
 
   const { loading, delayLoading } = loaderStates;
   const [sorterByPrice, setSorterByPrice] = useState("");
@@ -41,36 +44,74 @@ const ProductComponent = ({ loaderStates }) => {
 
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
-    sorterQuery.sorterActive && setSorter(sorterQuery.result);
-  }, [sorterByPrice, sorterByRating]);
+    if (sorterQuery.sorterActive) {
+      setSorter(sorterQuery.result);
+    }
+  }, [sorterByPrice, sorterByRating, setSorter]);
 
-7
+  const handleRemoveCategoryTag = () => {
+    setCategoryTag(null);
+    setFilter({});
+ 
+  };
+
+  const handleRemoveBrandTag = () => {
+    setBrandsTag(null);
+    setFilter((prevFilter) => ({
+      ...prevFilter,
+      brand: null,
+    }));
+  };
+
+  const handleRemovePricesTag = () => {
+    setPricesTag([]);
+    setFilter((prevFilter) => ({
+      ...prevFilter,
+      price: [0, 0],
+    }));
+  };
+
   if (loading || delayLoading) {
     return <Loader delayLoading={delayLoading} />;
   }
 
   return (
-    <section className="w-full ">
-      <Filter allTagsSetters={allTagsSetters} />
-      <div className="flex w-full justify-end py-2">
-        {categoryTag && (
-          <h2 className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md m-1 ">
+    <section className="w-full">
+      <div className="flex w-full p-4 gap-4 items-center justify-center">
+        {categoryTag ? (
+          <h2
+            onClick={handleRemoveCategoryTag}
+            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+          >
             {categoryTag}
           </h2>
+        ) : (
+          <div className="hidden "></div>
         )}
 
-        {brandsTag && (
-          <h2 className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md m-1 ">
+        {brandsTag ? (
+          <h2
+            onClick={handleRemoveBrandTag}
+            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+          >
             {brandsTag}
           </h2>
+        ) : (
+          <div className="hidden"></div>
         )}
 
-        {pricesTag.length === 2 && pricesTag[1] > 0 && (
-          <h2 className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md m-1">
+        {pricesTag.length === 2 && pricesTag[1] > 0 ? (
+          <h2
+            onClick={handleRemovePricesTag}
+            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+          >
             {pricesTag.join(" - ")}
           </h2>
+        ) : (
+          <div className="hidden "></div>
         )}
 
+        <Filter allTagsSetters={allTagsSetters} />
         <SortComponent sortComponentProps={sortComponentProps} />
       </div>
       {productsAvailable ? (
@@ -101,7 +142,7 @@ const ProductComponent = ({ loaderStates }) => {
           ))}
         </div>
       ) : (
-        <div className="text-center md:h-screen  py-4">
+        <div className="text-center md:h-screen py-4">
           <h2 className="text-gray-800 text-[18px] md:text-[20px] lg:text-[22px]">
             No se encuentran productos disponibles.
           </h2>
