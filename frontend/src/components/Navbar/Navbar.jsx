@@ -9,7 +9,7 @@ import { SearchContext } from "../../context/SearchContext";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-  const { searchBar, setSearchBar } = useContext(SearchContext);
+  const { searchBar, setSearchBar, setSearchBarTag } = useContext(SearchContext);
   const {
     allCategories,
     setAllCategories,
@@ -34,6 +34,7 @@ const Navbar = () => {
 
   const onChangeSearchBar = (event) => {
     setSearchBar(event.target.value);
+    setSearchBarTag(event.target.value);
   };
 
   const onSubmitSearchBar = (event) => {
