@@ -12,11 +12,13 @@ import { SortContext } from "../../context/SortContext.jsx";
 import { FilterContext } from "../../context/FilterContext.jsx";
 
 const ProductComponent = ({ loaderStates }) => {
-  const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
+  const { categoryTag, setCategoryTag, setFilterCategories } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
   const { setSorter } = useContext(SortContext);
   const { setFilter } = useContext(FilterContext);
+
+  const [filterPrices, setFilterPrices] = useState([0, 0]);
 
   const { loading, delayLoading } = loaderStates;
   const [sorterByPrice, setSorterByPrice] = useState("");
@@ -50,9 +52,8 @@ const ProductComponent = ({ loaderStates }) => {
   }, [sorterByPrice, sorterByRating, setSorter]);
 
   const handleRemoveCategoryTag = () => {
-    setCategoryTag(null);
-    setFilter({});
- 
+    setCategoryTag("");
+    setFilterCategories([]);
   };
 
   const handleRemoveBrandTag = () => {
@@ -64,11 +65,9 @@ const ProductComponent = ({ loaderStates }) => {
   };
 
   const handleRemovePricesTag = () => {
-    setPricesTag([]);
-    setFilter((prevFilter) => ({
-      ...prevFilter,
-      price: [0, 0],
-    }));
+    setPricesTag("");
+    setFilterPrices([0,0])
+   
   };
 
   if (loading || delayLoading) {
@@ -77,8 +76,9 @@ const ProductComponent = ({ loaderStates }) => {
 
   return (
     <section className="w-full">
-      <div className="flex w-full p-4 gap-4 items-center justify-center">
-        {categoryTag ? (
+      <div className="flex w-full p-4 gap-4 items-center justify-between">
+        <Filter allTagsSetters={allTagsSetters} filterPrices={filterPrices} setFilterPrices={setFilterPrices} />
+        {categoryTag !== ""  ? (
           <h2
             onClick={handleRemoveCategoryTag}
             className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
@@ -111,7 +111,6 @@ const ProductComponent = ({ loaderStates }) => {
           <div className="hidden "></div>
         )}
 
-        <Filter allTagsSetters={allTagsSetters} />
         <SortComponent sortComponentProps={sortComponentProps} />
       </div>
       {productsAvailable ? (
