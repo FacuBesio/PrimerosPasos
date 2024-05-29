@@ -5,16 +5,16 @@ import SortComponent from "../SortComponent/SortComponent.jsx";
 import sorterValidator from "../../utils/sorter/sorterValidator.js";
 import Filter from "../Filter/Filter.jsx";
 import Loader from "../Loader/Loader.jsx";
+import {
+  CategoriesContext,
+  FilterContext,
+  PagesContext,
+  ProductsContext,
+  SearchContext,
+  SortContext,
+} from "../../context/index.js";
+import Button from "../Button/Button.jsx";
 
-import Button from "../Button/Button.jsx"
-
-
-import { CategoriesContext } from "../../context/CategoriesContext.jsx";
-import { PagesContext } from "../../context/PagesContext.jsx";
-import { ProductsContext } from "../../context/ProductsContext.jsx";
-import { SearchContext } from "../../context/SearchContext.jsx";
-import { SortContext } from "../../context/SortContext.jsx";
-import { FilterContext } from "../../context/FilterContext.jsx";
 
 const ProductComponent = ({ loaderStates }) => {
   const { categoryTag, setCategoryTag, setFilterCategories } =
@@ -35,6 +35,7 @@ const ProductComponent = ({ loaderStates }) => {
   const allTagsSetters = { setBrandsTag, setPricesTag };
 
   const productsAvailable = allProducts?.products?.length > 0;
+  // const cantidad = 1;
 
   const onChangeSorterPrice = (event) => {
     setSorterByPrice(event.target.value);
@@ -149,7 +150,7 @@ const ProductComponent = ({ loaderStates }) => {
             key={product.id}
             className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
             >
-             <Button  />
+             <Button product={product} />
              <a  href={`/productDetail/${product.id}`}>
               <img
                 className="object-contain rounded-lg h-full p-2"

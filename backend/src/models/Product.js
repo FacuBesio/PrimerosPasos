@@ -46,6 +46,7 @@ module.exports = (dataBase) => {
           "pink",
           "purple",
           "red",
+          "salmon",
           "violet",
           "white",
           "yellow"

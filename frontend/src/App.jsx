@@ -6,12 +6,13 @@ import Shop from "../src/pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
-import productInitializer from "./utils/products/productInitializer.js";
 import Profile from "./components/Profile/Profile.jsx";
+import appInitialzer from "./utils/app/appInitialzer.js";
 
 function App() {
+  
   useEffect(() => {
-    productInitializer();
+    appInitialzer();
   }, []);
 
   return (
