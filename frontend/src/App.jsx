@@ -6,26 +6,13 @@ import Shop from "../src/pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
-import productInitializer from "./utils/products/productInitializer.js";
 import Profile from "./components/Profile/Profile.jsx";
+import appInitialzer from "./utils/app/appInitialzer.js";
 
 function App() {
+  
   useEffect(() => {
-    if (window.sessionStorage.getItem("visited") === null) {
-      if (window.localStorage.getItem("cart") !== null) {
-        window.localStorage.removeItem("cart");
-      }
-      productInitializer();
-      const visited = true;
-      const cart = {
-        id: null,
-        User: null,
-        products: [],
-        Purchase: 0,
-      };
-      window.localStorage.setItem("cart", JSON.stringify(cart));
-      window.sessionStorage.setItem("visited", JSON.stringify(visited));
-    }
+    appInitialzer();
   }, []);
 
   return (
