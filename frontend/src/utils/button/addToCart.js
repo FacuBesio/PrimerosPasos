@@ -14,7 +14,7 @@ const addToCart = (productToAdd) => {
     } else if (isProductExist && !enabledStock.state) {
       console.log(enabledStock.message);
     } else {
-      cart.products.push(productToAdd);
+      cart.products.unshift(productToAdd);
       window.localStorage.setItem("cart", JSON.stringify(cart));
     }
   };

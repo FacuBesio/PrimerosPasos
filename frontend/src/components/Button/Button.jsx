@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import addToCart from "../../utils/button/addToCart";
 
 const Button = ({ product }) => {
