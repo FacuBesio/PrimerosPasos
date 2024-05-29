@@ -13,6 +13,7 @@ import {
   SearchContext,
   SortContext,
 } from "../../context/index.js";
+import Button from "../Button/Button.jsx";
 
 
 const ProductComponent = ({ loaderStates }) => {
@@ -34,6 +35,7 @@ const ProductComponent = ({ loaderStates }) => {
   const allTagsSetters = { setBrandsTag, setPricesTag };
 
   const productsAvailable = allProducts?.products?.length > 0;
+  // const cantidad = 1;
 
   const onChangeSorterPrice = (event) => {
     setSorterByPrice(event.target.value);
@@ -148,7 +150,7 @@ const ProductComponent = ({ loaderStates }) => {
             key={product.id}
             className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
             >
-             <Button  />
+             <Button product={product} />
              <a  href={`/productDetail/${product.id}`}>
               <img
                 className="object-contain rounded-lg h-full p-2"

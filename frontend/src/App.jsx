@@ -10,15 +10,21 @@ import productInitializer from "./utils/products/productInitializer.js";
 import Profile from "./components/Profile/Profile.jsx";
 
 function App() {
- 
   useEffect(() => {
-    productInitializer();
-    if (window.localStorage.getItem("cart") === null) {
+    if (window.sessionStorage.getItem("visited") === null) {
+      if (window.localStorage.getItem("cart") !== null) {
+        window.localStorage.removeItem("cart");
+      }
+      productInitializer();
+      const visited = true;
       const cart = {
+        id: null,
+        User: null,
         products: [],
-        total: 0,
+        Purchase: 0,
       };
       window.localStorage.setItem("cart", JSON.stringify(cart));
+      window.sessionStorage.setItem("visited", JSON.stringify(visited));
     }
   }, []);
 
