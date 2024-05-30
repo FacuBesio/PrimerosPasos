@@ -1,4 +1,4 @@
-import addToCart from "../../utils/button/addToCart";
+import addToCart from "../../utils/cart/addToCart";
 
 const Button = ({ product }) => {
   const cantidad = 1;
