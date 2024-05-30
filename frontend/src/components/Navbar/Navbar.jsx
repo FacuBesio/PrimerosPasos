@@ -45,6 +45,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem("userData");
+    const cart = JSON.parse(window.localStorage.getItem("cart"));
+    const updatedCart = { ...cart, id: null };
+    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
     setUserData(null);
     logout();
   };
@@ -115,11 +118,7 @@ const Navbar = () => {
           <button onClick={handleButtonCart}>
             <img src="/src/assets/cart.png" className="w-[30px] ml-2" alt="" />
           </button>
-          {isCartOpen && (
-
-           <CartAside handleButtonCart={handleButtonCart} />
-
-          )}
+          {isCartOpen && <CartAside handleButtonCart={handleButtonCart} />}
           {isAuthenticated && (
             <Link to="/profile/personalInfo">
               <img

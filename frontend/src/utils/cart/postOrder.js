@@ -1,17 +1,14 @@
 import axios from "../../config/axios";
 
-const postOrder = async (user, productToAdd) => {
-  const userId = user;
-  const products = [productToAdd.id, productToAdd.cantidad]
-
- console.log(products);
-
+const postOrder = async (user_id, productToAdd) => {
+  const userId = user_id;
+  const products = [[productToAdd.id, productToAdd.cantidad]];
 
   try {
-//     const response = await axios.post(`/orders`, {userId, products} );
-//  console.log(response.data);
+    const response = await axios.post(`/orders`, { userId, products });
+    // console.log(response.data);
   } catch (error) {
-    console.error("Error al obtener Productos:", error);
+    console.error("Error al agregar Productos:", error);
   }
 };
 
