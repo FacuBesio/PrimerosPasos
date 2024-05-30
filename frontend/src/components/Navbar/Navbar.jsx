@@ -5,6 +5,7 @@ import newUserdata from "../../utils/navbar/newUserdata";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
 import { CategoriesContext, SearchContext } from "../../context/index";
+import CartAside from "../CartAside/CartAside";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -115,18 +116,9 @@ const Navbar = () => {
             <img src="/src/assets/cart.png" className="w-[30px] ml-2" alt="" />
           </button>
           {isCartOpen && (
-            <div
-              ref={cartRef}
-              className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm z-40 transition-all"
-              
-            >
-              <div>
-                <div className="fixed justify-between py-6 items-center  right-0 top-0 h-screen w-[50%] md:w-[20%] bg-white z-50  px-6 text-center flex flex-col gap-12 transition-all ">
-                  <h2>Carrito de compras</h2>
-                  <button className="items-center flex bg-gray-200 w-fit p-2 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]" onClick={handleButtonCart}>Volver al menu</button>
-                </div>
-              </div>
-            </div>
+
+           <CartAside handleButtonCart={handleButtonCart} />
+
           )}
           {isAuthenticated && (
             <Link to="/profile/personalInfo">

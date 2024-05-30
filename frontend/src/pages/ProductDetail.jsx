@@ -90,7 +90,7 @@ const ProductDetail = () => {
             />
             <h4 className="md:text-xl">Garantia de un año</h4>
           </div>
-          <Button />
+          <Button product={product.product} />
         </div>
       </div>
 
