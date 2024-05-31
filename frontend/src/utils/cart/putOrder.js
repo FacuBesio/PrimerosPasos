@@ -14,7 +14,11 @@ const putOrder = async (order_id, productToRemove, productToAdd) => {
       productsToAdd: productsToAdd,
       productsToRemove: productsToRemove,
     });
-    console.log(response.data);
+    // const order = response.data.order;
+    // if (order) {
+    //   const cart = { id: order.id, products: order.products };
+    //   window.localStorage.setItem("cart", JSON.stringify(cart));
+    // }
   } catch (error) {
     console.error("Error al actualizar Productos:", error);
   }

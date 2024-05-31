@@ -6,7 +6,11 @@ const postOrder = async (user_id, productToAdd) => {
 
   try {
     const response = await axios.post(`/orders`, { userId, products });
-    // console.log(response.data);
+    const order = response.data.order;
+    if (order) {
+      const cart = { id: order.id, products: order.products };
+      window.localStorage.setItem("cart", JSON.stringify(cart));
+    }
   } catch (error) {
     console.error("Error al agregar Productos:", error);
   }

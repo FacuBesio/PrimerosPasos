@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useNavigate } from "react-router-dom";
-import newUserdata from "../../utils/navbar/newUserdata";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
 import { CategoriesContext, SearchContext } from "../../context/index";
 import CartAside from "../CartAside/CartAside";
+import postUsers from "../../utils/users/postUsers";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -18,16 +18,9 @@ const Navbar = () => {
     setCategoryTag,
   } = useContext(CategoriesContext);
 
-  const [userData, setUserData] = useState();
-
-  const [isCategoriesOpen, setCategoriesOpen] = useState(true);
+  const userData = JSON.parse(window.localStorage.getItem("userData"));
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const cartRef = useRef(null);
   const navigate = useNavigate();
-
-  const handleCategoriesOpen = () => {
-    setCategoriesOpen(!isCategoriesOpen);
-  };
 
   const handleButtonCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -45,19 +38,17 @@ const Navbar = () => {
 
   const handleLogout = () => {
     window.localStorage.removeItem("userData");
-    const cart = JSON.parse(window.localStorage.getItem("cart"));
-    const updatedCart = { ...cart, id: null };
+    const updatedCart = { id: null, products: [] };
     window.localStorage.setItem("cart", JSON.stringify(updatedCart));
-    setUserData(null);
     logout();
   };
 
   useEffect(() => {
     if (isAuthenticated && user && !userData) {
-      newUserdata(setUserData, user);
+      postUsers(user);
     }
     allCategories.length === 0 && getCategories(setAllCategories);
-  }, [isAuthenticated, user]);
+  }, [userData, isAuthenticated]);
 
   return (
     <div>
@@ -122,7 +113,7 @@ const Navbar = () => {
           {isAuthenticated && (
             <Link to="/profile/personalInfo">
               <img
-                src={userData?.picture}
+                src={userData?.img}
                 alt={userData?.name}
                 className="w-8 h-8 cursor-pointer"
               />
@@ -131,24 +122,22 @@ const Navbar = () => {
         </div>
       </nav>
       <div className=" flex  justify-center items-center gap-4 m-2 h-fit pl-20 md:pl-0 overflow-x-auto">
-        {isCategoriesOpen && (
-          <div className="flex gap-2 items-center ">
-            {allCategories?.categories?.map((category) => (
-              <h3
-                key={category.id}
-                onClick={handlerClickCategories(
-                  navigate,
-                  setFilterCategories,
-                  setCategoryTag,
-                  category
-                )}
-                className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer  rounded-md p-1 "
-              >
-                {category.name}
-              </h3>
-            ))}
-          </div>
-        )}
+        <div className="flex gap-2 items-center ">
+          {allCategories?.categories?.map((category) => (
+            <h3
+              key={category.id}
+              onClick={handlerClickCategories(
+                navigate,
+                setFilterCategories,
+                setCategoryTag,
+                category
+              )}
+              className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer  rounded-md p-1 "
+            >
+              {category.name}
+            </h3>
+          ))}
+        </div>
       </div>
     </div>
   );
