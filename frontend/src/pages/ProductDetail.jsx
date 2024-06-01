@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Button, Footer, Marquee, Navbar, Title } from "../components";
-import { Link, useParams } from "react-router-dom";
+import  { useEffect, useState } from "react";
+import {  Footer, Marquee, Navbar, Title } from "../components";
+import {  useParams } from "react-router-dom";
 import axios from "axios";
+import ButtonProductDetail from "../components/ButtonProductDetail/ButtonProductDetail";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -90,7 +91,7 @@ const ProductDetail = () => {
             />
             <h4 className="md:text-xl">Garantia de un año</h4>
           </div>
-          <Button product={product.product} />
+          <ButtonProductDetail product={product.product} />
         </div>
       </div>
 

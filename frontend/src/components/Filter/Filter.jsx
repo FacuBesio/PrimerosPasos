@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+/* eslint-disable react/prop-types */
+import  { useState, useEffect, useContext } from "react";
 import filterValidator from "../../utils/filter/filterValidator";
 import {
-  handlerClickBrands,
+  
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";

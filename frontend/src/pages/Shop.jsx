@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import  { useContext, useEffect, useState } from "react";
 import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
 import getProducts from "../utils/products/getProducts";
