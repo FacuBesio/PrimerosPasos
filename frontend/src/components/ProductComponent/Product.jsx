@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
 import sorterValidator from "../../utils/sorter/sorterValidator.js";
@@ -13,7 +13,7 @@ import {
   SearchContext,
   SortContext,
 } from "../../context/index.js";
-import Button from "../Button/Button.jsx";
+import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart.jsx";
 
 
 const ProductComponent = ({ loaderStates }) => {
@@ -143,14 +143,12 @@ const ProductComponent = ({ loaderStates }) => {
       {productsAvailable ? (
         <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allProducts.products.map((product) => (
-            <div key={product.id}> 
-  
-            <div
            
+            <div        
             key={product.id}
-            className="bg-white rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
+            className="bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
             >
-             <Button product={product} />
+             <ButtonAddToCart product={product} />
              <a  href={`/productDetail/${product.id}`}>
               <img
                 className="object-contain rounded-lg h-full p-2"
@@ -170,7 +168,7 @@ const ProductComponent = ({ loaderStates }) => {
                 </h2>
               </div>
             </div>
-            </div>
+           
           ))}
         </div>
       ) : (

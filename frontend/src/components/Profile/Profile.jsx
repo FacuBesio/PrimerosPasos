@@ -1,4 +1,4 @@
-import React from "react";
+
 import Marquee from "../Marquee/Marquee";
 import Title from "../Title/Title";
 import Navbar from "../Navbar/Navbar";
