@@ -45,10 +45,10 @@ const CartAside = ({ handleButtonCart }) => {
   };
 
   return (
-    <div className="z-[9999]">
+    <div className="z-[9999] ">
       <div className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm  transition-all">
         <div>
-          <div className="fixed justify-around py-2 items-center  right-0 top-0 h-screen w-[50%] md:w-[20%] bg-white   px-2 text-center flex flex-col gap-2 transition-all overflow-y-scroll ">
+          <div className="fixed justify-around py-2 items-center  right-0 top-0 h-screen w-[80%] sm:w-[70%] md:w-[50%] lg:w-[20%] bg-white   px-2 text-center flex flex-col gap-2 transition-all overflow-y-scroll ">
             <h2 className=" md:text-xl">Carrito de compras</h2>
 
             {cart.products.map((product) => (
