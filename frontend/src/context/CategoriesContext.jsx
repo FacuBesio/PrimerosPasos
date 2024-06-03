@@ -16,7 +16,7 @@ export const CategoriesProvider = ({ children }) => {
       filterCategories,
       setFilterCategories,
     }),
-    [allCategories, filterCategories]
+    [allCategories, categoryTag]
   );
 
   return (

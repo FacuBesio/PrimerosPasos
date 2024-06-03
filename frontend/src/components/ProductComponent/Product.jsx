@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
 import sorterValidator from "../../utils/sorter/sorterValidator.js";
@@ -15,27 +16,31 @@ import {
 } from "../../context/index.js";
 import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart.jsx";
 
-
 const ProductComponent = ({ loaderStates }) => {
-  const { categoryTag, setCategoryTag, setFilterCategories } =
-    useContext(CategoriesContext);
+  const navigate = useNavigate();
+  const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
-  const { searchBarTag,setSearchBarTag, setSearchBar  } = useContext(SearchContext);
-  const { setSorter } = useContext(SortContext);
-  const { setFilter } = useContext(FilterContext);
-
-  const [filterPrices, setFilterPrices] = useState([0, 0]);
+  const { searchBarTag, setSearchBarTag, setSearchBar } =
+    useContext(SearchContext);
+  const {
+    setFilterBrands,
+    setFilterPrices,
+    brandsTag,
+    setBrandsTag,
+    pricesTag,
+    setPricesTag,
+  } = useContext(FilterContext);
+  const {
+    setSorter,
+    sorterByPrice,
+    setSorterByPrice,
+    sorterByRating,
+    setSorterByRating,
+  } = useContext(SortContext);
 
   const { loading, delayLoading } = loaderStates;
-  const [sorterByPrice, setSorterByPrice] = useState("");
-  const [sorterByRating, setSorterByRating] = useState("");
-  const [brandsTag, setBrandsTag] = useState(null);
-  const [pricesTag, setPricesTag] = useState([]);
-  const allTagsSetters = { setBrandsTag, setPricesTag };
-
   const productsAvailable = allProducts?.products?.length > 0;
-  // const cantidad = 1;
 
   const onChangeSorterPrice = (event) => {
     setSorterByPrice(event.target.value);
@@ -55,9 +60,10 @@ const ProductComponent = ({ loaderStates }) => {
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     if (sorterQuery.sorterActive) {
+      // console.log("sorterQuery.result: ", sorterQuery.result);
       setSorter(sorterQuery.result);
     }
-  }, [sorterByPrice, sorterByRating, setSorter]);
+  }, [categoryTag, sorterByPrice, sorterByRating]);
 
   const handleRemoveSearchBarTag = () => {
     setSearchBarTag("");
@@ -66,20 +72,20 @@ const ProductComponent = ({ loaderStates }) => {
 
   const handleRemoveCategoryTag = () => {
     setCategoryTag("");
-    setFilterCategories([]);
+    setPage(1);
+    navigate(`/shop`);
   };
 
   const handleRemoveBrandTag = () => {
-    setBrandsTag(null);
-    setFilter((prevFilter) => ({
-      ...prevFilter,
-      brand: null,
-    }));
+    setFilterBrands("");
+    setBrandsTag("");
+    setPage(1);
   };
 
   const handleRemovePricesTag = () => {
     setPricesTag("");
     setFilterPrices([0, 0]);
+    setPage(1);
   };
 
   if (loading || delayLoading) {
@@ -89,14 +95,10 @@ const ProductComponent = ({ loaderStates }) => {
   return (
     <section className="w-full">
       <div className="flex w-full p-4 gap-4 items-center justify-between">
-        <Filter
-          allTagsSetters={allTagsSetters}
-          filterPrices={filterPrices}
-          setFilterPrices={setFilterPrices}
-        />
+        <Filter />
         {searchBarTag ? (
           <h2
-          onClick={handleRemoveSearchBarTag}
+            onClick={handleRemoveSearchBarTag}
             className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
           >
             {searchBarTag}
@@ -143,19 +145,18 @@ const ProductComponent = ({ loaderStates }) => {
       {productsAvailable ? (
         <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {allProducts.products.map((product) => (
-           
-            <div        
-            key={product.id}
-            className="bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
+            <div
+              key={product.id}
+              className="bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
             >
-             <ButtonAddToCart product={product} />
-             <a  href={`/productDetail/${product.id}`}>
-              <img
-                className="object-contain rounded-lg h-full p-2"
-                src={product.img}
-                alt={product.name}
-              />
-             </a>
+              <ButtonAddToCart product={product} />
+              <a href={`/productDetail/${product.id}`}>
+                <img
+                  className="object-contain rounded-lg h-full p-2"
+                  src={product.img}
+                  alt={product.name}
+                />
+              </a>
               <div className="text-center">
                 <h2 className="font-bold text-gray-400 text-[16px] md:text-[18px] lg:text-[22px] px-2">
                   {product.name}
@@ -168,7 +169,6 @@ const ProductComponent = ({ loaderStates }) => {
                 </h2>
               </div>
             </div>
-           
           ))}
         </div>
       ) : (

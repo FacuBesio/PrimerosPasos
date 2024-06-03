@@ -9,7 +9,12 @@ function sorterValidator(sorterByPrice, sorterByRating) {
     result: "",
   };
 
-  if (sorterByPrice !== "") {
+  if (
+    sorterByPrice === "" ||
+    sorterByPrice === "asc" ||
+    sorterByPrice === "desc"
+  ) {
+    console.log("sorterByPrice: ", sorterByPrice);
     const queryPrice = queryPriceGenerator(sorterByPrice);
     validator.sorterActive = true;
     if (completeQuery !== "") {
@@ -19,7 +24,11 @@ function sorterValidator(sorterByPrice, sorterByRating) {
     }
   }
 
-  if (sorterByRating !== "") {
+  if (
+    sorterByRating === "" ||
+    sorterByRating === "asc" ||
+    sorterByRating === "desc"
+  ) {
     const queryRating = queryRatingGenerator(sorterByRating);
     validator.sorterActive = true;
     if (completeQuery !== "") {

@@ -28,8 +28,6 @@ const ProductDetail = () => {
     return <div>Cargando...</div>;
   }
 
-  console.log("product:", product);
-
   return (
     <div className="overflow-hidden bg-[#eae0f5]">
       <Marquee />

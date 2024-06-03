@@ -1,28 +1,35 @@
 /* eslint-disable react/prop-types */
-import  { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import filterValidator from "../../utils/filter/filterValidator";
 import {
-  
+  BrandsContext,
+  FilterContext,
+  PagesContext,
+} from "../../context/index.js";
+import {
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
-import {
-  BrandsContext,
-  CategoriesContext,
-  FilterContext,
-} from "../../context/index.js";
 
-const Filter = ({ allTagsSetters, filterPrices,setFilterPrices }) => {
+const Filter = () => {
   const { allBrands } = useContext(BrandsContext);
-  const { setFilter } = useContext(FilterContext);
-  const { filterCategories } = useContext(CategoriesContext);
-  const [filterBrands, setFilterBrands] = useState([]);
- 
+  const { setPage } = useContext(PagesContext);
 
-  const allSetters = {
-    ...allTagsSetters,
+  const {
+    filterPrices,
+    setFilter,
+    filterBrands,
     setFilterBrands,
     setFilterPrices,
+    setBrandsTag,
+    setPricesTag,
+  } = useContext(FilterContext);
+
+  const allSetters = {
+    setPricesTag,
+    setFilterBrands,
+    setFilterPrices,
+    setPage,
   };
 
   const onChangeMinPrice = (event) => {
@@ -36,18 +43,16 @@ const Filter = ({ allTagsSetters, filterPrices,setFilterPrices }) => {
   const onBrandChange = (event) => {
     const selectedBrand = event.target.value;
     setFilterBrands([selectedBrand]);
+    setBrandsTag(selectedBrand)
+    setPage(1);
   };
 
   useEffect(() => {
-    const filterQuery = filterValidator(
-      filterBrands,
-      filterCategories,
-      filterPrices
-    );
+    const filterQuery = filterValidator(filterBrands, filterPrices);
     if (filterQuery.filterActive) {
       setFilter(filterQuery.result);
     }
-  }, [filterBrands, filterCategories, filterPrices, setFilter]);
+  }, [filterBrands, filterPrices, setFilter]);
 
   return (
     <section className="left-side flex items-center gap-2">
@@ -78,17 +83,15 @@ const Filter = ({ allTagsSetters, filterPrices,setFilterPrices }) => {
       </div>
       <select
         className="rounded-md w-full border border-red-200 text-[#5a5b5a] items-center"
-        name="sorterByPrice"
-        id="sorterByPrice"
+        name="sorterByBrand"
+        id="sorterByBrand"
         onChange={onBrandChange}
         value={filterBrands[0] || ""}
       >
         <option value="" disabled>
           Marca:
         </option>
-        <option value="">
-          All
-        </option>
+        <option value="">All</option>
         {allBrands?.brands?.map((brand) => (
           <option key={brand} className="text-[#5a5b5a]" value={brand}>
             {brand}

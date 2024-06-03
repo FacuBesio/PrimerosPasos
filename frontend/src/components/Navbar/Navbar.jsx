@@ -1,14 +1,19 @@
-import  { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useNavigate } from "react-router-dom";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
-import { CategoriesContext, SearchContext } from "../../context/index";
+import {
+  CategoriesContext,
+  PagesContext,
+  SearchContext,
+} from "../../context/index";
 import CartAside from "../CartAside/CartAside";
 import postUsers from "../../utils/users/postUsers";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { setPage } = useContext(PagesContext);
   const { searchBar, setSearchBar, setSearchBarTag } =
     useContext(SearchContext);
   const {
@@ -130,7 +135,8 @@ const Navbar = () => {
                 navigate,
                 setFilterCategories,
                 setCategoryTag,
-                category
+                category,
+                setPage
               )}
               className="text-[#5a5b5a] hover:text-[#Dbb1bc]  tracking-tighter cursor-pointer  rounded-md p-1 "
             >

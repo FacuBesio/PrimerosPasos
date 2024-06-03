@@ -2,14 +2,30 @@ const findAllCategories = require("../../../controllers/Categories/findAllCatego
 const formattedCategories = require("../../../utils/formatted/formattedCategories");
 const createBulkCategories = require("../../../controllers/Categories/createBulkCategories");
 const createBulkSubcategories = require("../../../controllers/Subcategories/createBulkSubcategories");
+const notFoundValidator = require("../../../utils/validators/products/notFoundValidator");
+
 
 const getCategories = async (req, res) => {
+  const { filterCategoryByName = "" } = req.query;
+  let categories;
+
   try {
-    let categories = await findAllCategories();
-    if (categories.length === 0) {
-      await createBulkCategories();
-      await createBulkSubcategories();
+    if (filterCategoryByName !== "") {
+      categories = await findAllCategories(filterCategoryByName);
+      if (categories.length === 0) {
+        return res.status(200).json( {
+          totalResults: 0,
+          categories: [],
+          message: `No se ha encontrado ninguna Categoría que coincida con el nombre '${filterCategoryByName}'`,
+      });
+      }
+    } else {
       categories = await findAllCategories();
+      if (categories.length === 0) {
+        await createBulkCategories();
+        await createBulkSubcategories();
+        categories = await findAllCategories();
+      }
     }
 
     categories = formattedCategories(categories);

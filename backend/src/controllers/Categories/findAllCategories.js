@@ -1,23 +1,28 @@
-const { Category, Product, Subcategory  } = require("../../db");
+const { Category, Product, Subcategory } = require("../../db");
 
+const findAllCategories = async (filterCategoryByName) => {
+  let whereClause = {};
 
-const findAllCategories = async () => {
+  if (filterCategoryByName && filterCategoryByName !== "") {
+    whereClause.name = filterCategoryByName;
+  }
 
   const categories = await Category.findAll({
+    where: whereClause,
     include: [
       {
         model: Product,
-        attributes: ["name"], 
+        attributes: ["name"],
         through: {
-          attributes: [], 
+          attributes: [],
         },
       },
       {
         model: Subcategory,
-        attributes: ["id", "name"], 
+        attributes: ["id", "name"],
       },
     ],
-    order: [['id', 'ASC']],
+    order: [["id", "ASC"]],
   });
 
   return categories;
