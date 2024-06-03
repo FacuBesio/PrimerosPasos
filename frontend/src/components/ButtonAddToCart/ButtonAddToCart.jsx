@@ -6,8 +6,6 @@ import cartFill from "../../assets/cartFill.png"
 const Button = ({ product }) => {
   const { isAuthenticated } = useAuth0();
 
-
-
   const cantidad = 1;
   const { id, brand, name, price, stock, img } = product;
   const productToAdd = { id, brand, name, price, stock, img, cantidad };

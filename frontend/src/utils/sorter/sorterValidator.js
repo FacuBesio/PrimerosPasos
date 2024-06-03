@@ -14,7 +14,7 @@ function sorterValidator(sorterByPrice, sorterByRating) {
     sorterByPrice === "asc" ||
     sorterByPrice === "desc"
   ) {
-    console.log("sorterByPrice: ", sorterByPrice);
+
     const queryPrice = queryPriceGenerator(sorterByPrice);
     validator.sorterActive = true;
     if (completeQuery !== "") {
