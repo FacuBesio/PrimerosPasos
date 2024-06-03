@@ -113,7 +113,7 @@ const PurchaseCart = () => {
                     type={e.type}
                     name={e.name}
                     value={e.value}
-                    onChange=""
+                    // onChange=""
                     placeholder={e.placeholder}
                     className="border-2 border-red-200 bg-tertiary p-1 rounded-lg max-w-[220px]  "
                   />

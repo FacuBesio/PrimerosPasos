@@ -42,9 +42,10 @@ const ProductDetail = () => {
           <img className=" rounded-lg" src={product.product.img} alt="Imagen del producto" />
         </div>
         <div className="flex flex-col w-full gap-4 pl-4">
-          <h2 className=" text-2xl font-bold pb-12 text-center">
+          <h2 className=" text-2xl font-bold py-4  sm:pb-12 text-center">
             {product.product.name}
           </h2>
+          <h3 className=" md:text-xl">{product.product.description}</h3>
           <h3 className=" md:text-xl">Rating: {product.product.rating}</h3>
           <h2 className=" md:text-xl">Precio: {product.product.price}</h2>
           <h2 className=" md:text-xl flex">
@@ -68,7 +69,7 @@ const ProductDetail = () => {
           <h2 className=" md:text-xl">Talle: {product.product.talle}</h2>
           <h3 className=" md:text-xl">Stock: {product.product.stock}</h3>
 
-          <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-col sm:flex-row  gap-2">
             <img
               className="w-[36px] h-[36px]"
               src="/src/assets/disponible.png"
@@ -81,7 +82,7 @@ const ProductDetail = () => {
               src="/src/assets/entrega.png"
               alt="Envío gratis"
             />
-            <h4 className="md:text-xl">Envio gratis</h4>
+            <h4 className="md:text-xl ">Envio gratis</h4>
             <img
               className="w-[36px] h-[36px]"
               src="/src/assets/seguro.png"

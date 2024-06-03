@@ -12,26 +12,7 @@ const CartMain = () => {
   const cart = JSON.parse(window.localStorage.getItem("cart"));
   const [newProductsRefresh, setNewProductsRefresh] = useState(false);
 
-  const [quantities, setQuantities] = useState(
-    cart.products.reduce((acc, product) => {
-      acc[product.id] = product.cantidad;
-      return acc;
-    }, {})
-  );
 
-  const incrementQuantity = (productId) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: prevQuantities[productId] + 1,
-    }));
-  };
-
-  const decrementQuantity = (productId) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: Math.max(prevQuantities[productId] - 1, 1), // Evitar que la cantidad sea menor que 1
-    }));
-  };
 
   const handlerRemoveProducts = (product) => {
     const newProducts = cart.products.filter((e) => e.id !== product.id);
@@ -48,10 +29,10 @@ const CartMain = () => {
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex flex-row bg-white border-t-2 border-red-200 justify-center h-screen  p-2  gap-2">
-        <div className=" flex flex-col  bg-gray-100  p-2 px-4 rounded-md h-fit">
+      <div className="flex flex-row bg-white border-t-2 border-red-200 justify-center h-screen  p-2  gap-2 overflow-auto">
+        <div className=" flex flex-col  bg-gray-100  p-2 px-4 rounded-md h-fit border border-red-200 ">
           <h2 className=" md:text-md text-center">
-            Hola <span>Luciano</span> revisa tu carrito antes de realizar la
+            Hola <span>{user.name}</span> revisa tu carrito antes de realizar la
             compra.
           </h2>
 
@@ -59,7 +40,7 @@ const CartMain = () => {
             {cart.products.length > 0 ? (
               cart.products.map((product) => (
                 <div
-                  className="flex justify-between p-2 rounded-md m-2 w-full border gap-4"
+                  className="flex justify-between p-2 rounded-md m-2 w-full border gap-4 "
                   key={product.id}
                 >
                   <img
@@ -99,7 +80,7 @@ const CartMain = () => {
             )}
           </div>
         </div>
-        <div className=" flex flex-col bg-gray-100 h-fit p-2 rounded-md gap-4 justify-center items-center">
+        <div className=" flex flex-col bg-gray-100 h-fit p-2 rounded-md gap-4 justify-center items-center border border-red-200 ">
           <h2 className="border-b">Resumen de compra:</h2>
          
           <h2>Total : $150.000</h2>
