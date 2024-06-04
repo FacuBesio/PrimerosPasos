@@ -1,42 +1,33 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import addToCart from "../../utils/cart/addToCart";
+import subtractToCart from "../../utils/cart/subtractToCart";
 
-const ButtonQuantities = ({ product }) => {
-  const cart = JSON.parse(window.localStorage.getItem("cart"));
+const ButtonQuantities = ({ product, cart, setCart}) => {
+  const { isAuthenticated } = useAuth0();
 
-  const [quantities, setQuantities] = useState(
-    cart.products.reduce((acc, product) => {
-      acc[product.id] = product.cantidad;
-      return acc;
-    }, {})
-  );
-
-  const incrementQuantity = (productId) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: prevQuantities[productId] + 1,
-    }));
+  const incrementQuantity = (product) => {
+    const updatedProducts = addToCart(product, isAuthenticated);
+    setCart({ ...cart, products: updatedProducts });
   };
 
-  const decrementQuantity = (productId) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: Math.max(prevQuantities[productId] - 1, 1), // Evitar que la cantidad sea menor que 1
-    }));
+  const decrementQuantity = (product) => {
+    const updatedProducts = subtractToCart(product, isAuthenticated);
+    setCart({ ...cart, products: updatedProducts });
   };
 
   return (
     <div>
       <div className="flex items-center">
         <button
-          onClick={() => decrementQuantity(product.id)}
+          onClick={() => decrementQuantity(product)}
           className="px-2 py-1 bg-red-200 rounded-md"
         >
           -
         </button>
-        <h3 className="text-sm mx-2">Cantidad: {quantities[product.id]}</h3>
+        <h3 className="text-sm mx-2">Cantidad: {product.cantidad}</h3>
         <button
-          onClick={() => incrementQuantity(product.id)}
+          onClick={() => incrementQuantity(product)}
           className="px-2 py-1 bg-green-200 rounded-md"
         >
           +

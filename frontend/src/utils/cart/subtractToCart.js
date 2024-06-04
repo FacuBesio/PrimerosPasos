@@ -25,6 +25,8 @@ const addToCart = (productToAdd, isAuthenticated) => {
       ? postOrder(user.id, productToAdd)
       : window.localStorage.setItem("cart", JSON.stringify(cart));
   }
+
+  return updatedProducts;
 };
 
 export default addToCart;

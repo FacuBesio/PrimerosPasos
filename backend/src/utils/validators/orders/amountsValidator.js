@@ -11,7 +11,7 @@ const amountsValidator = async (products) => {
     const product_aux = await findProductbyId(id_product);
     if (product_aux) {
       const { stock } = product_aux;
-      const stockValidator = stock > amount;
+      const stockValidator = stock >= amount;
       if (!stockValidator) {
         return {
           error: true,

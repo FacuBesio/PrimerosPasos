@@ -1,17 +1,19 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import putOrder from "../../utils/cart/putOrder";
 import crossRed from "../../assets/crossRed.png";
 import { Link } from "react-router-dom";
 import ButtonQuantities from "../../components/ButtonQuantities/ButtonQuantities";
 import Profile from "../../components/Profile/Profile";
+import getUserById from "../../utils/users/getUserById";
 
 const PurchaseCart = () => {
   const { isAuthenticated } = useAuth0();
-  const user = JSON.parse(window.localStorage.getItem("userData"));
+  // const user = JSON.parse(window.localStorage.getItem("userData"));
   const cart = JSON.parse(window.localStorage.getItem("cart"));
   const [newProductsRefresh, setNewProductsRefresh] = useState(false);
+  const [user, setUser] = useState();
 
   const handlerRemoveProducts = (product) => {
     const newProducts = cart.products.filter((e) => e.id !== product.id);
@@ -22,7 +24,7 @@ const PurchaseCart = () => {
     setNewProductsRefresh(!newProductsRefresh);
   };
 
-  console.log("user: ", user);
+  console.log("userState: ", user);
 
   const formLabels = [
     {
@@ -90,6 +92,11 @@ const PurchaseCart = () => {
     },
   ];
 
+  useEffect(() => {
+    const user = JSON.parse(window.localStorage.getItem("userData"));
+    getUserById(user.id, setUser);
+   }, []);
+
   return (
     <div>
       {" "}
@@ -146,8 +153,7 @@ const PurchaseCart = () => {
                 </h3>
                 <h3 className="text-sm">Stock: {product.stock}</h3>
                 <h3 className="text-sm">Precio: ${product.price}</h3>
-                <ButtonQuantities product={product} />
-              </div>
+                 </div>
               <div className="flex  ">
                 <button
                   className="flex w-full"
