@@ -19,6 +19,8 @@ const Shop = () => {
 
   const productsParams = { filter, page, searchBar, sorter };
 
+  console.log("originUrl: ", originUrl);
+
   return (
     <>
       <Routes>

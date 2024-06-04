@@ -26,7 +26,7 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
     setOriginUrl(url);
     getBrands(setAllBrands);
     setLoading(false);
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
