@@ -8,7 +8,7 @@ const getProductsByCategories = async (
   searchBar,
   filter,
   sorter,
-  id
+  name
 ) => {
   const querys = querysGenerator(page, searchBar, filter, sorter);
   let pageSize;
@@ -21,7 +21,7 @@ const getProductsByCategories = async (
 
   try {
     const getCategoryByIdResponse = await axios.get(
-      `/categories?filterCategoryByName=${id}`
+      `/categories?filterCategoryByName=${name}`
     );
      const { categories } = getCategoryByIdResponse.data;
     setCategoryTag(categories[0].name);

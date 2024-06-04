@@ -1,27 +1,17 @@
-import  { useEffect, useState } from "react";
-import {  Footer, Marquee, Navbar, Title } from "../components";
-import {  useParams } from "react-router-dom";
-import axios from "axios";
-import ButtonProductDetail from "../components/ButtonProductDetail/ButtonProductDetail";
+import { useEffect, useState } from "react";
+import { Footer, Marquee, Navbar, Title } from "../../components";
+import { useNavigate, useParams } from "react-router-dom";
+import getProductById from "../../utils/products/getProductById";
+import ButtonProductDetail from "../../components/ButtonProductDetail/ButtonProductDetail";
 
-const ProductDetail = () => {
+const ProductDetail = ({ originUrl }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/products/${id}`
-        );
-        setProduct(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error al obtener datos:", error);
-      }
-    }
-    fetchData();
+    getProductById(id, setProduct, setLoading);
   }, [id]);
 
   if (loading || !product) {
@@ -39,7 +29,12 @@ const ProductDetail = () => {
         key={product.product.id}
       >
         <div className="w-full md:border-r">
-          <img className=" rounded-lg" src={product.product.img} alt="Imagen del producto" />
+          <h3 onClick={() => navigate(`${originUrl}`)}>volver</h3>
+          <img
+            className=" rounded-lg"
+            src={product.product.img}
+            alt="Imagen del producto"
+          />
         </div>
         <div className="flex flex-col w-full gap-4 pl-4">
           <h2 className=" text-2xl font-bold py-4  sm:pb-12 text-center">

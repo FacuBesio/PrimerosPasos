@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
@@ -60,7 +60,6 @@ const ProductComponent = ({ loaderStates }) => {
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     if (sorterQuery.sorterActive) {
-      // console.log("sorterQuery.result: ", sorterQuery.result);
       setSorter(sorterQuery.result);
     }
   }, [categoryTag, sorterByPrice, sorterByRating]);
@@ -150,13 +149,14 @@ const ProductComponent = ({ loaderStates }) => {
               className="bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
             >
               <ButtonAddToCart product={product} />
-              <a href={`/productDetail/${product.id}`}>
-                <img
-                  className="object-contain rounded-lg h-full p-2"
-                  src={product.img}
-                  alt={product.name}
-                />
-              </a>
+
+              <img
+                className="object-contain rounded-lg h-full p-2"
+                src={product.img}
+                alt={product.name}
+                onClick={() => navigate(`/shop/productDetail/${product.id}`)}
+              />
+
               <div className="text-center">
                 <h2 className="font-bold text-gray-400 text-[16px] md:text-[18px] lg:text-[22px] px-2">
                   {product.name}

@@ -4,11 +4,8 @@ import { AditionalInfo, Categories, Footer, Hero } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Shop from "../src/pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
-
-import ProductDetail from "./pages/ProductDetail.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import appInitialzer from "./utils/app/appInitialzer.js";
-
 import CartMain from "./pages/CartPages/Cart.jsx";
 import CartPurchase from "./pages/CartPages/CartPurchase.jsx"
 
@@ -33,7 +30,6 @@ function App() {
           }
         />
         <Route path="/shop/*" element={<Shop />} />
-        <Route path="/productDetail/:id" element={<ProductDetail />} />
         
         <Route path="/cart" element={<CartMain />} />
         <Route path="/cart/purchase" element={<CartPurchase  />} />

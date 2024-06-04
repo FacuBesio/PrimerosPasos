@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";
 import getProductsByCategories from "../../utils/products/getProductsByCategories";
@@ -8,28 +8,22 @@ import getBrands from "../../utils/brands/getBrands";
 import {
   BrandsContext,
   CategoriesContext,
-  FilterContext,
-  PagesContext,
   ProductsContext,
-  SearchContext,
-  SortContext,
 } from "../../context/index";
 
-const ProductsByCategory = () => {
-  const { id } = useParams();
+const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
+  const { filter, page, searchBar, sorter } = productsParams;
+  const url = useLocation().pathname;
+  const { name } = useParams();
   const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { setAllBrands } = useContext(BrandsContext);
-  const { filter } = useContext(FilterContext);
-  const { page } = useContext(PagesContext);
   const { setAllProducts } = useContext(ProductsContext);
-  const { searchBar } = useContext(SearchContext);
-  const { sorter } = useContext(SortContext);
-
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
   const loaderStates = { loading, delayLoading };
 
   useEffect(() => {
+    setOriginUrl(url);
     getBrands(setAllBrands);
     setLoading(false);
   }, []);
@@ -49,9 +43,8 @@ const ProductsByCategory = () => {
       searchBar,
       filter,
       sorter,
-      id
+      name
     );
-
   }, [page, searchBar, categoryTag, filter, sorter]);
 
   return (

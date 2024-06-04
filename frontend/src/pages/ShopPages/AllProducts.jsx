@@ -6,22 +6,14 @@ import getProducts from "../../utils/products/getProducts";
 import getBrands from "../../utils/brands/getBrands";
 import {
   BrandsContext,
-  FilterContext,
-  PagesContext,
   ProductsContext,
-  SearchContext,
-  SortContext,
 } from "../../context/index";
 
 
-const AllProducts = () => {
+const AllProducts = ({productsParams}) => {
+  const { filter, page, searchBar, sorter } = productsParams
   const { setAllBrands } = useContext(BrandsContext);
-  const { filter } = useContext(FilterContext);
-  const { page } = useContext(PagesContext);
-  const { setAllProducts } = useContext(ProductsContext);
-  const { searchBar } = useContext(SearchContext);
-  const { sorter } = useContext(SortContext);
-
+   const { setAllProducts } = useContext(ProductsContext);
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
   const loaderStates = { loading, delayLoading };
