@@ -14,6 +14,8 @@ const putOrder = async (order_id, productToRemove, productToAdd) => {
       productsToAdd: productsToAdd,
       productsToRemove: productsToRemove,
     });
+    console.log("response: ", response.data);
+
     // const order = response.data.order;
     // if (order) {
     //   const cart = { id: order.id, products: order.products };

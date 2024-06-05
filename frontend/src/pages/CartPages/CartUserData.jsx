@@ -1,18 +1,22 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import putOrder from "../../utils/cart/putOrder";
 import crossRed from "../../assets/crossRed.png";
 import { Link } from "react-router-dom";
-import ButtonQuantities from "../../components/ButtonQuantities/ButtonQuantities";
+import getUserById from "../../utils/users/getUserById";
+import formLabelsPersonalInfo from "../../utils/cart/formLabelsPersonalInfo";
+import formLabelsShipment from "../../utils/cart/formLabelsShipment";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
 
-const CartMain = () => {
+
+const CartUserData = () => {
   const { isAuthenticated } = useAuth0();
-  const user = JSON.parse(window.localStorage.getItem("userData"));
   const [cart, setCart] = useState(() => {
     return JSON.parse(window.localStorage.getItem("cart"));
   });
   const [total, setTotal] = useState(0);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
@@ -24,6 +28,8 @@ const CartMain = () => {
       setTotal(newTotal);
     };
     calculateTotal();
+    const userLocalStorage = JSON.parse(window.localStorage.getItem("userData"));
+    getUserById(userLocalStorage.id, setUser);
   }, [cart]);
 
   return (
@@ -34,23 +40,21 @@ const CartMain = () => {
       <Navbar />
       <div className="flex flex-col bg-white  justify-center h-screen gap-2 overflow-auto">
         <div className="pt-[35px] w-full">
-          <div className="bg-[#FAFAFA] h-24 flex justify-center items-center gap-4 w-full">
+          <div className="h-24 bg-[#FAFAFA] flex justify-center items-center gap-4 w-full">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="bg-black text-white w-6 h-6 flex items-center justify-center rounded-full">
                 1
               </div>
-              <h1 className="text-xl uppercase">Productos Carrito</h1>
+              <Link to={"/cart"}>
+                <h1 className="text-xl uppercase">Productos Carrito</h1>
+              </Link>
             </div>
-            <div className="h-[1px] w-[150px] bg-[#ccc]" />
+            <div className="h-[1px] w-[150px] bg-black" />
             <div className="flex items-center gap-2 cursor-pointer">
-              <div className="bg-[#ccc] text-[white] w-6 h-6 flex items-center justify-center rounded-full">
+              <div className="bg-black text-[white] w-6 h-6 flex items-center justify-center rounded-full">
                 2
               </div>
-              <Link to={"/cart/userdata"}>
-                <h1 className="text-xl uppercase text-[#ccc]">
-                  Datos de Envío
-                </h1>
-              </Link>
+              <h1 className="text-xl uppercase">Datos de Envío</h1>
             </div>
             <div className="h-[1px] w-[150px] bg-[#ccc]" />
             <div className="flex items-center gap-2 cursor-pointer">
@@ -61,10 +65,69 @@ const CartMain = () => {
             </div>
           </div>
           <h1 className="text-center text-3xl text-black-800 font-semibold mt-4">
-            Confirma los productos de tu compra antes de continuar...
+            Estas a un paso! Revisa tus datos personales y completa
+            los datos de envío
           </h1>
         </div>
         <div className="flex flex-row bg-white justify-center h-screen  p-2  gap-2 overflow-auto">
+          <section className="border border-red-200  bg-gray-100 rounded-md">
+            <h1 className="text-center text-xl text-[#333] p-2">
+              Datos Personales
+            </h1>
+            <div className="">
+              <form
+                className=" p-6 grid  md:grid-cols-2 gap-2 justify-items-center items-center w-fit "
+                action=""
+              >
+                {formLabelsPersonalInfo.map((e) => (
+                  <label key={e.name} className="flex flex-col">
+                    <span className="text-[#5a5b5a] ">{e.spanName}</span>
+                    <input
+                      type={e.type}
+                      name={e.name}
+                      value={e.value}
+                      onChange=""
+                      placeholder={e.placeholder}
+                      className="border-2 border-red-200 bg-tertiary p-1 rounded-lg max-w-[220px]  "
+                    />
+                  </label>
+                ))}
+                <button className="flex bg-red-300  w-fit items-center h-fit max-h-[24px] p-4 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]">
+                  Realizar cambios
+                </button>
+              </form>
+            </div>
+          </section>
+
+          <section className="border border-red-200  bg-gray-100 rounded-md">
+            <h1 className="text-center text-xl text-[#333] p-2">
+              Datos de Envío
+            </h1>
+            <div className="">
+              <form
+                className=" p-6 grid  md:grid-cols-2 gap-2 justify-items-center items-center w-fit "
+                action=""
+              >
+                {formLabelsShipment.map((e) => (
+                  <label key={e.name} className="flex flex-col">
+                    <span className="text-[#5a5b5a] ">{e.spanName}</span>
+                    <input
+                      type={e.type}
+                      name={e.name}
+                      value={e.value}
+                      onChange=""
+                      placeholder={e.placeholder}
+                      className="border-2 border-red-200 bg-tertiary p-1 rounded-lg max-w-[220px]  "
+                    />
+                  </label>
+                ))}
+                <button className="flex bg-red-300  w-fit items-center h-fit max-h-[24px] p-4 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]">
+                  Realizar cambios
+                </button>
+              </form>
+            </div>
+          </section>
+
           <div className=" flex flex-col  bg-gray-100  p-2 px-4 rounded-md h-fit border border-red-200 ">
             <div>
               <table className="text-center w-full relative">
@@ -72,7 +135,6 @@ const CartMain = () => {
                   <tr className="h-16 uppercase">
                     <th className="px-4 py-2">Producto</th>
                     <th className="px-4 py-2">Precio</th>
-                    <th className="px-4 py-2">Cantidad</th>
                     <th className="px-4 py-2">Subtotal</th>
                   </tr>
                 </thead>
@@ -94,14 +156,9 @@ const CartMain = () => {
                           </h3>
                         </td>
                         <td className="p-2">
-                          <h3 className="text-sm">${product.price} </h3>
-                        </td>
-                        <td className="p-2">
-                          <ButtonQuantities
-                            product={product}
-                            cart={cart}
-                            setCart={setCart}
-                          />
+                          <h3 className="text-sm">
+                            ${product.price} x {product.cantidad}{" "}
+                          </h3>
                         </td>
                         <td className="p-2">
                           <h3 className="text-sm">
@@ -140,6 +197,7 @@ const CartMain = () => {
               </table>
             </div>
           </div>
+          
           <div className=" flex flex-col bg-gray-100 h-fit p-2 rounded-md gap-4 justify-center items-center border border-red-200 ">
             <h2>Total : ${total}</h2>
             <h3>
@@ -149,7 +207,7 @@ const CartMain = () => {
               className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
               to={"/cart/userdata"}
             >
-              Comprar
+              Confirmar Comprar
             </Link>
             <Link
               className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
@@ -165,4 +223,4 @@ const CartMain = () => {
   );
 };
 
-export default CartMain;
+export default CartUserData;
