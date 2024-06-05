@@ -69,7 +69,7 @@ const Navbar = () => {
             href="/shop"
             className="md:text-xl hover:text-[#DBB1BC] hover:scale-105 text-[#5a5b5a]  "
           >
-            Productos
+            Shop
           </a>
           <a
             href="/contacto"
