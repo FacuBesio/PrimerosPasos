@@ -66,7 +66,8 @@ const ProductComponent = ({ loaderStates }) => {
 
   const handleRemoveSearchBarTag = () => {
     setSearchBarTag("");
-    setSearchBar([]);
+    setSearchBar("");
+    setPage(1);
   };
 
   const handleRemoveCategoryTag = () => {

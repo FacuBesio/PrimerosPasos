@@ -9,7 +9,6 @@ import formLabelsPersonalInfo from "../../utils/cart/formLabelsPersonalInfo";
 import formLabelsShipment from "../../utils/cart/formLabelsShipment";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
 
-
 const CartUserData = () => {
   const { isAuthenticated } = useAuth0();
   const [cart, setCart] = useState(() => {
@@ -28,7 +27,9 @@ const CartUserData = () => {
       setTotal(newTotal);
     };
     calculateTotal();
-    const userLocalStorage = JSON.parse(window.localStorage.getItem("userData"));
+    const userLocalStorage = JSON.parse(
+      window.localStorage.getItem("userData")
+    );
     getUserById(userLocalStorage.id, setUser);
   }, [cart]);
 
@@ -65,8 +66,8 @@ const CartUserData = () => {
             </div>
           </div>
           <h1 className="text-center text-3xl text-black-800 font-semibold mt-4">
-            Estas a un paso! Revisa tus datos personales y completa
-            los datos de envío
+            Estas a un paso! Revisa tus datos personales y completa los datos de
+            envío
           </h1>
         </div>
         <div className="flex flex-row bg-white justify-center h-screen  p-2  gap-2 overflow-auto">
@@ -80,35 +81,6 @@ const CartUserData = () => {
                 action=""
               >
                 {formLabelsPersonalInfo.map((e) => (
-                  <label key={e.name} className="flex flex-col">
-                    <span className="text-[#5a5b5a] ">{e.spanName}</span>
-                    <input
-                      type={e.type}
-                      name={e.name}
-                      value={e.value}
-                      onChange=""
-                      placeholder={e.placeholder}
-                      className="border-2 border-red-200 bg-tertiary p-1 rounded-lg max-w-[220px]  "
-                    />
-                  </label>
-                ))}
-                <button className="flex bg-red-300  w-fit items-center h-fit max-h-[24px] p-4 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]">
-                  Realizar cambios
-                </button>
-              </form>
-            </div>
-          </section>
-
-          <section className="border border-red-200  bg-gray-100 rounded-md">
-            <h1 className="text-center text-xl text-[#333] p-2">
-              Datos de Envío
-            </h1>
-            <div className="">
-              <form
-                className=" p-6 grid  md:grid-cols-2 gap-2 justify-items-center items-center w-fit "
-                action=""
-              >
-                {formLabelsShipment.map((e) => (
                   <label key={e.name} className="flex flex-col">
                     <span className="text-[#5a5b5a] ">{e.spanName}</span>
                     <input
@@ -197,7 +169,7 @@ const CartUserData = () => {
               </table>
             </div>
           </div>
-          
+
           <div className=" flex flex-col bg-gray-100 h-fit p-2 rounded-md gap-4 justify-center items-center border border-red-200 ">
             <h2>Total : ${total}</h2>
             <h3>

@@ -34,10 +34,12 @@ const Navbar = () => {
   const onChangeSearchBar = (event) => {
     setSearchBar(event.target.value);
     setSearchBarTag(event.target.value);
+    setPage(1)
   };
 
   const onSubmitSearchBar = (event) => {
     event.preventDefault();
+    setPage(1)
     navigate("/shop");
   };
 

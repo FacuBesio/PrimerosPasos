@@ -5,6 +5,7 @@ import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProdu
 import crossRed from "../../assets/crossRed.png";
 import { Link } from "react-router-dom";
 import ButtonQuantities from "../ButtonQuantities/ButtonQuantities";
+import CartIcon from "../../assets/asideCart.png";
 
 const CartAside = ({ handleButtonCart }) => {
   const { isAuthenticated } = useAuth0();
@@ -22,6 +23,17 @@ const CartAside = ({ handleButtonCart }) => {
       <div className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm transition-all">
         <div>
           <div className="fixed justify-around py-2 items-center right-0 top-0 h-screen w-[80%] sm:w-[70%] md:w-[50%] lg:w-[20%] bg-white px-2 text-center flex flex-col gap-2 transition-all overflow-y-scroll">
+            
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              <div className="absolute top-0 right-0 w-5 h-5 bg-pink-200 rounded-full flex items-center justify-center">
+                <p>
+              {cart.products.length > 0
+                ? cart.products.length
+                : "0"}
+            </p>
+              </div>
+              <img src={CartIcon} className="w-10" />
+            </div>
             <h2 className="md:text-xl">Carrito de compras</h2>
             {cart.products.map((product) => (
               <div

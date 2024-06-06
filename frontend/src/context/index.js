@@ -1,4 +1,5 @@
 import { BrandsContext } from "./BrandsContext";
+import { CartContext } from "./CartContext";
 import { CategoriesContext } from "./CategoriesContext";
 import { FilterContext } from "./FilterContext";
 import { PagesContext } from "./PagesContext";
@@ -8,6 +9,7 @@ import { SortContext } from "./SortContext";
 
 export {
   BrandsContext,
+  CartContext,
   CategoriesContext,
   FilterContext,
   PagesContext,
