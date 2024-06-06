@@ -55,7 +55,7 @@ const CartUserData = () => {
               <div className="bg-black text-[white] w-6 h-6 flex items-center justify-center rounded-full">
                 2
               </div>
-              <h1 className="text-xl uppercase">Datos de Envío</h1>
+              <h1 className="text-xl uppercase">Datos Personales</h1>
             </div>
             <div className="h-[1px] w-[150px] bg-[#ccc]" />
             <div className="flex items-center gap-2 cursor-pointer">
