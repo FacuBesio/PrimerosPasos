@@ -177,6 +177,7 @@ const CartUserData = () => {
             </h3>
             <Link
               className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
+              // onClick={makePayment}
               to={"/cart/userdata"}
             >
               Confirmar Comprar

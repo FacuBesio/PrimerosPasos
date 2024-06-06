@@ -2,12 +2,12 @@ import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import crossRed from "../../assets/crossRed.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ButtonQuantities from "../../components/ButtonQuantities/ButtonQuantities";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
 
 const CartMain = () => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const user = JSON.parse(window.localStorage.getItem("userData"));
   const [cart, setCart] = useState(() => {
     return JSON.parse(window.localStorage.getItem("cart"));
@@ -46,11 +46,17 @@ const CartMain = () => {
               <div className="bg-[#ccc] text-[white] w-6 h-6 flex items-center justify-center rounded-full">
                 2
               </div>
-              <Link to={"/cart/userdata"}>
+              {isAuthenticated ? (
+                <Link to="/cart/userdata">
+                  <h1 className="text-xl uppercase text-[#ccc]">
+                    Datos Personales
+                  </h1>
+                </Link>
+              ) : (
                 <h1 className="text-xl uppercase text-[#ccc]">
-                  Datos de Envío
+                  Datos Personales
                 </h1>
-              </Link>
+              )}
             </div>
             <div className="h-[1px] w-[150px] bg-[#ccc]" />
             <div className="flex items-center gap-2 cursor-pointer">
@@ -145,12 +151,22 @@ const CartMain = () => {
             <h3>
               Envio: <span className="text-green-400">gratis</span>
             </h3>
-            <Link
-              className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
-              to={"/cart/userdata"}
-            >
-              Comprar
-            </Link>
+            {isAuthenticated ? (
+              <NavLink
+                to="/cart/userdata"
+                className="border-0 border p-2 rounded-md hover:bg-lime-300 bg-red-200"
+              >
+                Comprar
+              </NavLink>
+            ) : (
+              <button
+                onClick={loginWithRedirect}
+                className="bg-stone-300 border p-2 rounded-md hover:bg-[#DBB1BC]"
+              >
+                Iniciar Sesión para comprar
+              </button>
+            )}
+
             <Link
               className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
               to={"/shop"}

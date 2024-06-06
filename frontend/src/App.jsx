@@ -1,16 +1,14 @@
 import "./App.css";
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { AditionalInfo, Categories, Footer, Hero } from "./components";
 import { Routes, Route } from "react-router-dom";
 import Shop from "../src/pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import appInitialzer from "./utils/app/appInitialzer.js";
-import CartMain from "./pages/CartPages/Cart.jsx";
-import CartUserData from "./pages/CartPages/CartUserData.jsx"
+import Cart from "./pages/Cart.jsx";
 
 function App() {
-  
   useEffect(() => {
     appInitialzer();
   }, []);
@@ -30,16 +28,10 @@ function App() {
           }
         />
         <Route path="/shop/*" element={<Shop />} />
-        
-        <Route path="/cart" element={<CartMain />} />
-        <Route path="/cart/userdata" element={<CartUserData  />} />
-        
+        <Route path="/cart/*" element={<Cart />} />
         <Route path="/contacto" element={<Contact />} />
-       
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/personalInfo" element={<Profile />} />
-
-        
       </Routes>
     </main>
   );
