@@ -1,23 +1,24 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import putOrder from "../../utils/cart/putOrder";
 import crossRed from "../../assets/crossRed.png";
 import { Link } from "react-router-dom";
 import getUserById from "../../utils/users/getUserById";
-import formLabelsPersonalInfo from "../../utils/cart/formLabelsPersonalInfo";
 import handlerFormLabel from "../../utils/cart/formLabelsPersonalInfo";
-import formLabelsShipment from "../../utils/cart/formLabelsShipment";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import createPreference from "../../utils/mercadoPago/createPreference";
+import { MP_ACCESS_TOKEN_PUBLIC } from "../../config/config";
 
 const CartUserData = () => {
-
+  initMercadoPago(MP_ACCESS_TOKEN_PUBLIC, { locale: "es-AR" });
   const { isAuthenticated } = useAuth0();
   const [cart, setCart] = useState(() => {
     return JSON.parse(window.localStorage.getItem("cart"));
   });
   const [total, setTotal] = useState(0);
   const [user, setUser] = useState();
+  const [preferenceId, setPreferenceId] = useState();
 
   const formLabel = handlerFormLabel(user)
 
@@ -36,6 +37,11 @@ const CartUserData = () => {
     );
     getUserById(userLocalStorage.id, setUser);
   }, [cart]);
+
+  const handleBuy = async (products) => {
+ const id = await createPreference(products);
+ id && setPreferenceId(id)
+  }
 
   return (
     <div className="">
@@ -181,11 +187,18 @@ const CartUserData = () => {
             </h3>
             <Link
               className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
-              // onClick={makePayment}
+              onClick={() => handleBuy(cart.products)}
               to={"/cart/userdata"}
             >
               Confirmar Comprar
             </Link>
+            {preferenceId && (
+              <Wallet
+                initialization={{ preferenceId: preferenceId }}
+                customization={{ texts: { valueProp: "smart_option" } }}
+              />
+            )}
+
             <Link
               className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
               to={"/shop"}

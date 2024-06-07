@@ -1,17 +1,15 @@
 const express = require("express");
-const getPayment = require("./routerControllers/PaymentSession/getPayment")
-const getpaymentById = require("./routerControllers/PaymentSession/getpaymentById")
-const getWebhooks = require("./routerControllers/PaymentSession/getWebhooks")
-const postPaymentSession = require("./routerControllers/PaymentSession/postPaymentSession")
+const postCreatePreference = require("./routerControllers/PaymentSession/postCreatePreference")
+const postWebHook = require("./routerControllers/PaymentSession/postWebHook")
 const routerPaymentSession = express.Router();
 
 
 //? GET "/paymentSession"
-routerPaymentSession.get("/payment", getPayment)
-routerPaymentSession.get("/payment/:id", getpaymentById)
-routerPaymentSession.post("/webhooks", getWebhooks)
+// routerPaymentSession.get("/payment/:id", getpaymentById)
+
 
 //? POST "/paymentSession"
-routerPaymentSession.post("/", postPaymentSession)
+routerPaymentSession.post("/create_preference", postCreatePreference)
+routerPaymentSession.post("/webhook", postWebHook)
 
 module.exports = routerPaymentSession
