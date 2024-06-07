@@ -40,7 +40,7 @@ const CartUserData = () => {
  const id = await createPreference(products);
  id && setPreferenceId(id)
   }
-console.log("preferenceId: ", preferenceId);
+
   return (
     <div className="">
       {" "}

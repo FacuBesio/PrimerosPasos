@@ -1,30 +1,29 @@
-require("dotenv").config(); 
-const MP_ACCESS_TOKEN =  process.env.MP_ACCESS_TOKEN
-const { FRONTEND_URL } = require("../../../config/config");
+const { BACKEND_URL, MP_ACCESS_TOKEN } = require("../../../config/config");
 const { MercadoPagoConfig, Preference } = require("mercadopago");
-
 
 const create_preference = async (req, res) => {
   try {
     const client = new MercadoPagoConfig({ accessToken: MP_ACCESS_TOKEN });
+    const products = req.body.products;
+    const items = products.map((product) => {
+      const mp_object = {
+        title: product.name,
+        quantity: Number(product.cantidad),
+        unit_price: Number(product.price),
+        currency_id: "ARS",
+      };
+      return mp_object;
+    });
+
     const body = {
-      items: [
-        {
-          title: req.body.title,
-          quantity: Number(req.body.quantity),
-          unit_price: Number(req.body.price),
-          currency_id: "ARS",
-        },
-      ],
+      items: items,
       back_urls: {
-        // success: `${FRONTEND_URL}`,
-        // failure: `${FRONTEND_URL}`,
-        // pending: `${FRONTEND_URL}`,
         success: `https://www.youtube.com/@onthecode`,
         failure: `https://www.youtube.com/@onthecode`,
         pending: `https://www.youtube.com/@onthecode`,
       },
       auto_return: "approved",
+      notification_url: `${BACKEND_URL}/paymentSession/webhook`,
     };
 
     const preference = new Preference(client);
@@ -32,7 +31,9 @@ const create_preference = async (req, res) => {
     res.status(200).json({ id: result.id });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: `Error al crear la preferencia: ${error.message}` });
+    res
+      .status(500)
+      .json({ error: `Error al crear la preferencia: ${error.message}` });
   }
 };
 
