@@ -96,6 +96,8 @@ const ProductComponent = ({ loaderStates }) => {
     <section className="w-full">
       <div className="flex w-full p-4 gap-4 items-center justify-between">
         <Filter />
+
+        <div className="flex gap-2">
         {searchBarTag ? (
           <h2
             onClick={handleRemoveSearchBarTag}
@@ -139,6 +141,7 @@ const ProductComponent = ({ loaderStates }) => {
         ) : (
           <div className="hidden "></div>
         )}
+        </div>
 
         <SortComponent sortComponentProps={sortComponentProps} />
       </div>

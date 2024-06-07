@@ -12,9 +12,11 @@ export const handlerClickCategories = (
   setFilterCategories,
   setCategoryTag,
   category,
-  setPage
+  setPage,
+  
 ) => {
   return () => {
+    
     setFilterCategories(category.id);
     setCategoryTag(category.name);
     setPage(1)

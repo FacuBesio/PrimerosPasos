@@ -36,10 +36,10 @@ const CartMain = () => {
         <div className="pt-[35px] w-full">
           <div className="bg-[#FAFAFA] h-24 flex justify-center items-center gap-4 w-full">
             <div className="flex items-center gap-2 cursor-pointer">
-              <div className="bg-black text-white w-6 h-6 flex items-center justify-center rounded-full">
+              <div className="bg-[#5a5b5a] text-white w-6 h-6 flex items-center justify-center rounded-full">
                 1
               </div>
-              <h1 className="text-xl uppercase">Productos Carrito</h1>
+              <h1 className="text-xl uppercase text-[#5a5b5a]">Productos Carrito</h1>
             </div>
             <div className="h-[1px] w-[150px] bg-[#ccc]" />
             <div className="flex items-center gap-2 cursor-pointer">
@@ -66,7 +66,7 @@ const CartMain = () => {
               <h1 className="text-xl uppercase text-[#ccc]">Compra</h1>
             </div>
           </div>
-          <h1 className="text-center text-3xl text-black-800 font-semibold mt-4">
+          <h1 className="text-center text-3xl text-black-800 font-semibold mt-4 text-[#5a5b5a]">
             Confirma los productos de tu compra antes de continuar...
           </h1>
         </div>
@@ -76,10 +76,10 @@ const CartMain = () => {
               <table className="text-center w-full relative">
                 <thead>
                   <tr className="h-16 uppercase">
-                    <th className="px-4 py-2">Producto</th>
-                    <th className="px-4 py-2">Precio</th>
-                    <th className="px-4 py-2">Cantidad</th>
-                    <th className="px-4 py-2">Subtotal</th>
+                    <th className="px-4 py-2 text-[#5a5b5a]">Producto</th>
+                    <th className="px-4 py-2 text-[#5a5b5a]">Precio</th>
+                    <th className="px-4 py-2 text-[#5a5b5a]">Cantidad</th>
+                    <th className="px-4 py-2 text-[#5a5b5a]">Subtotal</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -87,7 +87,7 @@ const CartMain = () => {
                     cart.products.map((product) => (
                       <tr
                         key={product.id}
-                        className="border-b border-gray-200 relative"
+                        className="border-b border-gray-200  relative "
                       >
                         <td className="flex items-center gap-2 p-2">
                           <img
@@ -102,7 +102,7 @@ const CartMain = () => {
                         <td className="p-2">
                           <h3 className="text-sm">${product.price} </h3>
                         </td>
-                        <td className="p-2">
+                        <td className="p-2  h-full  justify-center">
                           <ButtonQuantities
                             product={product}
                             cart={cart}
@@ -114,7 +114,7 @@ const CartMain = () => {
                             ${product.price * product.cantidad}
                           </h3>
                         </td>
-                        <td className="p-2 relative">
+                        <td className="p-2 relative ">
                           <button
                             onClick={() =>
                               handlerRemoveProducts(
@@ -154,7 +154,7 @@ const CartMain = () => {
             {isAuthenticated ? (
               <NavLink
                 to="/cart/userdata"
-                className="border-0 border p-2 rounded-md hover:bg-lime-300 bg-red-200"
+                className="border p-2 rounded-md hover:bg-lime-300 bg-red-200"
               >
                 Comprar
               </NavLink>

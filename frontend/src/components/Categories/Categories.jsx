@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CategoriesContext, SearchContext } from "../../context/index";
 import getCategories from "../../utils/categories/getCategories";
@@ -14,84 +14,94 @@ const Categories = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (allCategories.categories?.length === 0) {
+      getCategories(setAllCategories);
+    }
+  }, [allCategories.categories?.length, setAllCategories]);
 
-  
-  const categories = [
+  const categoriesImages = [
     {
       name: "Diversión",
-      image: "/src/assets/product34.webp",
+      image: "/src/assets/baño.png",
       description: "3x2",
-      src:""
     },
     {
       name: "Cochecitos",
-      image: "/src/assets/product3.webp",
+      image: "/src/assets/babybag.jpg",
       description: "Cuotas sin interes",
     },
     {
       name: "Cuna",
-      image: "/src/assets/product13.webp",
+      image: "/src/assets/butaca.webp",
       description: "Promos exclusivas",
     },
     {
       name: "Mochila",
-      image: "/src/assets/product23.webp",
+      image: "/src/assets/shoes.png",
       description: "Descuentos",
     },
   ];
 
+  // Asignar imágenes a las categorías
+  const categoriesWithImages = allCategories?.categories?.slice(0, 4).map((cat, index) => ({
+    ...cat,
+    image: categoriesImages[index]?.image,
+    description: categoriesImages[index]?.description,
+  }));
+
   return (
     <section className="sm:grid grid-rows-2 grid-cols-2 bg-[#Dbb1bc]">
-      {categories.map((cat) => (
+      {/* {categoriesImages.map((cat) => (
         <a
           key={cat.name}
           href="/shop"
-          className="   max-h-[360px]  flex border-b-red-100 border-b-2"
+          className="max-h-[360px] flex border-b-red-100 border-b-2"
         >
           <img
-            className=" w-1/2 border-l-red-200 border-l-1  "
+            className="w-1/2 border-l-red-200 border-l-1"
             src={cat.image}
             alt="Imagen categorias"
           />
-          <div className="flex gap-4 flex-col justify-center items-center w-full border-l-red-200 border-l-1 ">
-            <h2 className=" text-[rgb(90,91,90)] md:text-3xl text-center  ">
+          <div className="flex gap-4 flex-col justify-center items-center w-full border-l-red-200 border-l-1">
+            <h2 className="text-[rgb(90,91,90)] md:text-3xl text-center">
               {cat.name}
             </h2>
-            <div className="text-[#Dbb1bc]  md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50 ">
+            <div className="text-[#Dbb1bc] md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50">
               {cat.description}
             </div>
           </div>
         </a>
-      ))}
+      ))} */}
 
-      {allCategories?.categories?.slice(0, 4).map((cat) => (
-        <a
+      {categoriesWithImages?.map((cat) => (
+        <Link
+        to={`/shop/categories/${cat.name}`}
           key={cat.name}
-          onClick={handlerClickCategories(
-            navigate,
-            setFilterCategories,
-            setCategoryTag,
-            cat
-          )}
-          className="   max-h-[360px]  flex border-b-red-100 border-b-2"
+          onClick={() =>
+            handlerClickCategories(
+              navigate,
+              setFilterCategories,
+              setCategoryTag,
+              cat
+            )
+          }
+          className="max-h-[360px] flex border-b-red-100 border-b-2 cursor-pointer"
         >
-         
-            <img 
-              className=" w-1/2 border-l-red-200 border-l-1  "
-              src=""
-              alt="Imagen categorias"
-            />
-
-        
-          <div className="flex gap-4 flex-col justify-center items-center w-full border-l-red-200 border-l-1 ">
-            <h2 className=" text-[rgb(90,91,90)] md:text-3xl text-center  ">
+          <img
+            className="w-1/2 border-l-red-200 border-l-1 object-cover max-w-[320px]"
+            src={cat.image}
+            alt="Imagen categorias"
+          />
+          <div className="flex gap-4 flex-col justify-center items-center w-full border-l-red-200 border-l-1">
+            <h2 className="text-[rgb(90,91,90)] md:text-3xl text-center">
               {cat.name}
             </h2>
-            <div className="text-[#Dbb1bc]  md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50 ">
+            <div className="text-[#Dbb1bc] md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50">
               {cat.description}
             </div>
           </div>
-        </a>
+        </Link>
       ))}
     </section>
   );

@@ -6,16 +6,20 @@ import crossRed from "../../assets/crossRed.png";
 import { Link } from "react-router-dom";
 import getUserById from "../../utils/users/getUserById";
 import formLabelsPersonalInfo from "../../utils/cart/formLabelsPersonalInfo";
+import handlerFormLabel from "../../utils/cart/formLabelsPersonalInfo";
 import formLabelsShipment from "../../utils/cart/formLabelsShipment";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
 
 const CartUserData = () => {
+
   const { isAuthenticated } = useAuth0();
   const [cart, setCart] = useState(() => {
     return JSON.parse(window.localStorage.getItem("cart"));
   });
   const [total, setTotal] = useState(0);
   const [user, setUser] = useState();
+
+  const formLabel = handlerFormLabel(user)
 
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
@@ -80,7 +84,7 @@ const CartUserData = () => {
                 className=" p-6 grid  md:grid-cols-2 gap-2 justify-items-center items-center w-fit "
                 action=""
               >
-                {formLabelsPersonalInfo.map((e) => (
+                {formLabel?.map((e) => (
                   <label key={e.name} className="flex flex-col">
                     <span className="text-[#5a5b5a] ">{e.spanName}</span>
                     <input
