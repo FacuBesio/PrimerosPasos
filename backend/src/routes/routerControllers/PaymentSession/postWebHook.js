@@ -1,7 +1,7 @@
-const getclient = require("./client");
+const getClient = require("./getClient");
 
 const postWebHook = async (req, res) => {
-  const client = getclient();
+  const client = getClient();
   let paymentId;
   if (req.query['data.id']) {
     paymentId = req.query['data.id'];

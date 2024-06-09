@@ -1,9 +1,9 @@
 const { BACKEND_URL, MP_ACCESS_TOKEN } = require("../../../config/config");
 const { MercadoPagoConfig, Preference } = require("mercadopago");
-const getclient = require("./client");
+const getClient = require("./getClient");
 
 const postCreatePreference = async (req, res) => {
-  const client = getclient();
+  const client = getClient();
   try {
     const products = req.body.products;
     const items = products.map((product) => {
@@ -19,12 +19,12 @@ const postCreatePreference = async (req, res) => {
     const body = {
       items: items,
       back_urls: {
-        success: `https://www.youtube.com/@onthecode`,
+        success: `${BACKEND_URL}/cart/purchase`,
         failure: `https://www.youtube.com/@onthecode`,
         pending: `https://www.youtube.com/@onthecode`,
       },
       auto_return: "approved",
-      notification_url: `https://9546-152-168-175-23.ngrok-free.app/payment-session/webhook`,
+      notification_url: `${BACKEND_URL}/payment-session/webhook`,
     };
 
     const preference = new Preference(client);

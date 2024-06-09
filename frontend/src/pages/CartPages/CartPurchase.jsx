@@ -1,24 +1,19 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import getUserById from "../../utils/users/getUserById";
-import { HiCheckCircle, HiXCircle, HiOutlineClock } from "react-icons/hi";
+import { HiCheckCircle } from "react-icons/hi";
 import Loader from "../../components/Loader/Loader";
 
 const CartPurchase = () => {
-  const stripe_payment_status = "succeeded";
-
   const { isAuthenticated } = useAuth0();
   const cart = JSON.parse(window.localStorage.getItem("cart"));
-
   const [total, setTotal] = useState(0);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
-  const loaderStates = { loading, delayLoading };
 
-  console.log("user: ", user);
   useEffect(() => {
     setLoading(false);
     const calculateTotal = () => {
@@ -96,15 +91,13 @@ const CartPurchase = () => {
               </div>
               <p className="pt-2">
                 Tu pago ha sido procesado correctamente, te dejamos un detalle
-                de la información que te enviamos por email:
+                de la información que enviamos a tu email:
               </p>
               <div className="flex flex-col mt-4">
                 <table className="w-full text-center">
                   <thead>
                     <tr className="h-16 uppercase">
-                      <th className="px-4 py-2 text-[#5a5b5a] ">
-                        Producto
-                      </th>
+                      <th className="px-4 py-2 text-[#5a5b5a] ">Producto</th>
                       <th className="px-4 py-2 text-[#5a5b5a]">Precio</th>
                       <th className="px-4 py-2 text-[#5a5b5a]">Cantidad</th>
                       <th className="px-4 py-2 text-[#5a5b5a]">Subtotal</th>
@@ -119,7 +112,9 @@ const CartPurchase = () => {
                             className="max-w-[100px] rounded-xl border "
                           />
                           <div>
-                            <p className="text-l font-medium pl-2">{product.name}</p>
+                            <p className="text-l font-medium pl-2">
+                              {product.name}
+                            </p>
                             <p className="text-sm font-medium">
                               {product.brand}
                             </p>
@@ -135,10 +130,15 @@ const CartPurchase = () => {
                       </tr>
                     ))}
                     <tr className="border-t">
-                      <td colSpan={3} className="bg-slate-100 font-bold text-center">
+                      <td
+                        colSpan={3}
+                        className="bg-slate-100 font-bold text-center"
+                      >
                         TOTAL
                       </td>
-                      <td className="bg-slate-100 font-medium text-lg">${total}</td>
+                      <td className="bg-slate-100 font-medium text-lg">
+                        ${total}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -152,10 +152,11 @@ const CartPurchase = () => {
                 </div>
                 <div className="flex flex-col justify-between">
                   <p className="font-medium">
-                    {user?.street_address} {user?.street_number}, {user?.city},{" "}
-                    {user?.state}
+                    {user?.street_address} {user?.street_number}{" "}
                   </p>
-                  <p className="font-medium">{user?.country}</p>
+                  <p className="font-medium">
+                  {user?.city}, {user?.state}, {user?.country} 
+                  </p>
                   <p className="font-medium">CP: {user?.ZIP_Code}</p>
                   <p className="font-medium">Tel.: {user?.phone}</p>
                 </div>
@@ -168,7 +169,9 @@ const CartPurchase = () => {
                   </span>
                 </h3>
                 <p>
-                  Gracias por elegir Primeros Pasos. Ante cualquier duda o consulta, no dudes en contactarte. Ya estamos preparando tu pedido!
+                  Gracias por elegir Primeros Pasos. Ante cualquier duda o
+                  consulta, no dudes en contactarte. Ya estamos preparando tu
+                  pedido!
                 </p>
               </div>
               <div className="flex mb-4">
@@ -190,22 +193,19 @@ const CartPurchase = () => {
             </div>
 
             <div className="flex gap-4 items-center justify-center w-full px-4">
-              {stripe_payment_status !== "" ? (
-                <NavLink
-                  to="/profile/personalInfo"
-                  className="h-16 uppercase font-medium border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200 flex-1  flex items-center justify-center"
-                >
-                  Ir a mis Compras
-                </NavLink>
-              ) : null}
-              {stripe_payment_status !== "" ? (
-                <NavLink
-                  to="/shop"
-                  className="h-16 uppercase font-medium border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200 flex-1 flex items-center justify-center"
-                >
-                  Continuar Comprando
-                </NavLink>
-              ) : null}
+              <NavLink
+                to="/profile/personalInfo"
+                className="h-16 uppercase font-medium border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200 flex-1  flex items-center justify-center"
+              >
+                Ir a mis Compras
+              </NavLink>
+
+              <NavLink
+                to="/shop"
+                className="h-16 uppercase font-medium border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200 flex-1 flex items-center justify-center"
+              >
+                Continuar Comprando
+              </NavLink>
             </div>
           </div>
         </div>
