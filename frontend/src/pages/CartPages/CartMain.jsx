@@ -33,7 +33,7 @@ const CartMain = () => {
       <Title />
       <Navbar />
       <div className="flex flex-col bg-white  justify-center h-screen gap-2 overflow-auto">
-        <div className="pt-[35px] w-full">
+        <div className="py-4 w-full">
           <div className="bg-[#FAFAFA] h-24 flex justify-center items-center gap-4 w-full">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="bg-[#5a5b5a] text-white w-6 h-6 flex items-center justify-center rounded-full">

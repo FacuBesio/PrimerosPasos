@@ -1,28 +1,34 @@
-const { MP_ACCESS_TOKEN } = require("../../../config/config");
+const getclient = require("./client");
 
 const postWebHook = async (req, res) => {
-  const payment = req.query;
-  console.log("payment: ", payment);
-  //? CHECK
+  const client = getclient();
+  let paymentId;
+  if (req.query['data.id']) {
+    paymentId = req.query['data.id'];
+  }
 
-  const paymentId = req.query.id;
   try {
     const response = await fetch(
       `https://api.mercadopago.com/v1/payments/${paymentId}`,
       {
         method: "GET",
-        headers: { Authorization: `Bearer ${MP_ACCESS_TOKEN}` },
+        headers: {
+          'Authorization': `Bearer ${client.accessToken}`,
+          "Content-Type": "application/json",
+        },
       }
     );
-
+   
     if (response.ok) {
       const data = await response.json();
       console.log("DATA: ", data);
+      res.sendStatus(201);
+    } else {
+      res.sendStatus(200);
     }
-    res.status(200);
   } catch (error) {
     console.error("Error al obtener la sesión de pago:", error);
-    res.status(500);
+    res.sendStatus(500);
   }
 };
 

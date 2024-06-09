@@ -50,7 +50,7 @@ const CartUserData = () => {
       <Title />
       <Navbar />
       <div className="flex flex-col bg-white  justify-center h-screen gap-2 overflow-auto">
-        <div className="pt-[35px] w-full">
+        <div className="py-4 w-full">
           <div className="h-24 bg-[#FAFAFA] flex justify-center items-center gap-4 w-full">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="bg-black text-white w-6 h-6 flex items-center justify-center rounded-full">
