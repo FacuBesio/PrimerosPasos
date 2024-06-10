@@ -8,8 +8,8 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 const HOST = process.env.HOST;
 const PORT = process.env.PORT;
 const DB_NAME = process.env.DB_NAME;
-const DATA_BASE =  process.env.DATA_BASE ||
-`postgres://${DB_USER}:${DB_PASSWORD}@${HOST}:${PORT}/${DB_NAME}`;
+const LOCAL_DATABASE = `postgres://${DB_USER}:${DB_PASSWORD}@${HOST}:${PORT}/${DB_NAME}`;
+const DEPLOY_DATABASE = process.env.DB_DEPLOY;
 
 module.exports = {
   BACKEND_URL,
@@ -20,5 +20,6 @@ module.exports = {
   HOST,
   PORT,
   DB_NAME,
-  DATA_BASE,
+  LOCAL_DATABASE,
+  DEPLOY_DATABASE
 };

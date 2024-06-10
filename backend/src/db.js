@@ -1,4 +1,4 @@
-const { DATA_BASE } = require("./config/config");
+const { LOCAL_DATABASE, DEPLOY_DATABASE } = require("./config/config");
 const { Sequelize } = require("sequelize");
 const CategoryModel = require("./models/Category");
 const SubCategoryModel = require("./models/SubCategory");
@@ -9,10 +9,23 @@ const UserModel = require("./models/User");
 const Order_ProductModel = require("./models/Order_Product");
 
 //? CONNECTION
-const dataBase = new Sequelize(DATA_BASE, {
-  logging: false,
-  native: false
-});
+let dataBase;
+if (DEPLOY_DATABASE) {
+  dataBase = new Sequelize(DEPLOY_DATABASE, {
+    logging: false,
+    native: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
+  });
+} else {
+  dataBase = new Sequelize(LOCAL_DATABASE, {
+    logging: false,
+    native: false,
+  });
+}
 
 //* MODELS
 CategoryModel(dataBase);
@@ -24,7 +37,8 @@ UserModel(dataBase);
 Order_ProductModel(dataBase);
 
 // ASSOCIATIONS
-const { Category, Subcategory, Order, Product, Purchase, User } = dataBase.models;
+const { Category, Subcategory, Order, Product, Purchase, User } =
+  dataBase.models;
 
 // Product - Category (n a n)
 Category.belongsToMany(Product, { through: "Category_Product" });
