@@ -1,5 +1,5 @@
-const { BACKEND_URL, MP_ACCESS_TOKEN } = require("../../../config/config");
-const { MercadoPagoConfig, Preference } = require("mercadopago");
+const { FRONTEND_URL } = require("../../../config/config");
+const { Preference } = require("mercadopago");
 const getClient = require("./getClient");
 
 const postCreatePreference = async (req, res) => {
@@ -19,7 +19,7 @@ const postCreatePreference = async (req, res) => {
     const body = {
       items: items,
       back_urls: {
-        success: `${BACKEND_URL}/cart/purchase`,
+        success: `${FRONTEND_URL}/cart/purchase`,
         failure: `https://www.youtube.com/@onthecode`,
         pending: `https://www.youtube.com/@onthecode`,
       },
