@@ -21,7 +21,7 @@ const postWebHook = async (req, res) => {
    
     if (response.ok) {
       const data = await response.json();
-      console.log("DATA: ", data);
+      // console.log("DATA: ", data);
       res.sendStatus(201);
     } else {
       res.sendStatus(200);

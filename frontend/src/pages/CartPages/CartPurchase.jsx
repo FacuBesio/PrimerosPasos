@@ -1,12 +1,16 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from "react-router-dom";
 import getUserById from "../../utils/users/getUserById";
 import { HiCheckCircle } from "react-icons/hi";
 import Loader from "../../components/Loader/Loader";
+import useQuery from "../../utils/cart/useQuery";
+import postPurchase from "../../utils/purchase/postPurchase";
 
 const CartPurchase = () => {
+  const querys = useQuery(useLocation)
   const { isAuthenticated } = useAuth0();
   const cart = JSON.parse(window.localStorage.getItem("cart"));
   const [total, setTotal] = useState(0);
@@ -14,6 +18,8 @@ const CartPurchase = () => {
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
 
+  isAuthenticated && user && postPurchase(querys, user)
+  
   useEffect(() => {
     setLoading(false);
     const calculateTotal = () => {

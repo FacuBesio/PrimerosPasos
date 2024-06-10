@@ -9,12 +9,14 @@ const formattedUser = require("../../utils/formatted/formattedUser");
 const createPurchase = async (
   orders,
   userId,
-  stripe_payment_id,
-  stripe_payment_status
+  payment_id,
+  payment_type,
+  payment_status,
+  merchant_order_id,
+  preference_id
 ) => {
   try {
     let newPurchase;
-    const stripeData = { stripe_payment_id, stripe_payment_status };
     const userFound = await findUserbyId(userId);
     const user = formattedUser(userFound);
     const existing_orders = await ordersValidator(orders, user);
@@ -27,7 +29,15 @@ const createPurchase = async (
       return { message: existing_orders.message };
     }
 
-    newPurchase = await Purchase.create(stripeData);
+    newPurchase = await Purchase.create({
+      orders,
+      userId,
+      payment_id,
+      payment_type,
+      payment_status,
+      merchant_order_id,
+      preference_id,
+    });
     await newPurchase.setUser(userFound);
     await newPurchase.addOrders(orders);
     const { id } = newPurchase;

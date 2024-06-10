@@ -9,13 +9,25 @@ module.exports = (dataBase) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      stripe_payment_id: {
+      payment_id: {
         type: DataTypes.STRING,
-        // allowNull: false,
+        allowNull: false,
       },
-      stripe_payment_status: {
+      payment_type: {
         type: DataTypes.STRING,
-        // allowNull: false,
+        allowNull: false,
+      },
+      payment_status: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      merchant_order_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      preference_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
