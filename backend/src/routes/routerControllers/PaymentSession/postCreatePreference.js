@@ -1,4 +1,4 @@
-const { FRONTEND_URL } = require("../../../config/config");
+const { BACKEND_URL, FRONTEND_URL } = require("../../../config/config");
 const { Preference } = require("mercadopago");
 const getClient = require("./getClient");
 
