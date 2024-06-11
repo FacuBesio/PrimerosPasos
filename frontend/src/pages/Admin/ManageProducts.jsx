@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from "react";
-import { Footer, Marquee, Navbar, Title } from "../../components";
+import  { useContext, useEffect } from "react";
+import { Footer, Title } from "../../components";
 import { mainPages } from "../../styles";
 import { Link } from "react-router-dom";
 import {
