@@ -1,15 +1,16 @@
 import { ContactUs, Footer, Marquee, Navbar, Title } from "../components";
+import { mainPages } from "../styles";
 
 const Contact = () => {
    
   return (
-    <div className="bg-[#eae0f5]  overflow-hidden">
+    <main className={mainPages}>
       <Marquee />
       <Title />
       <Navbar  />
       <ContactUs />
       <Footer />
-    </div>
+    </main>
   );
 };
 

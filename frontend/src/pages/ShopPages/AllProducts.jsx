@@ -1,9 +1,13 @@
-import React, { useContext, useEffect, useCallback } from "react";
+import  { useContext, useEffect } from "react";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";
 import getProducts from "../../utils/products/getProducts";
 import getBrands from "../../utils/brands/getBrands";
-import { BrandsContext, ProductsContext } from "../../context/index";
+import {
+  BrandsContext,
+  ProductsContext,
+} from "../../context/index";
+import { mainPages } from "../../styles";
 import useLoading from "../../hooks/useLoading";
 
 const AllProducts = ({ productsParams }) => {
@@ -26,11 +30,11 @@ console.log("Render Test");
   }, [fetchProducts]);
 
   return (
-    <main className="bg-[#eae0f5] overflow-hidden">
+    <main className={mainPages}>
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex border-y-2 border-red-200 mt-4 md:px-10">
+      <div className="flex border-y-2 border-white mt-4 md:px-10">
         <ProductComponent loaderStates={loaderStates} />
       </div>
       <Footer />

@@ -11,7 +11,7 @@ const Button = ({ product }) => {
 
   const notify = () => toast.success('Agregaste un producto al carrito', {
     position: "top-right",
-    autoClose: 3000,
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -39,7 +39,7 @@ const Button = ({ product }) => {
       </button>
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={1000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

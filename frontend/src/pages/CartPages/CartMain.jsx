@@ -5,6 +5,7 @@ import crossRed from "../../assets/crossRed.png";
 import { Link, NavLink } from "react-router-dom";
 import ButtonQuantities from "../../components/ButtonQuantities/ButtonQuantities";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
+import { tableStyle } from "../../styles";
 
 const CartMain = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -27,153 +28,161 @@ const CartMain = () => {
   }, [cart]);
 
   return (
-    <div className="">
-      {" "}
+    <div>
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex flex-col bg-white  justify-center h-screen gap-2 overflow-auto">
-        <div className="py-4 w-full">
-          <div className="bg-[#FAFAFA] h-24 flex justify-center items-center gap-4 w-full">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="bg-[#5a5b5a] text-white w-6 h-6 flex items-center justify-center rounded-full">
-                1
-              </div>
-              <h1 className="text-xl uppercase text-[#5a5b5a]">Productos Carrito</h1>
+      <div className="flex flex-col bg-white justify-center gap-2 overflow-auto">
+        <div className="bg-[#FAFAFA] py-8 flex flex-col lg:flex-row justify-center items-center gap-4 w-full">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <div className="bg-[#5a5b5a] text-white w-6 h-6 flex items-center justify-center rounded-full">
+              1
             </div>
-            <div className="h-[1px] w-[150px] bg-[#ccc]" />
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="bg-[#ccc] text-[white] w-6 h-6 flex items-center justify-center rounded-full">
-                2
-              </div>
-              {isAuthenticated ? (
-                <Link to="/cart/userdata">
-                  <h1 className="text-xl uppercase text-[#ccc]">
-                    Datos Personales
-                  </h1>
-                </Link>
-              ) : (
-                <h1 className="text-xl uppercase text-[#ccc]">
+            <h1 className="text-md uppercase text-[#5a5b5a]">
+              Productos Carrito
+            </h1>
+          </div>
+          <div className="h-[1px] w-[150px] bg-[#ccc]" />
+          <div className="flex items-center gap-2 cursor-pointer">
+            <div className="bg-[#ccc] text-[white] w-6 h-6 flex items-center justify-center rounded-full">
+              2
+            </div>
+            {isAuthenticated ? (
+              <Link to="/cart/userdata">
+                <h1 className="text-md uppercase text-[#ccc]">
                   Datos Personales
                 </h1>
-              )}
-            </div>
-            <div className="h-[1px] w-[150px] bg-[#ccc]" />
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="bg-[#ccc] text-[white] w-6 h-6 flex items-center justify-center rounded-full">
-                3
-              </div>
-              <h1 className="text-xl uppercase text-[#ccc]">Compra</h1>
-            </div>
+              </Link>
+            ) : (
+              <h1 className="text-md uppercase text-[#ccc]">
+                Datos Personales
+              </h1>
+            )}
           </div>
-          <h1 className="text-center text-3xl text-black-800 font-semibold mt-4 text-[#5a5b5a]">
-            Confirma los productos de tu compra antes de continuar...
-          </h1>
+          <div className="h-[1px] w-[150px] bg-[#ccc]" />
+          <div className="flex items-center gap-2 cursor-pointer">
+            <div className="bg-[#ccc] text-[white] w-6 h-6 flex items-center justify-center rounded-full">
+              3
+            </div>
+            <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
+          </div>
         </div>
-        <div className="flex flex-row bg-white justify-center h-screen  p-2  gap-2 overflow-auto">
-          <div className=" flex flex-col  bg-gray-100  p-2 px-4 rounded-md h-fit border border-red-200 ">
-            <div>
-              <table className="text-center w-full relative">
-                <thead>
-                  <tr className="h-16 uppercase">
-                    <th className="px-4 py-2 text-[#5a5b5a]">Producto</th>
-                    <th className="px-4 py-2 text-[#5a5b5a]">Precio</th>
-                    <th className="px-4 py-2 text-[#5a5b5a]">Cantidad</th>
-                    <th className="px-4 py-2 text-[#5a5b5a]">Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.products.length > 0 ? (
-                    cart.products.map((product) => (
-                      <tr
-                        key={product.id}
-                        className="border-b border-gray-200  relative "
+        <h1 className="text-center text-xl py-8 font-semibold text-[#5a5b5a] px-4">
+          Confirma los productos de tu compra antes de continuar...
+        </h1>
+      </div>
+      <div className="flex flex-col lg:flex-row bg-white justify-center p-2 gap-2 overflow-auto">
+        <div className="flex flex-col bg-gray-100 p-2 px-4 rounded-md h-fit ">
+          <div>
+            <table className="responsive-table text-center w-full">
+              <thead>
+                <tr className="h-16 uppercase">
+                  <th className={tableStyle}>Producto</th>
+                  <th className={tableStyle}>Precio</th>
+                  <th className={tableStyle}>Cantidad</th>
+                  <th className={tableStyle}>Subtotal</th>
+                  <th className={tableStyle}></th>
+                </tr>
+              </thead>
+              <tbody>
+                {cart.products.length > 0 ? (
+                  cart.products.map((product) => (
+                    <tr
+                      key={product.id}
+                      className="border-b border-gray-200 relative"
+                    >
+                      <td
+                        className="flex items-center gap-2 p-2"
+                        data-label="Producto"
                       >
-                        <td className="flex items-center gap-2 p-2">
+                        <div className="flex items-center">
+                        <img
+                          className="max-w-[80px] max-h-[80px]  rounded-full border border-red-200"
+                          src={product.img}
+                          alt={product.name}
+                        />
+                        <h3 className="text-[12px] md:text-sm tracking-tighter max-w-[120px]">
+                          {product.name}
+                        </h3>
+                        </div>
+                      </td>
+                      <td className="p-2" data-label="Precio">
+                        <h3 className="text-sm">${product.price}</h3>
+                      </td>
+                      <td
+                        className="p-2 h-full justify-center"
+                        data-label="Cantidad"
+                      >
+                        <ButtonQuantities
+                          product={product}
+                          cart={cart}
+                          setCart={setCart}
+                        />
+                      </td>
+                      <td className="p-2" data-label="Subtotal">
+                        <h3 className="text-sm">
+                          ${product.price * product.cantidad}
+                        </h3>
+                      </td>
+                      <td className="p-2 relative">
+                        <button
+                          onClick={() =>
+                            handlerRemoveProducts(
+                              product,
+                              cart,
+                              setCart,
+                              isAuthenticated,
+                              user
+                            )
+                          }
+                        >
                           <img
-                            className="max-w-[80px] max-h-[80px] rounded-full border border-red-200"
-                            src={product.img}
-                            alt={product.name}
+                            className="w-6 h-6 border border-red-200 rounded-md bg-white hover:scale-110"
+                            src={crossRed}
+                            alt="Remove"
                           />
-                          <h3 className="text-sm tracking-tighter max-w-[120px] ">
-                            {product.name}
-                          </h3>
-                        </td>
-                        <td className="p-2">
-                          <h3 className="text-sm">${product.price} </h3>
-                        </td>
-                        <td className="p-2  h-full  justify-center">
-                          <ButtonQuantities
-                            product={product}
-                            cart={cart}
-                            setCart={setCart}
-                          />
-                        </td>
-                        <td className="p-2">
-                          <h3 className="text-sm">
-                            ${product.price * product.cantidad}
-                          </h3>
-                        </td>
-                        <td className="p-2 relative ">
-                          <button
-                            onClick={() =>
-                              handlerRemoveProducts(
-                                product,
-                                cart,
-                                setCart,
-                                isAuthenticated,
-                                user
-                              )
-                            }
-                          >
-                            <img
-                              className="w-6 h-6 border border-red-200 rounded-md bg-white hover:scale-110"
-                              src={crossRed}
-                              alt="Remove"
-                            />
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="5" className="text-center mt-4 text-black">
-                        No hay productos seleccionados en el carrito
+                        </button>
                       </td>
                     </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="5" className="text-center mt-4 text-black">
+                      No hay productos seleccionados en el carrito
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </div>
-          <div className=" flex flex-col bg-gray-100 h-fit p-2 rounded-md gap-4 justify-center items-center border border-red-200 ">
-            <h2>Total : ${total}</h2>
-            <h3>
-              Envio: <span className="text-green-400">gratis</span>
-            </h3>
-            {isAuthenticated ? (
-              <NavLink
-                to="/cart/userdata"
-                className="border p-2 rounded-md hover:bg-lime-300 bg-red-200"
-              >
-                Comprar
-              </NavLink>
-            ) : (
-              <button
-                onClick={loginWithRedirect}
-                className="bg-stone-300 border p-2 rounded-md hover:bg-[#DBB1BC]"
-              >
-                Iniciar Sesión para comprar
-              </button>
-            )}
-
-            <Link
-              className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
-              to={"/shop"}
+        </div>
+        <div className="flex flex-col bg-gray-100 h-fit p-2 rounded-md gap-4 justify-center items-center ">
+          <h2>Total : ${total}</h2>
+          <h3>
+            Envio: <span className="text-green-400">gratis</span>
+          </h3>
+          {isAuthenticated ? (
+            <NavLink
+              to="/cart/userdata"
+              className="border p-2 rounded-md hover:bg-green-300 bg-red-200"
             >
-              Agregar más productos
-            </Link>
-          </div>
+              Comprar
+            </NavLink>
+          ) : (
+            <button
+              onClick={loginWithRedirect}
+              className="bg-stone-300 border p-2 rounded-md hover:bg-[#DBB1BC]"
+            >
+              Iniciar Sesión para comprar
+            </button>
+          )}
+
+          <Link
+            className="border p-2 rounded-md hover:bg-[#DBB1BC] bg-red-200"
+            to={"/shop"}
+          >
+            Agregar más productos
+          </Link>
         </div>
       </div>
       <Footer />

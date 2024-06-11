@@ -10,6 +10,7 @@ import {
   handlerMinPrice,
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
+import { filterStyles } from "../../styles.js";
 
 const Filter = () => {
   const { allBrands } = useContext(BrandsContext);
@@ -57,13 +58,13 @@ const Filter = () => {
   return (
     <section className="left-side flex items-center gap-2">
       <div className=" items-center whitespace-nowrap hidden lg:flex gap-2">
-        <h2 className="text-[#5a5b5a] border border-red-200 bg-white rounded-md w-fit px-1">
+        <h2 className={filterStyles}>
           Rango de precio:
         </h2>
         <form className="flex gap-2" action="">
           <label htmlFor="">
             <input
-              className="max-w-[60px] text-center border rounded-md border-red-200"
+              className="max-w-[60px] text-center border rounded-md border-white"
               type="text"
               placeholder="mín"
               value={filterPrices[0] === 0 ? "" : filterPrices[0]}
@@ -72,7 +73,7 @@ const Filter = () => {
           </label>
           <label htmlFor="">
             <input
-              className="max-w-[80px] text-center rounded-md border border-red-200"
+              className="max-w-[60px] text-center rounded-md border border-white"
               type="text"
               placeholder="máx"
               value={filterPrices[1] === 0 ? "" : filterPrices[1]}
@@ -82,7 +83,7 @@ const Filter = () => {
         </form>
       </div>
       <select
-        className="rounded-md w-full border border-red-200 text-[#5a5b5a] items-center"
+        className={filterStyles}
         name="sorterByBrand"
         id="sorterByBrand"
         onChange={onBrandChange}
@@ -93,7 +94,7 @@ const Filter = () => {
         </option>
         <option value="">All</option>
         {allBrands?.brands?.map((brand) => (
-          <option key={brand} className="text-[#5a5b5a]" value={brand}>
+          <option key={brand} className="text-[#5a5b5a] " value={brand}>
             {brand}
           </option>
         ))}

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import  { useEffect } from "react";
+import { filterStyles } from "../../styles";
 
 const SortComponent = ({ sortComponentProps }) => {
   const {
@@ -22,7 +23,7 @@ const SortComponent = ({ sortComponentProps }) => {
         <div>
          
           <select
-            className="rounded-md w-full border border-red-200 text-[#5a5b5a] items-center"
+            className={filterStyles}
             name="sorterByPrice"
             id="sorterByPrice"
             onChange={onChangeSorterPrice}
@@ -36,7 +37,7 @@ const SortComponent = ({ sortComponentProps }) => {
         <div>
          
           <select
-            className="rounded-md w-full border border-red-200 text-[#5a5b5a] "
+            className={filterStyles}
             name="sorterByRating"
             id="sorterByRating"
             onChange={onChangeSorterRating}

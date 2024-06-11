@@ -9,6 +9,7 @@ import {
   CategoriesContext,
   ProductsContext,
 } from "../../context/index";
+import { mainPages } from "../../styles";
 
 const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   const { filter, page, searchBar, sorter } = productsParams;
@@ -73,11 +74,11 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   const loaderStates = useMemo(() => ({ loading, delayLoading }), [loading, delayLoading]);
 
   return (
-    <main className="bg-[#eae0f5] overflow-hidden">
+    <main className={mainPages}>
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex border-y-2 border-red-200 mt-4 md:px-10">
+      <div className="flex border-y-2 border-white mt-4 md:px-10">
         <ProductComponent loaderStates={loaderStates} />
       </div>
       <Footer />
