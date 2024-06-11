@@ -16,7 +16,6 @@ const Shop = () => {
   const { page } = useContext(PagesContext);
   const { searchBar } = useContext(SearchContext);
   const { sorter } = useContext(SortContext);
-
   const productsParams = { filter, page, searchBar, sorter };
 
   return (

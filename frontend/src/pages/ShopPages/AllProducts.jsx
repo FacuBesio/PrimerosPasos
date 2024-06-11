@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
-import  { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect } from "react";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";
 import getProducts from "../../utils/products/getProducts";
@@ -10,27 +10,19 @@ import {
   ProductsContext,
 } from "../../context/index";
 import { mainPages } from "../../styles";
+import useLoading from "../../hooks/useLoading";
 
 
 const AllProducts = ({productsParams}) => {
   const { filter, page, searchBar, sorter } = productsParams
   const { setAllBrands } = useContext(BrandsContext);
    const { setAllProducts } = useContext(ProductsContext);
-  const [loading, setLoading] = useState(true);
-  const [delayLoading, setDelayLoading] = useState(true);
-  const loaderStates = { loading, delayLoading };
+   const { loading, delayLoading } = useLoading();
+   const loaderStates = { loading, delayLoading };
 
   useEffect(() => {
     getBrands(setAllBrands);
-    setLoading(false);
   }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDelayLoading(false);
-    }, 250);
-    return () => clearTimeout(timer);
-  }, [loading]);
 
   useEffect(() => {
     getProducts(setAllProducts, page, searchBar, filter, sorter);

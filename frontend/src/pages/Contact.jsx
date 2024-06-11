@@ -2,6 +2,7 @@ import { ContactUs, Footer, Marquee, Navbar, Title } from "../components";
 import { mainPages } from "../styles";
 
 const Contact = () => {
+   
   return (
     <main className={mainPages}>
       <Marquee />

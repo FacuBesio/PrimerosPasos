@@ -21,19 +21,25 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   const { setAllProducts } = useContext(ProductsContext);
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
-  const loaderStates = { loading, delayLoading };
+
+  // Reset loading state when name changes
+  useEffect(() => {
+    setLoading(true);
+    setDelayLoading(true);
+  }, [name]);
 
   useEffect(() => {
     setOriginUrl(url);
-    getBrands(setAllBrands);
-    setLoading(false);
+    getBrands(setAllBrands).finally(() => setLoading(false));
   }, [url]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDelayLoading(false);
-    }, 250);
-    return () => clearTimeout(timer);
+    if (!loading) {
+      const timer = setTimeout(() => {
+        setDelayLoading(false);
+      }, 250);
+      return () => clearTimeout(timer);
+    }
   }, [loading]);
 
   useEffect(() => {
@@ -45,8 +51,10 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
       filter,
       sorter,
       name
-    );
-  }, [page, searchBar, categoryTag, filter, sorter]);
+    ).finally(() => setLoading(false));
+  }, [page, searchBar, categoryTag, filter, sorter, name]);
+
+  const loaderStates = { loading, delayLoading };
 
   return (
     <main className={mainPages}>

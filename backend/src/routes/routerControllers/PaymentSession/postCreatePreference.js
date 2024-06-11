@@ -1,9 +1,10 @@
-const { BACKEND_URL, MP_ACCESS_TOKEN } = require("../../../config/config");
-const { MercadoPagoConfig, Preference } = require("mercadopago");
+const { BACKEND_URL, FRONTEND_URL } = require("../../../config/config");
+const { Preference } = require("mercadopago");
+const getClient = require("./getClient");
 
-const create_preference = async (req, res) => {
+const postCreatePreference = async (req, res) => {
+  const client = getClient();
   try {
-    const client = new MercadoPagoConfig({ accessToken: MP_ACCESS_TOKEN });
     const products = req.body.products;
     const items = products.map((product) => {
       const mp_object = {
@@ -18,12 +19,12 @@ const create_preference = async (req, res) => {
     const body = {
       items: items,
       back_urls: {
-        success: `https://www.youtube.com/@onthecode`,
+        success: `${FRONTEND_URL}/cart/purchase`,
         failure: `https://www.youtube.com/@onthecode`,
         pending: `https://www.youtube.com/@onthecode`,
       },
       auto_return: "approved",
-      notification_url: `${BACKEND_URL}/paymentSession/webhook`,
+      notification_url: `${BACKEND_URL}/payment-session/webhook`,
     };
 
     const preference = new Preference(client);
@@ -37,4 +38,4 @@ const create_preference = async (req, res) => {
   }
 };
 
-module.exports = create_preference;
+module.exports = postCreatePreference;

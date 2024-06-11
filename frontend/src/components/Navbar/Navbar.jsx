@@ -72,7 +72,13 @@ const Navbar = () => {
   }, [userData, isAuthenticated]);
 
   const handleCategoryClick = (category) => {
-    handlerClickCategories(navigate, setFilterCategories, setCategoryTag, category, setPage )();
+    handlerClickCategories(
+      navigate,
+      setFilterCategories,
+      setCategoryTag,
+      category,
+      setPage
+    )();
   };
 
   const containerVariants = {
