@@ -3,7 +3,13 @@ import house from "../../assets/house.png";
 import car from "../../assets/car.png";
 import clock from "../../assets/clock.png";
 
+
+
 const AditionalInfo = () => {
+
+  
+ 
+
   const aditionalInfo = [
     {
       img: creditCard,
@@ -32,6 +38,7 @@ const AditionalInfo = () => {
   ];
   return (
     <section className="flex p-4  md:p-6  lg:p-8 justify-center gap-4">
+      
       <div className="flex gap-4 flex-col md:flex-row">
         {aditionalInfo.map((info) => (
           <a key={info}
@@ -44,13 +51,14 @@ const AditionalInfo = () => {
               src={info.img}
               alt={info.alt}
             />
-            <h2 className="  tracking-tight leading-4">{info.text}</h2>
-            <h2 className="  text-[#848584] tracking-tight leading-4">
+            <h2 className="tracking-tight leading-4">{info.text}</h2>
+            <h2 className="text-[#848584] tracking-tight leading-4">
             {info.text2}
             </h2>
           </a>
         ))}
       </div>
+   
     </section>
   );
 };

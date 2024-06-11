@@ -3,7 +3,8 @@ import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
 import getProductById from "../../utils/products/getProductById";
 import ButtonProductDetail from "../../components/ButtonProductDetail/ButtonProductDetail";
-
+import leftArrow from "../../assets/LeftArrow.png"
+import { mainPages } from "../../styles";
 const ProductDetail = ({ originUrl }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const ProductDetail = ({ originUrl }) => {
   }
 
   return (
-    <div className="overflow-hidden bg-[#eae0f5]">
+    <main className={mainPages}>
       <Marquee />
       <Title />
       <Navbar />
@@ -29,7 +30,9 @@ const ProductDetail = ({ originUrl }) => {
         key={product.product.id}
       >
         <div className="w-full md:border-r">
-          <h3 onClick={() => navigate(`${originUrl}`)}>volver</h3>
+          <h3 onClick={() => navigate(`${originUrl}`)}>
+            <img className="w-6 h-4 cursor-pointer" src={leftArrow} alt="" />
+          </h3>
           <img
             className=" rounded-lg"
             src={product.product.img}
@@ -90,7 +93,7 @@ const ProductDetail = ({ originUrl }) => {
       </div>
 
       <Footer />
-    </div>
+    </main>
   );
 };
 

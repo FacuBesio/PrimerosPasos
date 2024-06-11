@@ -54,7 +54,7 @@ const ContactUs = () => {
   };
   return (
     <div>
-      <div className=" m-4 p-4 flex gap-6 overflow-hidden justify-center bg-[#D3C4E3] relative">
+      <div className=" m-4 p-4 flex gap-6 overflow-hidden justify-center bg-[#d8d5db] relative">
         <img className="absolute object-cover top-3 right-2" src={birdContact} alt="BirdContact" />
         <img className="absolute object-cover bottom-6 right-6" src={flyContact} alt="MsjContact" />
         <img className="absolute object-cover bottom-6 left-6 hidden md:block" src={msjContact} alt="msj2Contact" />

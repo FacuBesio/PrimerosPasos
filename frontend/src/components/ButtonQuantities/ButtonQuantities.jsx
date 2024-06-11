@@ -18,7 +18,7 @@ const ButtonQuantities = ({ product, cart, setCart}) => {
 
   return (
     <div className="h-full">
-      <div className="flex justify-center items-center h-full ">
+      <div className="flex justify-end md:justify-center items-center h-full ">
         <button
           onClick={() => decrementQuantity(product)}
           className="px-2  bg-red-200 rounded-md"

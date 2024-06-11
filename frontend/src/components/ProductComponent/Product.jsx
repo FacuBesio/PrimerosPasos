@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +16,7 @@ import {
   SortContext,
 } from "../../context/index.js";
 import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart.jsx";
+import { productBox, filterTags } from "../../styles.js";
 
 const ProductComponent = ({ loaderStates }) => {
   const navigate = useNavigate();
@@ -58,6 +60,7 @@ const ProductComponent = ({ loaderStates }) => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     if (sorterQuery.sorterActive) {
       setSorter(sorterQuery.result);
@@ -92,16 +95,17 @@ const ProductComponent = ({ loaderStates }) => {
     return <Loader delayLoading={delayLoading} />;
   }
 
+
+
   return (
     <section className="w-full">
-      <div className="flex w-full p-4 gap-4 items-center justify-between">
+      <div className="flex w-full p-4 md:gap-4 items-center justify-between overflow-x-auto">
         <Filter />
-
         <div className="flex gap-2">
         {searchBarTag ? (
           <h2
             onClick={handleRemoveSearchBarTag}
-            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+            className={filterTags}
           >
             {searchBarTag}
           </h2>
@@ -112,7 +116,7 @@ const ProductComponent = ({ loaderStates }) => {
         {categoryTag !== "" ? (
           <h2
             onClick={handleRemoveCategoryTag}
-            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+            className={filterTags}
           >
             {categoryTag}
           </h2>
@@ -123,7 +127,7 @@ const ProductComponent = ({ loaderStates }) => {
         {brandsTag ? (
           <h2
             onClick={handleRemoveBrandTag}
-            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+            className={filterTags}
           >
             {brandsTag}
           </h2>
@@ -134,7 +138,7 @@ const ProductComponent = ({ loaderStates }) => {
         {pricesTag.length === 2 && pricesTag[1] > 0 ? (
           <h2
             onClick={handleRemovePricesTag}
-            className="border-2 bg-white border-red-200 w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+            className={filterTags}
           >
             {pricesTag.join(" - ")}
           </h2>
@@ -150,7 +154,7 @@ const ProductComponent = ({ loaderStates }) => {
           {allProducts.products.map((product) => (
             <div
               key={product.id}
-              className="bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200"
+              className={productBox}
             >
               <ButtonAddToCart product={product} />
 

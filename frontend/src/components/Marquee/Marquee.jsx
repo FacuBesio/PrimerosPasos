@@ -11,12 +11,9 @@ const generateData = (count) => {
   }
   return data;
 };
-
 const Marquee = () =>  {
-
   const app = useRef();
-  const data = generateData(7); // Cambia este número según la cantidad de elementos que necesites
-
+  const data = generateData(7); 
   useGSAP(() => {
     gsap.to(".stats_part", {
       xPercent: -100,
@@ -25,9 +22,8 @@ const Marquee = () =>  {
       ease: "linear",
     }).totalProgress(0.5);
   }, { scope: app });
-  
   return(
-    <div className='stats_section bg-[#DBB1BC]' ref={app}>
+    <div className='stats_section bg-[#e8ced5]' ref={app}>
       <section className="stats_ ">
         <div className='stats_inner'>
           {data.map((item, index) => (
@@ -38,5 +34,4 @@ const Marquee = () =>  {
     </div>
   );
 }
-
 export default Marquee;
