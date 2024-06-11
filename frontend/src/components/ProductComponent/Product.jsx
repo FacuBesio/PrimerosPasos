@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import Paginated from "../Paginated/Paginated";
 import SortComponent from "../SortComponent/SortComponent.jsx";
@@ -21,72 +20,58 @@ const ProductComponent = ({ loaderStates }) => {
   const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
-  const { searchBarTag, setSearchBarTag, setSearchBar } =
-    useContext(SearchContext);
-  const {
-    setFilterBrands,
-    setFilterPrices,
-    brandsTag,
-    setBrandsTag,
-    pricesTag,
-    setPricesTag,
-  } = useContext(FilterContext);
-  const {
-    setSorter,
-    sorterByPrice,
-    setSorterByPrice,
-    sorterByRating,
-    setSorterByRating,
-  } = useContext(SortContext);
+  const { searchBarTag, setSearchBarTag, setSearchBar } = useContext(SearchContext);
+  const { setFilterBrands, setFilterPrices, brandsTag, setBrandsTag, pricesTag, setPricesTag } = useContext(FilterContext);
+  const { setSorter, sorterByPrice, setSorterByPrice, sorterByRating, setSorterByRating } = useContext(SortContext);
 
   const { loading, delayLoading } = loaderStates;
   const productsAvailable = allProducts?.products?.length > 0;
 
-  const onChangeSorterPrice = (event) => {
+  const onChangeSorterPrice = useCallback((event) => {
     setSorterByPrice(event.target.value);
-  };
+  }, [setSorterByPrice]);
 
-  const onChangeSorterRating = (event) => {
+  const onChangeSorterRating = useCallback((event) => {
     setSorterByRating(event.target.value);
-  };
+  }, [setSorterByRating]);
 
-  const sortComponentProps = {
+  const sortComponentProps = useMemo(() => ({
     sorterByPrice,
     onChangeSorterPrice,
     sorterByRating,
-    onChangeSorterRating,
-  };
+    onChangeSorterRating
+  }), [sorterByPrice, onChangeSorterPrice, sorterByRating, onChangeSorterRating]);
 
   useEffect(() => {
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     if (sorterQuery.sorterActive) {
       setSorter(sorterQuery.result);
     }
-  }, [categoryTag, sorterByPrice, sorterByRating]);
+  }, [categoryTag, sorterByPrice, sorterByRating, setSorter]);
 
-  const handleRemoveSearchBarTag = () => {
+  const handleRemoveSearchBarTag = useCallback(() => {
     setSearchBarTag("");
     setSearchBar("");
     setPage(1);
-  };
+  }, [setSearchBarTag, setSearchBar, setPage]);
 
-  const handleRemoveCategoryTag = () => {
+  const handleRemoveCategoryTag = useCallback(() => {
     setCategoryTag("");
     setPage(1);
     navigate(`/shop`);
-  };
+  }, [setCategoryTag, setPage, navigate]);
 
-  const handleRemoveBrandTag = () => {
+  const handleRemoveBrandTag = useCallback(() => {
     setFilterBrands("");
     setBrandsTag("");
     setPage(1);
-  };
+  }, [setFilterBrands, setBrandsTag, setPage]);
 
-  const handleRemovePricesTag = () => {
+  const handleRemovePricesTag = useCallback(() => {
     setPricesTag("");
     setFilterPrices([0, 0]);
     setPage(1);
-  };
+  }, [setPricesTag, setFilterPrices, setPage]);
 
   if (loading || delayLoading) {
     return <Loader delayLoading={delayLoading} />;
@@ -192,4 +177,4 @@ const ProductComponent = ({ loaderStates }) => {
   );
 };
 
-export default ProductComponent;
+export default React.memo(ProductComponent);

@@ -16,7 +16,7 @@ function App() {
   return (
     <main className="bg-[#eae0f5]  bg-gradient-to-b from-[#eae0f5] to-red-200 overflow-hidden">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/*" element={<Home />} />
         <Route path="/shop/*" element={<Shop />} />
         <Route path="/cart/*" element={<Cart />} />
         <Route path="/contacto" element={<Contact />} />
