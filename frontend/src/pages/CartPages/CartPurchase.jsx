@@ -13,12 +13,13 @@ const CartPurchase = () => {
   const querys = useQuery(useLocation)
   const { isAuthenticated } = useAuth0();
   const cart = JSON.parse(window.localStorage.getItem("cart"));
+  const user = JSON.parse(window.localStorage.getItem("userData"));
   const [total, setTotal] = useState(0);
-  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
-
-  isAuthenticated && user && postPurchase(querys, user)
+// console.log("querys: ", querys);
+console.log("user: ", user);
+  isAuthenticated && user && postPurchase(querys, user, cart)
   
   useEffect(() => {
     setLoading(false);
@@ -30,10 +31,6 @@ const CartPurchase = () => {
       setTotal(newTotal);
     };
     calculateTotal();
-    const userLocalStorage = JSON.parse(
-      window.localStorage.getItem("userData")
-    );
-    getUserById(userLocalStorage.id, setUser);
   }, []);
 
   useEffect(() => {

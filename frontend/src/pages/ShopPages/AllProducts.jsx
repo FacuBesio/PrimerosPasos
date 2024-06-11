@@ -8,27 +8,19 @@ import {
   BrandsContext,
   ProductsContext,
 } from "../../context/index";
+import useLoading from "../../hooks/useLoading";
 
 
 const AllProducts = ({productsParams}) => {
   const { filter, page, searchBar, sorter } = productsParams
   const { setAllBrands } = useContext(BrandsContext);
    const { setAllProducts } = useContext(ProductsContext);
-  const [loading, setLoading] = useState(true);
-  const [delayLoading, setDelayLoading] = useState(true);
-  const loaderStates = { loading, delayLoading };
+   const { loading, delayLoading } = useLoading();
+   const loaderStates = { loading, delayLoading };
 
   useEffect(() => {
     getBrands(setAllBrands);
-    setLoading(false);
   }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDelayLoading(false);
-    }, 250);
-    return () => clearTimeout(timer);
-  }, [loading]);
 
   useEffect(() => {
     getProducts(setAllProducts, page, searchBar, filter, sorter);

@@ -1,12 +1,10 @@
 import axios from "../../config/axios";
 
-const postPurchase = async (querys, user) => {
+const postPurchase = async (querys, user, cart) => {
   const { merchant_order_id, paymentId, payment_type, preference_id, status } =
     querys;
 
-  const orderID =
-    user.orders.length > 0 ? user.orders[user.orders.length - 1] : null;
-  const orders = [orderID];
+  const orders = [cart.id];
   const userId = user.id;
   const payment_id = paymentId;
   const payment_status = status;
