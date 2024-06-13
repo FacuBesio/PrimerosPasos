@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useCallback, useMemo } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState  } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";

@@ -12,24 +12,28 @@ const AditionalInfo = () => {
 
   const aditionalInfo = [
     {
+      id: 1,
       img: creditCard,
       alt: "Tarjeta de credito.",
       text: "Cuotas sin interes",
       text2: "(3 cuotas sin interes en productos seleccionados)",
     },
     {
+      id: 2,
       img: house,
       alt: "Take away",
       text: "Pick up",
       text2: "(Veni a retirar tu compra por la sucursal mas cercana)",
     },
     {
+      id: 3,
       img: car,
       alt: "Envio gratis.",
       text: "Envio gratis",
       text2: "(Compras superiores a $50.000)",
     },
     {
+      id: 4,
       img: clock,
       alt: "Prioridad de envio.",
       text: "Prioridad de envio",
@@ -41,7 +45,7 @@ const AditionalInfo = () => {
       
       <div className="flex gap-4 flex-col md:flex-row">
         {aditionalInfo.map((info) => (
-          <a key={info}
+          <a key={info.id}
             className="flex flex-col items-center  gap-2 text-center max-w-[220px]"
             href="/shop"
             alt={info.alt}

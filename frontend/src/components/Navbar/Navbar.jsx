@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback, useMemo } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useNavigate } from "react-router-dom";
 import getCategories from "../../utils/categories/getCategories";
@@ -12,15 +12,16 @@ import {
 import CartAside from "../CartAside/CartAside";
 import postUsers from "../../utils/users/postUsers";
 import { flexColCenter, navbarCategoryStyle, navbarMainStyle } from "../../styles";
-import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import isAdminIcon from "../../assets/adminIcon.png"
+import { motion } from "framer-motion";
+import isAdminIcon from "../../assets/adminIcon.png";
+import React from "react";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const { setPage } = useContext(PagesContext);
   const { searchBar, setSearchBar, setSearchBarTag } = useContext(SearchContext);
 
-  const [isAdmin, setIsAdmin] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false);
   
   const {
     filterCategories,
@@ -28,50 +29,50 @@ const Navbar = () => {
     setAllCategories,
     setFilterCategories,
     setCategoryTag,
-    } = useContext(CategoriesContext);
-    
-    const userData = JSON.parse(window.localStorage.getItem("userData"));
-    const [isCartOpen, setIsCartOpen] = useState(false);
-    
-   
+  } = useContext(CategoriesContext);
+
+  const userData = JSON.parse(window.localStorage.getItem("userData"));
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
   const navigate = useNavigate();
 
-  const handleButtonCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
+  const handleButtonCart = useCallback(() => {
+    setIsCartOpen(prev => !prev);
+  }, []);
 
-  const onChangeSearchBar = (event) => {
+  const onChangeSearchBar = useCallback((event) => {
     setSearchBar(event.target.value);
     setSearchBarTag(event.target.value);
     setPage(1);
-  };
+  }, [setSearchBar, setSearchBarTag, setPage]);
 
-  const onSubmitSearchBar = (event) => {
+  const onSubmitSearchBar = useCallback((event) => {
     event.preventDefault();
     setPage(1);
     navigate("/shop");
-  };
+  }, [navigate, setPage]);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     window.localStorage.removeItem("userData");
     const updatedCart = { id: null, products: [] };
     window.localStorage.setItem("cart", JSON.stringify(updatedCart));
     logout();
-  };
+  }, [logout]);
 
   useEffect(() => {
     if (isAuthenticated && user && !userData) {
       postUsers(user);
     }
     if(userData?.role === "owner" || userData?.role === "admin"){
-      setIsAdmin(true)
+      setIsAdmin(true);
     }
-   
 
-    allCategories.length === 0 && getCategories(setAllCategories);
-  }, [userData, isAuthenticated]);
+    if(allCategories.length === 0) {
+      getCategories(setAllCategories);
+    }
+  }, [userData, isAuthenticated, user, allCategories.length, setAllCategories]);
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = useCallback((category) => {
     handlerClickCategories(
       navigate,
       setFilterCategories,
@@ -79,9 +80,9 @@ const Navbar = () => {
       category,
       setPage
     )();
-  };
+  }, [navigate, setFilterCategories, setCategoryTag, setPage]);
 
-  const containerVariants = {
+  const containerVariants = useMemo(() => ({
     hidden: { opacity: 1 },
     visible: {
       opacity: 1,
@@ -90,30 +91,36 @@ const Navbar = () => {
         delayChildren: 0.2,
       },
     },
-  };
+  }), []);
 
-  const itemVariants = {
+  const itemVariants = useMemo(() => ({
     hidden: { opacity: 0, y: -20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+  }), []);
+
+  const categoryLinks = useMemo(() => (
+    allCategories?.categories?.map((category) => (
+      <motion.h3
+        key={category.id}
+        variants={itemVariants}
+        onClick={() => handleCategoryClick(category)}
+        className={`${filterCategories === category.id ? "text-[#Dbb1bc]" : ""} text-[#524343] hover:text-[#Dbb1bc] cursor-pointer rounded-md p-1`}
+      >
+        {category.name}
+      </motion.h3>
+    ))
+  ), [allCategories, filterCategories, handleCategoryClick, itemVariants]);
 
   return (
     <div>
       <motion.article initial="hidden" animate="visible" exit={{ opacity: 0, transition: { duration: 0.5 } }}>
-        <nav className={`${flexColCenter} md:flex-row gap-4  pb-2`}>
+        <nav className={`${flexColCenter} md:flex-row gap-4 pb-2`}>
           <div className="flex gap-4 justify-center">
-            <Link  to="/"  className={navbarMainStyle}>
-              Home
-            </Link>
-            <Link  to="/shop"  className={navbarMainStyle}>
-              Shop
-            </Link>
-            <Link to="/contacto"  className={navbarMainStyle}>
-              Contacto
-            </Link>
+            <Link to="/" className={navbarMainStyle}>Home</Link>
+            <Link to="/shop" className={navbarMainStyle}>Shop</Link>
+            <Link to="/contacto" className={navbarMainStyle}>Contacto</Link>
             {!isAuthenticated ? (
               <button
-                target="_blank"
                 className={navbarMainStyle}
                 onClick={() => loginWithRedirect()}
               >
@@ -135,11 +142,11 @@ const Navbar = () => {
                 onChange={onChangeSearchBar}
               />
               <button>
-                <img className="w-[30px] hover:scale-110" src="/src/assets/VectorSearch.png" alt="" />
+                <img className="w-[30px] hover:scale-110" src="/src/assets/VectorSearch.png" alt="Search Icon" />
               </button>
             </form>
             <button onClick={handleButtonCart}>
-              <img src="/src/assets/cart.png" className="w-[30px] ml-2 hover:scale-110" alt="" />
+              <img src="/src/assets/cart.png" className="w-[30px] ml-2 hover:scale-110" alt="Cart Icon" />
             </button>
             {isCartOpen && <CartAside handleButtonCart={handleButtonCart} />}
             {isAuthenticated && (
@@ -151,36 +158,25 @@ const Navbar = () => {
                 />
               </Link>
             )}
-         { isAdmin && (
-            <Link to="/admin/manageProducts">
+            {isAdmin && (
+              <Link to="/admin/manageProducts">
                 <img
                   src={isAdminIcon}
-                  alt={userData?.name}
-                  className="w-8 h-8 cursor-pointer my-1  rounded-full hover:scale-110"
+                  alt="Admin Icon"
+                  className="w-8 h-8 cursor-pointer my-1 rounded-full hover:scale-110"
                 />
               </Link>
-          )}
+            )}
           </div>
         </nav>
-        <div className="flex justify-center items-center gap-4 m-2 h-fit   overflow-x-auto">
+        <div className="flex justify-center items-center gap-4 m-2 h-fit overflow-x-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="flex gap-2 items-center overflow-x-auto"
           >
-            {allCategories?.categories?.map((category) => (
-              <motion.h3
-                key={category.id}
-                variants={itemVariants}
-                onClick={() => handleCategoryClick(category)}
-                className={`${
-                  filterCategories === category.id ? "text-[#Dbb1bc]" : ""
-                } "text-[#524343] hover:text-[#Dbb1bc]  cursor-pointer rounded-md p-1  "`}
-              >
-                {category.name}
-              </motion.h3>
-            ))}
+            {categoryLinks}
           </motion.div>
         </div>
       </motion.article>
@@ -188,4 +184,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default React.memo(Navbar);
