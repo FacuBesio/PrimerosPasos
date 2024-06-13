@@ -5,9 +5,13 @@ import cartFill from "../../assets/cartFill.png";
 import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { FlagCartEffectContext } from "../../context";
+import { useContext } from "react";
 
 const Button = ({ product }) => {
   const { isAuthenticated } = useAuth0();
+
+  const {setFlag} = useContext(FlagCartEffectContext)
 
   const notify = () => toast.success('Agregaste un producto al carrito', {
     position: "top-right",
@@ -26,6 +30,7 @@ const Button = ({ product }) => {
 
   const handleAddToCartAndNotify = () => {
     addToCart(productToAdd, isAuthenticated);
+    setFlag(true)
     notify();
   };
 

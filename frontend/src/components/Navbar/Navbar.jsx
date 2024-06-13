@@ -6,6 +6,7 @@ import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
 import {
   CategoriesContext,
+  FlagCartEffectContext,
   PagesContext,
   SearchContext,
 } from "../../context/index";
@@ -20,6 +21,9 @@ const Navbar = () => {
   const { setPage } = useContext(PagesContext);
   const { searchBar, setSearchBar, setSearchBarTag } = useContext(SearchContext);
 
+  const {flag} = useContext(FlagCartEffectContext)
+
+console.log("flag", flag);
   const [isAdmin, setIsAdmin] = useState(false)
   
   const {
@@ -87,19 +91,19 @@ const Navbar = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: -20 },
+    hidden: { opacity: 0, y: -15 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
   return (
     <div>
-      <motion.article initial="hidden" animate="visible" exit={{ opacity: 0, transition: { duration: 0.5 } }}>
+      <motion.article initial="hidden" animate="visible" exit={{ opacity: 0, transition: { duration: 0.6 } }}>
         <nav className={`${flexColCenter} md:flex-row gap-4  pb-2`}>
           <div className="flex gap-4 justify-center">
             <Link  to="/"  className={navbarMainStyle}>
@@ -138,9 +142,11 @@ const Navbar = () => {
                 <img className="w-[30px] hover:scale-110" src="/src/assets/VectorSearch.png" alt="" />
               </button>
             </form>
+
             <button onClick={handleButtonCart}>
-              <img src="/src/assets/cart.png" className="w-[30px] ml-2 hover:scale-110" alt="" />
+              <img src="/src/assets/cart.png" className={`w-[30px] ml-2 hover:scale-110 ${flag === true ? "animate-bounce" : "animate-none"}  `} alt="" />
             </button>
+
             {isCartOpen && <CartAside handleButtonCart={handleButtonCart} />}
             {isAuthenticated && (
               <Link to="/profile/personalInfo">

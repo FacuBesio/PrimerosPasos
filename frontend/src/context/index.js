@@ -6,6 +6,7 @@ import { PagesContext } from "./PagesContext";
 import { ProductsContext } from "./ProductsContext";
 import { SearchContext } from "./SearchContext";
 import { SortContext } from "./SortContext";
+import { FlagCartEffectContext } from "./FlagCartEffect";
 
 export {
   BrandsContext,
@@ -16,4 +17,5 @@ export {
   ProductsContext,
   SearchContext,
   SortContext,
+  FlagCartEffectContext
 };

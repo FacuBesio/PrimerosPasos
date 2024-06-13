@@ -16,7 +16,7 @@ const getProducts = async (setAllProducts, page, searchBar, filter, sorter) => {
       `/products?${querys.result}&pageSize=${pageSize}`
     );
     setAllProducts(response.data);
-    console.log(response.data);
+    
     
   } catch (error) {
     console.error("Error al obtener Productos:", error);

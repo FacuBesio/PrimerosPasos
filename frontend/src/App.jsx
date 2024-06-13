@@ -1,5 +1,5 @@
 import "./App.css";
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Shop from "../src/pages/Shop.jsx";
 import Contact from "./pages/Contact.jsx";
@@ -9,20 +9,31 @@ import Cart from "./pages/Cart.jsx";
 
 import { mainPages } from "./styles.js";
 
+import Lenis from "lenis";
 
-import  ManageProducts from "../src/pages/Admin/ManageProducts.jsx"
-import  ManageShopping from "../src/pages/Admin/ManageShopping.jsx"
-import  ManageUser from "../src/pages/Admin/ManageUser.jsx"
+import ManageProducts from "../src/pages/Admin/ManageProducts.jsx";
+import ManageShopping from "../src/pages/Admin/ManageShopping.jsx";
+import ManageUser from "../src/pages/Admin/ManageUser.jsx";
 
 import Home from "./pages/Home.jsx";
 
+const lenis = new Lenis();
+
+lenis.on("scroll", (e) => {
+  console.log(e);
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
 
 function App() {
   useEffect(() => {
     appInitialzer();
   }, []);
-
-
 
   return (
     <main className={mainPages}>
@@ -36,7 +47,7 @@ function App() {
 
         <Route path="/admin/manageProducts" element={<ManageProducts />} />
         <Route path="/admin/manageShopping" element={<ManageShopping />} />
-        <Route path="/admin/manageUsers" element={<ManageUser />}  />
+        <Route path="/admin/manageUsers" element={<ManageUser />} />
       </Routes>
     </main>
   );

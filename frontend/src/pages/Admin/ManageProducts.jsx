@@ -13,6 +13,8 @@ import {
 import getProducts from "../../utils/products/getProducts";
 import Paginated from "../../components/Paginated/Paginated";
 import garbage from "../../assets/garbage.png";
+import SortComponent from "../../components/SortComponent/SortComponent";
+import sorterValidator from "../../utils/sorter/sorterValidator";
 const ManageProducts = () => {
   
   const { filter } = useContext(FilterContext);
@@ -20,6 +22,36 @@ const ManageProducts = () => {
   const { searchBar } = useContext(SearchContext);
   const { sorter } = useContext(SortContext);
   const { allProducts, setAllProducts } = useContext(ProductsContext);
+
+  const {
+    setSorter,
+    sorterByPrice,
+    setSorterByPrice,
+    sorterByRating,
+    setSorterByRating,
+  } = useContext(SortContext);
+  const onChangeSorterPrice = (event) => {
+    setSorterByPrice(event.target.value);
+  };
+
+  const onChangeSorterRating = (event) => {
+    setSorterByRating(event.target.value);
+  };
+
+  const sortComponentProps = {
+    sorterByPrice,
+    onChangeSorterPrice,
+    sorterByRating,
+    onChangeSorterRating,
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
+    if (sorterQuery.sorterActive) {
+      setSorter(sorterQuery.result);
+    }
+  }, [ sorterByPrice, sorterByRating]);
 
   console.log(allProducts);
 
@@ -31,7 +63,7 @@ const ManageProducts = () => {
 
   return (
     <main className={mainPages}> 
-      <Title />
+     
 
       <div className=" flex">
         <section className="left_section flex flex-col bg-red-200 w-fit p-6  gap-6">
@@ -41,18 +73,22 @@ const ManageProducts = () => {
           <Link to="/admin/manageShopping">Purchases</Link>
           <Link to="/admin/manageUsers">Users</Link>
         </section>
-        <section className="right_section flex items-start gap-4">
+        <section className="right_section flex flex-col  items-center gap-4">
+          <Title />
+          <div>
+            <SortComponent sortComponentProps={sortComponentProps} />
+          </div>
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="p-2 border">Imagen producto</th>
-                <th className="p-2 border">Nombre del producto</th>
-                <th className="p-2 border">Marca</th>
-                <th className="p-2 border">Precio</th>
-                <th className="p-2 border">Rating</th>
-                <th className="p-2 border">Stock del producto</th>
-                <th className="p-2 border">Habilitado</th>
-                <th className="p-2 border">Eliminar</th>
+                <th className="p-2 border ">Imagen producto</th>
+                <th className="p-2 border  ">Nombre del producto</th>
+                <th className="p-2 border  ">Marca</th>
+                <th className="p-2 border  ">Precio</th>
+                <th className="p-2 border  ">Rating</th>
+                <th className="p-2 border  ">Stock del producto</th>
+                <th className="p-2 border  ">Habilitado</th>
+                <th className="p-2 border  ">Eliminar</th>
               </tr>
             </thead>
             <tbody>

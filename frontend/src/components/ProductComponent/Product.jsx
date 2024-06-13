@@ -10,6 +10,7 @@ import Loader from "../Loader/Loader.jsx";
 import {
   CategoriesContext,
   FilterContext,
+
   PagesContext,
   ProductsContext,
   SearchContext,
@@ -23,6 +24,7 @@ const ProductComponent = ({ loaderStates }) => {
   const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
+
   const { searchBarTag, setSearchBarTag, setSearchBar } =
     useContext(SearchContext);
   const {
