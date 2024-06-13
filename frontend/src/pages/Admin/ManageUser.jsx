@@ -44,11 +44,13 @@ console.log(allUsers);
           <Link to="/admin/manageProducts">Products</Link>
           <Link to="/admin/manageShopping">Purchases</Link>
           <Link to="/admin/manageUsers">Users</Link>
+          <Link to="/admin/manageCategories">Categories</Link>
         </section>
         <section className="right_section flex flex-col items-center gap-4">
           <Title />
-          <div>
-        
+          <div className="flex  gap-2">
+          <h2>Sorter</h2>
+          <h2>Buscar por nombre</h2>
           </div>
           <table className="w-full border-collapse ">
             <thead>
@@ -60,7 +62,7 @@ console.log(allUsers);
                 <th className="p-2 border">Ciudad</th>
                 <th className="p-2 border">Telefono</th>
                 <th className="p-2 border">Compras</th>
-                <th className="p-2 border">Admin</th>
+                <th className="p-2 border">Rol</th>
                 <th className="p-2 border">Deshabilitar</th>
               </tr>
             </thead>
@@ -81,9 +83,7 @@ console.log(allUsers);
                     <td className="p-4 border">{checkValue(user.city)}</td>
                     <td className="p-4 border">{checkValue(user.phone)}</td>
                     <td className="p-4 border">{checkValue(user.purchases)}</td>
-                    <td className="p-4 border">
-                      <button>{user.role}</button>
-                    </td>
+                    <td className="p-4 border">{user.role}</td>
                     <td className="p-4 border">
                       <button>
                         <img src={garbage} alt="Eliminar" />

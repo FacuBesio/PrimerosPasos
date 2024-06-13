@@ -33,22 +33,22 @@ const ManageShopping = () => {
           <Link to="/admin/manageProducts">Products</Link>
           <Link to="/admin/manageShopping">Purchases</Link>
           <Link to="/admin/manageUsers">Users</Link>
+          <Link to="/admin/manageCategories">Categories</Link>
         </section>
-        <section className="right_section flex flex-col items-center gap-4">
+        <section className="right_section w-full flex flex-col items-center gap-4">
           <Title />
           <div></div>
           <table className="w-full border-collapse">
-            <thead>
+            <thead className=" ">
               <tr>
-                <th className="p-2 border">Imagen Usuario</th>
-                <th className="p-2 border">Nombre del Usuario</th>
-                <th className="p-2 border">Pais</th>
-                <th className="p-2 border">Provincia</th>
-                <th className="p-2 border">Ciudad</th>
-                <th className="p-2 border">Telefono</th>
-                <th className="p-2 border">Compras</th>
-                <th className="p-2 border">Admin</th>
-                <th className="p-2 border">Deshabilitar</th>
+                <th className="p-2 border">Estado del pago</th>
+                <th className="p-2 border">Fecha de compra</th>
+                <th className="p-2 border">Compra ID</th>
+                <th className="p-2 border">Order ID</th>
+                <th className="p-2 border">User ID</th>
+                <th className="p-2 border">Imagen de la compra</th>
+                <th className="p-2 border">Total de la compra</th>
+              
               </tr>
             </thead>
             <tbody>

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import  React, { useCallback, useContext, useEffect } from "react";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";

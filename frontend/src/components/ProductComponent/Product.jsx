@@ -10,7 +10,6 @@ import Loader from "../Loader/Loader.jsx";
 import {
   CategoriesContext,
   FilterContext,
-
   PagesContext,
   ProductsContext,
   SearchContext,
@@ -19,33 +18,109 @@ import {
 import ButtonAddToCart from "../ButtonAddToCart/ButtonAddToCart.jsx";
 import { productBox, filterTags } from "../../styles.js";
 
+import { motion } from "framer-motion";
+
 const ProductComponent = ({ loaderStates }) => {
   const navigate = useNavigate();
   const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
-  const { searchBarTag, setSearchBarTag, setSearchBar } = useContext(SearchContext);
-  const { setFilterBrands, setFilterPrices, brandsTag, setBrandsTag, pricesTag, setPricesTag } = useContext(FilterContext);
-  const { setSorter, sorterByPrice, setSorterByPrice, sorterByRating, setSorterByRating } = useContext(SortContext);
+  const { searchBarTag, setSearchBarTag, setSearchBar } =
+    useContext(SearchContext);
+  const {
+    setFilterBrands,
+    setFilterPrices,
+    brandsTag,
+    setBrandsTag,
+    pricesTag,
+    setPricesTag,
+  } = useContext(FilterContext);
+  const {
+    setSorter,
+    sorterByPrice,
+    setSorterByPrice,
+    sorterByRating,
+    setSorterByRating,
+  } = useContext(SortContext);
 
   const { loading, delayLoading } = loaderStates;
-  
+
   const productsAvailable = allProducts?.products?.length > 0;
 
-  const onChangeSorterPrice = useCallback((event) => {
-    setSorterByPrice(event.target.value);
-  }, [setSorterByPrice]);
+  const containerVariants = useMemo(
+    () => ({
+      hidden: { opacity: 1 },
+      visible: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.2,
+          delayChildren: 0.1,
+        },
+      },
+    }),
+    []
+  );
 
-  const onChangeSorterRating = useCallback((event) => {
-    setSorterByRating(event.target.value);
-  }, [setSorterByRating]);
+  const itemVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1.6 } },
+  };
+  const productMotion = useMemo(
+    () =>
+      allProducts?.products?.map((product) => (
+        <motion.div
+          variants={itemVariants}
+          key={product.id}
+          className={productBox}
+        >
+          <ButtonAddToCart product={product} />
 
-  const sortComponentProps = useMemo(() => ({
-    sorterByPrice,
-    onChangeSorterPrice,
-    sorterByRating,
-    onChangeSorterRating
-  }), [sorterByPrice, onChangeSorterPrice, sorterByRating, onChangeSorterRating]);
+          <img
+            className="object-contain rounded-lg h-full p-2"
+            src={product.img}
+            alt={product.name}
+            onClick={() => navigate(`/shop/productDetail/${product.id}`)}
+          />
+
+          <div className="text-center">
+            <h2 className="font-bold text-gray-400 text-[16px] md:text-[18px] lg:text-[22px] px-2">
+              {product.name}
+            </h2>
+            <h2 className="text-gray-800 text-[16px] md:text-[18px] lg:text-[20px] py-2">
+              ${product.price}
+            </h2>
+            <h2 className="text-gray-400 text-[16px] md:text-[18px] lg:text-[20px] pb-2">
+              Stock: {product.stock}
+            </h2>
+          </div>
+        </motion.div>
+      )),
+    [itemVariants]
+  );
+
+  const onChangeSorterPrice = useCallback(
+    (event) => {
+      setSorterByPrice(event.target.value);
+    },
+    [setSorterByPrice]
+  );
+
+  const onChangeSorterRating = useCallback(
+    (event) => {
+      setSorterByRating(event.target.value);
+    },
+    [setSorterByRating]
+  );
+
+  const sortComponentProps = useMemo(
+    () => ({
+      sorterByPrice,
+      onChangeSorterPrice,
+      sorterByRating,
+      onChangeSorterRating,
+    }),
+    [sorterByPrice, onChangeSorterPrice, sorterByRating, onChangeSorterRating]
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,90 +158,56 @@ const ProductComponent = ({ loaderStates }) => {
     return <Loader delayLoading={delayLoading} />;
   }
 
-
-
   return (
     <section className="w-full">
       <div className="flex w-full p-4 md:gap-4 items-center justify-between overflow-x-auto">
         <Filter />
         <div className="flex gap-2">
-        {searchBarTag ? (
-          <h2
-            onClick={handleRemoveSearchBarTag}
-            className={filterTags}
-          >
-            {searchBarTag}
-          </h2>
-        ) : (
-          <div className="hidden "></div>
-        )}
+          {searchBarTag ? (
+            <h2 onClick={handleRemoveSearchBarTag} className={filterTags}>
+              {searchBarTag}
+            </h2>
+          ) : (
+            <div className="hidden "></div>
+          )}
 
-        {categoryTag !== "" ? (
-          <h2
-            onClick={handleRemoveCategoryTag}
-            className={filterTags}
-          >
-            {categoryTag}
-          </h2>
-        ) : (
-          <div className="hidden "></div>
-        )}
+          {categoryTag !== "" ? (
+            <h2 onClick={handleRemoveCategoryTag} className={filterTags}>
+              {categoryTag}
+            </h2>
+          ) : (
+            <div className="hidden "></div>
+          )}
 
-        {brandsTag ? (
-          <h2
-            onClick={handleRemoveBrandTag}
-            className={filterTags}
-          >
-            {brandsTag}
-          </h2>
-        ) : (
-          <div className="hidden"></div>
-        )}
+          {brandsTag ? (
+            <h2 onClick={handleRemoveBrandTag} className={filterTags}>
+              {brandsTag}
+            </h2>
+          ) : (
+            <div className="hidden"></div>
+          )}
 
-        {pricesTag.length === 2 && pricesTag[1] > 0 ? (
-          <h2
-            onClick={handleRemovePricesTag}
-            className={filterTags}
-          >
-            {pricesTag.join(" - ")}
-          </h2>
-        ) : (
-          <div className="hidden "></div>
-        )}
+          {pricesTag.length === 2 && pricesTag[1] > 0 ? (
+            <h2 onClick={handleRemovePricesTag} className={filterTags}>
+              {pricesTag.join(" - ")}
+            </h2>
+          ) : (
+            <div className="hidden "></div>
+          )}
         </div>
 
         <SortComponent sortComponentProps={sortComponentProps} />
       </div>
       {productsAvailable ? (
-        <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {allProducts.products.map((product) => (
-            <div
-              key={product.id}
-              className={productBox}
-            >
-              <ButtonAddToCart product={product} />
-
-              <img
-                className="object-contain rounded-lg h-full p-2"
-                src={product.img}
-                alt={product.name}
-                onClick={() => navigate(`/shop/productDetail/${product.id}`)}
-              />
-
-              <div className="text-center">
-                <h2 className="font-bold text-gray-400 text-[16px] md:text-[18px] lg:text-[22px] px-2">
-                  {product.name}
-                </h2>
-                <h2 className="text-gray-800 text-[16px] md:text-[18px] lg:text-[20px] py-2">
-                  ${product.price}
-                </h2>
-                <h2 className="text-gray-400 text-[16px] md:text-[18px] lg:text-[20px] pb-2">
-                  Stock: {product.stock}
-                </h2>
-              </div>
-            </div>
-          ))}
-        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="right-side p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {productMotion}
+          </div>
+        </motion.div>
       ) : (
         <div className="text-center md:h-screen py-4">
           <h2 className="text-gray-800 text-[18px] md:text-[20px] lg:text-[22px]">

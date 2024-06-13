@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { motion } from "framer-motion";
 
 const responsive = {
   desktop: {
@@ -32,31 +33,38 @@ const Banner = () => {
   ];
 
   return (
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      showDots={false}
-      responsive={responsive}
-      ssr={true}
-      infinite={true}
-      autoPlay={true}
-      autoPlaySpeed={8000}
-      keyBoardControl={true}
-      customTransition="all .5"
-      transitionDuration={500}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      deviceType={null} // assuming you're not passing deviceType as a prop
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-      className="max-h-[660px] h-full w-full"
+   
+    <motion.div
+    initial={{ opacity: 0, y: 250 }}
+    animate={{ opacity: 1, y: 0 ,}}
+    transition={{ duration: 0.5 }}
     >
-      {carouselImg.map((car) => (
-        <div key={car} className="w-full h-full bg-red-200  ">
-          <img className=" w-full h-full " src={car.image} alt="" />
-        </div>
-      ))}
-    </Carousel>
+      <Carousel
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        responsive={responsive}
+        ssr={true}
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={8000}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        deviceType={null} // assuming you're not passing deviceType as a prop
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
+        className="max-h-[660px] h-full w-full"
+      >
+        {carouselImg.map((car) => (
+          <div key={car} className="w-full h-full bg-red-200  ">
+            <img className=" w-full h-full " src={car.image} alt="" />
+          </div>
+        ))}
+      </Carousel>
+        </motion.div>
   );
 };
 

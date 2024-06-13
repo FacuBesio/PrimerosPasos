@@ -1,6 +1,7 @@
 import axios from "../../../src/config/axios";
 
 
+
 const getAllPurchases = async ( setAllPurchases ) => {
     try {
       const response = await axios.get(`/purchases`);

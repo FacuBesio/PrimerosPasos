@@ -1,4 +1,5 @@
-import  { useContext, useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useContext, useEffect } from "react";
 import { Footer, Title } from "../../components";
 import { mainPages } from "../../styles";
 import { Link } from "react-router-dom";
@@ -16,12 +17,12 @@ import garbage from "../../assets/garbage.png";
 import SortComponent from "../../components/SortComponent/SortComponent";
 import sorterValidator from "../../utils/sorter/sorterValidator";
 const ManageProducts = () => {
-  
   const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
-  const { searchBar } = useContext(SearchContext);
   const { sorter } = useContext(SortContext);
   const { allProducts, setAllProducts } = useContext(ProductsContext);
+  const { searchBar, setSearchBar, setSearchBarTag } =
+    useContext(SearchContext);
 
   const {
     setSorter,
@@ -45,13 +46,22 @@ const ManageProducts = () => {
     onChangeSorterRating,
   };
 
+  const onChangeSearchBar = useCallback(
+    (event) => {
+      setSearchBar(event.target.value);
+      setSearchBarTag(event.target.value);
+      setPage(1);
+    },
+    [setSearchBar, setSearchBarTag, setPage]
+  );
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     if (sorterQuery.sorterActive) {
       setSorter(sorterQuery.result);
     }
-  }, [ sorterByPrice, sorterByRating]);
+  }, [sorterByPrice, sorterByRating]);
 
   console.log(allProducts);
 
@@ -62,9 +72,7 @@ const ManageProducts = () => {
   const productsAvailable = allProducts?.products?.length > 0;
 
   return (
-    <main className={mainPages}> 
-     
-
+    <main className={mainPages}>
       <div className=" flex">
         <section className="left_section flex flex-col bg-red-200 w-fit p-6  gap-6">
           <Link to="/">Home</Link>
@@ -72,11 +80,31 @@ const ManageProducts = () => {
           <Link to="/admin/manageProducts">Products</Link>
           <Link to="/admin/manageShopping">Purchases</Link>
           <Link to="/admin/manageUsers">Users</Link>
+          <Link to="/admin/manageCategories">Categories</Link>
         </section>
         <section className="right_section flex flex-col  items-center gap-4">
           <Title />
-          <div>
+          <div className="flex gap-2">
+            <form className="flex gap-2">
+              <input
+                placeholder="Buscar"
+                className="px-1 rounded-md border border-red-100 max-w-[160px]"
+                type="text"
+                value={searchBar}
+                onChange={onChangeSearchBar}
+              />
+              <button>
+                <img
+                  className="w-[30px] hover:scale-110"
+                  src="/src/assets/VectorSearch.png"
+                  alt="Search Icon"
+                />
+              </button>
+            </form>
             <SortComponent sortComponentProps={sortComponentProps} />
+            <Link to={"/admin/manageProducts/create"}>
+              <img src="" alt="Add Product" />
+            </Link>
           </div>
           <table className="w-full border-collapse">
             <thead>
@@ -88,6 +116,7 @@ const ManageProducts = () => {
                 <th className="p-2 border  ">Rating</th>
                 <th className="p-2 border  ">Stock del producto</th>
                 <th className="p-2 border  ">Habilitado</th>
+                <th className="p-2 border  ">Edit</th>
                 <th className="p-2 border  ">Eliminar</th>
               </tr>
             </thead>
@@ -108,10 +137,10 @@ const ManageProducts = () => {
                     <td className="p-4 border">{product.rating}</td>
                     <td className="p-4 border">{product.stock}</td>
                     <td className="p-4 border">
-                    <button>
-                    {product.enabled ? "Sí" : "No"}
-                    </button>
-                     
+                      <button>{product.enabled ? "Sí" : "No"}</button>
+                    </td>
+                    <td className="p-4 border">
+                      <Link to={"/admin/manageProducts/edit"}>EDIT</Link>
                     </td>
                     <td className="p-4 border">
                       <button>

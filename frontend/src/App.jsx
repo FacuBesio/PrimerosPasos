@@ -18,6 +18,9 @@ import Lenis from "lenis";
 import ManageProducts from "../src/pages/Admin/ManageProducts.jsx";
 import ManageShopping from "../src/pages/Admin/ManageShopping.jsx";
 import ManageUser from "../src/pages/Admin/ManageUser.jsx";
+import CreateNewProduct from "./components/CreateNewProduct/CreateNewProduct.jsx";
+import EditProduct from "./components/EditProduct/EditProduct.jsx";
+import ManageCategories from "./pages/Admin/ManageCategories.jsx";
 
 
 function App() {
@@ -25,7 +28,7 @@ function App() {
   const lenis = new Lenis();
   
   lenis.on("scroll", (e) => {
-    console.log(e);
+  
   });
   
   function raf(time) {
@@ -55,8 +58,11 @@ function App() {
             <Route path="/profile/personalInfo" element={<Profile />} />
 
             <Route path="/admin/manageProducts" element={<ManageProducts />} />
+            <Route path="/admin/manageProducts/create" element={<CreateNewProduct />} />
+            <Route path="/admin/manageProducts/edit" element={<EditProduct />} />
             <Route path="/admin/manageShopping" element={<ManageShopping />} />
             <Route path="/admin/manageUsers" element={<ManageUser />} />
+            <Route path="/admin/manageCategories" element={<ManageCategories />} />
           </Routes>
         </AnimatePresence>
       </Suspense>
