@@ -17,12 +17,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     useRefreshTokens={true}
     cacheLocation="localstorage"
   >
-    <React.StrictMode>
+    {/* <React.StrictMode> */}
       <BrowserRouter>
         <AppProvider>
           <App />
         </AppProvider>
       </BrowserRouter>
-    </React.StrictMode>
+    {/* </React.StrictMode> */}
   </Auth0Provider>
 );

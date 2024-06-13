@@ -4,9 +4,8 @@ export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
-  const [filter, setFilter] = useState([]);
 
-  const value = useMemo(() => ({ allProducts, setAllProducts, filter, setFilter }), [allProducts, filter]);
+  const value = useMemo(() => ({ allProducts, setAllProducts }), [allProducts]);
 
   return (
     <ProductsContext.Provider value={value}>

@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState  } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";
@@ -16,34 +15,22 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   const { filter, page, searchBar, sorter } = productsParams;
   const url = useLocation().pathname;
   const { name } = useParams();
-  const { categoryTag, setCategoryTag } = useContext(CategoriesContext);
+  const { setCategoryTag } = useContext(CategoriesContext);
   const { setAllBrands } = useContext(BrandsContext);
   const { setAllProducts } = useContext(ProductsContext);
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
 
-  // Reset loading state when name changes
-  useEffect(() => {
-    setLoading(true);
-    setDelayLoading(true);
-  }, [name]);
+  console.log("Render TestBYIDDDDDD");
 
-  useEffect(() => {
-    setOriginUrl(url);
-    getBrands(setAllBrands).finally(() => setLoading(false));
-  }, [url]);
+  // Memoize fetch functions
+  const fetchBrands = useCallback(async () => {
+    await getBrands(setAllBrands);
+    setLoading(false);
+  }, [setAllBrands]);
 
-  useEffect(() => {
-    if (!loading) {
-      const timer = setTimeout(() => {
-        setDelayLoading(false);
-      }, 250);
-      return () => clearTimeout(timer);
-    }
-  }, [loading]);
-
-  useEffect(() => {
-    getProductsByCategories(
+  const fetchProductsByCategory = useCallback(async () => {
+    await getProductsByCategories(
       setAllProducts,
       setCategoryTag,
       page,
@@ -51,10 +38,40 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
       filter,
       sorter,
       name
-    ).finally(() => setLoading(false));
-  }, [page, searchBar, categoryTag, filter, sorter, name]);
+    );
+    setLoading(false);
+  }, [setAllProducts, setCategoryTag, page, searchBar, filter, sorter, name]);
 
-  const loaderStates = { loading, delayLoading };
+  // Reset loading state when name changes
+  useEffect(() => {
+    setLoading(true);
+    setDelayLoading(true);
+  }, [name]);
+
+  // Fetch brands on initial load or url change
+  useEffect(() => {
+    setOriginUrl(url);
+    fetchBrands();
+  }, [url, fetchBrands]);
+
+  // Delay the removal of loading state for smooth UX
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        setDelayLoading(false);
+      }, 350);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
+  // Fetch products on dependency changes
+  useEffect(() => {
+    if (!loading) {
+      fetchProductsByCategory();
+    }
+  }, [page, searchBar, filter, sorter, name, loading, fetchProductsByCategory]);
+
+  const loaderStates = useMemo(() => ({ loading, delayLoading }), [loading, delayLoading]);
 
   return (
     <main className={mainPages}>

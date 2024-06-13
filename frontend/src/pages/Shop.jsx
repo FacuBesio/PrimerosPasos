@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import AllProducts from "./ShopPages/AllProducts";
 import ProductsByCategory from "./ShopPages/ProductsByCategory";
@@ -11,12 +11,22 @@ import {
 } from "../../src/context/index";
 
 const Shop = () => {
-  const [originUrl, setOriginUrl] = useState(useLocation().pathname);
+  const location = useLocation();
+  const [originUrl, setOriginUrl] = useState(location.pathname);
   const { filter } = useContext(FilterContext);
   const { page } = useContext(PagesContext);
   const { searchBar } = useContext(SearchContext);
   const { sorter } = useContext(SortContext);
-  const productsParams = { filter, page, searchBar, sorter };
+
+  // Memoiza productsParams para evitar cambios en cada renderizado
+  const productsParams = useMemo(
+    () => ({ filter, page, searchBar, sorter }),
+    [filter, page, searchBar, sorter]
+  );
+
+  useEffect(() => {
+    setOriginUrl(location.pathname);
+  }, [location.pathname]);
 
   return (
     <>

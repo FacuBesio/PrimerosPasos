@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react-hooks/exhaustive-deps */
-import  { useContext, useEffect } from "react";
+import  React, { useCallback, useContext, useEffect } from "react";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/Product";
 import getProducts from "../../utils/products/getProducts";
@@ -12,21 +10,24 @@ import {
 import { mainPages } from "../../styles";
 import useLoading from "../../hooks/useLoading";
 
-
-const AllProducts = ({productsParams}) => {
-  const { filter, page, searchBar, sorter } = productsParams
+const AllProducts = ({ productsParams }) => {
+  const { filter, page, searchBar, sorter } = productsParams;
   const { setAllBrands } = useContext(BrandsContext);
-   const { setAllProducts } = useContext(ProductsContext);
-   const { loading, delayLoading } = useLoading();
-   const loaderStates = { loading, delayLoading };
-
+  const { setAllProducts } = useContext(ProductsContext);
+  const { loading, delayLoading } = useLoading();
+  const loaderStates = { loading, delayLoading };
+console.log("Render Test");
   useEffect(() => {
     getBrands(setAllBrands);
-  }, []);
+  }, [setAllBrands]);
+
+  const fetchProducts = useCallback(() => {
+    getProducts(setAllProducts, page, searchBar, filter, sorter);
+  }, [setAllProducts, page, searchBar, filter, sorter]);
 
   useEffect(() => {
-    getProducts(setAllProducts, page, searchBar, filter, sorter);
-  }, [page, searchBar, filter, sorter]);
+    fetchProducts();
+  }, [fetchProducts]);
 
   return (
     <main className={mainPages}>
@@ -41,4 +42,4 @@ const AllProducts = ({productsParams}) => {
   );
 };
 
-export default AllProducts;
+export default React.memo(AllProducts);
