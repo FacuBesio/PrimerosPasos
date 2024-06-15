@@ -1,43 +1,26 @@
-import  { Suspense, lazy } from "react";
 import "./App.css";
-import { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-const Cart = lazy(() => import("./pages/Cart"));
+import { useEffect, Suspense, lazy } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Cart from "./pages/Cart.jsx";
+import Home from "./pages/Home.jsx";
+import Shop from "./pages/Shop.jsx";
+const Admin = lazy(() => import("./pages/Admin.jsx"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Home = lazy(() => import("./pages/Home"));
-const Shop = lazy(() => import("./pages/Shop"));
-const Profile = lazy(() => import("./components/Profile/Profile"));
+const Profile = lazy(() => import("./pages/Profile.jsx"));
 import appInitialzer from "./utils/app/appInitialzer.js";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLocation } from "react-router-dom";
-
 import { mainPages } from "./styles.js";
-
 import Lenis from "lenis";
 
-import ManageProducts from "../src/pages/Admin/ManageProducts.jsx";
-import ManageShopping from "../src/pages/Admin/ManageShopping.jsx";
-import ManageUser from "../src/pages/Admin/ManageUser.jsx";
-import CreateNewProduct from "./components/CreateNewProduct/CreateNewProduct.jsx";
-import EditProduct from "./components/EditProduct/EditProduct.jsx";
-import ManageCategories from "./pages/Admin/ManageCategories.jsx";
-
-
 function App() {
-
   const lenis = new Lenis();
-  
-  lenis.on("scroll", (e) => {
-  
-  });
-  
+  lenis.on("scroll", (e) => {});
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
-  
   requestAnimationFrame(raf);
-  
+
   const location = useLocation();
 
   useEffect(() => {
@@ -47,25 +30,37 @@ function App() {
 
   return (
     <main className={mainPages}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <AnimatePresence mode='wait'>
+      <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-            <Route path="/*"  element={<Home />} />
-            <Route path="/shop/*" element={<Shop />} />
-            <Route path="/cart/*" element={<Cart />} />
-            <Route path="/contacto" element={<Contact />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/profile/personalInfo" element={<Profile />} />
-
-            <Route path="/admin/manageProducts" element={<ManageProducts />} />
-            <Route path="/admin/manageProducts/create" element={<CreateNewProduct />} />
-            <Route path="/admin/manageProducts/edit" element={<EditProduct />} />
-            <Route path="/admin/manageShopping" element={<ManageShopping />} />
-            <Route path="/admin/manageUsers" element={<ManageUser />} />
-            <Route path="/admin/manageCategories" element={<ManageCategories />} />
-          </Routes>
-        </AnimatePresence>
-      </Suspense>
+          <Route path="/*" element={<Home />} />
+          <Route path="/cart/*" element={<Cart />} />
+          <Route path="/shop/*" element={<Shop />} />
+          <Route
+            path="/admin/*"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Admin />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/contacto"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Contact />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/profile/*"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Profile />
+              </Suspense>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
     </main>
   );
 }

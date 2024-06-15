@@ -3,6 +3,8 @@ import Banner from "./Banner/Banner";
 import Button from "./ButtonAddToCart/ButtonAddToCart";
 import Categories from "./Categories/Categories";
 import ContactUs from "./ContactUs/ContactUs";
+import CreateNewProduct from "./CreateNewProduct/CreateNewProduct";
+import EditProduct from "./EditProduct/EditProduct";
 import Footer from "./Footer/Footer";
 import Hero from "./Hero/Hero";
 import Main from "./Main/Main";
@@ -18,6 +20,8 @@ export {
     Button,
     Categories,
     ContactUs,
+    CreateNewProduct,
+    EditProduct,
     Footer,
     Hero,
     Main,

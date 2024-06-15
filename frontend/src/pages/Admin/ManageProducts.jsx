@@ -16,13 +16,13 @@ import Paginated from "../../components/Paginated/Paginated";
 import garbage from "../../assets/garbage.png";
 import SortComponent from "../../components/SortComponent/SortComponent";
 import sorterValidator from "../../utils/sorter/sorterValidator";
+
 const ManageProducts = () => {
   const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
   const { sorter } = useContext(SortContext);
   const { allProducts, setAllProducts } = useContext(ProductsContext);
-  const { searchBar, setSearchBar, setSearchBarTag } =
-    useContext(SearchContext);
+  const { searchBar, setSearchBar, setSearchBarTag } = useContext(SearchContext);
 
   const {
     setSorter,
@@ -31,6 +31,7 @@ const ManageProducts = () => {
     sorterByRating,
     setSorterByRating,
   } = useContext(SortContext);
+
   const onChangeSorterPrice = (event) => {
     setSorterByPrice(event.target.value);
   };
@@ -73,8 +74,8 @@ const ManageProducts = () => {
 
   return (
     <main className={mainPages}>
-      <div className=" flex">
-        <section className="left_section flex flex-col bg-red-200 w-fit p-6  gap-6">
+      <div className="w-full flex">
+        <section className="left_section flex flex-col bg-red-200 w-fit p-6 gap-6">
           <Link to="/">Home</Link>
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/admin/manageProducts">Products</Link>
@@ -82,9 +83,10 @@ const ManageProducts = () => {
           <Link to="/admin/manageUsers">Users</Link>
           <Link to="/admin/manageCategories">Categories</Link>
         </section>
-        <section className="right_section flex flex-col  items-center gap-4">
+        <section className="right_section w-full px-10 flex flex-col items-center gap-4">
           <Title />
           <div className="flex gap-2">
+            <SortComponent sortComponentProps={sortComponentProps} />
             <form className="flex gap-2">
               <input
                 placeholder="Buscar"
@@ -101,37 +103,39 @@ const ManageProducts = () => {
                 />
               </button>
             </form>
-            <SortComponent sortComponentProps={sortComponentProps} />
             <Link to={"/admin/manageProducts/create"}>
-              <img src="" alt="Add Product" />
+              {/* <img src="" alt="Add Product" /> */}
+              + Add Product
             </Link>
           </div>
-          <table className="w-full border-collapse">
+          <table className="w-full border border-collapse bg-white">
             <thead>
               <tr>
-                <th className="p-2 border ">Imagen producto</th>
-                <th className="p-2 border  ">Nombre del producto</th>
-                <th className="p-2 border  ">Marca</th>
-                <th className="p-2 border  ">Precio</th>
-                <th className="p-2 border  ">Rating</th>
-                <th className="p-2 border  ">Stock del producto</th>
-                <th className="p-2 border  ">Habilitado</th>
-                <th className="p-2 border  ">Edit</th>
-                <th className="p-2 border  ">Eliminar</th>
+                <th className="p-4 border">Imagen</th>
+                <th className="p-4 border">Nombre</th>
+                <th className="p-4 border">Marca</th>
+                <th className="p-4 border">Precio</th>
+                <th className="p-4 border">Rating</th>
+                <th className="p-4 border">Stock</th>
+                <th className="p-4 border">Habilitado</th>
+                <th className="p-4 border">Editar</th>
+                <th className="p-4 border">Eliminar</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="text-center">
               {productsAvailable ? (
                 allProducts.products.map((product) => (
                   <tr key={product.id}>
-                    <td className="p-4 border">
+                    <td className="p-4 border text-center">
                       <img
                         src={product.img}
                         alt={product.name}
-                        className="w-16 h-16 object-cover"
+                        className="w-24 h-24 object-cover rounded-xl mx-auto"
                       />
                     </td>
-                    <td className="p-4 border">{product.name}</td>
+                    <td className="p-4 border min-w-[100px] max-w-[300px] truncate">
+                      {product.name}
+                    </td>
                     <td className="p-4 border">{product.brand}</td>
                     <td className="p-4 border">${product.price}</td>
                     <td className="p-4 border">{product.rating}</td>
@@ -144,25 +148,27 @@ const ManageProducts = () => {
                     </td>
                     <td className="p-4 border">
                       <button>
-                        <img src={garbage} alt="" />
+                        <img src={garbage} alt="Eliminar" 
+                        className="w-12 h-12"
+                        />
                       </button>
                     </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="text-center p-4">
+                  <td colSpan="9" className="text-center p-4">
                     No se encuentran productos disponibles.
                   </td>
                 </tr>
               )}
             </tbody>
-            <Paginated
-              page={page}
-              totalPages={allProducts?.totalPages}
-              setPage={setPage}
-            />
           </table>
+          <Paginated
+            page={page}
+            totalPages={allProducts?.totalPages}
+            setPage={setPage}
+          />
         </section>
       </div>
       <Footer />
