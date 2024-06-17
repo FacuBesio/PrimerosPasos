@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useContext, useEffect } from "react";
-import { Footer, Title } from "../../components";
-import { mainPages } from "../../styles";
+import { Footer, Title } from "../../../components";
+import { mainPages } from "../../../styles";
 import { Link } from "react-router-dom";
 import {
   FilterContext,
@@ -9,13 +9,13 @@ import {
   ProductsContext,
   SearchContext,
   SortContext,
-} from "../../context";
+} from "../../../context";
 
-import getProducts from "../../utils/products/getProducts";
-import Paginated from "../../components/Paginated/Paginated";
-import garbage from "../../assets/garbage.png";
-import SortComponent from "../../components/SortComponent/SortComponent";
-import sorterValidator from "../../utils/sorter/sorterValidator";
+import getProducts from "../../../utils/products/getProducts";
+import Paginated from "../../../components/Paginated/Paginated";
+import garbage from "../../../assets/garbage.png";
+import SortComponent from "../../../components/SortComponent/SortComponent";
+import sorterValidator from "../../../utils/sorter/sorterValidator";
 
 const ManageProducts = () => {
   const { filter } = useContext(FilterContext);

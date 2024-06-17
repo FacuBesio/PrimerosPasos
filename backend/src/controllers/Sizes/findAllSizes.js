@@ -1,6 +1,6 @@
 const { Category, Product } = require("../../db");
 
-const findAllBrands = async () => {
+const findAllSizes = async () => {
   const products = await Product.findAll({
     include: {
       model: Category,
@@ -12,11 +12,10 @@ const findAllBrands = async () => {
   });
 
   const resultSet = new Set();
-  products.forEach((product) => resultSet.add(product.brand));
+  products.forEach((product) => resultSet.add(product.size));
   const result = Array.from(resultSet).sort();
-
 
   return result;
 };
 
-module.exports = findAllBrands;
+module.exports = findAllSizes;

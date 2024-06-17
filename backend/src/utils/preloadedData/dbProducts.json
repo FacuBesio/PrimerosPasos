@@ -3,6 +3,7 @@
     {
       "brand": "Carestino",
       "name": "Asiento reductor con escalera Pekín",
+      "size": "TU",
       "color": "gray",
       "description": "El asiento reductor PEKÍN es práctico y muy fácil de adaptar a la mayoría de formas y tamaños de inodoros. Posee una escalera que facilita la instalación y el acceso del niño a la hora de utilizar el inodoro, permitiendole subir y bajar con facilidad y seguridad.",
       "price": 69999,
@@ -14,6 +15,7 @@
     {
       "brand": "Carestino",
       "name": "Toalla con Capucha",
+      "size": "TU",
       "color": "white",
       "description": "La Toalla con Capucha para bebé es ideal para retirar al niño después del baño. Esta confeccionada en tela 100% algodón y la parte externa de la capucha cuenta con un diseño delicado estampado de tela pique que nos ayuda a proteger la cabeza del niño del frio.",
       "price": 21999,
@@ -25,6 +27,7 @@
     {
       "brand": "Carestino",
       "name": "Pelela Entrenamiento 3 en 1 con Reductor",
+      "size": "TU",
       "color": "green",
       "description": "La pelela de entrenamiento 3 en 1, es un práctico y completo entrenador para que el bebé aprenda a ir al baño solito. Es liviana, segura, cómoda y también resulta sencilla de armar, almacenar y limpiar.",
       "price": 49999,
@@ -36,6 +39,7 @@
     {
       "brand": "Carestino",
       "name": "Pelela Daily 3 en 1",
+      "size": "TU",
       "color": "green",
       "description": "La pelela Daily es un práctico y completo entrenador para que el niño aprenda a ir al baño solito. Es liviana, segura, cómoda y también resulta práctica para armar, almacenar y limpiar.",
       "price": 59999,
@@ -47,6 +51,7 @@
     {
       "brand": "Carestino",
       "name": "Bañera Plegable con Soporte Ipanema",
+      "size": "TU",
       "color": "aquamarine",
       "description": "La bañera es apta para su uso desde el nacimiento, ya que incluye un asiento reductor que contribuye al cuidado del bebé, ademas de ofrecer comodidad a los padres al momento de bañarlo. La bañera plegable incluye un tapón térmico que indica la temperatura ideal del agua. La bañera posee una capacidad de 30 litros, lo que permite un amplio espacio para el bebe al momento del baño.",
       "price": 64999,
@@ -58,6 +63,7 @@
     {
       "brand": "Carestino",
       "name": "Bañera Plegable con Soporte Hawaii",
+      "size": "TU",
       "color": "gray",
       "description": "La bañera es apta para el recién nacido, ya que incluye un asiento reductor que ayuda con el cuidado del bebé y ofrece seguridad durante el baño. Además, incluye un sensor digital que indica la temperatura del agua. La bañera posee una capacidad de 50 litros, lo que permite un amplio espacio para el bebe y brinda mayor comodidad a los padres al momento del baño.",
       "price": 89999,
@@ -69,6 +75,7 @@
     {
       "brand": "Carestino",
       "name": "Mochila Maternal Paris",
+      "size": "TU",
       "color": "black",
       "description": "La mochila Paris es ideal para llevar todo lo que tu bebé y vos necesitan. Cuenta con prácticos bolsillos y compartimentos para que tengas todo a mano a la hora del paseo. Además, su interior está completamente forrado y ofrece resistencia al agua, ideal para evitar derrames, o para esos días lluviosos. -Cuenta con agarres para transportarla cómodamente en mano.",
       "price": 79999,
@@ -80,6 +87,7 @@
     {
       "brand": "Carestino",
       "name": "Mochila Maternal Milán",
+      "size": "TU",
       "color": "gray",
       "description": "La mochila Milán es ideal para llevar todo lo que tu bebé y vos necesitan. Está diseñada en tela polyester y puede lavarse fácilmente. Además, su interior está completamente forrado y ofrece resistencia al agua, ideal para esos días lluviosos.",
       "price": 79999,
@@ -91,6 +99,7 @@
     {
       "brand": "Carestino",
       "name": "Mochila Maternal Roma",
+      "size": "TU",
       "color": "gray",
       "description": "La mochila Roma es ideal para llevar todo lo que tu bebé y vos necesitan. Cuenta con prácticos bolsillos y compartimientos para que tengas todo a mano a la hora del paseo. Además, su interior está completamente forrado y ofrece resistencia al agua, ideal para evitar derrames.",
       "price": 79999,
@@ -102,6 +111,7 @@
     {
       "brand": "Carestino",
       "name": "Mochila Maternal Berna",
+      "size": "TU",
       "color": "black",
       "description": "La mochila Berna es ideal para llevar todo lo que tu bebé y vos necesitan. Cuenta con prácticos bolsillos y compartimientos para que tengas todo a mano a la hora del paseo. Además, sus prácticas correas permiten sujetarla al manillar de tu cochecito evitando llevar un peso excesivo sobre la espalda.",
       "price": 79999,
@@ -113,6 +123,7 @@
     {
       "brand": "Carestino",
       "name": "Mochila Maternal Boston",
+      "size": "TU",
       "color": "gray",
       "description": "La mochila maternal Boston es súper práctica para que lleves todo lo que tu bebé y vos necesitan. Además, cuenta con múltiples bolsillos internos, dos bolsillos térmicos, usb y correas para sujetar al cochecito. Cuenta con un agarre superior para transportarla cómodamente en mano. Tela resistente con prácticos bolsillos",
       "price": 79999,
@@ -124,6 +135,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Booster Monza",
+      "size": "TU",
       "color": "black",
       "description": "La butaca Monza funciona como asiento elevador para que el niño pueda alcanzar la altura necesaria, brindandole comodidad y seguridad al momento del viaje. La butaca está homologada de acuerdo a los requisitos de la Norma Europea de Equipos de Seguridad para Niños (ECER44/04)",
       "price": 44999,
@@ -135,6 +147,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Verona",
+      "size": "TU",
       "color": "gray",
       "description": "La butaca VERONA proporciona un excelente confort gracias a sus reductores acolchados y cabezal regulable en diferentes alturas. La butaca es universal para todo tipo de vehículos que posean cinturón de seguridad de tres puntos. Puede transformarse en booster de forma sencilla retirando su respaldo. Homologación ECE R44 / 04.",
       "price": 114999,
@@ -146,6 +159,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Berlín",
+      "size": "TU",
       "color": "purple",
       "description": "La butaca Berlín proporciona un excelente confort gracias a sus reductores acolchados y cabezal regulable en diferentes alturas. Su instalación se realiza con cinturón de seguridad de 3 puntos y puede transformarse en booster de forma sencilla retirando su respaldo. Homologación ECE R44 / 04.",
       "price": 139999,
@@ -157,6 +171,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Moscú",
+      "size": "TU",
       "color": "purple",
       "description": "La butaca Moscú proporciona un excelente confort gracias a sus reductores acolchados y cabezal regulable en diferentes alturas. Su sistema de anclaje ISOFIX y guías de cinturón nos permiten lograr una rápida, sencilla y correcta instalación en el automóvil. En caso de no contar con sistema ISOFIX en el vehículo, puede instalarse con cinturón de seguridad de 3 puntos. Además, puede transformarse en booster de forma sencilla retirando su respaldo. Homologación ECE R44 / 04.",
       "price": 159999,
@@ -168,6 +183,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Tokio",
+      "size": "TU",
       "color": "black",
       "description": "La butaca TOKIO proporciona un excelente confort gracias a sus reductores acolchados y su cabezal regulable en altura. Será la compañera ideal para realizar los viajes de manera cómoda y segura junto a tu bebé. Su sistema de anclaje ISOFIX nos permiten lograr una rápida, sencilla y correcta instalación en el automóvil. Homologada con normas europeas de seguridad ECE R44/04.",
       "price": 219999,
@@ -179,6 +195,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Montreal",
+      "size": "TU",
       "color": "gray",
       "description": "La butaca Montreal posee sistema de giro de 360º, lo cual facilita la colocación y retirada del niño en la butaca, brindándole también mayor comodidad a los padres. Será la compañera ideal para realizar los viajes de manera confortable y segura junto a tu bebé. Su sistema de anclaje ISOFIX y guías de cinturón que se encuentran señalizadas en color, nos permiten lograr una rápida, sencilla y correcta instalación en el automóvil. Homologada con normas europeas de seguridad ECE R44/04.",
       "price": 249999,
@@ -190,6 +207,7 @@
     {
       "brand": "Carestino",
       "name": "Butaca Vancouver",
+      "size": "TU",
       "color": "black",
       "description": "La butaca Vancouver posee sistema de giro de 360º, lo cual facilita la colocación y retirada del niño en la butaca, brindándole también mayor comodidad a los padres. Será la compañera ideal para realizar viajes de manera confortable y segura junto a tu bebé. Su sistema de anclaje ISOFIX permite lograr una rápida, sencilla y correcta instalación en el automóvil. Homologada con normas europeas de seguridad ECE R44/04.",
       "price": 299999,
@@ -201,6 +219,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Capri",
+      "size": "TU",
       "color": "beige",
       "description": "El cochecito CAPRI pertenece a la familia de los paragüitas por su plegado y te permite transportar a tu bebé desde el nacimiento. Su estructura de caño reforzado, capota regulable, reposapiés y respaldo ajustables lo convierten en tu aliado ideal para salir a pasear.",
       "price": 139999,
@@ -212,6 +231,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito City",
+      "size": "TU",
       "color": "emerald",
       "description": "El cochecito CITY es un modelo clásico de características súper funcionales para todas las etapas, que harán que sea un compañero ideal para vos y tu bebé. La capota móvil cuenta con tres posiciones, ayudando a proteger al bebé del sol y/o del viento cuando está totalmente desplegada. También cuenta con detalles reflectivos que se iluminan al contacto con la luz de los autos.",
       "price": 179999,
@@ -223,6 +243,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Nitro",
+      "size": "TU",
       "color": "emerald",
       "description": "El cochecito NITRO pertenece a la familia de los paragüitas, posee un plegado rápido y sencillo que se puede realizar con una sola mano. Además, cuenta con 3 posiciones de respaldo incluído el reclinado total que lo hace apto para recién nacidos.",
       "price": 229999,
@@ -234,6 +255,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Cici sin Huevito",
+      "size": "TU",
       "color": "blue",
       "description": "El cochecito CICI es el modelo ideal para realizar tus paseos de forma ágil y práctica, ya que es ultra compacto y liviano. Se puede utilizar desde el nacimiento del bebé y soporta un peso de hasta 20 kg. Además, cuenta con respaldo multiposición, incluido el reclinado total.",
       "price": 229999,
@@ -245,6 +267,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Smart",
+      "size": "TU",
       "color": "black",
       "description": "El nuevo SMART, es el ideal para los padres que buscan un cochecito fácil de usar y transportar. El cochecito es la opción perfecta para viajes, ya que cuenta con un sistema de cierre ultra compacto y se puede plegar rápido y sencillamente con una sola mano. Además, incluye una práctica manija desplegable para poder transportarlo de manera cómoda y fácil.",
       "price": 279999,
@@ -256,6 +279,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito City Travel",
+      "size": "TU",
       "color": "beige",
       "description": "El cochecito CITY TRAVEL es un modelo clásico de características súper funcionales para todas las etapas, que harán que sea un compañero ideal para vos y tu bebé. Incluye una butaca huevito la cual se encuentra homologada bajo normas Europeas ECE R44/04 para su uso en automóvil con cinturón de seguridad de 3 puntos, apta desde el nacimiento hasta los 13 kg.",
       "price": 279999,
@@ -267,6 +291,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Cici con Huevito",
+      "size": "TU",
       "color": "blue",
       "description": "El cochecito CICI es el modelo ideal para realizar tus paseos de forma ágil y práctica, ya que es ultra compacto y liviano. Se puede utilizar desde el nacimiento del bebé y soporta un peso de hasta 20 kg. Incluye una butaca huevito homologada para su uso en automóvil y adaptable en la estructura del cochecito. Además, cuenta con respaldo multiposición, incluido el reclinado total.",
       "price": 349999,
@@ -278,6 +303,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Midway",
+      "size": "TU",
       "color": "black",
       "description": "El cochecito Midway fusiona la agilidad, practicidad y estabilidad de los modelos Jogger. Junto a su moderno y elegante estilo se convierte en un cochecito de gran atractivo y diseño para acompañarte. Posee un amplio asiento que brinda confort, espacio y seguridad para el bebé. Incluye una butaca huevito adaptable a la estructura del cochecito, homologada para su uso en automóvil.",
       "price": 349999,
@@ -289,6 +315,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Kiev",
+      "size": "TU",
       "color": "red",
       "description": "El nuevo cochecito Kiev cuenta con un diseño práctico y funcional. Su moderno y elegante estilo lo hacen un cochecito de gran atractivo para acompañarte junto a tu bebé. Además, incluye una confortable butaca huevito la cual se encuentra homologada para su uso en automóvil, que será tu compañera de viaje perfecta.",
       "price": 379999,
@@ -300,6 +327,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Ferro",
+      "size": "TU",
       "color": "burgundy",
       "description": "Su diseño ultra completo te permite acompañar al bebé durante toda la etapa de crecimiento. El asiento puede colocarse en ambas direcciones y brinda la opción de convertirse en un cómodo y práctico moisés. Además, incluye una confortable butaca huevito la cual se encuentra homologada para su uso en automóvil, convirtiéndose en tu compañera de viaje perfecta.",
       "price": 449999,
@@ -311,6 +339,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito London",
+      "size": "TU",
       "color": "beige",
       "description": "El cochecito LONDON es el modelo ideal que te acompañará en toda la etapa de crecimiento de tu bebé. Se distingue por ser un modelo clásico, elegante y completo con un gran detalle de diseño. Además, incluye un cómodo y amplio moisés adaptable a su estructura y una confortable butaca huevito la cual se encuentra homologada para su uso en automóvil, que será tu compañera de viaje perfecta.",
       "price": 449999,
@@ -322,6 +351,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Deluxe",
+      "size": "TU",
       "color": "gray",
       "description": "El Deluxe V2 es uno de nuestros modelos más completos. Cuenta con un Huevito y a su vez el coche se puede convertir en un práctico Moisés. Además, este modelo cuenta con la capacidad de rebatir su estructura cuando se utiliza como coche o moisés para que puedas ver a tú bebé en todo momento. Este modelo cuenta con un sistema de amortiguación pronunciado, que le brinda mayor comodidad y estabilidad en su andar.",
       "price": 629999,
@@ -333,6 +363,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Beverly",
+      "size": "TU",
       "color": "gray",
       "description": "Su diseño moderno y elegante lo convierte en el compañero ideal. Junto al cochecito Beverly V2, realizarás tus paseos diarios de forma ágil, segura y por sobre todo con un gran estilo. Además, incluye un cómodo y amplio moisés adaptable a su estructura y una confortable butaca huevito la cual se encuentra homologada para su uso en automóvil, que será tu compañera de viaje perfecta.",
       "price": 699999,
@@ -344,6 +375,7 @@
     {
       "brand": "Carestino",
       "name": "Cochecito Smart Duo",
+      "size": "TU",
       "color": "black",
       "description": "Pasear de a dos, ahora es sencillo y práctico. El cochecito SMART DUO posee un diseño minimalista, moderno y resistente. Además, es ideal para que bebés mellizos o hermanos de cercana edad puedan fortalecer el vínculo entre ellos y compartir los paseos diarios junto a vos.",
       "price": 399999,
@@ -355,6 +387,7 @@
     {
       "brand": "Carestino",
       "name": "Practicuna Niza",
+      "size": "TU",
       "color": "beige",
       "description": "La practicuna ideal para acompañar al bebé, haciendo que las horas de sueño sean cómodas y seguras. Puede utilizarse como cuna y también como corralito, creando un espacio de juego seguro al contar con dos niveles de fácil ajuste. Su plegado es sencillo y se logra en pocos movimientos.",
       "price": 107999,
@@ -366,6 +399,7 @@
     {
       "brand": "Carestino",
       "name": "Corralito Islandia",
+      "size": "TU",
       "color": "gray",
       "description": "El corralito Islandia resulta beneficioso para el desarrollo de la psicomotricidad del bebé ya que puede moverse por él gateando o bien, sosteniéndose de los laterales para otorgarle estabilidad y seguridad. Su plegado es sencillo y se logra en pocos movimientos. Se recomienda su uso desde los 6 meses.",
       "price": 139999,
@@ -377,6 +411,7 @@
     {
       "brand": "Carestino",
       "name": "Practicuna Viena",
+      "size": "TU",
       "color": "blue",
       "description": "La practicuna ideal para acompañar a tu bebé, haciendo que las horas de sueño sean cómodas y seguras. Puede utilizarse como cuna y también como corralito, creando un espacio de juego seguro al contar con dos niveles de fácil ajuste. Su plegado es sencillo y se logra en pocos movimientos.",
       "price": 139999,
@@ -388,6 +423,7 @@
     {
       "brand": "Carestino",
       "name": "Practicuna Venecia",
+      "size": "TU",
       "color": "aquamarine",
       "description": "La practicuna ideal para acompañar al bebé, haciendo que las horas de sueño sean cómodas y seguras. Puede utilizarse como cuna y también como corralito, creando un espacio de juego seguro al contar con dos niveles de fácil ajuste. Su plegado es sencillo y se logra en pocos movimientos.",
       "price": 179999,
@@ -399,6 +435,7 @@
     {
       "brand": "Carestino",
       "name": "Practicuna Marsella",
+      "size": "TU",
       "color": "aquamarine",
       "description": "La practicuna ideal para acompañar a tu bebé, haciendo que las horas de sueño sean cómodas y seguras. Puede utilizarse como cuna y también como corralito, creando un espacio de juego seguro al contar con dos niveles de fácil ajuste. Su plegado es sencillo y se logra en pocos movimientos.",
       "price": 199999,
@@ -410,6 +447,7 @@
     {
       "brand": "Carestino",
       "name": "Practicuna Genova",
+      "size": "TU",
       "color": "beige",
       "description": "La practicuna GENOVA posee un diseño moderno y elegante. Puede utilizarse como cuna y también como corralito, creando un espacio de juego seguro al contar con dos niveles de fácil ajuste. Su plegado es sencillo y se logra en pocos movimientos. La practicuna ofrece diseño, practicidad y seguridad. Es ideal para acompañar a tu bebé, haciendo que las horas de sueño sean cómodas y seguras.",
       "price": 219999,
@@ -421,6 +459,7 @@
     {
       "brand": "Carestino",
       "name": "Practicuna Valencia",
+      "size": "TU",
       "color": "beige",
       "description": "La practicuna VALENCIA posee un diseño moderno y elegante. Ofrece diseño, practicidad y seguridad. Puede utilizarse como cuna y corralito, al contar con dos niveles de fácil ajuste. Es ideal para acompañar a tu bebé, haciendo que las horas de sueño sean cómodas y seguras.",
       "price": 279999,
@@ -432,6 +471,7 @@
     {
       "brand": "Carestino",
       "name": "Cuna Colecho Madison",
+      "size": "TU",
       "color": "gray",
       "description": "La cuna colecho MADISON tiene la función de mantener siempre cerca a tu bebé a la hora de dormir. La cercania refuerza tu vínculo afectivo con el bebé durante los primeros meses y ayuda a que los desvelos tengan un menor impacto.",
       "price": 229999,
@@ -443,6 +483,7 @@
     {
       "brand": "Carestino",
       "name": "Funda impermeable para colchón",
+      "size": "TU",
       "color": "white",
       "description": "La funda es plástica e hipoalergénica completamente impermeable, nos ayuda a proteger el colchón ante cualquier derrame de líquidos, manteniéndolo seco en todo momento. A su vez, está diseñada para no hacer ruido cuando el bebé está sobre ella, haciendo que las horas de sueño no se interrumpan.",
       "price": 21999,
@@ -454,6 +495,7 @@
     {
       "brand": "Carestino",
       "name": "Sábana Colecho Carestino",
+      "size": "TU",
       "color": "beige",
       "description": "El suave juego de sábanas es ideal para cuna colecho, cuenta con un diseño de guarda estampado y delicado. Su tela es de percal de 144 hilos con una composición de 70% algodón y 30% poliéster.",
       "price": 29999,
@@ -465,6 +507,7 @@
     {
       "brand": "Carestino",
       "name": "Sábana Particunas Carestino",
+      "size": "TU",
       "color": "beige",
       "description": "El suave juego de sábanas es ideal para praticunas, cuanta con un diseño de guarda estampado y delicado. Su tela es de percal de 144 hilos con una composición de 70% algodón y 30% poliéster.",
       "price": 34999,
@@ -476,6 +519,7 @@
     {
       "brand": "Carestino",
       "name": "Cobertor para Practicuna",
+      "size": "TU",
       "color": "white",
       "description": "Suave cobertor de piqué matelaseado con un diseño estampado, completamente reversible y delicado. Su material es 100% de algodón. Ideal para las épocas de mediana estación.",
       "price": 44999,
@@ -487,6 +531,7 @@
     {
       "brand": "Carestino",
       "name": "Acolchado Carestino 100x140",
+      "size": "TU",
       "color": "white",
       "description": "Suave acolchado de piqué matelaseado con un diseño estampado, completamente reversible y delicado. Su relleno es de vellón siliconado y su material es 100% de algodón. Ideal para las épocas de frío.",
       "price": 46999,
@@ -498,6 +543,7 @@
     {
       "brand": "Carestino",
       "name": "Colchón Matelaseado Impermeable",
+      "size": "TU",
       "color": "white",
       "description": "El colchón para practicuna matelaseado impermeable está diseñado para sostener el cuerpo del bebé y garantizar un buen desarrollo de la columna, gracias a su firmeza y densidad de 20 kg, tal como recomiendan los pediatras y la Organización Mundial de la Salud.",
       "price": 69999,
@@ -509,6 +555,7 @@
     {
       "brand": "Carestino",
       "name": "Alfombra Antigolpes Reversible 120x180",
+      "size": "TU",
       "color": "beige",
       "description": "La alfombra antigolpes es ideal para proteger y acompañar al bebé en las horas de juego y durante el desarrollo motriz, permitiendo realizar movimientos como el gateo y los primeros pasos de manera segura. Su material es de espuma de alta densidad y es resistente al agua, ideal para interior y exterior.",
       "price": 44999,
@@ -520,6 +567,7 @@
     {
       "brand": "Carestino",
       "name": "Alfombra Plegable 177x195",
+      "size": "TU",
       "color": "beige",
       "description": "La alfombra antigolpes es ideal para proteger y acompañar al bebé en las horas de juego y durante el desarrollo motriz, permitiendo realizar movimientos como el gateo y primeros pasos de manera segura. Su material de espuma de alta densidad es de excelente calidad y posee textura antideslizante. Además, es resistente al agua ideal para interior y exterior.",
       "price": 55999,
@@ -531,6 +579,7 @@
     {
       "brand": "Carestino",
       "name": "Gimnasio Didáctico Carestino",
+      "size": "TU",
       "color": "emerald",
       "description": "El Gimnasio Didáctico esta diseñado para estimular la percepción sensorial, promover el desarrollo de la vista, el oído y el tacto. Además, estimula las habilidades de coordinación. Recomendado para niños de hasta 36 meses, que pueden utilizarlo acostados o sentados. En él pueden descansar, jugar y divertirse interactuando con distintos elementos con texturas y sonidos variados.",
       "price": 74999,
@@ -542,6 +591,7 @@
     {
       "brand": "Carestino",
       "name": "Gimnasio Didáctico Multifunción",
+      "size": "TU",
       "color": "orange",
       "description": "El gimnasio multifunción es ideal para el desarrollo sensorial del bebé. Sus formas y colores estimulan las habilidades de coordinación, como así también el sentido del tacto, la vista y el oído.",
       "price": 84999,
@@ -553,6 +603,7 @@
     {
       "brand": "Carestino",
       "name": "Pelotero Didáctico",
+      "size": "TU",
       "color": "gray",
       "description": "El pelotero didáctico promueve el desarrollo de la vista, el oído y el tacto, además de estimular las habilidades de coordinación. Incluye una manta con texturas suaves y cómoda con un diseño atractivo que es extraíble para lavarla fácilmente y pelotas blandas en colores blancas, celestes y rosas para pasar momentos divertidos en familia.",
       "price": 139999,
@@ -564,6 +615,7 @@
     {
       "brand": "Carestino",
       "name": "Sofa Peluche Elefante",
+      "size": "TU",
       "color": "gray",
       "description": "El sofá peluche será el compañero ideal en todos los juegos y meriendas del niño. Es muy liviano para llevarlo a todos lados, suave y acolchado para que pueda disfrutar y divertirse en todo momento.",
       "price": 89999,
@@ -575,6 +627,7 @@
     {
       "brand": "Carestino",
       "name": "Mecedor Peluche",
+      "size": "TU",
       "color": "brown",
       "description": "El MECEDOR peluche posee un suave y delicado diseño que lo convertirá en el compañero de juego ideal para tu bebé. La base mecedora cuenta con una estructura de madera liviana y muy resistente, que brinda seguridad y estabilidad. Fomenta la creatividad y la imaginación del niño, ayudando a desarrollar el sentido de balance y equilibrio.",
       "price": 139999,
@@ -586,6 +639,7 @@
     {
       "brand": "Carestino",
       "name": "Patacleta",
+      "size": "TU",
       "color": "pink",
       "description": "Un divertido PATA-PATA y bicicleta en la que el niño pasará horas de diversión. Posee una estructura muy resistente, liviana y fácil de armar. Fomenta la creatividad y el desarrollo de habilidades, ayudando a estimular el sentido de balance y el equilibrio.",
       "price": 84999,
@@ -597,6 +651,7 @@
     {
       "brand": "Carestino",
       "name": "Scooter 3 en 1 V2",
+      "size": "TU",
       "color": "gray",
       "description": "El scooter 3 en 1 posee una estructura muy resistente y fácil de armar. Fomenta la creatividad y el desarrollo de habilidades, ayudando a estimular el sentido de balance y el equilibrio. Es el compañero ideal de aprendizaje y diversión en las horas de juego, además de cubrir varias etapas en el crecimiento del niño.",
       "price": 109999,
@@ -608,6 +663,7 @@
     {
       "brand": "Carestino",
       "name": "Peluche Extensible Unicornio",
+      "size": "TU",
       "color": "beige",
       "description": "El peluche unicornio se adapta fácilmente a diferentes alturas, hasta 1m de alto. Gracias a su estructura interior de metal resistente, se puede subir y bajar fácilmente. Es liviano y su relleno de poliéster lo hace muy acolchado. Además, su exterior de tela peluche es super suave al tacto, lo convertirá en el compañero ideal de juegos.",
       "price": 89999,
@@ -619,6 +675,7 @@
     {
       "brand": "Carestino",
       "name": "Sacaleche Manual con Mamadera",
+      "size": "TU",
       "color": "gray",
       "description": "El extractor de leche manual es una herramienta ideal diseñada específicamente para la lactancia materna. El diseño del masajeador de silicona cuenta con pétalos de masaje con ajuste natural para estimular el flujo de leche materna.",
       "price": 49999,
@@ -630,6 +687,7 @@
     {
       "brand": "Carestino",
       "name": "Sacaleche Eléctrico Pocket con Batería",
+      "size": "TU",
       "color": "white",
       "description": "El Sacaleche Eléctrico Pocket es ideal para llevar al trabajo o a cualquier lugar, por sus programas automáticos y su batería recargable por USB. Compacto, portátil y fácil de utilizar. Es una práctica herramienta diseñada específicamente para prolongar la lactancia tanto como sea posible. Sus materiales son libres de BPA.",
       "price": 99999,
@@ -641,6 +699,7 @@
     {
       "brand": "Carestino",
       "name": "Sacaleche Eléctrico con Mamadera",
+      "size": "TU",
       "color": "gray",
       "description": "El Sacaleche Eléctrico con mamadera de Carestino es ideal para madres que tienen una frecuencia de uso mayor. Permite extraer mayor cantidad de leche en menos tiempo y con un menor esfuerzo de la madre. Éste sacaleche eléctrico cuenta con tres modos de succión, ayudando a estimular el flujo de la leche materna y a prevenir la congestión mamaria. Su copa posee masajeador de silicona para un ajuste natural, ayudando a estimular el flujo de la leche materna. Sus materiales son libres de BPA.",
       "price": 129999,
@@ -652,6 +711,7 @@
     {
       "brand": "Carestino",
       "name": "Almohadón de Amamantar",
+      "size": "TU",
       "color": "white",
       "description": "El almohadón para amamantar ayuda al descanso durante el embarazo, acompañando en la lactancia acomodándose a la forma del cuerpo. Su forma permite que el bebé tenga apoyo en su cabeza, panza y piernas durante el amamantamiento, ayudando a la postura de la columna y cintura. Además, le da altura ideal al bebé acercándolo a la madre, dandole mayor soporte a la espalda de cada mamá. Funciona como nido de contención.",
       "price": 36999,
@@ -663,6 +723,7 @@
     {
       "brand": "Carestino",
       "name": "Mecedora Carestino",
+      "size": "TU",
       "color": "beige",
       "description": "La sillita Mecedora Carestino es el complemento ideal para tu bebé. Permite ubicarlo en un lugar cómodo y seguro, ayuda a calmar el llanto y también a estimular el aprendizaje y desarrollo de los sentidos del bebé. Es apta desde el nacimiento del bebé y soporta un peso de hasta 12 kg.",
       "price": 129999,
@@ -674,6 +735,7 @@
     {
       "brand": "Carestino",
       "name": "Mecedora Electrónica",
+      "size": "TU",
       "color": "beige",
       "description": "La mecedora electrónica es apta para recién nacidos y soporta un peso de hasta 12 kg. Permite ubicar al bebé en un lugar cómodo y seguro., ayuda a calmar el llanto, estimular el aprendizaje y desarrollar los sentidos.",
       "price": 169999,
@@ -685,6 +747,7 @@
     {
       "brand": "Carestino",
       "name": "Silla de Comer Booster",
+      "size": "TU",
       "color": "gray",
       "description": "La Silla de Comer Booster se adapta a cualquier tipo de asiento que tenga un respaldo firme, ya que incluye correas que le brindaran sujeción, logrando que la hora de la comida sea una experiencia única para bebés y padres.",
       "price": 62999,
@@ -696,6 +759,7 @@
     {
       "brand": "Carestino",
       "name": "Silla de Comer Osaka Booster",
+      "size": "TU",
       "color": "green",
       "description": "La Silla de Comer Osaka se adapta a cualquier tipo de asiento que tenga respaldo que sea firme, y pueda quedar firme, facilitando al niño que pueda disfrutar de la mesa familiar a la hora de las comidas. Incluye dos arneses que se ajustan al respaldo y a la base de la silla para asegurar su estabilidad.",
       "price": 57999,
@@ -707,6 +771,7 @@
     {
       "brand": "Carestino",
       "name": "Silla de Comer Río",
+      "size": "TU",
       "color": "green",
       "description": "La Silla de Comer Río es ideal para acompañar todas las comidas del bebé. Este modelo incluye juguetes de estimulo extraibles en su bandeja, para hacer mas entretenida la hora de la comida.",
       "price": 109999,
@@ -718,6 +783,7 @@
     {
       "brand": "Carestino",
       "name": "Silla de Comer Neo",
+      "size": "TU",
       "color": "dark gray",
       "description": "La Silla de Comer Neo tiene un estilo de diseño nórdico, único en el mercado. Su simplicidad, sencillez y funcionalidad la convierten en una silla versátil para todo tipo de ambientes, además, cuenta con dos posiciones de altura.",
       "price": 179999,
@@ -729,6 +795,7 @@
     {
       "brand": "Carestino",
       "name": "Silla de Comer Estocolmo",
+      "size": "TU",
       "color": "gray",
       "description": "La Silla de Comer Estocolmo tiene un estilo de diseño nórdico, único en el mercado. Su simplicidad, sencillez y funcionalidad la convierten en una silla versátil para todo tipo de ambientes, además, este modelo cuenta con dos posiciones de altura.",
       "price": 159999,
@@ -740,6 +807,7 @@
     {
       "brand": "Carestino",
       "name": "Silla de Comer Petra",
+      "size": "TU",
       "color": "dark gray",
       "description": "La Silla de Comer Petra es liviana y resistente. Ideal para acompañar todas las comidas del bebé durante su crecimiento. Se pliega muy fácilmente y se adapta a cualquier tipo de ambiente por su práctico diseño y altura ajustable.",
       "price": 149999,
@@ -751,6 +819,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Berlín Soft",
+      "size": "19",
       "color": "brown",
       "description": "Botita acordonada con capellada textil gamuzado y cuello de corderito sintético. Suela sintética con puntera. Horma Standard. Talles: del 19 al 24. PRODUCTO NACIONAL",
       "price": 21750,
@@ -762,6 +831,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Cuello Basic",
+      "size": "18",
       "color": "black",
       "description": "Botita acordonada y capellada sintética con cuello textil. Suela y puntera sintética. Horma Standard. Talles: del 18 al 24.",
       "price": 21750,
@@ -773,6 +843,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Velcro",
+      "size": "20",
       "color": "black",
       "description": "Zapatilla con velcro y capellada sintetica. Suela Sintetica. Suela sintética con puntera. Talles: del 19 al 24.",
       "price": 15750,
@@ -784,6 +855,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Winter Soft",
+      "size": "19",
       "color": "gray",
       "description": "Botita acordonada con cuello de corderito y capellada textil. Suela y puntera sintética. Horma Standard. Talles: del 19 al 24.",
       "price": 21750,
@@ -795,6 +867,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Print",
+      "size": "21",
       "color": "purple",
       "description": "Botita con velcros y capellada sintetica estampada. Suela sintetica con puntera. Horma Holgada. Talles: del 19 al 24.",
       "price": 12100,
@@ -806,6 +879,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Tejida",
+      "size": "22",
       "color": "military green",
       "description": "Botita con capellada de cuero estampado, velcro lateral y cuello volcado tejido. Suela de eva ultra liviana. Talles: del 20 al 23.",
       "price": 13200,
@@ -817,6 +891,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Winter",
+      "size": "23",
       "color": "orange",
       "description": "Zapatilla con velcros , capellada textil gamuzado simil corderoy y suela sintetica. Horma Angosta. Talles: del 19 al 24.",
       "price": 14700,
@@ -828,6 +903,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Love",
+      "size": "24",
       "color": "white",
       "description": "Botita acordonada de capellada textil matelaseado con brillo. Suela sintética con puntera. Horma angosta. Talles: del 19 al 24.",
       "price": 19600,
@@ -839,6 +915,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Sport Bright",
+      "size": "24",
       "color": "white",
       "description": "Zapatilla con velcro y capellada de sintetico metalizado fantasia. Suela sintetica. Horma Angosta. Talles: del 19 al 24.",
       "price": 16500,
@@ -850,6 +927,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Deportiva Pocket",
+      "size": "21",
       "color": "black",
       "description": "Zapa de capellada textil con un sutil brillo elastizado y puño tejido. Suelin super flexible y antideslizante, ideal para los no caminanates. Horma Standard. Talles: del 18 al 21.",
       "price": 16500,
@@ -861,6 +939,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Vintage",
+      "size": "20",
       "color": "blue",
       "description": "Zapatilla con velcros de capellada sintetica. Suela Sintetica. Horma Angosta. Talles: del 19 al 23.",
       "price": 16500,
@@ -872,6 +951,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini College Velcro",
+      "size": "19",
       "color": "dark blue",
       "description": "Zapatilla con velcros y capellada simil nobuk con aplique decorativo en el talon. Suela sintetica con puntera. Horma Holgada. Talles: del 19 al 24.",
       "price": 15750,
@@ -883,6 +963,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Party",
+      "size": "19",
       "color": "white",
       "description": "Zapatilla con velcros y capellada textil gamuzado con brillo. Suela sintetica.Horma Angosta. Talles: del 19 al 24.",
       "price": 16500,
@@ -894,6 +975,19 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Deportiva",
+      "size": "16",
+      "color": "blue",
+      "description": "Botita elastizada con puño tejido. Suela ultra flexible ideal para los no caminante. Horma Standard. Talles: del 16 al 20.",
+      "price": 17600,
+      "stock": 30,
+      "rating": 4.7,
+      "img": "https://res.cloudinary.com/dnh6pa6uc/image/upload/v1715895400/preLoadedImages/Mimo/Calzado/Calzado%20mini/Botita_Mini_Deportiva_600x600_zxjm6m.png",
+      "categories": [4]
+    },
+    {
+      "brand": "Mimo y Co",
+      "name": "Botita Mini Deportiva",
+      "size": "17",
       "color": "blue",
       "description": "Botita elastizada con puño tejido. Suela ultra flexible ideal para los no caminante. Horma Standard. Talles: del 16 al 20.",
       "price": 17600,
@@ -905,6 +999,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Deportiva",
+      "size": "18",
       "color": "blue",
       "description": "Zapa de capellada textil elastizado con suelin super flexible y antideslizante, ideal para los no caminanates. Talles: del 18 al 21.",
       "price": 15200,
@@ -916,6 +1011,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Tommy Canvas",
+      "size": "22",
       "color": "olive green",
       "description": "Zapatilla de capellada textil. Ojalillos de vista y velcro de lado externo de capallada. Horma Holgada. Talles: del 19 al 23.",
       "price": 21600,
@@ -927,6 +1023,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Jump Soft",
+      "size": "20",
       "color": "pink",
       "description": "Zapatilla con velcro de capellada textil con apliques sintéticos. Talles: del 20 al 24.",
       "price": 20000,
@@ -938,6 +1035,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Star",
+      "size": "19",
       "color": "white",
       "description": "Zapatilla de capellada sintetica acordonada. Suela flexible de material sintetico. Horma Holgada. Talles: del 19 al 23.",
       "price": 20000,
@@ -949,6 +1047,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Zapa Mini Cool City",
+      "size": "20",
       "color": "gray",
       "description": "Zapatilla acordonada con capellada sintetica y suela sintetica. Horma de calce angosto. Talles: del 20 al 24.",
       "price": 20000,
@@ -960,6 +1059,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Botita Mini Crep",
+      "size": "21",
       "color": "brown",
       "description": "Bota acordonada con capellada de cuero vacuno descarne.Suela de goma crep natural. Horma StandardTalles: del 20 al 24.",
       "price": 24000,
@@ -971,6 +1071,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Guillermina Mini Charol",
+      "size": "20",
       "color": "beige",
       "description": "Guillermina con tira de velcro, capellada de sintético simil charol con detalle decorativo en el escote. Horma Angosta. Talles: del 19 al 21.",
       "price": 15200,
@@ -982,6 +1083,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Panchita Mini Summer",
+      "size": "23",
       "color": "gray",
       "description": "Panchita de capellada textil efecto gastado con elásticos en empeine. Suela sintética. Talles: del 19 al 23.",
       "price": 16900,
@@ -993,6 +1095,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Guillermina Mini Bright",
+      "size": "21",
       "color": "beige",
       "description": "Guillermina con capellada sintetica con brillo. Pulsera con Velcro y aplique de corazon. Suela sintetica. Talles: del 19 al 24.",
       "price": 16500,
@@ -1004,6 +1107,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Panchita Mini Vichy",
+      "size": "20",
       "color": "blue",
       "description": "Panchita de capellada textil estampado, elástico en empeine y suela sintética. Talles: del 19 al 23.",
       "price": 14900,
@@ -1015,6 +1119,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Gorro Mini Queen",
+      "size": "TU",
       "color": "beige",
       "description": "Gorro de jersey estampado con elastano, ideal para los primeros meses. Tiene 19 cm de alto x 34 cm de contorno. Composición: 93% algodón - 7% elastano. Talles: Único.",
       "price": 1925,
@@ -1026,6 +1131,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Barbero Mini Melody",
+      "size": "TU",
       "color": "pink",
       "description": "Babero de interlock estampado con tira para atar,con plástico en su interior y toalla absorbente en la parte de atrás. Composición: Exterior: 100% algodón / Tela acc.: 50% algodón - 50% pvc. Talles: Único.",
       "price": 2200,
@@ -1037,6 +1143,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Barbero Mini Perez",
+      "size": "TU",
       "color": "blue",
       "description": "Babero de interlock estampado con tira para atar y toalla absorbente en la parte de atrás. Composicion: Exterior: 100% algodón / Tela acc.: 50% algodón - 50% pvc. Talles: Único.",
       "price": 2200,
@@ -1048,6 +1155,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Estampado Mini King",
+      "size": "XS",
       "color": "light blue",
       "description": "Body de jersey estampado con elastano. Composición: 93% algodón - 7% elastano.Talles: del XXS al L.",
       "price": 7740,
@@ -1059,6 +1167,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Portachupete Mini Melody",
+      "size": "TU",
       "color": "pink",
       "description": "Portachupete de plush con aplique de pajarito bordado y broche de plástico para el agarre. Composición: 80% algodón, 20% poliester / relleno: 100% poliester. Talles: Único.",
       "price": 3575,
@@ -1070,6 +1179,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Gorro Mini Perez",
+      "size": "TU",
       "color": "light blue",
       "description": "Gorro de inrterlock estampado, ideal para los primeros meses. Tiene 19 cm de alto x 34 cm de contorno. Composición: 100% algodón. Talles: Único.",
       "price": 2275,
@@ -1081,6 +1191,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Matelasse Bubble",
+      "size": "S",
       "color": "beige",
       "description": "Conjunto matelasse. Composicion: 77% algodon - 23% poliester. Talles: del S al XL.",
       "price": 18135,
@@ -1092,6 +1203,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Estampado Mini Perez",
+      "size": "M",
       "color": "light blue",
       "description": "Body de interlock estampado. Composición: 100% algodón. Talles: del XXS al L.",
       "price": 10985,
@@ -1103,6 +1215,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Melody",
+      "size": "L",
       "color": "pink",
       "description": "Pantalón de rib estampado con elastano.Tiene elástico en cintura. Composición: 96% algodón - 4% elastano. Talles: del XS al L.",
       "price": 9030,
@@ -1114,6 +1227,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Gorro Mini Melody",
+      "size": "TU",
       "color": "pink",
       "description": "Gorro de interlock estampado, ideal para los primeros meses. Tiene 19 cm de alto x 34 cm de contorno. Composición: 100% algodón. Talles: Único.",
       "price": 2450,
@@ -1125,6 +1239,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Portachupete Mini Perez",
+      "size": "TU",
       "color": "blue",
       "description": "Portachupete de plush con aplique marino y broche de plástico para el agarre. Composición: 80% algodón, 20% poliester / relleno:100% poliéster. Talles: Único.",
       "price": 3575,
@@ -1136,6 +1251,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Set Mini Pompon Rosa",
+      "size": "TU",
       "color": "pink",
       "description": "Set: babero y gorro para recién nacido de rib estampado. Medidas babero: ancho 17 cm x altura 11.5 cm. Medida gorro: 14,5 cm de alto x 32 cm de contorno. Composición: 100% algodón. Talles: Único.",
       "price": 3850,
@@ -1147,6 +1263,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Set Mini Pompon Azul",
+      "size": "TU",
       "color": "blue",
       "description": "Set: babero y gorro para recién nacido de rib estampado. Medidas babero: ancho 17 cm x altura: 11.5 cm. Medida gorro: 14,5 cm de alto x 32 cm de contorno. Composición: 100% algodón. Talles: Único.",
       "price": 3850,
@@ -1158,6 +1275,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Pompon",
+      "size": "S",
       "color": "blue",
       "description": "Body de rib estampado. Composición: 100% algodón. Talles: del XXS al L.",
       "price": 8330,
@@ -1170,6 +1288,7 @@
       "brand": "Mimo y Co",
       "name": "Set White",
       "color": "white",
+      "size": "TU",
       "description": "Set: bootie y gorro para recién nacido de rib estampado. Medidas booties: planta (base) 9 cm x altura: 8 cm. Medida gorro: 14,5 cm de alto x 32 cm de contorno. Composición: 88% algodón - 12% poliester. Talles: Único.",
       "price": 3850,
       "stock": 11,
@@ -1181,6 +1300,7 @@
       "brand": "Mimo y Co",
       "name": "Osito Mini Pompon",
       "color": "white",
+      "size": "M",
       "description": "Osito de rib estampado. Composición: 100% algodón. Talles: del XXS al XL.",
       "price": 13930,
       "stock": 26,
@@ -1191,6 +1311,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Estampado Mini Melody",
+      "size": "XXS",
       "color": "pink",
       "description": "Body de interlock estampado. Composicion: 100% algodón. Talles: del XXS al L.",
       "price": 12530,
@@ -1202,6 +1323,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Melody",
+      "size": "S",
       "color": "pink",
       "description": "Conjunto: Remera de rib con estampa. Pantalón de rib estampado con elastano. Composición: 100% algodón - 96% algodón- 4% elastano. Talles: del XXS al L.",
       "price": 19250,
@@ -1213,6 +1335,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Ranita Mini Melody",
+      "size": "XS",
       "color": "pink",
       "description": "Ranita de interlock estampado, con volados y puntilla en la parte trasera. Composicion: 100% algodón. Talles: del XXS al XL.",
       "price": 8925,
@@ -1224,6 +1347,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Perez",
+      "size": "S",
       "color": "light blue",
       "description": "Conjunto: Remera de rib con estampa. Pantalón de rib estampado con elastano. Composición: 100% algodón - 96% algodón- 4% elastano. Talles: del XXS al L.",
       "price": 20625,
@@ -1235,6 +1359,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Ranita Mini Perez",
+      "size": "L",
       "color": "light blue",
       "description": "Ranita de interlock estampado. Composición: 100% algodón. Talles: del XXS al L.",
       "price": 8175,
@@ -1246,6 +1371,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Osito Mini Melody",
+      "size": "XXL",
       "color": "pink",
       "description": "Osito de interlock estampado. Composicion: 100% algodón. Talles: del XS al XXL.",
       "price": 20625,
@@ -1257,6 +1383,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Osito Mini Perez",
+      "size": "XL",
       "color": "light blue",
       "description": "Osito de interlock estampado. Composicion: 100% algodón. Talles: del XS al XXL.",
       "price": 20625,
@@ -1268,6 +1395,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Osito Plush Mini Perez",
+      "size": "XL",
       "color": "blue",
       "description": "Osito de plush,tiene broche arito en escote para su acceso y tiene estampa. Composicion: 80% algodón - 20% poliester. Talles: del XS al XL.",
       "price": 22875,
@@ -1279,6 +1407,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Perez",
+      "size": "L",
       "color": "light blue",
       "description": "Body de jersey con estampa. Composicion: 100% algodón. Talles: del XS al XL.",
       "price": 12675,
@@ -1290,6 +1419,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Melody",
+      "size": "M",
       "color": "pink",
       "description": "Body de interlock con estampa. Composición: 100% algodón. Talles: del XXS al XL.",
       "price": 13425,
@@ -1301,6 +1431,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Morley",
+      "size": "XS",
       "color": "green",
       "description": "Pantalón de morley con elástico en la cintura. Composicion: 49% algodon - 49% poly - 2% elastano. Talles: del XS al XL.",
       "price": 8175,
@@ -1312,6 +1443,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Osito Mini Morley",
+      "size": "S",
       "color": "green",
       "description": "Osito de Morley. Composicion: 49% algodon - 49% poly - 2% elastano. Talles: del XS al XL.",
       "price": 13425,
@@ -1323,6 +1455,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Media Mini Perez",
+      "size": "01",
       "color": "light blue",
       "description": "Media 1/2 caña con dibujo nautico. Composicion: 80% algodon - 15% elastano-5% elastomero. Talles: del 00 al 01.",
       "price": 2175,
@@ -1334,6 +1467,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Batita Mini Melody",
+      "size": "XXS",
       "color": "pink",
       "description": "Batita de interlock estampado. Composición: 100% algodón. Talles: del XXS al M.",
       "price": 7875,
@@ -1345,6 +1479,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Barbero Pompon",
+      "size": "TU",
       "color": "white",
       "description": "Barbero Pompon. Composición: 100% algodón. Talles: Talle Único.",
       "price": 2080,
@@ -1356,6 +1491,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Barbero Mini Pompon",
+      "size": "TU",
       "color": "white",
       "description": "Barbero Mini Pompon. Composición: 100% algodón. Talles: Talle Único.",
       "price": 1820,
@@ -1367,6 +1503,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Ranita Estampada Mini Rabbit",
+      "size": "L",
       "color": "beige",
       "description": "Ranita de rib estampado con elastano. Composición: 96% algodón - 4% elastano. Talles: del XXS al L.",
       "price": 8720,
@@ -1378,6 +1515,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Ranita Lisa Mini Rabbit",
+      "size": "XXS",
       "color": "blue",
       "description": "Ranita de rib con bordado. Composición: 100% algodón. Talles: del XXS al L.",
       "price": 7920,
@@ -1389,6 +1527,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Estampado Mini Rabbit",
+      "size": "S",
       "color": "beige",
       "description": "Body de rib con elastano estampado. Composición: 96% algodón - 4% elastano. Talles: del XXS al L.",
       "price": 13520,
@@ -1400,6 +1539,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Rabbit",
+      "size": "M",
       "color": "beige",
       "description": "Conjunto: Remera de rib con estampa. Pantalón de rib estampado con elastano. Composicion: 96% algodón - 4% elastano. Talles: del XXS al L.",
       "price": 22000,
@@ -1411,6 +1551,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Moon",
+      "size": "XL",
       "color": "white",
       "description": "Body de rib con cuello americano para su fácil acceso y con estampa en delantero. Composición: 96% algodón - 4% elastano. Talles: del XS al XL.",
       "price": 13520,
@@ -1422,6 +1563,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Venecia",
+      "size": "S",
       "color": "red",
       "description": "Body de jersey con estampa,tiene broche arito en escote para su acceso. Composición: 100% algodón. Talles: del S al XXL.",
       "price": 15900,
@@ -1433,6 +1575,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Cardigan Mini Aspen",
+      "size": "L",
       "color": "gray",
       "description": "Cardigan de frisa melange unisex. Composicion: 88% algodon - 12% poliester. Talles: del S al XXL.",
       "price": 20900,
@@ -1444,6 +1587,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Cardigan Mini Winter",
+      "size": "XXL",
       "color": "brown",
       "description": "Cardigan de frisa unisex. Composicion: 86% algodon - 14% poliester. Talles: del S al XXL",
       "price": 20900,
@@ -1455,6 +1599,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Dreams",
+      "size": "XXS",
       "color": "white",
       "description": "Body de morley. Composición: 96% algodón - 4% elastano. Talles: del XXS al M",
       "price": 10900,
@@ -1466,6 +1611,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Enterito Mini Waffle",
+      "size": "M",
       "color": "beige",
       "description": "Enterito unisex de waffle, tiene broche arito en escote para su acceso. Composicion: 88% algodon - 12%poliester. Talles: del XXS al L",
       "price": 25900,
@@ -1477,6 +1623,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Enterito Mini Bear",
+      "size": "XXL",
       "color": "beige",
       "description": "Enterito de pielcita unisex. Composicion: 100% poliester. Talles: del S al XXL",
       "price": 30900,
@@ -1488,6 +1635,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Morley",
+      "size": "S",
       "color": "green",
       "description": "Pantalón de morley con elástico en la cintura. Composicion: 49% algodón - 49% poly - 2% elastano. Talles: del XS al XL",
       "price": 10900,
@@ -1499,6 +1647,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Polera",
+      "size": "S",
       "color": "white",
       "description": "Body mini polera. Composición: 100% algodón. Talles: del S al XXL.",
       "price": 16900,
@@ -1510,6 +1659,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Selva",
+      "size": "XXL",
       "color": "orange",
       "description": "Body de jersey unisex, tiene estampa en manga. Con broches en escote y entrepierna para su acceso. Composicion: 100% algodón. Talles: del M al XXL",
       "price": 12900,
@@ -1521,6 +1671,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Ringo",
+      "size": "L",
       "color": "dark blue",
       "description": "Pantalón de firsa melang unisex, tiene elástico en cintura y puños elastizados.Composición: 80% algodón - 20% poliester. Talles: del S al XXL",
       "price": 13900,
@@ -1532,6 +1683,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Winter",
+      "size": "S",
       "color": "brown",
       "description": "Pantalón de frisa unisex, tiene elástico en cintura y puños elastizados. Composición: 86% algodón - 14% poliester. Talles: del S al XXL",
       "price": 13900,
@@ -1543,6 +1695,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Cardigan Mini Play",
+      "size": "M",
       "color": "gray",
       "description": "Cardigan unisex de plush melange. Composicion: 80% algodón - 20% poliester. Talles: del S al XXL",
       "price": 29900,
@@ -1554,6 +1707,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Play",
+      "size": "XL",
       "color": "gray",
       "description": "Pantalón unisex de plush melange, con elástico en cintura. Composicion: 80% algodón - 20% poliester. Talles: del S al XXL",
       "price": 17900,
@@ -1565,6 +1719,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Matelasse Nube",
+      "size": "XL",
       "color": "violet",
       "description": "Conjunto de plush matelasse. Composicion: 77% algodón - 23% poliester. Talles: del S al XL",
       "price": 36500,
@@ -1576,6 +1731,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Dolly",
+      "size": "XXS",
       "color": "violet",
       "description": "Conjunto: remera de jersey con elastano, tiene estampa. Pantalón de jersey estampado con elastano. Composicion: 93% algodón - 7% elastano. Talles: del XXS al L",
       "price": 27500,
@@ -1587,6 +1743,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Ranita Mini Dolly",
+      "size": "L",
       "color": "white",
       "description": "Ranita de jersey estampado con elastano. Composicion: 93% algodón - 7% elastano. Talles: del XS al L",
       "price": 10900,
@@ -1598,6 +1755,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Jardinero Mini Play",
+      "size": "M",
       "color": "jean",
       "description": "Jardinero de denim unisex, con breteles regulables con botón. Composición: 100% algodón. Talles: del S al XXL.",
       "price": 32900,
@@ -1609,6 +1767,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Ranita Mini Pompon",
+      "size": "M",
       "color": "white",
       "description": "Ranita de rib estampado. Composición: 100% algodón. Talles: del XS al XL",
       "price": 9500,
@@ -1620,6 +1779,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Jardinero Mini Denim Play",
+      "size": "XXL",
       "color": "jean",
       "description": "Jardinero de denim, tiene tira regulble con broche metálico. Composicion: exterior: 98% algodón - 2% poliester / forro: 100% algodón. Talles: del S al XXL",
       "price": 43900,
@@ -1631,6 +1791,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Matelasse Bubble",
+      "size": "L",
       "color": "gray",
       "description": "Conjunto matelasse. Composicion: 77% algodón - 23% poliester. Talles: del S al XL",
       "price": 27900,
@@ -1642,6 +1803,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Osito Mini Morley Dreams",
+      "size": "S",
       "color": "white",
       "description": "Osito de morley. Composición: 96% algodón - 4% elastano. Talles: del XS al L",
       "price": 18900,
@@ -1653,6 +1815,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Country",
+      "size": "XXL",
       "color": "jean",
       "description": "Pantalón de sarga de punto. Tiene elástico en cintura y puños. Composición: 69% algodón - 25% poliester - 6% elastano. Talles: del S al XXL",
       "price": 19900,
@@ -1664,6 +1827,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Leggings Mini Warm",
+      "size": "M",
       "color": "light blue",
       "description": "Legging de jersey estampado con elastano. Composición: 93% algodón - 7% elastano. Talles: del M al XXL",
       "price": 13900,
@@ -1675,6 +1839,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Leggings Mini Paris",
+      "size": "L",
       "color": "gray",
       "description": "Legging oxford de morley con elastano. Composición: 50% poliester - 49% algodón - 1% elastano. Talles: del S al XXL",
       "price": 12900,
@@ -1686,6 +1851,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Leggings Mini Print Paris",
+      "size": "S",
       "color": "salmon",
       "description": "Legging de morley estampado con elastano. Composición: 98% algodón - 2% elastano. Talles: del S al XXL",
       "price": 12900,
@@ -1697,6 +1863,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Buzo Mini Zoo",
+      "size": "L",
       "color": "white",
       "description": "Buzo de frisa estampada, tiene abertura con botón en la espalda. Composición: 96% algodón - 4% elastano. Talles: del M al XXL",
       "price": 22900,
@@ -1708,6 +1875,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Buzo Mini Paris",
+      "size": "XL",
       "color": "white",
       "description": "Buzo de frisa estampada, tiene abertura con botón en la espalda. Composición: 88% algodón - 12% poliester. Talles: del M al XXL",
       "price": 24900,
@@ -1719,6 +1887,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Buzo Mini French",
+      "size": "XL",
       "color": "pink",
       "description": "Buzo de frisa con volado de tull bordado en el cuello, tiene abertura con botón en la espalda. Composición: 80% algodón - 20% poliester. Talles: del L al XXL",
       "price": 24900,
@@ -1730,6 +1899,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Cardigan Mini Malta",
+      "size": "M",
       "color": "white",
       "description": "Cardigan de frisa. Composición: 96% algodón - 4% elastano. Talles: del M al XXL",
       "price": 18830,
@@ -1741,6 +1911,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Cardigan Mini Cool",
+      "size": "L",
       "color": "pink",
       "description": "Cardigan de rústico con bordados. Composición: 96% algodón - 4% elastano. Talles: del M al XXL",
       "price": 30900,
@@ -1752,6 +1923,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Cardigan Mini Paris",
+      "size": "M",
       "color": "white",
       "description": "Cardigan de frisa estampada con bordado. Composición: 88% algodón - 12% poliester. Talles: del M al XXL",
       "price": 30900,
@@ -1774,6 +1946,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Saquito Mini Desagujado",
+      "size": "L",
       "color": "red",
       "description": "Saquito tejido desaguajado. Composición: 50% acrilico - 50% algodón. Talles: del M al XXL",
       "price": 36900,
@@ -1785,6 +1958,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Campera Reversible Mini Londres",
+      "size": "XXL",
       "color": "pink",
       "description": "Campera reversible microfibra en el exterior y en el interior pielcita.Composicion: 100% poliester. Talles: del L al XXL",
       "price": 67900,
@@ -1796,6 +1970,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Abrigo Mini Houston",
+      "size": "M",
       "color": "beige",
       "description": "Abrigo de pielcita forrado en jersey.Composición: ext. 100% poliester - forro 65% poliester - 35% algodón. Talles: del M al XXL",
       "price": 46900,
@@ -1807,6 +1982,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Plush",
+      "size": "L",
       "color": "pink",
       "description": "Pantalón de plush.Tiene elástico en cintura y puños. Composición: 80% algodón - 20% poliester. Talles: del M al XXL",
       "price": 12530,
@@ -1818,6 +1994,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini Cool",
+      "size": "XL",
       "color": "pink",
       "description": "Pantalón de frisa con bordados. Tiene elástico en cintura y puños. Composición: 96% algodón - 4% elastano. Talles: del M al XXL",
       "price": 17900,
@@ -1829,6 +2006,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Volado",
+      "size": "S",
       "color": "white",
       "description": "Body de jersey con volado de broderie en el cuello, tiene abertura con botón en la espalda. Composicion: 100% algodón. Talles: del S al XXL",
       "price": 12530,
@@ -1840,6 +2018,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Paris",
+      "size": "S",
       "color": "white",
       "description": "Body de jersey, tiene abertura con botón en la espalda. Composicion: 100% algodón. Talles: del S al XXL",
       "price": 12530,
@@ -1851,6 +2030,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Cool",
+      "size": "S",
       "color": "light blue",
       "description": "Body de jersey, posee estampa con relieve. Tiene abertura con botón en la espalda. Composicion: 100% algodón. Talles: del S al XXL",
       "price": 11830,
@@ -1862,6 +2042,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Zoo",
+      "size": "L",
       "color": "white",
       "description": "Body de jersey con estampa, tiene abertura con botón en la espalda. Composicion: 100% algodón. Talles: del S al XXL",
       "price": 12530,
@@ -1873,6 +2054,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Sophi",
+      "size": "XS",
       "color": "white",
       "description": "Body de rib con estampa. Composicion: 96% algodón - 4% elastano. Talles: del XS al XL",
       "price": 12530,
@@ -1884,6 +2066,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Estampado Mini Sophi",
+      "size": "XS",
       "color": "pink",
       "description": "Body de rib estampado. Composición: 96% algodón - 4% elastano. Talles: del XXS al L",
       "price": 11830,
@@ -1895,6 +2078,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Print Paris",
+      "size": "S",
       "color": "white",
       "description": "Body de rib estampado, tiene abertura con botón en la espalda. Composición: 96% algodón - 4% elastano. Talles: del S al XXL",
       "price": 13930,
@@ -1906,6 +2090,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini Ballet",
+      "size": "M",
       "color": "pink",
       "description": "Body de jersey con bordado. Esta prenda posee en su interior una fliselina termo adhesiva que protege la piel del bordado. Tiene abertura con botón en la espalda. Composición: 100% algodón. Talles: del S al XXL",
       "price": 12530,
@@ -1917,6 +2102,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Vestido Mini Glam",
+      "size": "XXL",
       "color": "white",
       "description": "Vestido de encaje en la parte superior delantera y mangas. Espalda y falda de velvet, forrado en tafeta. Tiene botones en la cartera trasera. Composición: Exterior: 92% poliester - 8% elastano / Tela accesorio: 65% algodón - 35%. Talles: del M al XXL",
       "price": 42900,
@@ -1928,6 +2114,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Enterito Mini Piel",
+      "size": "L",
       "color": "pink",
       "description": "Enterito de pielcita. Composicion: 100% poliester. Talles: del M al XXL",
       "price": 36900,
@@ -1939,6 +2126,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Elephant",
+      "size": "XS",
       "color": "pink",
       "description": "Conjunto de plush estampado. Buzo tiene abertura con botón en la espalda.Composición: 80% algodón - 20% poliester. Talles: del XS al XL",
       "price": 32900,
@@ -1950,6 +2138,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Conjunto Mini Sophi",
+      "size": "XXS",
       "color": "white",
       "description": "Conjunto: Remera de rib con estampa. Pantalón de rib estampado con elastano.Composición: 96% algodón- 4% elastano. Talles: del XXS al L",
       "price": 27500,
@@ -1961,6 +2150,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Pantalon Mini New Born",
+      "size": "XXS",
       "color": "pink",
       "description": "Pantalón de morley con elastano. Composicion: 96% algodón - 4% elastano. Talles: del XXS al M",
       "price": 9900,
@@ -1972,6 +2162,7 @@
     {
       "brand": "Mimo y Co",
       "name": "Body Mini New Born",
+      "size": "XS",
       "color": "salmon",
       "description": "Body de morley con elastano. Composicion: 96% algodón - 4% elastano. Talles: del XXS al M",
       "price": 10430,

@@ -5,7 +5,7 @@ const getBrands = async (req, res) => {
   try {
     const brands = await findAllBrands();
     if(brands.length === 0){
-      return res.status(404).send("La tabla de Productos se encuentra vacía, no hay marcas para mostrar.");
+      return res.status(200).json({ brands: null, message: 'No hay marcas para mostrar. Actualmente no hay ningún producto registrado en la base de datos, la tabla de productos esta vacía.'});
     }
     return res.status(200).json({brands : brands});
   } catch (error) {

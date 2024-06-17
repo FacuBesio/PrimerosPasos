@@ -1,39 +1,28 @@
 import { useContext, useEffect, useState } from "react";
-import { Footer, Title } from "../../components";
-import { mainPages } from "../../styles";
+import { Footer, Title } from "../../../components";
+import { mainPages } from "../../../styles";
 import { Link } from "react-router-dom";
-import {
-  FilterContext,
-  PagesContext,
-  ProductsContext,
-  SearchContext,
-  SortContext,
-} from "../../context";
-import Paginated from "../../components/Paginated/Paginated";
-import garbage from "../../assets/garbage.png";
-import getAllUsers from "../../utils/users/getAllUsers";
+import { PagesContext } from "../../../context";
+import Paginated from "../../../components/Paginated/Paginated";
+import garbage from "../../../assets/garbage.png";
+import getAllPurchases from "../../../utils/purchase/getAllPurchases";
 
-const ManageUsers = () => {
+const ManageShopping = () => {
   const { page, setPage } = useContext(PagesContext);
-  const { allProducts, setAllProducts } = useContext(ProductsContext);
+  const [allPurchases, setAllPurchases] = useState([]);
 
-  const [allUsers, setAllUsers] = useState([]);
-
-console.log(allUsers);
+  console.log(allPurchases);
 
   useEffect(() => {
-    getAllUsers(setAllUsers);
-   
+    getAllPurchases(setAllPurchases);
   }, []);
 
-  const usersAvailable = allUsers.length > 0;
   const checkValue = (value) => {
     if (Array.isArray(value) && value.length === 0) {
       return '0';
     }
     return value || 'incompleto';
   };
-
 
   return (
     <main className={mainPages}>
@@ -46,34 +35,30 @@ console.log(allUsers);
           <Link to="/admin/manageUsers">Users</Link>
           <Link to="/admin/manageCategories">Categories</Link>
         </section>
-        <section className="right_section flex flex-col items-center gap-4">
+        <section className="right_section w-full flex flex-col items-center gap-4">
           <Title />
-          <div className="flex  gap-2">
-          <h2>Sorter</h2>
-          <h2>Buscar por nombre</h2>
-          </div>
-          <table className="w-full border-collapse ">
-            <thead>
+          <div></div>
+          <table className="w-full border-collapse">
+            <thead className=" ">
               <tr>
-                <th className="p-2 border">Imagen Usuario</th>
-                <th className="p-2 border">Nombre del Usuario</th>
-                <th className="p-2 border">Pais</th>
-                <th className="p-2 border">Provincia</th>
-                <th className="p-2 border">Ciudad</th>
-                <th className="p-2 border">Telefono</th>
-                <th className="p-2 border">Compras</th>
-                <th className="p-2 border">Rol</th>
-                <th className="p-2 border">Deshabilitar</th>
+                <th className="p-2 border">Estado del pago</th>
+                <th className="p-2 border">Fecha de compra</th>
+                <th className="p-2 border">Compra ID</th>
+                <th className="p-2 border">Order ID</th>
+                <th className="p-2 border">User ID</th>
+                <th className="p-2 border">Imagen de la compra</th>
+                <th className="p-2 border">Total de la compra</th>
+              
               </tr>
             </thead>
             <tbody>
-              {usersAvailable ? (
-                allUsers.map((user) => (
+              {Array.isArray(allPurchases) && allPurchases.length > 0 ? (
+                allPurchases.map((user) => (
                   <tr key={user.id}>
                     <td className="p-4 border">
                       <img
                         src={user.img}
-                        alt={user.name}
+                        alt={checkValue(user.name)}
                         className="w-16 h-16 object-cover"
                       />
                     </td>
@@ -83,7 +68,9 @@ console.log(allUsers);
                     <td className="p-4 border">{checkValue(user.city)}</td>
                     <td className="p-4 border">{checkValue(user.phone)}</td>
                     <td className="p-4 border">{checkValue(user.purchases)}</td>
-                    <td className="p-4 border">{user.role}</td>
+                    <td className="p-4 border">
+                      <button>{checkValue(user.role)}</button>
+                    </td>
                     <td className="p-4 border">
                       <button>
                         <img src={garbage} alt="Eliminar" />
@@ -94,7 +81,7 @@ console.log(allUsers);
               ) : (
                 <tr>
                   <td colSpan="9" className="text-center p-4">
-                    No se encuentran usuarios disponibles.
+                    No se encuentran compras disponibles.
                   </td>
                 </tr>
               )}
@@ -102,7 +89,6 @@ console.log(allUsers);
           </table>
           <Paginated
             page={page}
-            totalPages={allProducts?.totalPages}
             setPage={setPage}
           />
         </section>
@@ -112,4 +98,4 @@ console.log(allUsers);
   );
 };
 
-export default ManageUsers;
+export default ManageShopping;

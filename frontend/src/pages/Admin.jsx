@@ -1,16 +1,15 @@
-import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import {CreateNewProduct, EditProduct} from "../components";
-import ManageCategories from "./Admin/ManageCategories";
-import ManageProducts from "./Admin/ManageProducts";
-import ManageShopping from "./Admin/ManageShopping";
-import ManageUsers from "./Admin/ManageUser";
+import { EditProduct} from "../components";
+import CreateNewProduct from "./Admin/products_dashboard/CreateNewProduct";
+import ManageCategories from "./Admin/categories_dashboard/ManageCategories";
+import ManageProducts from "./Admin/products_dashboard/ManageProducts";
+import ManageShopping from "./Admin/purchases_dashboard/ManageShopping";
+import ManageUsers from "./Admin/users_dashboard/ManageUser";
 
 const Admin = () => {
   return (
     <>
       <Routes>
-        {/* <Route path="/" element={<CartMain />} /> */}
         <Route path="/manageProducts" element={<ManageProducts />} />
         <Route path="/manageProducts/create" element={<CreateNewProduct />} />
         <Route path="/manageProducts/edit" element={<EditProduct />} />
