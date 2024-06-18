@@ -1,13 +1,15 @@
 import axios from "../../config/axios";
 
 const postProducts = async (newProduct, imgUrl, navigate) => {
-  const {
+  let {
     brand,
     name,
     category,
     subcategory,
     color,
+    newColor,
     size,
+    newSize,
     description,
     price,
     stock,
@@ -16,6 +18,9 @@ const postProducts = async (newProduct, imgUrl, navigate) => {
   const categories = [];
   category && categories.push(category);
   subcategory && categories.push(subcategory);
+
+  color === "addNewColor" && (color = newColor)
+  size === "addNewSize" && (size = newSize)
 
   const productBody = {
     brand,
@@ -29,6 +34,7 @@ const postProducts = async (newProduct, imgUrl, navigate) => {
     categories: categories,
     img: imgUrl,
   };
+
   try {
     const response = await axios.post(`/products`, productBody);
     response.data.created && navigate("/admin/manageProducts");

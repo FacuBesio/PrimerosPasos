@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getColors from "../../../utils/colors/getColors";
 
-const Color_input = ({ handlerChange, newProduct }) => {
+const Color_input = ({ handlerChange, newProduct, errors }) => {
   const [allColors, setAllColors] = useState([]);
 
   useEffect(() => {
@@ -49,6 +49,14 @@ const Color_input = ({ handlerChange, newProduct }) => {
           onChange={handlerChange}
         />
       )}
+      <div className="relative w-full" style={{ minHeight: "1rem" }}>
+        <span
+          className="absolute w-full text-red-300 font-bold"
+          style={{ visibility: !errors.color ? "hidden" : "visible" }}
+        >
+          {errors.color_message}
+        </span>
+      </div>
     </div>
   );
 };

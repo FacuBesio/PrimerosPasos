@@ -1,4 +1,4 @@
-const Stock_input = ({ handlerChange }) => {
+const Stock_input = ({ handlerChange, errors }) => {
   return (
     <div className="w-full px-4 py-3 flex flex-col gap-2">
       <label htmlFor="stock" className="w-full text-white font-bold">
@@ -12,6 +12,14 @@ const Stock_input = ({ handlerChange }) => {
         placeholder="Cantidad de unidades disponibles..."
         onChange={handlerChange}
       />
+      <div className="relative w-full" style={{ minHeight: "1rem" }}>
+        <span
+          className="absolute w-full text-red-300 font-bold"
+          style={{ visibility: !errors.stock ? "hidden" : "visible" }}
+        >
+          {errors.stock_message}
+        </span>
+      </div>
     </div>
   );
 };

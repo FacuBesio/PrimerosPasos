@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getSizes from "../../../utils/sizes/getSizes";
 
-const Size_input = ({ handlerChange, newProduct }) => {
+const Size_input = ({ handlerChange, newProduct, errors }) => {
   const [allSizes, setAllSizes] = useState([]);
 
   useEffect(() => {
@@ -49,6 +49,14 @@ const Size_input = ({ handlerChange, newProduct }) => {
           onChange={handlerChange}
         />
       )}
+      <div className="relative w-full" style={{ minHeight: "1rem" }}>
+        <span
+          className="absolute w-full text-red-300 font-bold"
+          style={{ visibility: !errors.size ? "hidden" : "visible" }}
+        >
+          {errors.size_message}
+        </span>
+      </div>
     </div>
   );
 };

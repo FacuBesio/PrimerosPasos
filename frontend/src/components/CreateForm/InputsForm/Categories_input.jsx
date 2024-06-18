@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import getSubCategories from "../../../utils/categories/getSubCategories";
 import getCategories from "../../../utils/categories/getCategories";
 
-const Categories_input = ({ handlerChange, newProduct }) => {
+const Categories_input = ({ handlerChange, newProduct, errors }) => {
   const [allCategories, setAllCategories] = useState([]);
   const [allSubCategories, setAllSubCategories] = useState([]);
 
@@ -71,6 +71,14 @@ const Categories_input = ({ handlerChange, newProduct }) => {
           </select>
         </div>
       )}
+      <div className="relative w-full" style={{ minHeight: "1rem" }}>
+        <span
+          className="absolute w-full text-red-300 font-bold"
+          style={{ visibility: !errors.category ? "hidden" : "visible" }}
+        >
+          {errors.category_message}
+        </span>
+      </div>
     </div>
   );
 };
