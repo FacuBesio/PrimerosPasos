@@ -47,6 +47,15 @@ function createInputValidator(newProduct, errors, setErrors, setDisabledButton) 
   } else if (newProduct.size === ""){
     flag = true
   }
+
+  if (newProduct.img !== "") {
+    errors_aux = { ...errors_aux, img: false, img_message: "" };
+  } else if (errors.hasOwnProperty("img") && newProduct.img === "") {
+    errors_aux = { ...errors_aux, img: true, img_message: obligatoryField };
+    flag = true
+  } else if (newProduct.img === ""){
+    flag = true
+  }
   
   if (newProduct.description !== "") {
     errors_aux = { ...errors_aux, description: false, description_message: "" };

@@ -4,15 +4,16 @@ import { Footer, Title } from "../../../components";
 import { mainPages } from "../../../styles";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../../context";
-import getCategories from "../../../utils/categories/getCategories";
+import getSubCategories from "../../../utils/subcategories/getSubCategories";
 import garbage from "../../../assets/garbage.png";
 import NavAside from "../../../components/NavAside/NavAside";
 
-const ManageCategories = () => {
-  const { allCategories, setAllCategories } = useContext(CategoriesContext);
+const ManageSubcategories = () => {
+  const { allSubCategories, setAllSubCategories } =
+    useContext(CategoriesContext);
 
   useEffect(() => {
-    getCategories(setAllCategories);
+    getSubCategories(setAllSubCategories);
   }, []);
 
   return (
@@ -22,12 +23,12 @@ const ManageCategories = () => {
         <section className="right_section w-full px-10 flex flex-col items-center gap-4">
           <Title />
           <div className="flex w-full px-4 py-5 md:gap-4 items-center justify-between overflow-x-auto">
-            <Link to={"/admin/manageCategories/create"}>
+            <Link to={"/admin/manageSubcategories/create"}>
               <label
                 htmlFor="image"
                 className="px-6 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
               >
-                + Agregar Categoría
+                + Agregar Subcategoría
               </label>
             </Link>
           </div>
@@ -36,29 +37,25 @@ const ManageCategories = () => {
               <tr>
                 <th className="p-4 border">Id</th>
                 <th className="p-4 border">Nombre</th>
-                <th className="p-4 border">Subcategorías</th>
+                <th className="p-4 border">Categoría</th>
                 <th className="p-4 border">Habilitada</th>
                 <th className="p-4 border">Editar</th>
                 <th className="p-4 border">Eliminar</th>
               </tr>
             </thead>
             <tbody className="text-center">
-              {allCategories ? (
-                allCategories.categories?.map((category) => (
-                  <tr key={category.id}>
-                    <td className="p-4 border text-center">{category.id}</td>
-                    <td className="p-4 border text-center">{category.name}</td>
-                    <td className="p-4 border">
-                      {category.subcategories.length > 0 ? (
-                        category.subcategories.map((subcategorie) => (
-                          <p key={subcategorie.id}>{subcategorie.name}</p>
-                        ))
-                      ) : (
-                        <p> - </p>
-                      )}
+              {allSubCategories ? (
+                allSubCategories.subcategories?.map((subcategory) => (
+                  <tr key={subcategory.id}>
+                    <td className="p-4 border text-center">{subcategory.id}</td>
+                    <td className="p-4 border text-center">
+                      {subcategory.name}
+                    </td>
+                    <td className="p-4 border text-center">
+                      {subcategory.category.name}
                     </td>
                     <td className="p-4 border">
-                      <button>{category.enabled ? "Sí" : "No"}</button>
+                      <button>{subcategory.enabled ? "Sí" : "No"}</button>
                     </td>
                     <td className="p-4 border">
                       <Link to={"/admin/manageProducts/edit"}>EDIT</Link>
@@ -77,7 +74,7 @@ const ManageCategories = () => {
               ) : (
                 <tr>
                   <td colSpan="9" className="text-center p-4">
-                    No se encuentran categorías disponibles.
+                    No se encuentran subcategorías disponibles.
                   </td>
                 </tr>
               )}
@@ -90,4 +87,4 @@ const ManageCategories = () => {
   );
 };
 
-export default ManageCategories;
+export default ManageSubcategories;

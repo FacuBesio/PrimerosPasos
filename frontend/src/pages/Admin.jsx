@@ -1,21 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import { EditProduct} from "../components";
-import CreateNewProduct from "./Admin/products_dashboard/CreateNewProduct";
-import ManageCategories from "./Admin/categories_dashboard/ManageCategories";
-import ManageProducts from "./Admin/products_dashboard/ManageProducts";
 import ManageShopping from "./Admin/purchases_dashboard/ManageShopping";
 import ManageUsers from "./Admin/users_dashboard/ManageUser";
+import ProductsDashboard from "./Admin/ProductsDashboard";
+import CategoriesDashboard from "./Admin/CategoriesDashboard";
+import SubcategoriesDashboard from "./Admin/SubcategoriesDashboard";
 
 const Admin = () => {
   return (
     <>
       <Routes>
-        <Route path="/manageProducts" element={<ManageProducts />} />
-        <Route path="/manageProducts/create" element={<CreateNewProduct />} />
-        <Route path="/manageProducts/edit" element={<EditProduct />} />
+        <Route path="/manageProducts/*" element={<ProductsDashboard />} />
+        <Route path="/manageCategories/*" element={<CategoriesDashboard />} />
+        <Route path="/manageSubcategories/*" element={<SubcategoriesDashboard />} />
         <Route path="/manageShopping" element={<ManageShopping />} />
         <Route path="/manageUsers" element={<ManageUsers />} />
-        <Route path="/manageCategories" element={<ManageCategories />} />
       </Routes>
     </>
   );

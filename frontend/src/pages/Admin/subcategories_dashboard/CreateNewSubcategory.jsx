@@ -1,18 +1,18 @@
-import CreateProductForm from "../../../components/CreateProductForm/CreateProductForm";
+import CreateSubCategoryForm from "../../../components/CreateSubCategoryForm/CreateSubCategoryForm";
 import Footer from "../../../components/Footer/Footer";
 import NavAside from "../../../components/NavAside/NavAside";
 import Title from "../../../components/Title/Title";
 import { mainPages } from "../../../styles";
 
 
-const CreateNewProduct = () => {
+const CreateNewSubcategory = () => {
   return (
     <main className={mainPages}>
       <div className="w-full flex">
         <NavAside />
         <section className="right_section w-full px-10 flex flex-col items-center">
           <Title />
-          <CreateProductForm />
+          <CreateSubCategoryForm />
         </section>
       </div>
       <Footer />
@@ -20,4 +20,4 @@ const CreateNewProduct = () => {
   );
 };
 
-export default CreateNewProduct;
+export default CreateNewSubcategory;

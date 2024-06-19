@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getSubCategories from "../../../utils/categories/getSubCategories";
+import getSubCategories from "../../../utils/subcategories/getSubCategories";
 import getCategories from "../../../utils/categories/getCategories";
 
 const Categories_input = ({ handlerChange, newProduct, errors }) => {

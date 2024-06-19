@@ -14,7 +14,7 @@ import Stock_input from "./InputsForm/Stock_input";
 import createInputValidator from "../../utils/products/createInputValidator";
 import disabledSubmitValidator from "../../utils/products/disabledSubmitValidator";
 
-const CreateForm = () => {
+const CreateProductForm = () => {
   // let disabledButton = true;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(true);
@@ -60,13 +60,13 @@ const CreateForm = () => {
   };
 
   return (
-    <div className="w-full rounded-lg flex flex-col items-center pt-4 pb-8 px-4">
+    <div className="w-full rounded-lg flex flex-col items-center p-4 gap-5">
       <form
-        className="w-1/2 bg-gray-600 bg-opacity-75 rounded-lg p-4 flex flex-col items-center  mb-8"
+        className="w-1/2 bg-gray-600 bg-opacity-75 rounded-lg px-4 p-8 flex flex-col items-center"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold rounded-md p-4">CREAR PRODUCTO</h1>
-        <div className="w-full flex flex-col gap-4 items-center">
+        <h1 className="text-white font-bold  pt-2 rounded-md">CREAR PRODUCTO</h1>
+        <div className="w-full flex flex-col gap-1 items-center">
           <Brand_input handlerChange={handlerChange} errors={errors} />
           <Name_input handlerChange={handlerChange} errors={errors} />
           <Categories_input
@@ -84,20 +84,18 @@ const CreateForm = () => {
             newProduct={newProduct}
             errors={errors}
           />
-          <Image_input handlerChange={handlerChange} />
+          <Image_input handlerChange={handlerChange} errors={errors} />
           <Description_input handlerChange={handlerChange} errors={errors} />
           <Price_input handlerChange={handlerChange} errors={errors} />
           <Stock_input handlerChange={handlerChange} errors={errors} />
         </div>
 
-        <div className="formButton w-full flex justify-center items-center mt-4">
+        <div className="formButton w-full flex justify-center items-center ">
           {disabledButton ? (
             <button
-              // type="submit"
               id="buttonDisabled"
-              // disabled={disabledButton}
               onClick={handlerDisabledButton}
-              className="px-6 py-3 bg-gray-700 text-red-400 font-bold rounded-md "
+              className="px-8 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
             >
               CREAR
             </button>
@@ -106,7 +104,7 @@ const CreateForm = () => {
               type="submit"
               id="buttonEnabled"
               disabled={disabledButton}
-              className="px-6 py-3 bg-green-500 text-white font-bold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="px-8 py-3 bg-green-500 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
             >
               CREAR
             </button>
@@ -115,12 +113,13 @@ const CreateForm = () => {
       </form>
       <Link
         to="/admin/manageProducts"
-        className="px-6 py-3 bg-red-300 text-white font-bold rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-green-400"
+        className="px-6 py-3 bg-red-300 text-white font-bold rounded-md hover:bg-red-400
+        hover:ring-red-400 focus:outline-none focus:ring-2 focus:ring-red-200"
       >
-        Volver
+        VOLVER
       </Link>
     </div>
   );
 };
 
-export default CreateForm;
+export default CreateProductForm;

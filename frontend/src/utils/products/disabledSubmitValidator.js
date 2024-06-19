@@ -22,6 +22,10 @@ function disabledSubmitValidator(newProduct, errors, setErrors) {
     errors_aux = { ...errors_aux, size: true, size_message: obligatoryField };
   }
 
+  if (newProduct.img === "") {
+    errors_aux = { ...errors_aux, img: true, img_message: obligatoryField };
+  }
+
   if (newProduct.description === "") {
     errors_aux = { ...errors_aux, description: true, description_message: obligatoryField };
   }

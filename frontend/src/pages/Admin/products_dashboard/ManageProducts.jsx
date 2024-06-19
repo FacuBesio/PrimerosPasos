@@ -16,13 +16,15 @@ import Paginated from "../../../components/Paginated/Paginated";
 import garbage from "../../../assets/garbage.png";
 import SortComponent from "../../../components/SortComponent/SortComponent";
 import sorterValidator from "../../../utils/sorter/sorterValidator";
+import NavAside from "../../../components/NavAside/NavAside";
 
 const ManageProducts = () => {
   const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
   const { sorter } = useContext(SortContext);
   const { allProducts, setAllProducts } = useContext(ProductsContext);
-  const { searchBar, setSearchBar, setSearchBarTag } = useContext(SearchContext);
+  const { searchBar, setSearchBar, setSearchBarTag } =
+    useContext(SearchContext);
 
   const {
     setSorter,
@@ -75,18 +77,18 @@ const ManageProducts = () => {
   return (
     <main className={mainPages}>
       <div className="w-full flex">
-        <section className="left_section flex flex-col bg-red-200 w-fit p-6 gap-6">
-          <Link to="/">Home</Link>
-          <Link to="/dashboard">Dashboard</Link>
-          <Link to="/admin/manageProducts">Products</Link>
-          <Link to="/admin/manageShopping">Purchases</Link>
-          <Link to="/admin/manageUsers">Users</Link>
-          <Link to="/admin/manageCategories">Categories</Link>
-        </section>
+        <NavAside />
         <section className="right_section w-full px-10 flex flex-col items-center gap-4">
           <Title />
-          <div className="flex gap-2">
-            <SortComponent sortComponentProps={sortComponentProps} />
+          <div className="flex w-full p-4 md:gap-4 items-center justify-between overflow-x-auto">
+            <Link to={"/admin/manageProducts/create"}>
+              <label
+                htmlFor="image"
+                className="px-6 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
+              >
+                + Agregar Producto
+              </label>
+            </Link>
             <form className="flex gap-2">
               <input
                 placeholder="Buscar"
@@ -103,10 +105,7 @@ const ManageProducts = () => {
                 />
               </button>
             </form>
-            <Link to={"/admin/manageProducts/create"}>
-              {/* <img src="" alt="Add Product" /> */}
-              + Add Product
-            </Link>
+            <SortComponent sortComponentProps={sortComponentProps} />
           </div>
           <table className="w-full border border-collapse bg-white">
             <thead>
@@ -114,6 +113,8 @@ const ManageProducts = () => {
                 <th className="p-4 border">Imagen</th>
                 <th className="p-4 border">Nombre</th>
                 <th className="p-4 border">Marca</th>
+                <th className="p-4 border">Color</th>
+                <th className="p-4 border">Talle</th>
                 <th className="p-4 border">Precio</th>
                 <th className="p-4 border">Rating</th>
                 <th className="p-4 border">Stock</th>
@@ -137,6 +138,8 @@ const ManageProducts = () => {
                       {product.name}
                     </td>
                     <td className="p-4 border">{product.brand}</td>
+                    <td className="p-4 border">{product.color}</td>
+                    <td className="p-4 border">{product.size}</td>
                     <td className="p-4 border">${product.price}</td>
                     <td className="p-4 border">{product.rating}</td>
                     <td className="p-4 border">{product.stock}</td>
@@ -148,8 +151,10 @@ const ManageProducts = () => {
                     </td>
                     <td className="p-4 border">
                       <button>
-                        <img src={garbage} alt="Eliminar" 
-                        className="w-12 h-12"
+                        <img
+                          src={garbage}
+                          alt="Eliminar"
+                          className="w-12 h-12"
                         />
                       </button>
                     </td>
