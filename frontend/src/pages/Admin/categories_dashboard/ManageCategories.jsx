@@ -16,8 +16,8 @@ const ManageCategories = () => {
   }, []);
 
   return (
-    <main className={mainPages}>
-      <div className="w-full flex">
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
         <section className="right_section w-full px-10 flex flex-col items-center gap-4">
           <Title />
@@ -37,6 +37,7 @@ const ManageCategories = () => {
                 <th className="p-4 border">Id</th>
                 <th className="p-4 border">Nombre</th>
                 <th className="p-4 border">Subcategorías</th>
+                <th className="p-4 border">Productos</th>
                 <th className="p-4 border">Habilitada</th>
                 <th className="p-4 border">Editar</th>
                 <th className="p-4 border">Eliminar</th>
@@ -57,6 +58,7 @@ const ManageCategories = () => {
                         <p> - </p>
                       )}
                     </td>
+                    <td className="p-4 border text-center">{category.products.length}</td>
                     <td className="p-4 border">
                       <button>{category.enabled ? "Sí" : "No"}</button>
                     </td>
@@ -84,9 +86,9 @@ const ManageCategories = () => {
             </tbody>
           </table>
         </section>
-      </div>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useContext, useEffect } from "react";
 import { Footer, Title } from "../../../components";
 import { mainPages } from "../../../styles";
@@ -17,8 +16,8 @@ const ManageSubcategories = () => {
   }, []);
 
   return (
-    <main className={mainPages}>
-      <div className="w-full flex">
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
         <section className="right_section w-full px-10 flex flex-col items-center gap-4">
           <Title />
@@ -38,6 +37,7 @@ const ManageSubcategories = () => {
                 <th className="p-4 border">Id</th>
                 <th className="p-4 border">Nombre</th>
                 <th className="p-4 border">Categoría</th>
+                <th className="p-4 border">Productos</th>
                 <th className="p-4 border">Habilitada</th>
                 <th className="p-4 border">Editar</th>
                 <th className="p-4 border">Eliminar</th>
@@ -53,6 +53,9 @@ const ManageSubcategories = () => {
                     </td>
                     <td className="p-4 border text-center">
                       {subcategory.category.name}
+                    </td>
+                    <td className="p-4 border text-center">
+                      {subcategory.products.length}
                     </td>
                     <td className="p-4 border">
                       <button>{subcategory.enabled ? "Sí" : "No"}</button>
@@ -81,9 +84,9 @@ const ManageSubcategories = () => {
             </tbody>
           </table>
         </section>
-      </div>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 
