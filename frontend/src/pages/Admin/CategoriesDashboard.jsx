@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ManageCategories from "./categories_dashboard/ManageCategories";
 import CreateNewCategory from "./categories_dashboard/CreateNewCategory";
+import UpdateCategory from "./categories_dashboard/UpdateCategory";
 
 //? "/manageCategories"
 const CategoriesDashboard = () => {
@@ -9,7 +10,7 @@ const CategoriesDashboard = () => {
       <Routes>
         <Route path="/" element={<ManageCategories />} />
         <Route path="/create" element={<CreateNewCategory />} />
-        {/* <Route path="/edit" element={<EditProduct />} /> */}
+        <Route path="/update/:id" element={<UpdateCategory />} />
       </Routes>
     </>
   );

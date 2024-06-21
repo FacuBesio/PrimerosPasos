@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import ManageProducts from "./products_dashboard/ManageProducts";
 import CreateNewProduct from "./products_dashboard/CreateNewProduct";
+import UpdateProduct from "./products_dashboard/UpdateProduct";
 import { EditProduct } from "../../components";
 
 
@@ -11,7 +12,7 @@ const ProductsDashboard = () => {
       <Routes>
         <Route path="/" element={<ManageProducts />} />
         <Route path="/create" element={<CreateNewProduct />} />
-        <Route path="/edit" element={<EditProduct />} />
+        <Route path="/update/:id" element={<UpdateProduct />} />
       </Routes>
     </>
   );

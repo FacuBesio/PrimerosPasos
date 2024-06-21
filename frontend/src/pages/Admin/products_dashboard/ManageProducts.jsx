@@ -10,13 +10,14 @@ import {
   SearchContext,
   SortContext,
 } from "../../../context";
-
+import update_icon from "../../../assets/update_icon.png";
 import getProducts from "../../../utils/products/getProducts";
 import Paginated from "../../../components/Paginated/Paginated";
 import garbage from "../../../assets/garbage.png";
 import SortComponent from "../../../components/SortComponent/SortComponent";
 import sorterValidator from "../../../utils/sorter/sorterValidator";
 import NavAside from "../../../components/NavAside/NavAside";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const ManageProducts = () => {
   const { filter } = useContext(FilterContext);
@@ -73,6 +74,7 @@ const ManageProducts = () => {
   }, [page, searchBar, filter, sorter]);
 
   const productsAvailable = allProducts?.products?.length > 0;
+  console.log("allProducts?.products: ", allProducts.products);
 
   return (
     <main className={mainPages}>
@@ -113,13 +115,15 @@ const ManageProducts = () => {
                 <th className="p-4 border">Imagen</th>
                 <th className="p-4 border">Nombre</th>
                 <th className="p-4 border">Marca</th>
+                <th className="p-4 border">Categoría</th>
+                <th className="p-4 border">Subcategoría</th>
                 <th className="p-4 border">Color</th>
                 <th className="p-4 border">Talle</th>
                 <th className="p-4 border">Precio</th>
-                <th className="p-4 border">Rating</th>
                 <th className="p-4 border">Stock</th>
                 <th className="p-4 border">Habilitado</th>
-                <th className="p-4 border">Editar</th>
+                <th className="p-4 border">Rating</th>
+                <th className="p-4 border">Actualizar</th>
                 <th className="p-4 border">Eliminar</th>
               </tr>
             </thead>
@@ -138,23 +142,47 @@ const ManageProducts = () => {
                       {product.name}
                     </td>
                     <td className="p-4 border">{product.brand}</td>
+                    <td className="p-4 border">{product.categories[0].name}</td>
+                    <td className="p-4 border">
+                      {product.subcategories.length > 0
+                        ? product.subcategories[0].name
+                        : "-"}
+                    </td>
                     <td className="p-4 border">{product.color}</td>
                     <td className="p-4 border">{product.size}</td>
                     <td className="p-4 border">${product.price}</td>
-                    <td className="p-4 border">{product.rating}</td>
                     <td className="p-4 border">{product.stock}</td>
                     <td className="p-4 border">
-                      <button>{product.enabled ? "Sí" : "No"}</button>
+                      <button>
+                        {product.enabled ? (
+                          <span className="text-green-500 text-2xl">
+                            <CheckOutlined />
+                          </span>
+                        ) : (
+                          <span className="text-red-500 text-2xl">
+                            <CloseOutlined />
+                          </span>
+                        )}
+                      </button>
                     </td>
+                    <td className="p-4 border">{product.rating}</td>
                     <td className="p-4 border">
-                      <Link to={"/admin/manageProducts/edit"}>EDIT</Link>
+                      <Link to={`/admin/manageProducts/update/${product.id}`}>
+                        <button>
+                          <img
+                            src={update_icon}
+                            alt="Update"
+                            className="w-12 h-12 transition-transform duration-300 hover:scale-105"
+                          />
+                        </button>
+                      </Link>
                     </td>
                     <td className="p-4 border">
                       <button>
                         <img
                           src={garbage}
                           alt="Eliminar"
-                          className="w-12 h-12"
+                          className="w-12 h-12 transition-transform duration-300 hover:scale-105"
                         />
                       </button>
                     </td>

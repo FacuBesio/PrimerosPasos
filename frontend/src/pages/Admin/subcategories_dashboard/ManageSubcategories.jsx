@@ -1,11 +1,12 @@
-import { useCallback, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Footer, Title } from "../../../components";
-import { mainPages } from "../../../styles";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../../context";
 import getSubCategories from "../../../utils/subcategories/getSubCategories";
 import garbage from "../../../assets/garbage.png";
 import NavAside from "../../../components/NavAside/NavAside";
+import update_icon from "../../../assets/update_icon.png";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const ManageSubcategories = () => {
   const { allSubCategories, setAllSubCategories } =
@@ -58,17 +59,37 @@ const ManageSubcategories = () => {
                       {subcategory.products.length}
                     </td>
                     <td className="p-4 border">
-                      <button>{subcategory.enabled ? "Sí" : "No"}</button>
+                      <button>
+                        {subcategory.enabled ? (
+                          <span className="text-green-500 text-2xl">
+                            <CheckOutlined />
+                          </span>
+                        ) : (
+                          <span className="text-red-500 text-2xl">
+                            <CloseOutlined />
+                          </span>
+                        )}
+                      </button>
                     </td>
                     <td className="p-4 border">
-                      <Link to={"/admin/manageProducts/edit"}>EDIT</Link>
+                      <Link
+                        to={`/admin/manageSubcategories/update/${subcategory.id}`}
+                      >
+                        <button>
+                          <img
+                            src={update_icon}
+                            alt="Update"
+                            className="w-12 h-12 transition-transform duration-300 hover:scale-105"
+                          />
+                        </button>
+                      </Link>
                     </td>
                     <td className="p-4 border">
                       <button>
                         <img
                           src={garbage}
                           alt="Eliminar"
-                          className="w-12 h-12"
+                          className="w-12 h-12 transition-transform duration-300 hover:scale-105"
                         />
                       </button>
                     </td>
