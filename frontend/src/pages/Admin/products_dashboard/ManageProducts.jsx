@@ -1,7 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Footer, Title } from "../../../components";
-import { mainPages } from "../../../styles";
 import { Link } from "react-router-dom";
 import {
   FilterContext,
@@ -17,7 +15,9 @@ import garbage from "../../../assets/garbage.png";
 import SortComponent from "../../../components/SortComponent/SortComponent";
 import sorterValidator from "../../../utils/sorter/sorterValidator";
 import NavAside from "../../../components/NavAside/NavAside";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import deleteConfirm from "../../../utils/products/deleteConfirm";
+
 
 const ManageProducts = () => {
   const { filter } = useContext(FilterContext);
@@ -26,6 +26,7 @@ const ManageProducts = () => {
   const { allProducts, setAllProducts } = useContext(ProductsContext);
   const { searchBar, setSearchBar, setSearchBarTag } =
     useContext(SearchContext);
+  const [removeState, setRemoveState] = useState({ message: "", removed: "" });
 
   const {
     setSorter,
@@ -59,33 +60,34 @@ const ManageProducts = () => {
     [setSearchBar, setSearchBarTag, setPage]
   );
 
+  const handlerRemove = (id, name) => {
+    deleteConfirm(id, name, setRemoveState);
+  };
+
   useEffect(() => {
-    window.scrollTo(0, 0);
     const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
     if (sorterQuery.sorterActive) {
       setSorter(sorterQuery.result);
     }
   }, [sorterByPrice, sorterByRating]);
 
-  console.log(allProducts);
-
   useEffect(() => {
+    window.scrollTo(0, 0);
     getProducts(setAllProducts, page, searchBar, filter, sorter);
-  }, [page, searchBar, filter, sorter]);
+  }, [page, searchBar, filter, sorter, removeState]);
 
   const productsAvailable = allProducts?.products?.length > 0;
-  console.log("allProducts?.products: ", allProducts.products);
 
   return (
-    <main className={mainPages}>
-      <div className="w-full flex">
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
         <section className="right_section w-full px-10 flex flex-col items-center gap-4">
           <Title />
           <div className="flex w-full p-4 md:gap-4 items-center justify-between overflow-x-auto">
             <Link to={"/admin/manageProducts/create"}>
               <label
-                htmlFor="image"
+                htmlFor="addProduct"
                 className="px-6 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
               >
                 + Agregar Producto
@@ -148,7 +150,7 @@ const ManageProducts = () => {
                         ? product.subcategories[0].name
                         : "-"}
                     </td>
-                    <td className="p-4 border">{product.color}</td>
+                    <td className="p-4 border capitalize">{product.color}</td>
                     <td className="p-4 border">{product.size}</td>
                     <td className="p-4 border">${product.price}</td>
                     <td className="p-4 border">{product.stock}</td>
@@ -156,11 +158,11 @@ const ManageProducts = () => {
                       <button>
                         {product.enabled ? (
                           <span className="text-green-500 text-2xl">
-                            <CheckOutlined />
+                            <CheckCircleOutlined />
                           </span>
                         ) : (
                           <span className="text-red-500 text-2xl">
-                            <CloseOutlined />
+                            <CloseCircleOutlined />
                           </span>
                         )}
                       </button>
@@ -178,7 +180,7 @@ const ManageProducts = () => {
                       </Link>
                     </td>
                     <td className="p-4 border">
-                      <button>
+                      <button onClick={() => handlerRemove(product.id, product.name)}>
                         <img
                           src={garbage}
                           alt="Eliminar"
@@ -203,9 +205,9 @@ const ManageProducts = () => {
             setPage={setPage}
           />
         </section>
-      </div>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 

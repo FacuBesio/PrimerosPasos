@@ -1,4 +1,5 @@
 import axios from "../../config/axios";
+import showCreateNotification from "./showCreateNotification";
 
 const postProducts = async (newProduct, imgUrl, navigate) => {
   let {
@@ -19,8 +20,8 @@ const postProducts = async (newProduct, imgUrl, navigate) => {
   category && categories.push(category);
   subcategory && categories.push(subcategory);
 
-  color === "addNewColor" && (color = newColor)
-  size === "addNewSize" && (size = newSize)
+  color === "addNewColor" && (color = newColor);
+  size === "addNewSize" && (size = newSize);
 
   const productBody = {
     brand,
@@ -37,10 +38,14 @@ const postProducts = async (newProduct, imgUrl, navigate) => {
 
   try {
     const response = await axios.post(`/products`, productBody);
-    response.data.created && navigate("/admin/manageProducts");
+    if (response.data.created) {
+      showCreateNotification(
+        `Se creó exitosamente el producto ${response.data.product.name}`
+      );
+      navigate("/admin/manageProducts");
+    }
   } catch (error) {
     console.error("Error al crear el producto:", error);
-
   }
 };
 

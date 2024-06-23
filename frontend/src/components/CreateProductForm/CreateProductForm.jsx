@@ -15,7 +15,6 @@ import createInputValidator from "../../utils/products/createInputValidator";
 import disabledSubmitValidator from "../../utils/products/disabledSubmitValidator";
 
 const CreateProductForm = () => {
-  // let disabledButton = true;
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(true);
   const [errors, setErrors] = useState({});
@@ -32,8 +31,6 @@ const CreateProductForm = () => {
     img: "",
   });
 
-  console.log("newProduct: ", newProduct);
-  console.log("errors: ", errors);
 
   useEffect(() => {
     createInputValidator(newProduct, errors, setErrors, setDisabledButton);
@@ -42,8 +39,17 @@ const CreateProductForm = () => {
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;
+    
     if (event.target.type === "file") {
       value = event.target.files[0];
+    }
+    
+    if (event.target.name === "category") {
+      return setNewProduct({
+        ...newProduct,
+        [property]: value,
+        subcategory: "",
+      });
     }
     setNewProduct({ ...newProduct, [property]: value });
   };
@@ -65,7 +71,9 @@ const CreateProductForm = () => {
         className="w-1/2 bg-gray-600 bg-opacity-75 rounded-lg px-4 p-8 flex flex-col items-center"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold  pt-2 rounded-md">CREAR PRODUCTO</h1>
+        <h1 className="text-white font-bold  pt-2 rounded-md">
+          CREAR PRODUCTO
+        </h1>
         <div className="w-full flex flex-col gap-1 items-center">
           <Brand_input handlerChange={handlerChange} errors={errors} />
           <Name_input handlerChange={handlerChange} errors={errors} />

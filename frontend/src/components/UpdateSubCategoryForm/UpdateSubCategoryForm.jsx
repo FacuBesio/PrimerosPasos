@@ -8,7 +8,6 @@ import getSubCategoryById from "../../utils/subcategories/getSubCategoryById";
 import putSubCategories from "../../utils/subcategories/putSubCategories";
 import Enabled_input from "./InputsForm/Enabled_input";
 
-
 const UpdateSubCategoryForm = ({ id }) => {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(true);
@@ -18,7 +17,6 @@ const UpdateSubCategoryForm = ({ id }) => {
     category: "",
   });
 
-  console.log("newSubCategory: ", newSubCategory);
   useEffect(() => {
     getSubCategoryById(id, setNewSubCategory);
   }, []);

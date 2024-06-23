@@ -7,7 +7,7 @@ import getUserById from "../../utils/users/getUserById";
 import { HiCheckCircle } from "react-icons/hi";
 import Loader from "../../components/Loader/Loader";
 import useQuery from "../../utils/cart/useQuery";
-import postPurchase from "../../utils/purchase/postPurchase";
+import postPurchase from "../../utils/purchases/postPurchase";
 
 const CartPurchase = () => {
   const querys = useQuery(useLocation)

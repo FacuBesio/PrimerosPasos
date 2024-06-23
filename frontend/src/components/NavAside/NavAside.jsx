@@ -9,8 +9,8 @@ const NavAside = () => {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "px-4 py-6 bg-red-300 w-full text-white text-center"
-              : "flex flex-col items-center justify-center px-4 py-7 hover:bg-red-300 w-full h-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center  transition-transform duration-300 transition-transform duration-300 scale-105 rounded-md"
+              : "flex flex-col items-center justify-center px-4 py-7 hover:bg-red-300 w-full h-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           <button>
@@ -20,11 +20,11 @@ const NavAside = () => {
       </div>
       <div className="flex flex-col items-center text-white font-bold">
         <NavLink
-          to="/dashboard"
+          to="/admin/manageProducts"
           className={({ isActive }) =>
             isActive
-              ? "px-4 py-6 bg-red-300 w-full text-white text-center"
-              : "px-4 py-6 hover:bg-red-300 w-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center transition-transform duration-300 scale-105 rounded-md"
+              : "px-4 py-6 hover:bg-red-300 w-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           Dashboard
@@ -34,19 +34,19 @@ const NavAside = () => {
           to="/admin/manageCategories"
           className={({ isActive }) =>
             isActive
-              ? "px-4 py-6 bg-red-300 w-full text-white text-center"
-              : "px-4 py-6 hover:bg-red-300 w-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center  transition-transform duration-300 scale-105 rounded-md"
+              : "px-4 py-6 hover:bg-red-300 w-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           Categorías
         </NavLink>
 
         <NavLink
-          to="/admin/manageShopping"
+          to="/admin/managePurchases"
           className={({ isActive }) =>
             isActive
-              ? "bg-red-400 text-center"
-              : "px-4 py-6 hover:bg-red-300 w-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center  transition-transform duration-300 scale-105 rounded-md"
+              : "px-4 py-6 hover:bg-red-300 w-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           Compras
@@ -56,8 +56,8 @@ const NavAside = () => {
           to="/admin/manageProducts"
           className={({ isActive }) =>
             isActive
-              ? "px-4 py-6 bg-red-300 w-full text-white text-center"
-              : "px-4 py-6 hover:bg-red-300 w-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center  transition-transform duration-300 scale-105 rounded-md"
+              : "px-4 py-6 hover:bg-red-300 w-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           Productos
@@ -67,8 +67,8 @@ const NavAside = () => {
           to="/admin/manageSubcategories"
           className={({ isActive }) =>
             isActive
-              ? "px-4 py-6 bg-red-300 w-full text-white text-center"
-              : "px-4 py-6 hover:bg-red-300 w-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center  transition-transform duration-300 scale-105 rounded-md"
+              : "px-4 py-6 hover:bg-red-300 w-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           Subcategorías
@@ -78,8 +78,8 @@ const NavAside = () => {
           to="/admin/manageUsers"
           className={({ isActive }) =>
             isActive
-              ? "px-4 py-6 bg-red-300 w-full text-white text-center"
-              : "px-4 py-6 hover:bg-red-300 w-full text-center"
+              ? "px-4 py-6 bg-red-300 w-full text-white text-center  transition-transform duration-300 scale-105 rounded-md"
+              : "px-4 py-6 hover:bg-red-300 w-full text-center transition-transform duration-300 hover:scale-105 rounded-md"
           }
         >
           Usuarios

@@ -1,4 +1,5 @@
 import axios from "../../config/axios";
+import showUpdateNotification from "./showUpdateNotification";
 
 const putProducts = async (newProduct, imgUrl, navigate) => {
   let {
@@ -21,8 +22,8 @@ const putProducts = async (newProduct, imgUrl, navigate) => {
   category && categories.push(category);
   subcategory && categories.push(subcategory);
 
-  color === "addNewColor" && (color = newColor)
-  size === "addNewSize" && (size = newSize)
+  color === "addNewColor" && (color = newColor);
+  size === "addNewSize" && (size = newSize);
 
   const productBody = {
     id,
@@ -42,8 +43,13 @@ const putProducts = async (newProduct, imgUrl, navigate) => {
   try {
     console.log("productBody: ", productBody);
     const response = await axios.put(`/products`, productBody);
-    console.log(response);
-    response.data.updated && navigate("/admin/manageProducts");
+    console.log("response: ", response.data);
+    if (response.data.updated) {
+      showUpdateNotification(
+        `Se actualizó exitosamente el producto ${response.data.product.name}`
+      );
+      navigate("/admin/manageProducts");
+    }
   } catch (error) {
     console.error("Error al actualizar el producto:", error);
   }

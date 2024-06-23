@@ -4,7 +4,7 @@ const emptyTable = () => {
         totalPages: 0,
         currentPage: 0,
         pageSize: 0,
-        users: [],
+        purchases: [],
         message: `No se ha encontrado ninguna Compra registrada en la base de datos`,
     }
 

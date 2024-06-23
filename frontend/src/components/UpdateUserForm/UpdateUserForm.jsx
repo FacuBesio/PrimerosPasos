@@ -1,42 +1,54 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Name_input from "./InputsForm/Name_input";
-import disabledSubmitValidator from "../../utils/products/disabledSubmitValidator";
+import Role_input from "./InputsForm/Role_input";
+import disabledSubmitValidator from "../../utils/users/disabledSubmitValidator";
 import Enabled_input from "./InputsForm/Enabled_input";
-import createInputValidator from "../../utils/categories/createInputValidator";
-import getCategoryById from "../../utils/categories/getCategoryById";
-import putCategories from "../../utils/categories/putCategories";
+import createInputValidator from "../../utils/users/createInputValidator";
+import putUsers_forOwner from "../../utils/users/putUsers_forOwner";
+import getUserById from "../../utils/users/getUserById";
+import User_info from "./InputsForm/User_info";
+import CanNot_UpdateNotification from "../../utils/users/CanNot_UpdateNotification";
 
-const UpdateCategoryForm = ({ id }) => {
+const UpdateUserForm = ({ id }) => {
   const navigate = useNavigate();
   const [disabledButton, setDisabledButton] = useState(true);
   const [errors, setErrors] = useState({});
-  const [newCategory, setNewCategory] = useState({
+  const [newUser, setNewUser] = useState({
     name: "",
   });
 
+  if (newUser.id === 1) {
+    CanNot_UpdateNotification(
+      newUser.name,
+      `Los datos del owner no pueden ser modificados por este medio.`
+    );
+  navigate("/admin/manageUsers");
+}
+
+  const owner_id = 1;
+
   useEffect(() => {
-    getCategoryById(id, setNewCategory);
+    getUserById(id, setNewUser);
   }, []);
 
   useEffect(() => {
-    createInputValidator(newCategory, errors, setErrors, setDisabledButton);
-  }, [newCategory]);
+    createInputValidator(newUser, errors, setErrors, setDisabledButton);
+  }, [newUser]);
 
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;
-    setNewCategory({ ...newCategory, [property]: value });
+    setNewUser({ ...newUser, [property]: value });
   };
 
   const handlerSubmit = async (event) => {
     event.preventDefault();
-    putCategories(newCategory, navigate);
+    putUsers_forOwner(newUser, navigate, owner_id);
   };
 
   const handlerDisabledButton = (event) => {
     event.preventDefault();
-    disabledSubmitValidator(newCategory, errors, setErrors);
+    disabledSubmitValidator(newUser, errors, setErrors);
   };
 
   return (
@@ -46,18 +58,16 @@ const UpdateCategoryForm = ({ id }) => {
         onSubmit={handlerSubmit}
       >
         <h1 className="text-white font-bold  pt-2 rounded-md">
-          ACTUALIZAR CATEGORÍA
+          ACTUALIZAR PERMISOS Y ALCANCE DE USUARIO
         </h1>
         <div className="w-full flex flex-col gap-1 items-center">
-          <Enabled_input
-            newCategory={newCategory}
-            setNewCategory={setNewCategory}
-          />
-          <Name_input
+          <Enabled_input newUser={newUser} setNewUser={setNewUser} />
+          <Role_input
             handlerChange={handlerChange}
             errors={errors}
-            newCategory={newCategory}
+            newUser={newUser}
           />
+          <User_info newUser={newUser} />
         </div>
 
         <div className="formButton w-full flex justify-center items-center ">
@@ -82,7 +92,7 @@ const UpdateCategoryForm = ({ id }) => {
         </div>
       </form>
       <Link
-        to="/admin/manageCategories"
+        to="/admin/manageUsers"
         className="px-6 py-3 bg-red-300 text-white font-bold rounded-md hover:bg-red-400
         hover:ring-red-400 focus:outline-none focus:ring-2 focus:ring-red-200"
       >
@@ -92,4 +102,4 @@ const UpdateCategoryForm = ({ id }) => {
   );
 };
 
-export default UpdateCategoryForm;
+export default UpdateUserForm;

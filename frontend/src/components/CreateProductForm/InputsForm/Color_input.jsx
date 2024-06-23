@@ -34,7 +34,7 @@ const Color_input = ({ handlerChange, newProduct, errors }) => {
           Agregar un nuevo color
         </option>
         {allColors?.colors?.map((color) => (
-          <option key={color} value={color}>
+          <option key={color} value={color} className="capitalize">
             {color}
           </option>
         ))}

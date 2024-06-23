@@ -1,4 +1,5 @@
 import axios from "../../config/axios";
+import showUpdateNotification from "./showUpdateNotification";
 
 const putCategories = async (newCategory, navigate) => {
   let { id, name, enabled } = newCategory;
@@ -6,7 +7,12 @@ const putCategories = async (newCategory, navigate) => {
 
   try {
     const response = await axios.put(`/categories`, CategoryBody);
-    response.data.updated && navigate("/admin/manageCategories");
+    if (response.data.updated) {
+      showUpdateNotification(
+        `Se actualizó exitosamente la categoría ${response.data.category.name}`
+      );
+      navigate("/admin/manageCategories");
+    }
   } catch (error) {
     console.error("Error al actualizar la categoría:", error);
   }

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Footer, Title } from "../../../components";
 import { Link } from "react-router-dom";
 import { CategoriesContext } from "../../../context";
@@ -6,15 +6,22 @@ import getSubCategories from "../../../utils/subcategories/getSubCategories";
 import garbage from "../../../assets/garbage.png";
 import NavAside from "../../../components/NavAside/NavAside";
 import update_icon from "../../../assets/update_icon.png";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import deleteConfirm from "../../../utils/subcategories/deleteConfirm";
+
 
 const ManageSubcategories = () => {
   const { allSubCategories, setAllSubCategories } =
     useContext(CategoriesContext);
+  const [removeState, setRemoveState] = useState({ message: "", removed: "" });
+
+  const handlerRemove = (id, name) => {
+    deleteConfirm(id, name, setRemoveState);
+  };
 
   useEffect(() => {
     getSubCategories(setAllSubCategories);
-  }, []);
+  }, [removeState]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -40,7 +47,7 @@ const ManageSubcategories = () => {
                 <th className="p-4 border">Categoría</th>
                 <th className="p-4 border">Productos</th>
                 <th className="p-4 border">Habilitada</th>
-                <th className="p-4 border">Editar</th>
+                <th className="p-4 border">Actualizar</th>
                 <th className="p-4 border">Eliminar</th>
               </tr>
             </thead>
@@ -62,11 +69,11 @@ const ManageSubcategories = () => {
                       <button>
                         {subcategory.enabled ? (
                           <span className="text-green-500 text-2xl">
-                            <CheckOutlined />
+                            <CheckCircleOutlined />
                           </span>
                         ) : (
                           <span className="text-red-500 text-2xl">
-                            <CloseOutlined />
+                            <CloseCircleOutlined />
                           </span>
                         )}
                       </button>
@@ -85,7 +92,7 @@ const ManageSubcategories = () => {
                       </Link>
                     </td>
                     <td className="p-4 border">
-                      <button>
+                      <button onClick={() => handlerRemove(subcategory.id, subcategory.name)}>
                         <img
                           src={garbage}
                           alt="Eliminar"

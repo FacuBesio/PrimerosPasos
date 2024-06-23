@@ -34,7 +34,6 @@ const UpdateProductForm = ({ id }) => {
   });
 
   console.log("newProduct: ", newProduct);
-  console.log("errors: ", errors);
 
   useEffect(() => {
     getProductById_forUpdate(id, setNewProduct);
@@ -47,8 +46,16 @@ const UpdateProductForm = ({ id }) => {
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;
+    
     if (event.target.type === "file") {
       value = event.target.files[0];
+    }
+    if (event.target.name === "category") {
+      return setNewProduct({
+        ...newProduct,
+        [property]: value,
+        subcategory: "",
+      });
     }
     setNewProduct({ ...newProduct, [property]: value });
   };

@@ -2,9 +2,9 @@
 import addToCart from "../../utils/cart/addToCart";
 import { useAuth0 } from "@auth0/auth0-react";
 import cartFill from "../../assets/cartFill.png";
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 import { FlagCartEffectContext } from "../../context";
 import { useContext } from "react";
 
@@ -13,16 +13,16 @@ const Button = ({ product }) => {
 
   const {setFlag} = useContext(FlagCartEffectContext)
 
-  const notify = () => toast.success('Agregaste un producto al carrito', {
-    position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
+  // const notify = () => toast.success('Agregaste un producto al carrito', {
+  //   position: "top-right",
+  //   autoClose: 1000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  //   theme: "colored",
+  // });
 
   const cantidad = 1;
   const { id, brand, name, price, stock, img } = product;
@@ -31,7 +31,7 @@ const Button = ({ product }) => {
   const handleAddToCartAndNotify = () => {
     addToCart(productToAdd, isAuthenticated);
     setFlag(true)
-    notify();
+    // notify();
   };
 
   return (
@@ -42,7 +42,7 @@ const Button = ({ product }) => {
       >
         <img className="w-6 h-6" src={cartFill} alt="" />
       </button>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-right"
         autoClose={1000}
         hideProgressBar={false}
@@ -53,7 +53,7 @@ const Button = ({ product }) => {
         draggable
         pauseOnHover
         theme="colored"
-      />
+      /> */}
     </div>
   );
 };

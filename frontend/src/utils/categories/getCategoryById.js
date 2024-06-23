@@ -5,7 +5,8 @@ const getCategoryById = async (id, setCategory) => {
     const response = await axios.get(`/categories/${id}`);
     const { category } = response.data;
     const { name, enabled } = category;
-    setCategory({ id: category.id, name, enabled });
+    setCategory && setCategory({ id: category.id, name, enabled });
+    return category;
   } catch (error) {
     console.error("Error al obtener la categoría:", error);
   }

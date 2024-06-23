@@ -15,9 +15,6 @@ const CreateCategoryForm = () => {
     name: "",
   });
 
-  console.log("newCategory: ", newCategory);
-  console.log("errors: ", errors);
-
   useEffect(() => {
     createInputValidator(newCategory, errors, setErrors, setDisabledButton);
   }, [newCategory]);
