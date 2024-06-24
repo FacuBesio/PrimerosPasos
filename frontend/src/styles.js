@@ -1,4 +1,6 @@
-export const navbarMainStyle = "md:text-lg hover:text-[#DBB1BC] hover:scale-105 "
+export const navbarLinkStyle = "md:text-lg hover:text-[#DBB1BC] hover:scale-105 transition-transform duration-150"
+export const navbarLinkStyle_Selected = "md:text-lg text-[#DBB1BC] font-bold hover:text-[#DBB1BC] scale-105"
+
 export const navbarCategoryStyle = "text-[#524343]  hover:text-[#Dbb1bc] focus:text-[#Dbb1bc]  cursor-pointer rounded-md p-1 "
 
 

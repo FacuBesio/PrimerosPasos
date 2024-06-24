@@ -1,5 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   useEffect,
   useState,
@@ -10,7 +8,6 @@ import React, {
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useNavigate } from "react-router-dom";
 import getCategories from "../../utils/categories/getCategories";
-import { handlerClickCategories } from "../../utils/filter/filterHandlers";
 import {
   CategoriesContext,
   FlagCartEffectContext,
@@ -22,10 +19,12 @@ import postUsers from "../../utils/users/postUsers";
 import {
   flexColCenter,
   navbarCategoryStyle,
-  navbarMainStyle,
+
 } from "../../styles";
 import { motion } from "framer-motion";
 import isAdminIcon from "../../assets/adminIcon.png";
+import CategoryLinks from "../NavBar_CategoryLinks/CategoryLinks";
+import NavBar_Links from "../NavBar_Links/NavBar_Links";
 
 const Navbar = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -88,20 +87,7 @@ const Navbar = () => {
       setIsAdmin(true);
     }
     getCategories(setAllCategories);
-  }, [userData, isAuthenticated, user, allCategories.length, setAllCategories]);
-
-  const handleCategoryClick = useCallback(
-    (category) => {
-      handlerClickCategories(
-        navigate,
-        setFilterCategories,
-        setCategoryTag,
-        category,
-        setPage
-      )();
-    },
-    [navigate, setFilterCategories, setCategoryTag, setPage]
-  );
+  }, [userData, isAuthenticated, user]);
 
   const containerVariants = useMemo(
     () => ({
@@ -117,58 +103,12 @@ const Navbar = () => {
     []
   );
 
-  const itemVariants = useMemo(
-    () => ({
-      hidden: { opacity: 0, y: -20 },
-      visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    }),
-    []
-  );
-
-  const categoryLinks = useMemo(
-    () =>
-      allCategories?.categories?.map((category) => (
-        <motion.h3
-          key={category.id}
-          variants={itemVariants}
-          onClick={() => handleCategoryClick(category)}
-          className={`${
-            filterCategories === category.id ? "text-[#Dbb1bc]" : ""
-          } text-[#524343] hover:text-[#Dbb1bc] cursor-pointer rounded-md p-1`}
-        >
-          {category.name}
-        </motion.h3>
-      )),
-    [allCategories, filterCategories, handleCategoryClick, itemVariants]
-  );
-
   return (
     <div>
       {/* <motion.article initial="hidden" animate="visible" exit={{ opacity: 0, transition: { duration: 0.5 } }}> */}
       <nav className={`${flexColCenter} md:flex-row gap-4 pb-2`}>
-        <div className="flex gap-4 justify-center">
-          <Link to="/" className={navbarMainStyle}>
-            Home
-          </Link>
-          <Link to="/shop" className={navbarMainStyle}>
-            Shop
-          </Link>
-          <Link to="/contacto" className={navbarMainStyle}>
-            Contacto
-          </Link>
-          {!isAuthenticated ? (
-            <button
-              className={navbarMainStyle}
-              onClick={() => loginWithRedirect()}
-            >
-              Login
-            </button>
-          ) : (
-            <button className={navbarMainStyle} onClick={handleLogout}>
-              Logout
-            </button>
-          )}
-        </div>
+        <NavBar_Links />
+
         <div className="flex justify-center">
           <form className="flex gap-2" onSubmit={onSubmitSearchBar}>
             <input
@@ -224,7 +164,7 @@ const Navbar = () => {
             animate="visible"
             className="flex gap-2 items-center overflow-x-auto"
           > */}
-        {categoryLinks}
+        <CategoryLinks />
         {/* </motion.div> */}
       </div>
       {/* </motion.article> */}

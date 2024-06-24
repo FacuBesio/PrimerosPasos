@@ -16,7 +16,7 @@ const Categories = () => {
 
   useEffect(() => {
     getCategories(setAllCategories);
-  }, [allCategories]);
+  }, []);
 
   const categoriesImages = [
     {
