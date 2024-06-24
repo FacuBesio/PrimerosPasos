@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CategoriesContext, SearchContext } from "../../context/index";
+import { CategoriesContext } from "../../context/index";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
 
@@ -15,10 +15,8 @@ const Categories = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (allCategories.categories?.length === 0) {
-      getCategories(setAllCategories);
-    }
-  }, [allCategories.categories?.length, setAllCategories]);
+    getCategories(setAllCategories);
+  }, [allCategories]);
 
   const categoriesImages = [
     {
@@ -43,17 +41,19 @@ const Categories = () => {
     },
   ];
 
-  const categoriesWithImages = allCategories?.categories?.slice(0, 4).map((cat, index) => ({
-    ...cat,
-    image: categoriesImages[index]?.image,
-    description: categoriesImages[index]?.description,
-  }));
+  const categoriesWithImages = allCategories?.categories
+    ?.slice(0, 4)
+    .map((cat, index) => ({
+      ...cat,
+      image: categoriesImages[index]?.image,
+      description: categoriesImages[index]?.description,
+    }));
 
   return (
     <section className="sm:grid grid-rows-2 grid-cols-2  bg-categories">
       {categoriesWithImages?.map((cat) => (
         <Link
-        to={`/shop/categories/${cat.name}`}
+          to={`/shop/categories/${cat.name}`}
           key={cat.name}
           onClick={() =>
             handlerClickCategories(

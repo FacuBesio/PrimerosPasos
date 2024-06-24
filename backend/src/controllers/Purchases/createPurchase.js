@@ -41,10 +41,8 @@ const createPurchase = async (
     await newPurchase.setUser(userFound);
     await newPurchase.addOrders(orders);
     const { id } = newPurchase;
-
     const createdPurchase = formattedPurchase(await findPurchasebyId(id));
     newPurchase = await stockDiscounter(createdPurchase);
-
     return newPurchase;
   } catch (error) {
     console.log("error: ", error.message);

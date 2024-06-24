@@ -1,55 +1,19 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext } from "react";
 import { Footer, Title } from "../../../components";
 import { Link } from "react-router-dom";
-import {
-  FilterContext,
-  PagesContext,
-  ProductsContext,
-  SearchContext,
-  SortContext,
-} from "../../../context";
-import update_icon from "../../../assets/update_icon.png";
-import getProducts from "../../../utils/products/getProducts";
+import { PagesContext, ProductsContext, SearchContext } from "../../../context";
 import Paginated from "../../../components/Paginated/Paginated";
-import garbage from "../../../assets/garbage.png";
 import SortComponent from "../../../components/SortComponent/SortComponent";
-import sorterValidator from "../../../utils/sorter/sorterValidator";
 import NavAside from "../../../components/NavAside/NavAside";
-import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import deleteConfirm from "../../../utils/products/deleteConfirm";
+import Products_Table from "../../../components/Products_Table/Products_Table";
+import Filter from "../../../components/Filter/Filter";
 
 
 const ManageProducts = () => {
-  const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
-  const { sorter } = useContext(SortContext);
-  const { allProducts, setAllProducts } = useContext(ProductsContext);
+  const { allProducts } = useContext(ProductsContext);
   const { searchBar, setSearchBar, setSearchBarTag } =
     useContext(SearchContext);
-  const [removeState, setRemoveState] = useState({ message: "", removed: "" });
-
-  const {
-    setSorter,
-    sorterByPrice,
-    setSorterByPrice,
-    sorterByRating,
-    setSorterByRating,
-  } = useContext(SortContext);
-
-  const onChangeSorterPrice = (event) => {
-    setSorterByPrice(event.target.value);
-  };
-
-  const onChangeSorterRating = (event) => {
-    setSorterByRating(event.target.value);
-  };
-
-  const sortComponentProps = {
-    sorterByPrice,
-    onChangeSorterPrice,
-    sorterByRating,
-    onChangeSorterRating,
-  };
 
   const onChangeSearchBar = useCallback(
     (event) => {
@@ -59,24 +23,6 @@ const ManageProducts = () => {
     },
     [setSearchBar, setSearchBarTag, setPage]
   );
-
-  const handlerRemove = (id, name) => {
-    deleteConfirm(id, name, setRemoveState);
-  };
-
-  useEffect(() => {
-    const sorterQuery = sorterValidator(sorterByPrice, sorterByRating);
-    if (sorterQuery.sorterActive) {
-      setSorter(sorterQuery.result);
-    }
-  }, [sorterByPrice, sorterByRating]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    getProducts(setAllProducts, page, searchBar, filter, sorter);
-  }, [page, searchBar, filter, sorter, removeState]);
-
-  const productsAvailable = allProducts?.products?.length > 0;
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -93,6 +39,7 @@ const ManageProducts = () => {
                 + Agregar Producto
               </label>
             </Link>
+            <Filter />
             <form className="flex gap-2">
               <input
                 placeholder="Buscar"
@@ -109,96 +56,9 @@ const ManageProducts = () => {
                 />
               </button>
             </form>
-            <SortComponent sortComponentProps={sortComponentProps} />
+            <SortComponent />
           </div>
-          <table className="w-full border border-collapse bg-white">
-            <thead>
-              <tr>
-                <th className="p-4 border">Imagen</th>
-                <th className="p-4 border">Nombre</th>
-                <th className="p-4 border">Marca</th>
-                <th className="p-4 border">Categoría</th>
-                <th className="p-4 border">Subcategoría</th>
-                <th className="p-4 border">Color</th>
-                <th className="p-4 border">Talle</th>
-                <th className="p-4 border">Precio</th>
-                <th className="p-4 border">Stock</th>
-                <th className="p-4 border">Habilitado</th>
-                <th className="p-4 border">Rating</th>
-                <th className="p-4 border">Actualizar</th>
-                <th className="p-4 border">Eliminar</th>
-              </tr>
-            </thead>
-            <tbody className="text-center">
-              {productsAvailable ? (
-                allProducts.products.map((product) => (
-                  <tr key={product.id}>
-                    <td className="p-4 border text-center">
-                      <img
-                        src={product.img}
-                        alt={product.name}
-                        className="w-24 h-24 object-cover rounded-xl mx-auto"
-                      />
-                    </td>
-                    <td className="p-4 border min-w-[100px] max-w-[300px] truncate">
-                      {product.name}
-                    </td>
-                    <td className="p-4 border">{product.brand}</td>
-                    <td className="p-4 border">{product.categories[0].name}</td>
-                    <td className="p-4 border">
-                      {product.subcategories.length > 0
-                        ? product.subcategories[0].name
-                        : "-"}
-                    </td>
-                    <td className="p-4 border capitalize">{product.color}</td>
-                    <td className="p-4 border">{product.size}</td>
-                    <td className="p-4 border">${product.price}</td>
-                    <td className="p-4 border">{product.stock}</td>
-                    <td className="p-4 border">
-                      <button>
-                        {product.enabled ? (
-                          <span className="text-green-500 text-2xl">
-                            <CheckCircleOutlined />
-                          </span>
-                        ) : (
-                          <span className="text-red-500 text-2xl">
-                            <CloseCircleOutlined />
-                          </span>
-                        )}
-                      </button>
-                    </td>
-                    <td className="p-4 border">{product.rating}</td>
-                    <td className="p-4 border">
-                      <Link to={`/admin/manageProducts/update/${product.id}`}>
-                        <button>
-                          <img
-                            src={update_icon}
-                            alt="Update"
-                            className="w-12 h-12 transition-transform duration-300 hover:scale-105"
-                          />
-                        </button>
-                      </Link>
-                    </td>
-                    <td className="p-4 border">
-                      <button onClick={() => handlerRemove(product.id, product.name)}>
-                        <img
-                          src={garbage}
-                          alt="Eliminar"
-                          className="w-12 h-12 transition-transform duration-300 hover:scale-105"
-                        />
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9" className="text-center p-4">
-                    No se encuentran productos disponibles.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <Products_Table />
           <Paginated
             page={page}
             totalPages={allProducts?.totalPages}

@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import BeatLoader from "react-spinners/BeatLoader";
 
 const Loader = ({ delayLoading }) => {

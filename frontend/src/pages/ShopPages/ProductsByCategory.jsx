@@ -1,7 +1,13 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState  } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Footer, Marquee, Navbar, Title } from "../../components";
-import ProductComponent from "../../components/ProductComponent/Product";
+import ProductComponent from "../../components/ProductComponent/ProductComponent";
 import getProductsByCategories from "../../utils/products/getProductsByCategories";
 import getBrands from "../../utils/brands/getBrands";
 import {
@@ -22,12 +28,6 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   const [delayLoading, setDelayLoading] = useState(true);
 
   console.log("Render TestBYIDDDDDD");
-
-  // Memoize fetch functions
-  const fetchBrands = useCallback(async () => {
-    await getBrands(setAllBrands);
-    setLoading(false);
-  }, [setAllBrands]);
 
   const fetchProductsByCategory = useCallback(async () => {
     await getProductsByCategories(
@@ -51,15 +51,15 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   // Fetch brands on initial load or url change
   useEffect(() => {
     setOriginUrl(url);
-    fetchBrands();
-  }, [url, fetchBrands]);
+    setLoading(false);
+  }, [url]);
 
   // Delay the removal of loading state for smooth UX
   useEffect(() => {
     if (!loading) {
       const timer = setTimeout(() => {
         setDelayLoading(false);
-      }, 350);
+      }, 0);
       return () => clearTimeout(timer);
     }
   }, [loading]);
@@ -71,7 +71,10 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
     }
   }, [page, searchBar, filter, sorter, name, loading, fetchProductsByCategory]);
 
-  const loaderStates = useMemo(() => ({ loading, delayLoading }), [loading, delayLoading]);
+  const loaderStates = useMemo(
+    () => ({ loading, delayLoading }),
+    [loading, delayLoading]
+  );
 
   return (
     <main className={mainPages}>

@@ -39,6 +39,7 @@ const ManagePurchases = () => {
               <tr>
                 <th className="p-4 border">Id</th>
                 <th className="p-4 border">Fecha</th>
+                <th className="p-4 border">Hora</th>
                 <th className="p-4 border">Usuario</th>
                 <th className="p-4 border">Email</th>
                 <th className="p-4 border">N° Orden</th>
@@ -52,7 +53,8 @@ const ManagePurchases = () => {
                 allPurchases.purchases?.map((purchase) => (
                   <tr key={purchase.id}>
                     <td className="p-4 border text-center">{purchase.id}</td>
-                    <td className="p-4 border text-center">21-06-2024</td>
+                    <td className="p-4 border text-center">{purchase.created_date}</td>
+                    <td className="p-4 border text-center">{purchase.created_time}</td>
                     <td className="p-4 border">{purchase.User.name}</td>
                     <td className="p-4 border text-center">
                       {purchase.User.email}
@@ -61,7 +63,7 @@ const ManagePurchases = () => {
                     <td className="p-4 border">{purchase.payment_id}</td>
                     <td className="p-4 border">{purchase.payment_type}</td>
                     <td className="p-4 border">
-                      {purchase.payment_status === "succed" ? (
+                      {purchase.payment_status === "succeded" ? (
                         <span className="text-green-500 text-2xl">
                           <CheckCircleOutlined />
                         </span>

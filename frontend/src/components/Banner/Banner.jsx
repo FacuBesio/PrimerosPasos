@@ -34,11 +34,11 @@ const Banner = () => {
 
   return (
    
-    <motion.div
-    initial={{ opacity: 0, y: 250 }}
-    animate={{ opacity: 1, y: 0 ,}}
-    transition={{ duration: 0.5 }}
-    >
+    // <motion.div
+    // initial={{ opacity: 0, y: 250 }}
+    // animate={{ opacity: 1, y: 0 ,}}
+    // transition={{ duration: 0.5 }}
+    // >
       <Carousel
         swipeable={false}
         draggable={false}
@@ -64,7 +64,7 @@ const Banner = () => {
           </div>
         ))}
       </Carousel>
-        </motion.div>
+        // </motion.div>
   );
 };
 

@@ -26,11 +26,11 @@ function App() {
   useEffect(() => {
     appInitialzer();
   }, []);
-  console.log("Test Render APP");
+
 
   return (
     <main className={mainPages}>
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait"> */}
         <Routes location={location} key={location.pathname}>
           <Route path="/*" element={<Home />} />
           <Route path="/cart/*" element={<Cart />} />
@@ -60,7 +60,7 @@ function App() {
             }
           />
         </Routes>
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
     </main>
   );
 }

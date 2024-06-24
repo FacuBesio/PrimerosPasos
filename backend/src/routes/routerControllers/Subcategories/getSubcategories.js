@@ -1,19 +1,12 @@
-const createBulkCategories = require("../../../controllers/Categories/createBulkCategories");
-const createBulkSubcategories = require("../../../controllers/Subcategories/createBulkSubcategories");
-const findAllCategories = require("../../../controllers/Categories/findAllCategories");
 const findAllSubcategories = require("../../../controllers/Subcategories/findAllSubcategories");
 const formattedSubcategories = require("../../../utils/formatted/formattedSubcategories");
+const emptyTable = require("../../../utils/validators/subcategories/emptyTable");
 
 const getSubcategories = async (req, res) => {
   try {
     let subcategories = await findAllSubcategories();
-    if (subcategories.length === 0) {
-      let categories = await findAllCategories();
-      if (categories.length === 0) {
-        await createBulkCategories();
-      }
-      await createBulkSubcategories();
-      subcategories = await findAllSubcategories();
+    if (subcategories.totalResults === 0) {
+      return res.status(200).json(emptyTable());
     }
     subcategories = formattedSubcategories(subcategories);
     return res.status(200).json({

@@ -11,10 +11,11 @@ import {
   handlerMaxPrice,
 } from "../../utils/filter/filterHandlers";
 import { filterStyles } from "../../styles.js";
+import getBrands from "../../utils/brands/getBrands.js";
 
 
 const Filter = () => {
-  const { allBrands } = useContext(BrandsContext);
+  const { allBrands, setAllBrands } = useContext(BrandsContext);
   const { setPage } = useContext(PagesContext);
 
   const {
@@ -48,6 +49,10 @@ const Filter = () => {
     setBrandsTag(selectedBrand);
     setPage(1);
   }, [setFilterBrands, setBrandsTag, setPage]);
+
+  useEffect(() => {
+    getBrands(setAllBrands);
+  }, []);
 
   useEffect(() => {
     const filterQuery = filterValidator(filterBrands, filterPrices);
