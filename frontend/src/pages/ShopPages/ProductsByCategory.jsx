@@ -1,14 +1,15 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState  } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import ProductComponent from "../../components/ProductComponent/ProductComponent";
 import getProductsByCategories from "../../utils/products/getProductsByCategories";
-import getBrands from "../../utils/brands/getBrands";
-import {
-  BrandsContext,
-  CategoriesContext,
-  ProductsContext,
-} from "../../context/index";
+import { CategoriesContext, ProductsContext } from "../../context/index";
 import { mainPages } from "../../styles";
 
 const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
@@ -16,18 +17,11 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   const url = useLocation().pathname;
   const { name } = useParams();
   const { setCategoryTag } = useContext(CategoriesContext);
-  const { setAllBrands } = useContext(BrandsContext);
   const { setAllProducts } = useContext(ProductsContext);
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
 
   console.log("Render TestBYIDDDDDD");
-
-  // Memoize fetch functions
-  const fetchBrands = useCallback(async () => {
-    await getBrands(setAllBrands);
-    setLoading(false);
-  }, [setAllBrands]);
 
   const fetchProductsByCategory = useCallback(async () => {
     await getProductsByCategories(
@@ -51,8 +45,8 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
   // Fetch brands on initial load or url change
   useEffect(() => {
     setOriginUrl(url);
-    fetchBrands();
-  }, [url, fetchBrands]);
+    setLoading(false);
+  }, [url]);
 
   // Delay the removal of loading state for smooth UX
   useEffect(() => {
@@ -71,7 +65,10 @@ const ProductsByCategory = ({ setOriginUrl, productsParams }) => {
     }
   }, [page, searchBar, filter, sorter, name, loading, fetchProductsByCategory]);
 
-  const loaderStates = useMemo(() => ({ loading, delayLoading }), [loading, delayLoading]);
+  const loaderStates = useMemo(
+    () => ({ loading, delayLoading }),
+    [loading, delayLoading]
+  );
 
   return (
     <main className={mainPages}>

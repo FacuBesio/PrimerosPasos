@@ -6,7 +6,7 @@ export const navbarCategoryStyle_Selected = "text-[#Dbb1bc] font-bold hover:text
 
 
 export const productBox = "bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200 cursor-pointer"
-export const filterTags = "border-2 bg-white border-white w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer"
+export const filterTags = "border-2 bg-white border-white w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer hover:scale-105 transition-transform duration-150"
 
 export const filterStyles ="text-[#5a5b5a] border border-white bg-white rounded-md w-[100px] md:w-fit px-1"
 

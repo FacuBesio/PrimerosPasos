@@ -8,8 +8,8 @@ import Tags from "../Tags/Tags.jsx";
 import Products_Iterator from "../Products_Iterator/Products_Iterator.jsx";
 
 const ProductComponent = ({ loaderStates }) => {
-  const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
+  const { page, setPage } = useContext(PagesContext);
   const { loading, delayLoading } = loaderStates;
 
   if (loading || delayLoading) {
