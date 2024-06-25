@@ -7,48 +7,24 @@ import React, {
 } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useNavigate } from "react-router-dom";
-import getCategories from "../../utils/categories/getCategories";
-import {
-  CategoriesContext,
-  FlagCartEffectContext,
-  PagesContext,
-  SearchContext,
-} from "../../context/index";
+import { PagesContext, SearchContext } from "../../context/index";
 import CartAside from "../CartAside/CartAside";
 import postUsers from "../../utils/users/postUsers";
-import {
-  flexColCenter,
-  navbarCategoryStyle,
-
-} from "../../styles";
+import { flexColCenter, navbarCategoryStyle } from "../../styles";
 import { motion } from "framer-motion";
 import isAdminIcon from "../../assets/adminIcon.png";
 import CategoryLinks from "../NavBar_CategoryLinks/CategoryLinks";
-import NavBar_Links from "../NavBar_Links/NavBar_Links";
+import MainLinks from "../NavBar_Links/MainLinks";
 
 const Navbar = () => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useAuth0();
   const { setPage } = useContext(PagesContext);
   const { searchBar, setSearchBar, setSearchBarTag } =
     useContext(SearchContext);
-
-  const { flag } = useContext(FlagCartEffectContext);
-  // console.log("flag", flag);
-
   const [isAdmin, setIsAdmin] = useState(false);
-
-  const {
-    filterCategories,
-    allCategories,
-    setAllCategories,
-    setFilterCategories,
-    setCategoryTag,
-  } = useContext(CategoriesContext);
-
   const userData = JSON.parse(window.localStorage.getItem("userData"));
   const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleButtonCart = useCallback(() => {
     setIsCartOpen((prev) => !prev);
@@ -72,13 +48,6 @@ const Navbar = () => {
     [navigate, setPage]
   );
 
-  const handleLogout = useCallback(() => {
-    window.localStorage.removeItem("userData");
-    const updatedCart = { id: null, products: [] };
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
-    logout();
-  }, [logout]);
-
   useEffect(() => {
     if (isAuthenticated && user && !userData) {
       postUsers(user);
@@ -86,8 +55,7 @@ const Navbar = () => {
     if (userData?.role === "owner" || userData?.role === "admin") {
       setIsAdmin(true);
     }
-    getCategories(setAllCategories);
-  }, [userData, isAuthenticated, user]);
+  }, [userData, isAuthenticated]);
 
   const containerVariants = useMemo(
     () => ({
@@ -107,7 +75,7 @@ const Navbar = () => {
     <div>
       {/* <motion.article initial="hidden" animate="visible" exit={{ opacity: 0, transition: { duration: 0.5 } }}> */}
       <nav className={`${flexColCenter} md:flex-row gap-4 pb-2`}>
-        <NavBar_Links />
+        <MainLinks />
 
         <div className="flex justify-center">
           <form className="flex gap-2" onSubmit={onSubmitSearchBar}>
@@ -157,16 +125,9 @@ const Navbar = () => {
           )}
         </div>
       </nav>
-      <div className="flex justify-center items-center gap-4 m-2 h-fit overflow-x-auto">
-        {/* <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex gap-2 items-center overflow-x-auto"
-          > */}
-        <CategoryLinks />
-        {/* </motion.div> */}
-      </div>
+
+      <CategoryLinks />
+
       {/* </motion.article> */}
     </div>
   );

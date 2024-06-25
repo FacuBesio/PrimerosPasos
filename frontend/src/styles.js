@@ -1,7 +1,8 @@
 export const navbarLinkStyle = "md:text-lg hover:text-[#DBB1BC] hover:scale-105 transition-transform duration-150"
 export const navbarLinkStyle_Selected = "md:text-lg text-[#DBB1BC] font-bold hover:text-[#DBB1BC] scale-105"
 
-export const navbarCategoryStyle = "text-[#524343]  hover:text-[#Dbb1bc] focus:text-[#Dbb1bc]  cursor-pointer rounded-md p-1 "
+export const navbarCategoryStyle = "hover:text-[#Dbb1bc] hover:scale-105 transition-transform duration-150"
+export const navbarCategoryStyle_Selected = "text-[#Dbb1bc] font-bold hover:text-[#DBB1BC] scale-105"
 
 
 export const productBox = "bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200 cursor-pointer"
