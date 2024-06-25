@@ -25,7 +25,7 @@ const Navbar = () => {
 
   const {flag} = useContext(FlagCartEffectContext)
 
-console.log("flag", flag);
+
   const [isAdmin, setIsAdmin] = useState(false)
   
   const {
