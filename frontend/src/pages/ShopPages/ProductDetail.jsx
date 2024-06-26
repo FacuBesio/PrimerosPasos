@@ -5,6 +5,10 @@ import getProductById from "../../utils/products/getProductById";
 import ButtonProductDetail from "../../components/ButtonProductDetail/ButtonProductDetail";
 import leftArrow from "../../assets/LeftArrow.png"
 import { mainPages } from "../../styles";
+import enabledIcon from '../../assets/disponible.png'
+import deliveryIcon from '../../assets/entrega.png'
+import secureIcon from '../../assets/seguro.png'
+
 const ProductDetail = ({ originUrl }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -70,20 +74,20 @@ const ProductDetail = ({ originUrl }) => {
           <div className="flex flex-col sm:flex-row  gap-2">
             <img
               className="w-[36px] h-[36px]"
-              src="/src/assets/disponible.png"
+              src={enabledIcon}
               alt="Disponible"
             />
             <h4 className="md:text-xl">Disponible</h4>
 
             <img
               className="w-[36px] h-[36px]"
-              src="/src/assets/entrega.png"
+              src={deliveryIcon}
               alt="Envío gratis"
             />
             <h4 className="md:text-xl ">Envio gratis</h4>
             <img
               className="w-[36px] h-[36px]"
-              src="/src/assets/seguro.png"
+              src={secureIcon}
               alt="Garantía de un año"
             />
             <h4 className="md:text-xl">Garantia de un año</h4>

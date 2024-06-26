@@ -3,6 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { CategoriesContext } from "../../context/index";
 import getCategories from "../../utils/categories/getCategories";
 import { handlerClickCategories } from "../../utils/filter/filterHandlers";
+import bathImage from "../../assets/baño.png";
+import babyBagImage from "../../assets/babybag.jpg";
+import clothesImage from "../../assets/ropa.png";
+import shoesImage from "../../assets/shoes.png";
+
 
 const Categories = () => {
   const {
@@ -20,23 +25,23 @@ const Categories = () => {
 
   const categoriesImages = [
     {
-      name: "Diversión",
-      image: "/src/assets/baño.png",
+      name: "Baño",
+      image: bathImage,
       description: "3x2",
     },
     {
-      name: "Cochecitos",
-      image: "/src/assets/babybag.jpg",
+      name: "Bolsos y Mochilas",
+      image: babyBagImage,
       description: "Cuotas sin interes",
     },
     {
-      name: "Cuna",
-      image: "/src/assets/butaca.webp",
+      name: "Ropa",
+      image: clothesImage,
       description: "Promos exclusivas",
     },
     {
-      name: "Mochila",
-      image: "/src/assets/shoes.png",
+      name: "Calzado",
+      image: shoesImage,
       description: "Descuentos",
     },
   ];
