@@ -3,6 +3,7 @@ import { CartContext } from "./CartContext";
 import { CategoriesContext } from "./CategoriesContext";
 import { ColorsContext } from "./ColorsContext";
 import { FilterContext } from "./FilterContext";
+import { OriginUrlContext } from "./OriginUrlContext";
 import { PagesContext } from "./PagesContext";
 import { ProductsContext } from "./ProductsContext";
 import { SearchContext } from "./SearchContext";
@@ -16,6 +17,7 @@ export {
   CategoriesContext,
   ColorsContext,
   FilterContext,
+  OriginUrlContext,
   PagesContext,
   ProductsContext,
   SearchContext,

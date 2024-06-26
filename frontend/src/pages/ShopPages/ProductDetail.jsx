@@ -3,11 +3,11 @@ import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useNavigate, useParams } from "react-router-dom";
 import getProductById from "../../utils/products/getProductById";
 import ButtonProductDetail from "../../components/ButtonProductDetail/ButtonProductDetail";
-import leftArrow from "../../assets/LeftArrow.png"
+import leftArrow from "../../assets/LeftArrow.png";
 import { mainPages } from "../../styles";
-import enabledIcon from '../../assets/disponible.png'
-import deliveryIcon from '../../assets/entrega.png'
-import secureIcon from '../../assets/seguro.png'
+import enabledIcon from "../../assets/disponible.png";
+import deliveryIcon from "../../assets/entrega.png";
+import secureIcon from "../../assets/seguro.png";
 
 const ProductDetail = ({ originUrl }) => {
   const { id } = useParams();
@@ -34,9 +34,14 @@ const ProductDetail = ({ originUrl }) => {
         key={product.product.id}
       >
         <div className="w-full md:border-r">
-          <h3 onClick={() => navigate(`${originUrl}`)}>
+          <button
+            onClick={() => {
+              navigate(`${originUrl}`);
+              console.log("originUrl: ", originUrl);
+            }}
+          >
             <img className="w-6 h-4 cursor-pointer" src={leftArrow} alt="" />
-          </h3>
+          </button>
           <img
             className=" rounded-lg"
             src={product.product.img}
