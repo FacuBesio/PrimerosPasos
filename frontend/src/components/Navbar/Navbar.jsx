@@ -15,6 +15,8 @@ import { motion } from "framer-motion";
 import isAdminIcon from "../../assets/adminIcon.png";
 import CategoryLinks from "../NavBar_CategoryLinks/CategoryLinks";
 import MainLinks from "../NavBar_Links/MainLinks";
+import cartIcon from '../../assets/cart.png'
+import searchIcon from '../../assets/VectorSearch.png'
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -89,7 +91,7 @@ const Navbar = () => {
             <button>
               <img
                 className="w-[30px] hover:scale-110"
-                src="/src/assets/VectorSearch.png"
+                src={searchIcon}
                 alt="Search Icon"
               />
             </button>
@@ -98,7 +100,7 @@ const Navbar = () => {
           <button onClick={handleButtonCart}>
             {/* <img src="/src/assets/cart.png" className={`w-[30px] ml-2 hover:scale-110 ${flag === true ? "animate-bounce" : "animate-none"}  `} alt="" /> */}
             <img
-              src="/src/assets/cart.png"
+              src={cartIcon}
               className="w-[30px] ml-2 hover:scale-110"
               alt="Cart Icon"
             />
