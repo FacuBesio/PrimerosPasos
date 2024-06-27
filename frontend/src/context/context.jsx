@@ -6,6 +6,7 @@ import { CategoriesProvider } from "./CategoriesContext";
 import { ColorsProvider } from "./ColorsContext";
 import { FilterProvider } from "./FilterContext";
 import { FlagEffectProvider } from "./FlagCartEffect";
+import { OriginUrlProvider } from "./OriginUrlContext";
 import { PagesProvider } from "./PagesContext";
 import { ProductsProvider } from "./ProductsContext";
 import { SearchProvider } from "./SearchContext";
@@ -20,15 +21,17 @@ const AppProvider = ({ children }) => {
           <ColorsProvider>
             <FilterProvider>
               <FlagEffectProvider>
-                <PagesProvider>
-                  <ProductsProvider>
-                    <SearchProvider>
-                    <SizesProvider>
-                      <SortProvider>{children}</SortProvider>
-                    </SizesProvider>
-                    </SearchProvider>
-                  </ProductsProvider>
-                </PagesProvider>
+                <OriginUrlProvider>
+                  <PagesProvider>
+                    <ProductsProvider>
+                      <SearchProvider>
+                      <SizesProvider>
+                        <SortProvider>{children}</SortProvider>
+                      </SizesProvider>
+                      </SearchProvider>
+                    </ProductsProvider>
+                  </PagesProvider>
+                </OriginUrlProvider>
               </FlagEffectProvider>
             </FilterProvider>
           </ColorsProvider>

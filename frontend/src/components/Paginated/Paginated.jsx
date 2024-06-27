@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
-
+import leftArrowIcon from '../../assets/LeftArrow.png'
+import rightArrowIcon from '../../assets/rightArrow.png'
 import { paginatedButton, paginatedButtonLetters } from "../../styles";
 
 const Paginated = ({ page, setPage, totalPages }) => {
@@ -40,7 +40,7 @@ const Paginated = ({ page, setPage, totalPages }) => {
       <button onClick={goToPreviousPage} className={paginatedButton}>
         <img
           className="w-[24px]"
-          src="/src/assets/leftArrow.png"
+          src={leftArrowIcon}
           alt="flecha"
         />
       </button>
@@ -50,7 +50,7 @@ const Paginated = ({ page, setPage, totalPages }) => {
       <button onClick={goToNextPage} className={paginatedButton}>
         <img
           className="w-[24px]"
-          src="/src/assets/rightArrow.png"
+          src={rightArrowIcon}
           alt="flecha"
         />
       </button>

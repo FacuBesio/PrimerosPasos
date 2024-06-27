@@ -5,6 +5,7 @@ import ProductsByCategory from "./ShopPages/ProductsByCategory";
 import ProductDetail from "./ShopPages/ProductDetail";
 import {
   FilterContext,
+  OriginUrlContext,
   PagesContext,
   SearchContext,
   SortContext,
@@ -12,20 +13,22 @@ import {
 
 const Shop = () => {
   const location = useLocation();
-  const [originUrl, setOriginUrl] = useState(location.pathname);
+  // const [originUrl, setOriginUrl] = useState(location.pathname);
   const { filter } = useContext(FilterContext);
+  const { originUrl, setOriginUrl } = useContext(OriginUrlContext);
   const { page } = useContext(PagesContext);
   const { searchBar } = useContext(SearchContext);
   const { sorter } = useContext(SortContext);
 
   // Memoiza productsParams para evitar cambios en cada renderizado
-  const productsParams = useMemo(
-    () => ({ filter, page, searchBar, sorter }),
-    [filter, page, searchBar, sorter]
-  );
+  const productsParams = { filter, page, searchBar, sorter }
 
-  useEffect(() => {
+console.log("SHOP originUrl:", originUrl);
+  
+useEffect(() => {
+  if (!originUrl && !(location.pathname.includes('productDetail'))) {
     setOriginUrl(location.pathname);
+  } 
   }, [location.pathname]);
 
   return (
@@ -39,14 +42,14 @@ const Shop = () => {
           path="categories/:name"
           element={
             <ProductsByCategory
-              setOriginUrl={setOriginUrl}
               productsParams={productsParams}
+              setOriginUrl={setOriginUrl}
             />
           }
         />
         <Route
           path="/productDetail/:id"
-          element={<ProductDetail originUrl={originUrl} />}
+          element={<ProductDetail originUrl={originUrl}/>}
         />
       </Routes>
     </>

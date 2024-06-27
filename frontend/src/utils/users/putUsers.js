@@ -1,14 +1,37 @@
 import axios from "../../../src/config/axios";
 
 const putUser = async (user) => {
-  const pictureStorage = JSON.parse(window.localStorage.getItem("userData"));
-  const { id, email, name, country, state, city, street_address, street_number, ZIP_code, phone } = user;
+  const userDataStorage = JSON.parse(window.localStorage.getItem("userData"));
+  const {
+    id,
+    email,
+    name,
+    country,
+    state,
+    city,
+    street_address,
+    street_number,
+    ZIP_Code,
+    phone,
+  } = user;
 
   try {
-    const putUserUpdate = await axios.put(`/users`, { id, email, name, country, state, city, street_address, street_number, ZIP_code, phone });
-    if (putUserUpdate.data && putUserUpdate.data.user && putUserUpdate.data.user.id) {
+    const putUserUpdate = await axios.put(`/users`, {
+      id,
+      email,
+      name,
+      country,
+      state,
+      city,
+      street_address,
+      street_number,
+      ZIP_Code,
+      phone,
+    });
+    console.log("putUserUpdate: ", putUserUpdate);
+    if (putUserUpdate.data.updated) {
       const { id, enabled, role, name, email } = putUserUpdate.data.user;
-      const img = pictureStorage ? pictureStorage.img : null;
+      const img = userDataStorage ? userDataStorage.img : null;
       const userData = { id, enabled, role, name, email, img };
       window.localStorage.setItem("userData", JSON.stringify(userData));
     } else {
