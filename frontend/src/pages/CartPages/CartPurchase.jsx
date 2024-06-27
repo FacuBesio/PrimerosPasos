@@ -7,7 +7,7 @@ import getUserById from "../../utils/users/getUserById";
 import { HiCheckCircle } from "react-icons/hi";
 import Loader from "../../components/Loader/Loader";
 import useQuery from "../../utils/cart/useQuery";
-import postPurchase from "../../utils/purchase/postPurchase";
+import postPurchase from "../../utils/purchases/postPurchase";
 
 const CartPurchase = () => {
   const querys = useQuery(useLocation)
@@ -48,7 +48,7 @@ console.log("user: ", user);
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex flex-col items-center justify-center bg-white  overflow-auto">
+      <div className="flex flex-col items-center justify-center bg-white  overflow-auto text-[12px] ">
         <div className="py-4 flex flex-col items-center justify-center w-full">
           <div className="h-24 bg-[#FAFAFA] flex justify-center items-center gap-4 w-full">
             <div className="flex items-center gap-2 cursor-pointer">

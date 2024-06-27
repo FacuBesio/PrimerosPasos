@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <section className="flex justify-between p-6">
+    <section className="flex justify-between pl-12 p-6 z-50 text-[12px] md:text-[18px]">
       <div className="flex flex-col">
         <a className=" hover:text-[#DBB1BC] " href="/">Home</a>
         <a className=" hover:text-[#DBB1BC]" href="/contacto">Contacto</a>

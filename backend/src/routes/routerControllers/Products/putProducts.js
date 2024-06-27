@@ -37,7 +37,7 @@ const putProduct = async (req, res) => {
   try {
     const updatedProduct = await modifyProduct(putBody);
     updatedProduct.hasOwnProperty("name")
-      ? res.status(200).json({ updated: true, updatedProduct: formattedProduct(updatedProduct) })
+      ? res.status(200).json({ updated: true, product: formattedProduct(updatedProduct) })
       : res
           .status(200)
           .json({ updated: false, message: updatedProduct.message });

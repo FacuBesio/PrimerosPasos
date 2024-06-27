@@ -68,7 +68,7 @@ const CartUserData = () => {
   };
 
   return (
-    <div className="">
+    <div className="text-[12px] md:text-[18px]">
       <Marquee />
       <Title />
       <Navbar />
@@ -97,14 +97,14 @@ const CartUserData = () => {
             <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
           </div>
         </div>
-        <h1 className="text-center text-xl px-4 font-semibold mt-4">
+        <h1 className="text-center  px-4 font-semibold mt-4">
           Estas a un paso! Revisa tus datos personales y completa los datos de
           envío
         </h1>
       </div>
-      <div className="flex flex-col lg:flex-row bg-white justify-center p-2 gap-2">
-        <section className="border border-red-200 bg-gray-100 rounded-md">
-          <h1 className="text-center text-xl text-[#333] p-2">
+      <div className="flex flex-col items-center lg:flex-row bg-white justify-center p-2 gap-2">
+        <section className="border border-red-200 bg-gray-100 rounded-md w-full lg:w-auto items-center flex flex-col">
+          <h1 className="text-center  text-[#333] p-2">
             Datos Personales
           </h1>
           <div className="">
@@ -119,7 +119,7 @@ const CartUserData = () => {
                     onChange={handleInputChange}
                     placeholder={e.placeholder}
                     disabled={!editable || e.name === "email"}
-                    className="border-2 border-red-200 bg-tertiary p-1 rounded-lg max-w-[220px]"
+                    className="border-2 border-red-200  p-1 rounded-lg max-w-[180px]"
                   />
                 </label>
               ))}

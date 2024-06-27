@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Footer, Marquee, Navbar, Title } from "../components";
 import ProductComponent from "../components/ProductComponent/Product";
 import getProducts from "../utils/products/getProducts";
-import getBrands from "../utils/brands/getBrands";
 import {
-  BrandsContext,
   FilterContext,
   PagesContext,
   ProductsContext,
@@ -13,21 +11,17 @@ import {
   SortContext,
 } from "../context/index";
 
-
 const Shop = () => {
-  const { setAllBrands } = useContext(BrandsContext);
   const { filter } = useContext(FilterContext);
   const { page } = useContext(PagesContext);
   const { setAllProducts } = useContext(ProductsContext);
   const { searchBar } = useContext(SearchContext);
   const { sorter } = useContext(SortContext);
-
   const [loading, setLoading] = useState(true);
   const [delayLoading, setDelayLoading] = useState(true);
   const loaderStates = { loading, delayLoading };
 
   useEffect(() => {
-    getBrands(setAllBrands);
     setLoading(false);
   }, []);
 

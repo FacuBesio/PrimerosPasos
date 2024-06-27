@@ -26,43 +26,13 @@ module.exports = (dataBase) => {
       },
 
       color: {
-        type: DataTypes.ENUM(
-          "aquamarine",
-          "beige",
-          "black",
-          "blue",
-          "brown",
-          "burgundy",
-          "dark gray",
-          "dark blue",
-          "emerald",
-          "gray",
-          "green",
-          "jean",
-          "light blue",
-          "military green",
-          "olive green",
-          "orange",
-          "pink",
-          "purple",
-          "red",
-          "salmon",
-          "violet",
-          "white",
-          "yellow"
-        ),
+        type: DataTypes.STRING,
         allowNull: false,
       },
 
       size: {
-        type: DataTypes.ENUM(
-          "extra small",
-          "small",
-          "medium",
-          "large",
-          "extra large",
-          "extra extra large"
-        ),
+        type: DataTypes.STRING,
+        allowNull: true,
       },
 
       description: {

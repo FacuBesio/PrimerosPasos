@@ -1,10 +1,9 @@
-const createBulkProducts = require("../../../controllers/Products/createBulkProducts");
-const createUser_Owner = require("../../../controllers/Admin/createUser_Owner");
 const findAllProducts = require("../../../controllers/Products/findAllProducts");
 const formattedProducts = require("../../../utils/formatted/formattedProducts");
 const activeInputsValidator = require("../../../utils/validators/products/activeInputsValidator");
 const notFoundValidator = require("../../../utils/validators/products/notFoundValidator");
 const inputValidator = require("../../../utils/validators/products/inputValidator");
+const emptyTable = require("../../../utils/validators/products/errors/emptyTable");
 
 const getProducts = async (req, res) => {
   let products;
@@ -60,9 +59,7 @@ const getProducts = async (req, res) => {
     } else {
       products = await findAllProducts(paginated);
       if (products.totalResults === 0) {
-        await createUser_Owner();
-        await createBulkProducts();
-        products = await findAllProducts(paginated);
+        return res.status(200).json(emptyTable());
       }
     }
 

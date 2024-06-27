@@ -4,6 +4,7 @@ export const CategoriesContext = createContext();
 
 export const CategoriesProvider = ({ children }) => {
   const [allCategories, setAllCategories] = useState([]);
+  const [allSubCategories, setAllSubCategories] = useState([]);
   const [categoryTag, setCategoryTag] = useState("");
   const [filterCategories, setFilterCategories] = useState("");
 
@@ -11,12 +12,14 @@ export const CategoriesProvider = ({ children }) => {
     () => ({
       allCategories,
       setAllCategories,
+      allSubCategories,
+      setAllSubCategories,
       categoryTag,
       setCategoryTag,
       filterCategories,
       setFilterCategories,
     }),
-    [allCategories, categoryTag]
+    [allCategories, allSubCategories, categoryTag]
   );
 
   return (

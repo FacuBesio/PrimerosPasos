@@ -26,7 +26,7 @@ const ProductDetail = ({ originUrl }) => {
       <Navbar />
 
       <div
-        className="flex justify-around p-6 bg-white flex-col md:flex-row "
+        className="flex justify-around p-6 bg-white flex-col md:flex-row text-[12px] md:text-[18px]"
         key={product.product.id}
       >
         <div className="w-full md:border-r">
@@ -40,16 +40,16 @@ const ProductDetail = ({ originUrl }) => {
           />
         </div>
         <div className="flex flex-col w-full gap-4 pl-4">
-          <h2 className=" text-2xl font-bold py-4  sm:pb-12 text-center">
+          <h2 className="  font-bold py-4  sm:pb-12 text-center">
             {product.product.name}
           </h2>
-          <h3 className=" md:text-xl">{product.product.description}</h3>
-          <h3 className=" md:text-xl">Rating: {product.product.rating}</h3>
-          <h2 className=" md:text-xl">Precio: {product.product.price}</h2>
-          <h2 className=" md:text-xl flex">
+          <h3 className=" ">{product.product.description}</h3>
+          <h3 className=" ">Rating: {product.product.rating}</h3>
+          <h2 className=" ">Precio: {product.product.price}</h2>
+          <h2 className="  flex items-center">
             Color:{" "}
             <div
-              className={`rounded-full h-8 w-8 border ${
+              className={`rounded-full ml-2 h-4 w-4 border ${
                 product.product.color === "white"
                   ? "bg-[#fff]"
                   : product.product.color === "red"
@@ -64,29 +64,29 @@ const ProductDetail = ({ originUrl }) => {
               }`}
             ></div>{" "}
           </h2>
-          <h2 className=" md:text-xl">Talle: {product.product.talle}</h2>
-          <h3 className=" md:text-xl">Stock: {product.product.stock}</h3>
+          <h2 className=" ">Talle: {product.product.talle}</h2>
+          <h3 className=" ">Stock: {product.product.stock}</h3>
 
           <div className="flex flex-col sm:flex-row  gap-2">
             <img
-              className="w-[36px] h-[36px]"
+              className="w-[26px] h-[26px] md:w-[36px] md:h-[36px]"
               src="/src/assets/disponible.png"
               alt="Disponible"
             />
-            <h4 className="md:text-xl">Disponible</h4>
+            <h4 className="">Disponible</h4>
 
             <img
-              className="w-[36px] h-[36px]"
+              className="w-[26px] h-[26px] md:w-[36px] md:h-[36px]"
               src="/src/assets/entrega.png"
               alt="Envío gratis"
             />
-            <h4 className="md:text-xl ">Envio gratis</h4>
+            <h4 className=" ">Envio gratis</h4>
             <img
-              className="w-[36px] h-[36px]"
+              className="w-[26px] h-[26px] md:w-[36px] md:h-[36px]"
               src="/src/assets/seguro.png"
               alt="Garantía de un año"
             />
-            <h4 className="md:text-xl">Garantia de un año</h4>
+            <h4 className="">Garantia de un año</h4>
           </div>
           <ButtonProductDetail product={product.product} />
         </div>

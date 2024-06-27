@@ -8,21 +8,21 @@ import Hero from "./Hero/Hero";
 import Main from "./Main/Main";
 import Marquee from "./Marquee/Marquee";
 import Navbar from "./Navbar/Navbar";
-import Product from "./ProductComponent/Product"
+import Product from "./ProductComponent/ProductComponent";
 
 import Title from "./Title/Title";
 
 export {
-    AditionalInfo,
-    Banner,
-    Button,
-    Categories,
-    ContactUs,
-    Footer,
-    Hero,
-    Main,
-    Marquee,
-    Navbar,
-    Product,
-    Title
-}
+  AditionalInfo,
+  Banner,
+  Button,
+  Categories,
+  ContactUs,
+  Footer,
+  Hero,
+  Main,
+  Marquee,
+  Navbar,
+  Product,
+  Title,
+};

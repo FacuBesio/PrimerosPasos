@@ -7,9 +7,6 @@ import clock from "../../assets/clock.png";
 
 const AditionalInfo = () => {
 
-  
- 
-
   const aditionalInfo = [
     {
       id: 1,
@@ -41,17 +38,16 @@ const AditionalInfo = () => {
     },
   ];
   return (
-    <section className="flex p-4  md:p-6  lg:p-8 justify-center gap-4">
-      
-      <div className="flex gap-4 flex-col md:flex-row">
+    <section className="flex justify-center  p-4  md:p-6  lg:p-8  text-[12px] md:text-[18px]">
+      <div className="flex gap-2 flex-col md:flex-row">
         {aditionalInfo.map((info) => (
           <a key={info.id}
-            className="flex flex-col items-center  gap-2 text-center max-w-[220px]"
+            className="flex flex-col items-center  gap-1 text-center max-w-[220px]"
             href="/shop"
             alt={info.alt}
           >
             <img
-              className=" w-[86px] "
+              className="mb-1 w-[64px] md:w-[86px] "
               src={info.img}
               alt={info.alt}
             />

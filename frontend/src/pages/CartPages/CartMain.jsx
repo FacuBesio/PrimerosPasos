@@ -32,7 +32,7 @@ const CartMain = () => {
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex flex-col bg-white justify-center gap-2 overflow-auto">
+      <div className="flex flex-col bg-white justify-center gap-2 overflow-auto text-[12px] md:text-[18px]">
         <div className="bg-[#FAFAFA] py-8 flex flex-col lg:flex-row justify-center items-center gap-4 w-full">
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="bg-[#5a5b5a] text-white w-6 h-6 flex items-center justify-center rounded-full">
@@ -67,7 +67,7 @@ const CartMain = () => {
             <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
           </div>
         </div>
-        <h1 className="text-center text-xl py-8 font-semibold text-[#5a5b5a] px-4">
+        <h1 className="text-center  py-8 font-semibold text-[#5a5b5a] px-4">
           Confirma los productos de tu compra antes de continuar...
         </h1>
       </div>
@@ -101,16 +101,16 @@ const CartMain = () => {
                           src={product.img}
                           alt={product.name}
                         />
-                        <h3 className="text-[12px] md:text-sm tracking-tighter max-w-[120px]">
+                        <h3 className=" tracking-tighter text-[12px] md:text-[18px] max-w-[120px]">
                           {product.name}
                         </h3>
                         </div>
                       </td>
-                      <td className="p-2" data-label="Precio">
-                        <h3 className="text-sm">${product.price}</h3>
+                      <td className="p-2 text-[12px] md:text-[18px]" data-label="Precio">
+                        <h3 className="">${product.price}</h3>
                       </td>
                       <td
-                        className="p-2 h-full justify-center"
+                        className="p-2 h-full justify-center text-[12px] md:text-[18px]"
                         data-label="Cantidad"
                       >
                         <ButtonQuantities
@@ -119,8 +119,8 @@ const CartMain = () => {
                           setCart={setCart}
                         />
                       </td>
-                      <td className="p-2" data-label="Subtotal">
-                        <h3 className="text-sm">
+                      <td className="p-2 text-[12px] md:text-[18px]" data-label="Subtotal">
+                        <h3 className="">
                           ${product.price * product.cantidad}
                         </h3>
                       </td>

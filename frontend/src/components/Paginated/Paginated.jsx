@@ -30,7 +30,7 @@ const Paginated = ({ page, setPage, totalPages }) => {
   };
 
   return (
-    <div className="flex justify-center items-center  gap-4 pb-4 px-4">
+    <div className="flex justify-center items-center  gap-2 pt-2 pb-4 px-4">
       <button
         onClick={goToFirstPage}
         className={paginatedButtonLetters}
@@ -44,8 +44,8 @@ const Paginated = ({ page, setPage, totalPages }) => {
           alt="flecha"
         />
       </button>
-      <h4 className="text-[#5a5b5a]">
-        Pagina {page} de {totalPages}
+      <h4 className="text-[#5a5b5a] text-[12px] md:text-[18px]">
+        Pag {page} de {totalPages}
       </h4>
       <button onClick={goToNextPage} className={paginatedButton}>
         <img

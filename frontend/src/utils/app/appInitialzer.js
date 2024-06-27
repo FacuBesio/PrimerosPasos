@@ -1,7 +1,4 @@
-import productInitializer from "../products/productInitializer";
-
 const appInitialzer = () => {
-  productInitializer();
   if (window.sessionStorage.getItem("visited") === null) {
     if (window.localStorage.getItem("cart") !== null) {
       window.localStorage.removeItem("cart");

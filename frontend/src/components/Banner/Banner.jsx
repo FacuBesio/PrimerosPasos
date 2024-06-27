@@ -1,70 +1,58 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { motion } from "framer-motion";
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 1,
-    slidesToSlide: 3, // optional, default to 1.
+    slidesToSlide: 3, 
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 1,
-    slidesToSlide: 2, // optional, default to 1.
+    slidesToSlide: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
+    slidesToSlide: 1, 
   },
 };
 
 const Banner = () => {
   const carouselImg = [
-    {
-      image: "/src/assets/banner1.png",
-    },
-    {
-      image: "/src/assets/banner2.png",
-    },
-    { image: "/src/assets/banner3.png" },
-    { image: "/src/assets/banner4.png" },
+    {image: "/src/assets/banner1.png",},
+    {image: "/src/assets/banner2.png",},
+    {image: "/src/assets/banner3.png" },
+    {image: "/src/assets/banner4.png" },
   ];
 
   return (
-   
-    <motion.div
-    initial={{ opacity: 0, y: 250 }}
-    animate={{ opacity: 1, y: 0 ,}}
-    transition={{ duration: 0.5 }}
+    <Carousel
+      swipeable={false}
+      draggable={false}
+      showDots={false}
+      responsive={responsive}
+      ssr={true}
+      infinite={true}
+      autoPlay={true}
+      autoPlaySpeed={8000}
+      keyBoardControl={true}
+      customTransition="all .5"
+      transitionDuration={500}
+      containerClass="carousel-container"
+      removeArrowOnDeviceType={["tablet", "mobile"]}
+      deviceType={null} 
+      dotListClass="custom-dot-list-style"
+      itemClass="carousel-item-padding-40-px"
+      className="max-h-[660px]"
     >
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        showDots={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={8000}
-        keyBoardControl={true}
-        customTransition="all .5"
-        transitionDuration={500}
-        containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        deviceType={null} // assuming you're not passing deviceType as a prop
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-        className="max-h-[660px] h-full w-full"
-      >
-        {carouselImg.map((car) => (
-          <div key={car} className="w-full h-full bg-red-200  ">
-            <img className=" w-full h-full " src={car.image} alt="" />
-          </div>
-        ))}
-      </Carousel>
-        </motion.div>
+      {carouselImg.map((car) => (
+        <div key={car} className="bg-red-200">
+          <img className="" src={car.image} alt="carrousel imagenes" />
+        </div>
+      ))}
+    </Carousel>
   );
 };
 

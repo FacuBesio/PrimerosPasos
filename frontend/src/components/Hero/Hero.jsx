@@ -6,8 +6,10 @@ const Hero = () => {
   return (
     <div>
       <Marquee />
+      {/* <div className="flex items-center justify-between px-4"> */}
       <Title />
       <Navbar />
+      {/* </div> */}
     </div>
   );
 };

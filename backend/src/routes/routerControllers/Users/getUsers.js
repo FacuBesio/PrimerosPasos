@@ -52,7 +52,7 @@ const getUsers = async (req, res) => {
       totalPages: totalPages,
       currentPage: currentPage,
       pageSize: pageSize,
-      orders: usersResult,
+      users: usersResult,
       message: message,
     });
   } catch (error) {

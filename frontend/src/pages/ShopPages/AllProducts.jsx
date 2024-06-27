@@ -1,26 +1,21 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
-import  React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { Footer, Marquee, Navbar, Title } from "../../components";
-import ProductComponent from "../../components/ProductComponent/Product";
+import ProductComponent from "../../components/ProductComponent/ProductComponent";
 import getProducts from "../../utils/products/getProducts";
-import getBrands from "../../utils/brands/getBrands";
-import {
-  BrandsContext,
-  ProductsContext,
-} from "../../context/index";
+import { CategoriesContext, ProductsContext } from "../../context/index";
 import { mainPages } from "../../styles";
 import useLoading from "../../hooks/useLoading";
 
 const AllProducts = ({ productsParams }) => {
   const { filter, page, searchBar, sorter } = productsParams;
-  const { setAllBrands } = useContext(BrandsContext);
   const { setAllProducts } = useContext(ProductsContext);
+  const { setCategoryTag } = useContext(CategoriesContext);
   const { loading, delayLoading } = useLoading();
   const loaderStates = { loading, delayLoading };
-console.log("Render Test");
-  useEffect(() => {
-    getBrands(setAllBrands);
-  }, [setAllBrands]);
+ 
+  console.log("Render AllProducts");
 
   const fetchProducts = useCallback(() => {
     getProducts(setAllProducts, page, searchBar, filter, sorter);
@@ -28,6 +23,7 @@ console.log("Render Test");
 
   useEffect(() => {
     fetchProducts();
+    setCategoryTag("")
   }, [fetchProducts]);
 
   return (

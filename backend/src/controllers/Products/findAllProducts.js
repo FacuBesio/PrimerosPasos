@@ -7,7 +7,7 @@ const findAll_returnValidator = require("../../utils/validators/products/findAll
 const findAllProducts = async (paginated, queryInputs) => {
   let whereClause = {};
   let includeCategoriesClause = {};
-  let orderClause = [["id", "ASC"]];
+  let orderClause = [["id", "DESC"]];
   const { page, pageSize } = paginated;
   const offset = (page - 1) * pageSize;
 

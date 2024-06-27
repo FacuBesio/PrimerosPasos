@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Footer, Hero, Main } from "../components";
 import Loader from "../components/Loader/Loader";
-import useLoading from "../hooks/useLoading";
+import useStatesReset from "../hooks/useStatesReset";
 
 const Home = () => {
+  useStatesReset();
 
   return (
     <>
