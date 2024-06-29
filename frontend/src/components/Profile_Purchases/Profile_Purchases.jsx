@@ -24,14 +24,14 @@ const Profile_Purchases = () => {
       <table className="w-full border border-collapse bg-white">
         <thead>
           <tr>
-            <th className="p-4 border">Id</th>
+            <th className="p-4 border">N° Compra</th>
             <th className="p-4 border">Fecha</th>
             <th className="p-4 border">Hora</th>
-            <th className="p-4 border">Usuario</th>
-            <th className="p-4 border">Email</th>
-            <th className="p-4 border">N° Orden</th>
+             <th className="p-4 border">Orden</th>
             <th className="p-4 border">N° Pago</th>
             <th className="p-4 border">Tipo</th>
+            <th className="p-4 border">Productos</th>
+            <th className="p-4 border">Total</th>
             <th className="p-4 border">Estado</th>
           </tr>
         </thead>

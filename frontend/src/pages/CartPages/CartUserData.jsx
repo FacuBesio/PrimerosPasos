@@ -62,8 +62,8 @@ const CartUserData = () => {
     });
   };
 
-  const handleModify = (e) => {
-    e.preventDefault();
+  const handleModify = (event) => {
+    event.preventDefault();
     setEditable(!editable);
   };
 
