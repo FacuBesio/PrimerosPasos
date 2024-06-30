@@ -7,6 +7,7 @@ import SortComponent from "../../../components/SortComponent/SortComponent";
 import NavAside from "../../../components/NavAside/NavAside";
 import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
+import searchIcon from '../../../assets/VectorSearch.png'
 
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
@@ -52,7 +53,7 @@ const ManageProducts = () => {
               <button>
                 <img
                   className="w-[30px] hover:scale-110"
-                  src="/src/assets/VectorSearch.png"
+                  src={searchIcon}
                   alt="Search Icon"
                 />
               </button>

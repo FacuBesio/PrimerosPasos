@@ -16,6 +16,7 @@ import NavAside from "../../../components/NavAside/NavAside";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import getUsers from "../../../utils/users/getUsers";
 import CanNot_UpdateNotification from "../../../utils/users/CanNot_UpdateNotification";
+import searchIcon from '../../../assets/VectorSearch.png'
 
 const ManageUsers = () => {
   const { filter } = useContext(FilterContext);
@@ -107,7 +108,7 @@ const ManageUsers = () => {
               <button>
                 <img
                   className="w-[22px] md:w-[30px] hover:scale-110"
-                  src="/src/assets/VectorSearch.png"
+                  src={searchIcon}
                   alt="Search Icon"
                 />
               </button>

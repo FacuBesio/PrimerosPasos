@@ -9,6 +9,7 @@ import {
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
 import getPurchases from "../../../utils/purchases/getPurchases";
+import searchIcon from '../../../assets/VectorSearch.png'
 
 const ManagePurchases = () => {
   const [allPurchases, setAllPurchases] = useState();
@@ -58,7 +59,7 @@ const ManagePurchases = () => {
               <button>
                 <img
                   className="w-[22px] md:w-[30px] hover:scale-110"
-                  src="/src/assets/VectorSearch.png"
+                  src={searchIcon}
                   alt="Search Icon"
                 />
               </button>
