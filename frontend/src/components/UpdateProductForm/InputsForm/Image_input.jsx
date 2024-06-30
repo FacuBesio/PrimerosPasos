@@ -14,11 +14,11 @@ const Image_input = ({ handlerChange, errors }) => {
   };
 
   return (
-    <div className="w-full px-4 py-3 flex flex-col gap-2">
+    <div className="w-1/2 flex flex-col gap-2 text-[12px] md:text-[18px]">
       <label htmlFor="image" className="w-full text-white font-bold">
         Imagen
       </label>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col items-center md:items-start gap-2">
         <input
           type="file"
           id="image"
@@ -27,9 +27,9 @@ const Image_input = ({ handlerChange, errors }) => {
           accept="image/*"
           className="hidden"
         />
-        <label
+      <label
           htmlFor="image"
-          className="px-6 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
+          className="px-6 py-3 bg-slate-400 text-[12px] md:text-[18px] text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-400 cursor-pointer"
         >
           Subir Imagen
         </label>

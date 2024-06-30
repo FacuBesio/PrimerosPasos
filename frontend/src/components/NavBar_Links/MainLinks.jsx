@@ -5,12 +5,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { CategoriesContext } from "../../context/index";
 import { FlagCartEffectContext } from "../../context/index";
 
-
 const MainLinks = () => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   // const { flag } = useContext(FlagCartEffectContext);
   const { flag, setFlag } = useContext(FlagCartEffectContext);
-  
 
   const handleLogout = () => {
     window.localStorage.removeItem("userData");
@@ -20,8 +18,8 @@ const MainLinks = () => {
   };
 
   const handlerActiveCategories = () => {
-    setFlag(!flag)
-  }
+    setFlag(!flag);
+  };
 
   return (
     <div className="flex gap-4 justify-center text-[16px] md:text-[22px]">
@@ -33,14 +31,14 @@ const MainLinks = () => {
       >
         Home
       </NavLink>
-      <button
-        onClick={handlerActiveCategories}
-        className={({ isActive }) =>
-          isActive ? navbarLinkStyle_Selected : navbarLinkStyle
+      <NavLink
+        className={(flag) =>
+          !flag ? navbarLinkStyle_Selected : navbarLinkStyle
         }
+        onClick={handlerActiveCategories}
       >
-        Categories
-      </button>
+        Categorías
+      </NavLink>
 
       <NavLink
         to="/shop"

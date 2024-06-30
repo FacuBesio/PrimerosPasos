@@ -4,7 +4,7 @@ import "./styles.css";
 
 const Enabled_input = ({ newSubCategory, setNewSubCategory }) => {
   return (
-    <div className="w-full flex justify-start items-center pt-8 pb-2 px-4 gap-4">
+    <div className="w-full flex justify-start items-center pt-8 pb-2 px-4 gap-4 text-[12px] md:text-[18px]">
       <label htmlFor="enabled" className="text-white font-bold">
         Activo
       </label>

@@ -2,17 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import postProducts from "../../utils/products/postProducts";
 import uploadImageCloudinary from "../../utils/products/uploadImageCloudinary";
-import Brand_input from "./InputsForm/Brand_input";
-import Name_input from "./InputsForm/Name_input";
-import Categories_input from "./InputsForm/Categories_input";
-import Color_input from "./InputsForm/Color_input";
-import Size_input from "./InputsForm/Size_input";
-import Image_input from "./InputsForm/Image_input";
+import CategoriesAndImage_input from "./InputsForm/CategoriesAndImage_input";
+import ColorAndSize_input from "./InputsForm/ColorAndSize_input";
 import Description_input from "./InputsForm/Description_input";
-import Price_input from "./InputsForm/Price_input";
-import Stock_input from "./InputsForm/Stock_input";
+import StockAndPrice_input from "./InputsForm/StockAndPrice_input";
 import createInputValidator from "../../utils/products/createInputValidator";
 import disabledSubmitValidator from "../../utils/products/disabledSubmitValidator";
+import BrandAndName_input from "./InputsForm/BrandAndName_input";
 
 const CreateProductForm = () => {
   const navigate = useNavigate();
@@ -31,7 +27,6 @@ const CreateProductForm = () => {
     img: "",
   });
 
-
   useEffect(() => {
     createInputValidator(newProduct, errors, setErrors, setDisabledButton);
   }, [newProduct]);
@@ -39,11 +34,11 @@ const CreateProductForm = () => {
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;
-    
+
     if (event.target.type === "file") {
       value = event.target.files[0];
     }
-    
+
     if (event.target.name === "category") {
       return setNewProduct({
         ...newProduct,
@@ -66,36 +61,36 @@ const CreateProductForm = () => {
   };
 
   return (
-    <div className=" rounded-lg flex flex-col items-center  gap-2 pl-14 pr-2 h-screen">
+    <div className="rounded-lg flex flex-col w-full items-center gap-2 pr-2">
       <form
-        className=" bg-gray-600 bg-opacity-75 rounded-lg  flex flex-col items-center w-48 md:w-full"
+        className=" bg-gray-600 bg-opacity-75 p-4 rounded-lg flex flex-col items-center w-1/2"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold  py-2 rounded-md text-[18px] md:text-[22px]">
+        <h1 className="text-white font-bold py-2 rounded-md text-[18px] md:text-[22px]">
           CREAR PRODUCTO
         </h1>
-        <div className="w-full md:grid md:grid-cols-3 lg:grid-cols-4  flex flex-col   items-center">
-          <Brand_input handlerChange={handlerChange} errors={errors} />
-          <Name_input handlerChange={handlerChange} errors={errors} />
-          <Categories_input
-            handlerChange={handlerChange}
-            newProduct={newProduct}
-            errors={errors}
-          />
-          <Color_input
-            handlerChange={handlerChange}
-            newProduct={newProduct}
-            errors={errors}
-          />
-          <Size_input
-            handlerChange={handlerChange}
-            newProduct={newProduct}
-            errors={errors}
-          />
-          <Image_input handlerChange={handlerChange} errors={errors} />
-          <Description_input handlerChange={handlerChange} errors={errors} />
-          <Price_input handlerChange={handlerChange} errors={errors} />
-          <Stock_input handlerChange={handlerChange} errors={errors} />
+
+        <div className="w-full flex flex-col items-center">
+          <div className="w-full flex flex-col gap-3 items-center">
+            <BrandAndName_input handlerChange={handlerChange} errors={errors} />
+            <ColorAndSize_input
+              handlerChange={handlerChange}
+              newProduct={newProduct}
+              errors={errors}
+            />
+            <StockAndPrice_input
+              handlerChange={handlerChange}
+              errors={errors}
+            />
+            <CategoriesAndImage_input
+              handlerChange={handlerChange}
+              newProduct={newProduct}
+              errors={errors}
+            />
+          </div>
+          <div className="w-full">
+            <Description_input handlerChange={handlerChange} errors={errors} />
+          </div>
         </div>
 
         <div className="formButton w-full flex justify-center mb-2 items-center ">

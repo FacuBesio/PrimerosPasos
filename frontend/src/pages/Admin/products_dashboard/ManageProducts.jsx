@@ -8,7 +8,6 @@ import NavAside from "../../../components/NavAside/NavAside";
 import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
 
-
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
@@ -28,18 +27,20 @@ const ManageProducts = () => {
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
-        <section className="right_section w-full px-4 flex flex-col items-center  pl-14 ">
+        <section className="right_section w-full pb-2 pl-20 px-4 flex flex-col items-center gap-4">
           <Title />
-          <div className="flex w-full p-4 gap-2 md:gap-4 items-center justify-between overflow-x-auto ">
-            <Link className="bg-white hover:bg-red-200 rounded-md p-1 text-center" to={"/admin/manageProducts/create"}>
+          <div className="flex w-full gap-2 md:gap-4 items-center justify-between overflow-x-auto">
+            <Link
+              className="bg-slate-400 hover:bg-slate-500 rounded-md p-3 text-center"
+              to={"/admin/manageProducts/create"}
+            >
               <label
                 htmlFor="addProduct"
-                className="  text-gray-800     cursor-pointer text-[12px] md:text-[18px]"
+                className="text-white font-bold cursor-pointer text-[12px] md:text-[18px]"
               >
-                Agregar Producto
+                + Agregar Producto
               </label>
             </Link>
-            <Filter />
             <form className="flex gap-2">
               <input
                 placeholder="Buscar"
@@ -56,6 +57,7 @@ const ManageProducts = () => {
                 />
               </button>
             </form>
+            <Filter />
             <SortComponent />
           </div>
           <Products_Table />
@@ -66,7 +68,6 @@ const ManageProducts = () => {
           />
         </section>
       </main>
-     
     </div>
   );
 };

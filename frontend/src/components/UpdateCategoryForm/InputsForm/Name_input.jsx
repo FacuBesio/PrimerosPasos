@@ -1,6 +1,6 @@
 const Name_input = ({ handlerChange, errors, newCategory}) => {
   return (
-    <div className="w-full px-4 py-3 flex flex-col gap-2">
+    <div className="w-full px-4 py-3 flex flex-col gap-2 text-[12px] md:text-[18px]">
       <label htmlFor="name" className="w-full text-white font-bold">
         Nombre
       </label>

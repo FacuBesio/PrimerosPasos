@@ -12,7 +12,7 @@ import products from "../../assets/products.png";
 
 const NavAside = () => {
   return (
-    <section className="fixed w-12 bg-red-200 h-full items-center pt-28">
+    <section className="fixed w-16 bg-red-200 h-full items-center pt-28">
       <div className="flex flex-col items-center text-white gap-4">
         <Tooltip title="Inicio" placement="right">
           <NavLink to="/">
@@ -20,7 +20,7 @@ const NavAside = () => {
               <img
                 src={home_icon}
                 alt="Home"
-                className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl "
+                className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl "
               />
             </button>
           </NavLink>
@@ -31,13 +31,13 @@ const NavAside = () => {
             <img
               src={dashboard}
               alt="Dashboard"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
+              className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
             />
           </NavLink>
         </Tooltip>
         <Tooltip title="Users" placement="right">
           <NavLink to="/admin/manageUsers">
-            <img src={users} alt="Users" className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl" />
+            <img src={users} alt="Users" className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl" />
           </NavLink>
         </Tooltip>
 
@@ -46,7 +46,7 @@ const NavAside = () => {
             <img
               src={compras}
               alt="Compras"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
+              className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
             />
           </NavLink>
         </Tooltip>
@@ -56,7 +56,7 @@ const NavAside = () => {
             <img
               src={products}
               alt="Products"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
+              className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
             />
           </NavLink>
         </Tooltip>
@@ -66,7 +66,7 @@ const NavAside = () => {
             <img
               src={categories}
               alt="Categories"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
+              className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
             />
           </NavLink>
         </Tooltip>
@@ -75,7 +75,7 @@ const NavAside = () => {
             <img
               src={subcategories}
               alt="Subcategories"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
+              className="w-10 h-10 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
             />
           </NavLink>
         </Tooltip>

@@ -12,7 +12,7 @@ const CreateSubCategoryForm = () => {
   const [errors, setErrors] = useState({});
   const [newSubCategory, setNewSubCategory] = useState({
     name: "",
-    category: ""
+    category: "",
   });
 
   useEffect(() => {
@@ -36,15 +36,15 @@ const CreateSubCategoryForm = () => {
   };
 
   return (
-    <div className="w-full rounded-lg flex flex-col items-center p-2 text-center gap-5 text-[12px] md:text-[18px]">
+    <div className="rounded-lg flex flex-col w-full items-center gap-2 pr-2 text-[12px] md:text-[18px]">
       <form
-        className="w-1/2 bg-gray-600 bg-opacity-75 rounded-lg px-4 p-8 flex flex-col items-center"
+        className=" bg-gray-600 bg-opacity-75 p-4 rounded-lg flex flex-col items-center w-1/2"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold  pt-2 rounded-md text-center md:text-left">
+      <h1 className="text-white font-bold py-2 rounded-md text-[18px] md:text-[22px]">
           CREAR SUBCATEGORÍA
         </h1>
-        <div className="w-fit flex flex-col gap-1 items-center">
+        <div className="w-full flex flex-col gap-3 items-center">
           <Name_input handlerChange={handlerChange} errors={errors} />
           <Categories_input
             handlerChange={handlerChange}

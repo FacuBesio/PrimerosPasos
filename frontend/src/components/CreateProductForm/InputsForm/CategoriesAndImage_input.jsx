@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import getSubCategories from "../../../utils/subcategories/getSubCategories";
 import getCategories from "../../../utils/categories/getCategories";
+import Image_input from "./Image_input";
 
-const Categories_input = ({ handlerChange, newProduct, errors }) => {
+const CategoriesAndImage_input = ({ handlerChange, newProduct, errors }) => {
   const [allCategories, setAllCategories] = useState([]);
   const [allSubCategories, setAllSubCategories] = useState([]);
 
@@ -16,7 +17,8 @@ const Categories_input = ({ handlerChange, newProduct, errors }) => {
   }, []);
 
   return (
-    <div className="w-full px-4  flex flex-col gap-2 text-[12px] md:text-[18px]">
+    <div className="w-full px-4 pt-1 pb-0 flex gap-10">
+      <div className="w-1/2 flex flex-col gap-2 text-[12px] md:text-[18px]">
       <label htmlFor="category" className="w-full text-white font-bold">
         Categoría
       </label>
@@ -80,7 +82,12 @@ const Categories_input = ({ handlerChange, newProduct, errors }) => {
         </span>
       </div>
     </div>
+
+    <Image_input handlerChange={handlerChange} errors={errors} />
+
+
+    </div>
   );
 };
 
-export default Categories_input;
+export default CategoriesAndImage_input;

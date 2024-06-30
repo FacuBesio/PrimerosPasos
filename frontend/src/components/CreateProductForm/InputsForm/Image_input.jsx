@@ -14,7 +14,7 @@ const Image_input = ({ handlerChange, errors }) => {
   };
 
   return (
-    <div className="w-full px-4  flex flex-col gap-2 text-[12px] md:text-[18px]">
+    <div className="w-1/2 flex flex-col gap-2 text-[12px] md:text-[18px]">
       <label htmlFor="image" className="w-full text-white font-bold">
         Imagen
       </label>
@@ -29,7 +29,7 @@ const Image_input = ({ handlerChange, errors }) => {
         />
         <label
           htmlFor="image"
-          className="px-6 py-3 bg-slate-400 text-[12px] md:text-[18px] text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
+          className="px-6 py-3 bg-slate-400 text-[12px] md:text-[18px] text-white font-bold rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-slate-400 cursor-pointer"
         >
           Subir Imagen
         </label>

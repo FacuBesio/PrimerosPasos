@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { Footer, Title } from "../../../components";
+import { Title } from "../../../components";
 import { Link } from "react-router-dom";
 import {
   FilterContext,
@@ -11,7 +11,6 @@ import {
 import update_icon from "../../../assets/update_icon.png";
 import Paginated from "../../../components/Paginated/Paginated";
 import garbage from "../../../assets/garbage.png";
-import SortComponent from "../../../components/SortComponent/SortComponent";
 import sorterValidator from "../../../utils/sorter/sorterValidator";
 import NavAside from "../../../components/NavAside/NavAside";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
@@ -82,20 +81,21 @@ const ManageUsers = () => {
   const UsersAvailable = allUsers?.users?.length > 0;
 
   return (
-    <div className="flex flex-col h-screen text-[12px] md:text-[16px] lg:text-[18px]">
-      <main className="flex bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] ">
+    <div className="flex flex-col min-h-screen text-[12px] md:text-[16px] lg:text-[18px]">
+      <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
-        <section className="right_section w-full pr-2 pl-14 flex flex-col items-center gap-4">
+        <section className="right_section w-full pl-20 px-4 flex flex-col items-center gap-4">
           <Title />
-          <div className="flex w-full p-4 gap-4 md:items-center justify-between overflow-x-auto flex-col md:flex-row">
-           
-              <h1
-                
-                className="p-2 bg-white text-gray-800 font-bold w-fit rounded-md hover:bg-red-200  "
+          <div className="flex w-full gap-2 md:gap-4 items-center">
+            <Link className="bg-slate-400 hover:bg-slate-500 rounded-md p-3 text-center">
+              <label
+                htmlFor="addCategory"
+                className="text-white font-bold bg-slate-400 hover:bg-slate-500 rounded-md p-3 text-centertext-[12px] md:text-[18px]"
               >
                 Usuarios
-              </h1>
-           
+              </label>
+            </Link>
+
             <form className="flex gap-2">
               <input
                 placeholder="Buscar"
@@ -115,104 +115,133 @@ const ManageUsers = () => {
             {/* <SortComponent sortComponentProps={sortComponentProps} /> */}
           </div>
           <div className="overflow-x-auto w-full">
-          <table className="w-full border  bg-white">
-            <thead>
-              <tr>
-                <th className="p-1 md:p-4 border ">Id</th>
-                <th className="p-1 md:p-4 border ">Imagen</th>
-                <th className="p-1 md:p-4 border ">Nombre</th>
-                <th className="p-1 md:p-4 border ">Email</th>
-                <th className="p-1 md:p-4 border ">Teléfono</th>
-                <th className="p-1 md:p-4 border">País</th>
-                <th className="p-1 md:p-4 border">Rol</th>
-                <th className="p-1 md:p-4 border">Habilitado</th>
-                <th className="p-1 md:p-4 border">Actualizar</th>
-                <th className="p-1 md:p-4 border">Eliminar</th>
-              </tr>
-            </thead>
-            <tbody className="text-center">
-              {UsersAvailable ? (
-                allUsers.users.map((user) => (
-                  <tr key={user.id}>
-                    <td className="p-1 md:p-4 border min-w-[100px] max-w-[300px] truncate">
-                      {user.id}
-                    </td>
-                    <td className="p-1 md:p-4 border text-center">
-                      {/* <img
+            <table className="w-full border border-collapse bg-white">
+              <thead>
+                <tr className="rounded-xl">
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Id
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Imagen
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Nombre
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Email
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Teléfono
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    País
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Rol
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Habilitado
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Actualizar
+                  </th>
+                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                    Eliminar
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="text-center">
+                {UsersAvailable ? (
+                  allUsers.users.map((user) => (
+                    <tr key={user.id}>
+                      <td className="p-1 md:p-4 border min-w-[100px] max-w-[300px] truncate">
+                        {user.id}
+                      </td>
+                      <td className="p-1 md:p-4 border text-center">
+                        {/* <img
                         src={user.img}
                         alt={user.name}
                         className="w-24 h-24 object-cover rounded-xl mx-auto"
                       /> */}
-                      img
-                    </td>
-                    <td className="p-1 md:p-4 border">{user.name}</td>
-                    <td className="p-1 md:p-4 border">{user.email}</td>
-                    <td className="p-1 md:p-4 border">{user.phone || "-"}</td>
-                    <td className="p-1 md:p-4 border">{user.country || "-"}</td>
-                    <td className="p-1 md:p-4 border">{user.role}</td>
-                    <td className="p-1 md:p-4 border">
-                      <button>
-                        {user.enabled ? (
-                          <span className="text-green-500 text-2xl">
-                            <CheckCircleOutlined />
-                          </span>
+                        img
+                      </td>
+                      <td className="p-1 md:p-4 border  text-[12px] md:text-[16px] lg:text-[18px]">
+                        {user.name}
+                      </td>
+                      <td className="p-1 md:p-4 border  text-[12px] md:text-[16px] lg:text-[18px]">
+                        {user.email}
+                      </td>
+                      <td className="p-1 md:p-4 border  text-[12px] md:text-[16px] lg:text-[18px]">
+                        {user.phone || "-"}
+                      </td>
+                      <td className="p-1 md:p-4 border  text-[12px] md:text-[16px] lg:text-[18px]">
+                        {user.country || "-"}
+                      </td>
+                      <td className="p-1 md:p-4 border  text-[12px] md:text-[16px] lg:text-[18px]">
+                        {user.role}
+                      </td>
+                      <td className="p-1 md:p-4 border  text-[12px] md:text-[16px] lg:text-[18px]">
+                        <button>
+                          {user.enabled ? (
+                            <span className="text-green-500 text-2xl">
+                              <CheckCircleOutlined />
+                            </span>
+                          ) : (
+                            <span className="text-red-500 text-2xl">
+                              <CloseCircleOutlined />
+                            </span>
+                          )}
+                        </button>
+                      </td>
+                      <td className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                        {user.id !== 1 ? (
+                          <Link to={`/admin/manageUsers/update/${user.id}`}>
+                            <button>
+                              <img
+                                src={update_icon}
+                                alt="Update"
+                                className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                              />
+                            </button>
+                          </Link>
                         ) : (
-                          <span className="text-red-500 text-2xl">
-                            <CloseCircleOutlined />
-                          </span>
-                        )}
-                      </button>
-                    </td>
-                    <td className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
-                      {user.id !== 1 ? (
-                        <Link to={`/admin/manageUsers/update/${user.id}`}>
-                          <button>
+                          <button onClick={() => handlerUpdate(user.name)}>
                             <img
                               src={update_icon}
                               alt="Update"
-                              className="w-4 h-4 transition-transform duration-300 hover:scale-105"
+                              className="w-8 h-8 transition-transform duration-300 hover:scale-105"
                             />
                           </button>
-                        </Link>
-                      ) : (
-                        <button onClick={() => handlerUpdate(user.name)}>
+                        )}
+                      </td>
+                      <td className="p-1 md:p-4 border text-[12px] ">
+                        <button>
                           <img
-                            src={update_icon}
-                            alt="Update"
-                            className="w-4 h-4 transition-transform duration-300 hover:scale-105"
+                            src={garbage}
+                            alt="Eliminar"
+                            className="w-8 h-8 transition-transform duration-300 hover:scale-105"
                           />
                         </button>
-                      )}
-                    </td>
-                    <td className="p-1 md:p-4 border text-[12px] ">
-                      <button>
-                        <img
-                          src={garbage}
-                          alt="Eliminar"
-                          className="w-4 h-4 transition-transform duration-300 hover:scale-105"
-                        />
-                      </button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="9" className="text-center p-4">
+                      No se encuentran productos disponibles.
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="9" className="text-center p-4">
-                    No se encuentran productos disponibles.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-          <Paginated
-            page={page}
-            totalPages={allUsers?.totalPages}
-            setPage={setPage}
-          />
-        </div>
+                )}
+              </tbody>
+            </table>
+            <Paginated
+              page={page}
+              totalPages={allUsers?.totalPages}
+              setPage={setPage}
+            />
+          </div>
         </section>
       </main>
-     
     </div>
   );
 };
