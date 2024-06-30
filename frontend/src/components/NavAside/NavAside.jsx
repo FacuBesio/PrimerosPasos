@@ -6,18 +6,23 @@ import subcategories from "../../assets/subcategories.png";
 import compras from "../../assets/compras.png";
 import dashboard from "../../assets/dashboard.png";
 import users from "../../assets/users.png";
+import adminIcon from "../../assets/adminIcon.png";
 import products from "../../assets/products.png";
 
 const NavAside = () => {
- 
   const selected =
     "w-10 h-10 scale-125 transition-transform duration-200 rounded-md p-1 bg-red-300 drop-shadow-md hover:drop-shadow-xl";
   const not_Selected =
     "w-10 h-10 hover:scale-125 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl";
- 
-    return (
-    <section className="fixed w-16 bg-red-200 h-full items-center pt-28">
-      <div className="flex flex-col items-center pt-2 text-white gap-5">
+
+  return (
+    <section className="fixed w-16 bg-red-200 h-full items-center pt-4">
+      <div className="flex justify-center items-center  ">
+        <button className="w-10 h-10">
+          <img src={adminIcon} alt="Admin" />
+        </button>
+      </div>
+      <div className="flex flex-col items-center pt-16 text-white gap-5">
         <Tooltip title="Inicio" placement="right">
           <NavLink
             to="/"
