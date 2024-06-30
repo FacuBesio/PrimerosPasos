@@ -122,7 +122,7 @@ const Navbar = () => {
               <img
                 src={isAdminIcon}
                 alt="Admin Icon"
-                className="w-6 h-6 cursor-pointer my-1 rounded-full hover:scale-110 transition-transform duration-150"
+                className="w-9 h-9 cursor-pointer my-1 rounded-full hover:scale-110 transition-transform duration-200"
               />
             </Link>
           {/* )} */}
