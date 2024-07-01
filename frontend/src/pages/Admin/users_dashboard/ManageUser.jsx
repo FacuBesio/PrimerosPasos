@@ -146,9 +146,9 @@ const ManageUsers = () => {
                   <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
                     Actualizar
                   </th>
-                  <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
+                  {/* <th className="p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]">
                     Eliminar
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody className="text-center">
@@ -215,7 +215,7 @@ const ManageUsers = () => {
                           </button>
                         )}
                       </td>
-                      <td className="p-1 md:p-4 border text-[12px] ">
+                      {/* <td className="p-1 md:p-4 border text-[12px] ">
                         <button>
                           <img
                             src={garbage}
@@ -223,7 +223,7 @@ const ManageUsers = () => {
                             className="w-8 h-8 transition-transform duration-300 hover:scale-105"
                           />
                         </button>
-                      </td>
+                      </td> */}
                     </tr>
                   ))
                 ) : (

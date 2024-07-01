@@ -107,7 +107,7 @@ const CreateProductForm = () => {
               type="submit"
               id="buttonEnabled"
               disabled={disabledButton}
-              className="px-8 py-3  bg-green-500 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
+              className="px-8 py-3 bg-green-500 bg-opacity-90 text-white text-[12px] md:text-[18px] font-bold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
             >
               CREAR
             </button>
