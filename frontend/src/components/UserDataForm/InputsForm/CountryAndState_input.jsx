@@ -6,12 +6,12 @@ const CountryAndState_input = ({
 }) => {
   const inputStyle = editable
     ? "w-full px-4 py-2 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
-    : "w-full px-4 py-2 bg-purple-100 font-bold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400";
+    : "w-full px-4 py-2 bg-slate-200 font-bold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400";
 
   return (
-    <div className="w-full px-4 pt-3 pb-1 flex gap-10">
+    <div className="w-full px-4 py-1 flex gap-10">
       <div className="w-1/2 flex flex-col gap-2">
-        <label htmlFor="country" className="w-full text-white font-bold">
+        <label htmlFor="country" className="w-full font-bold">
           País
         </label>
         <input
@@ -35,7 +35,7 @@ const CountryAndState_input = ({
       </div>
 
       <div className="w-1/2 flex flex-col gap-2">
-        <label htmlFor="state" className="w-full text-white font-bold">
+        <label htmlFor="state" className="w-full font-bold">
           Provincia / Estado
         </label>
         <input

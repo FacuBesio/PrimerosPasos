@@ -6,11 +6,10 @@ import CountryAndState_input from "./InputsForm/CountryAndState_input";
 import City_input from "./InputsForm/City_input";
 import Street_input from "./InputsForm/Street_input";
 import Phone_input from "./InputsForm/Phone_input";
-import NameAndEmail_input from "./InputsForm/NameAndEmail_input";
 import getUserById from "../../utils/users/getUserById";
 import putUser from "../../utils/users/putUsers";
 
-const UserDataForm = () => {
+const DeliveryForm = () => {
   const [disabledButton, setDisabledButton] = useState(true);
   const [errors, setErrors] = useState({});
   const [userProfile, setUserProfile] = useState({
@@ -67,19 +66,13 @@ const UserDataForm = () => {
   return (
     <div className="items-center rounded-lg w-fit h-fit">
       <form
-        className="w-full bg-gray-100 rounded-lg p-4 text-[16px]  flex flex-col items-center"
+        className="w-full bg-gray-100 rounded-lg p-4  flex flex-col items-center"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-black font-bold text-xl rounded-md">
-          DATOS PERSONALES
+        <h1 className="font-bold text-xl rounded-md">
+          DATOS ENVÍO
         </h1>
         <div className="w-full flex flex-col gap-1 items-center">
-          <NameAndEmail_input
-            handlerChange={handlerChange}
-            errors={errors}
-            userProfile={userProfile}
-            editable={editable}
-          />
           <CountryAndState_input
             handlerChange={handlerChange}
             errors={errors}
@@ -155,4 +148,4 @@ const UserDataForm = () => {
   );
 };
 
-export default UserDataForm;
+export default DeliveryForm;

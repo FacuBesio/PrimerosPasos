@@ -1,4 +1,4 @@
-const NameAndEmail_input = ({
+const CountryAndState_input = ({
   handlerChange,
   errors,
   userProfile,
@@ -11,49 +11,49 @@ const NameAndEmail_input = ({
   return (
     <div className="w-full mt-8 px-4 py-1 flex gap-10">
       <div className="w-1/2 flex flex-col gap-2">
-        <label htmlFor="name" className="w-full font-bold">
-          Nombre
+        <label htmlFor="country" className="w-full font-bold">
+          País
         </label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="country"
+          name="country"
           className={inputStyle}
-          value={userProfile?.name ? userProfile.name : ""}
+          value={userProfile?.country ? userProfile.country : ""}
           onChange={handlerChange}
-          placeholder="nombre y apellido..."
+          placeholder="Argentina..."
           disabled={!editable}
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
           <span
-            className="absolute w-full text-red-400/80 font-bold"
-            style={{ visibility: !errors.name ? "hidden" : "visible" }}
+            className="absolute w-full text-red-300 font-bold"
+            style={{ visibility: !errors.country ? "hidden" : "visible" }}
           >
-            {errors.name_message}
+            {errors.country_message}
           </span>
         </div>
       </div>
 
       <div className="w-1/2 flex flex-col gap-2">
-        <label htmlFor="email" className="w-full font-bold">
-          Email
+        <label htmlFor="state" className="w-full font-bold">
+          Provincia / Estado
         </label>
         <input
           type="text"
-          id="email"
-          name="email"
-          className="w-full px-4 py-2 bg-slate-200 font-bold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
-          value={userProfile?.email ? userProfile.email : ""}
+          id="state"
+          name="state"
+          className={inputStyle}
+          value={userProfile?.state ? userProfile.state : ""}
           onChange={handlerChange}
-          placeholder="email@mail.com..."
-          disabled={true}
+          placeholder="Buenos Aires..."
+          disabled={!editable}
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
           <span
-            className="absolute w-full text-red-400/80 font-bold"
-            style={{ visibility: !errors.email ? "hidden" : "visible" }}
+            className="absolute w-full text-red-300 font-bold"
+            style={{ visibility: !errors.state ? "hidden" : "visible" }}
           >
-            {errors.email_message}
+            {errors.state_message}
           </span>
         </div>
       </div>
@@ -61,4 +61,4 @@ const NameAndEmail_input = ({
   );
 };
 
-export default NameAndEmail_input;
+export default CountryAndState_input;

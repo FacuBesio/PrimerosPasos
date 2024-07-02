@@ -13,7 +13,7 @@ export const filterStyles ="text-[#5a5b5a] border border-white bg-white rounded-
 
 export const mainPages = "bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden"
 
-export const tableStyle = "px-2 py-2 text-[#5a5b5a] text-[12px] md:text-[18px]"
+export const tableStyle = "px-2 py-2 text-black text-[12px] md:text-[18px]"
 
 export const buttonsCartAside = "items-center w-full flex bg-gray-200 p-2 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]"
 
