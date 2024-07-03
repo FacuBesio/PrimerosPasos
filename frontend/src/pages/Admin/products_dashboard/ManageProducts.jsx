@@ -7,11 +7,8 @@ import SortComponent from "../../../components/SortComponent/SortComponent";
 import NavAside from "../../../components/NavAside/NavAside";
 import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
-<<<<<<< HEAD
 import filter from "../../../assets/filter.png"
-=======
 import searchIcon from '../../../assets/VectorSearch.png'
->>>>>>> db318f662c972e9241b1011aef5cd975f287f922
 
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
