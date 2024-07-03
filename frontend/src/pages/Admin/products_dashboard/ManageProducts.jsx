@@ -1,17 +1,25 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { Footer, Title } from "../../../components";
 import { Link } from "react-router-dom";
-import { PagesContext, ProductsContext, SearchContext } from "../../../context";
+import { FlagCartEffectContext, PagesContext, ProductsContext, SearchContext } from "../../../context";
 import Paginated from "../../../components/Paginated/Paginated";
 import SortComponent from "../../../components/SortComponent/SortComponent";
 import NavAside from "../../../components/NavAside/NavAside";
 import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
-
+import filter from "../../../assets/filter.png"
 
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
+  const { flagFilter, setFlagFilter } = useContext(FlagCartEffectContext);
+  const filterOpenRef = useRef(false); 
+
+  const handlerFilterActive = () => {
+    filterOpenRef.current = !filterOpenRef.current;
+    setFlagFilter(!flagFilter);
+  };
+
   const { searchBar, setSearchBar, setSearchBarTag } =
     useContext(SearchContext);
 
@@ -30,7 +38,7 @@ const ManageProducts = () => {
         <NavAside />
         <section className="right_section w-full px-4 flex flex-col items-center  pl-14 ">
           <Title />
-          <div className="flex w-full p-4 gap-2 md:gap-4 items-center justify-between overflow-x-auto ">
+          <div className="flex flex-col w-full p-4 gap-2 md:gap-4   overflow-x-auto ">
             <Link className="bg-white hover:bg-red-200 rounded-md p-1 text-center" to={"/admin/manageProducts/create"}>
               <label
                 htmlFor="addProduct"
@@ -39,7 +47,6 @@ const ManageProducts = () => {
                 Agregar Producto
               </label>
             </Link>
-            <Filter />
             <form className="flex gap-2">
               <input
                 placeholder="Buscar"
@@ -56,7 +63,23 @@ const ManageProducts = () => {
                 />
               </button>
             </form>
+            <div
+            onClick={handlerFilterActive}
+            className="bg-white    rounded-full h-fit w-10 p-2 mt-4 hover:scale-105 hover:border-2 border-red-200 cursor-pointer"
+          >
+            <img className="" src={filter} alt="" />
+          </div>
+          <div
+            className={`flex-col  py-4 max-w-[96px] transition-all duration-500 ease-in-out transform ${
+              filterOpenRef.current ? "opacity-100 visible" : "opacity-0 invisible hidden"
+            }`}
+          >
+            <Filter />
+           
             <SortComponent />
+          </div>
+          
+            
           </div>
           <Products_Table />
           <Paginated

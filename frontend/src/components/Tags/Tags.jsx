@@ -66,7 +66,7 @@ const Tags = () => {
   }, [setFilterSizes, setSizesTag, setPage]);
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 w-[90px]">
       {searchBarTag ? (
         <h2 onClick={handleRemoveSearchBarTag} className={filterTags}>
           {searchBarTag}

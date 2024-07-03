@@ -28,19 +28,19 @@ const CartAside = ({ handleButtonCart }) => {
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
       setIsCartOpen(false);
-      setTimeout(handleButtonCart, 500); // Espera a que termine la transición
+      setTimeout(handleButtonCart, 300);
     }
   };
 
   return (
     <div className="z-[9999] text-[12px] md:text-[18px]">
       <div
-        className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm transition-all"
+        className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm transition-all overflow-auto"
         onClick={handleBackdropClick}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className={`fixed py-2 items-center right-0 top-0 h-screen w-[80%] sm:w-[70%] md:w-[50%] lg:w-[35%] bg-[#eee] px-2 text-center flex flex-col gap-2 transition-transform duration-500 transform ${
+          className={`fixed py-2 items-center right-0 top-0  w-[80%] sm:w-[70%] md:w-[50%] lg:w-[25%] bg-[#eee] px-2 text-center flex flex-col gap-2 transition-transform duration-500 transform ${
             isCartOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
