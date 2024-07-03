@@ -7,7 +7,11 @@ import SortComponent from "../../../components/SortComponent/SortComponent";
 import NavAside from "../../../components/NavAside/NavAside";
 import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
+<<<<<<< HEAD
 import filter from "../../../assets/filter.png"
+=======
+import searchIcon from '../../../assets/VectorSearch.png'
+>>>>>>> db318f662c972e9241b1011aef5cd975f287f922
 
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
@@ -36,15 +40,18 @@ const ManageProducts = () => {
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
-        <section className="right_section w-full px-4 flex flex-col items-center  pl-14 ">
+        <section className="right_section w-full pb-2 pl-20 px-4 flex flex-col items-center gap-4">
           <Title />
-          <div className="flex flex-col w-full p-4 gap-2 md:gap-4   overflow-x-auto ">
-            <Link className="bg-white hover:bg-red-200 rounded-md p-1 text-center" to={"/admin/manageProducts/create"}>
+          <div className="flex w-full gap-2 md:gap-4 items-center justify-between overflow-x-auto">
+            <Link
+              className="bg-slate-400 hover:bg-slate-500 rounded-md p-3 text-center"
+              to={"/admin/manageProducts/create"}
+            >
               <label
                 htmlFor="addProduct"
-                className="  text-gray-800     cursor-pointer text-[12px] md:text-[18px]"
+                className="text-white font-bold cursor-pointer text-[12px] md:text-[18px]"
               >
-                Agregar Producto
+                + Agregar Producto
               </label>
             </Link>
             <form className="flex gap-2">
@@ -58,28 +65,13 @@ const ManageProducts = () => {
               <button>
                 <img
                   className="w-[30px] hover:scale-110"
-                  src="/src/assets/VectorSearch.png"
+                  src={searchIcon}
                   alt="Search Icon"
                 />
               </button>
             </form>
-            <div
-            onClick={handlerFilterActive}
-            className="bg-white    rounded-full h-fit w-10 p-2 mt-4 hover:scale-105 hover:border-2 border-red-200 cursor-pointer"
-          >
-            <img className="" src={filter} alt="" />
-          </div>
-          <div
-            className={`flex-col  py-4 max-w-[96px] transition-all duration-500 ease-in-out transform ${
-              filterOpenRef.current ? "opacity-100 visible" : "opacity-0 invisible hidden"
-            }`}
-          >
             <Filter />
-           
             <SortComponent />
-          </div>
-          
-            
           </div>
           <Products_Table />
           <Paginated
@@ -89,7 +81,6 @@ const ManageProducts = () => {
           />
         </section>
       </main>
-     
     </div>
   );
 };

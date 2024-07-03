@@ -16,8 +16,8 @@ import { motion } from "framer-motion";
 import isAdminIcon from "../../assets/adminIcon.png";
 import CategoryLinks from "../NavBar_CategoryLinks/CategoryLinks";
 import MainLinks from "../NavBar_Links/MainLinks";
-import cartIcon from '../../assets/cart.png'
-import searchIcon from '../../assets/VectorSearch.png'
+import cartIcon from "../../assets/cart.png";
+import searchIcon from "../../assets/VectorSearch.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -81,7 +81,10 @@ const Navbar = () => {
         <MainLinks />
 
         <div className="flex justify-center items-center">
-          <form className="flex gap-2 items-center" onSubmit={onSubmitSearchBar}>
+          <form
+            className="flex gap-2 items-center"
+            onSubmit={onSubmitSearchBar}
+          >
             <input
               placeholder="Buscar"
               className="px-1 rounded-md border border-red-100 max-w-[160px] h-fit text-[12px] md:text-[18px]"
@@ -91,7 +94,7 @@ const Navbar = () => {
             />
             <button>
               <img
-                className="w-[30px] hover:scale-110"
+                className="w-[30px] hover:scale-110 transition-transform duration-200"
                 src={searchIcon}
                 alt="Search Icon"
               />
@@ -102,7 +105,7 @@ const Navbar = () => {
             {/* <img src="/src/assets/cart.png" className={`w-[30px] ml-2 hover:scale-110 ${flag === true ? "animate-bounce" : "animate-none"}  `} alt="" /> */}
             <img
               src={cartIcon}
-              className="w-[30px] ml-2 hover:scale-110"
+              className="w-[30px] ml-2 hover:scale-110 transition-transform duration-200"
               alt="Cart Icon"
             />
           </button>
@@ -113,16 +116,16 @@ const Navbar = () => {
               <img
                 src={userData?.img}
                 alt={userData?.name}
-                className="w-6 h-6 cursor-pointer p-1 m-1 rounded-full hover:scale-110"
+                className="w-9 h-9 cursor-pointer p-1 m-1 rounded-full hover:scale-110 transition-transform duration-200"
               />
             </Link>
           )}
-          {isAdmin && (
+          {isAuthenticated && userData && (
             <Link to="/admin/manageProducts">
               <img
                 src={isAdminIcon}
                 alt="Admin Icon"
-                className="w-6 h-6 cursor-pointer my-1 rounded-full hover:scale-110"
+                className="w-9 h-9 cursor-pointer my-1 rounded-full hover:scale-110 transition-transform duration-200"
               />
             </Link>
           )}

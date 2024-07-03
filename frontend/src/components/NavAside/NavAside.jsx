@@ -1,82 +1,89 @@
 import { NavLink } from "react-router-dom";
-
 import { Tooltip } from "antd";
-
 import home_icon from "../../assets/home_icon.png";
 import categories from "../../assets/categories.png";
 import subcategories from "../../assets/subcategories.png";
 import compras from "../../assets/compras.png";
 import dashboard from "../../assets/dashboard.png";
 import users from "../../assets/users.png";
+import adminIcon from "../../assets/adminIcon.png";
 import products from "../../assets/products.png";
 
 const NavAside = () => {
+  const selected =
+    "w-10 h-10 scale-125 transition-transform duration-200 rounded-md p-1 bg-red-300 drop-shadow-md hover:drop-shadow-xl";
+  const not_Selected =
+    "w-10 h-10 hover:scale-125 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl";
+
   return (
-    <section className="fixed w-12 bg-red-200 h-full items-center pt-28">
-      <div className="flex flex-col items-center text-white gap-4">
+    <section className="fixed w-16 bg-red-200 h-full items-center pt-4">
+      <div className="flex justify-center items-center  ">
+        <button className="w-10 h-10">
+          <img src={adminIcon} alt="Admin" />
+        </button>
+      </div>
+      <div className="flex flex-col items-center pt-16 text-white gap-5">
         <Tooltip title="Inicio" placement="right">
-          <NavLink to="/">
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
             <button>
-              <img
-                src={home_icon}
-                alt="Home"
-                className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl "
-              />
+              <img src={home_icon} alt="Home" />
             </button>
           </NavLink>
         </Tooltip>
 
-        <Tooltip title="Dashboard" placement="right">
-          <NavLink to="/admin/manageProducts">
-            <img
-              src={dashboard}
-              alt="Dashboard"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
-            />
+        <Tooltip title="Products" placement="right">
+          <NavLink
+            to="/admin/manageProducts"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
+            <img src={dashboard} alt="Dashboard" />
           </NavLink>
         </Tooltip>
+
         <Tooltip title="Users" placement="right">
-          <NavLink to="/admin/manageUsers">
-            <img src={users} alt="Users" className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl" />
+          <NavLink
+            to="/admin/manageUsers"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
+            <img src={users} alt="Users" />
           </NavLink>
         </Tooltip>
 
         <Tooltip title="Compras" placement="right">
-          <NavLink to="/admin/managePurchases">
-            <img
-              src={compras}
-              alt="Compras"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
-            />
+          <NavLink
+            to="/admin/managePurchases"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
+            <img src={compras} alt="Compras" />
           </NavLink>
         </Tooltip>
 
-        <Tooltip title="Products" placement="right">
-          <NavLink to="/admin/manageProducts">
-            <img
-              src={products}
-              alt="Products"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
-            />
+        {/* <Tooltip title="Products" placement="right">
+          <NavLink
+            to="/admin/manageProducts"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
+            <img src={products} alt="Products" />
           </NavLink>
-        </Tooltip>
+        </Tooltip> */}
 
         <Tooltip title="Categories" placement="right">
-          <NavLink to="/admin/manageCategories">
-            <img
-              src={categories}
-              alt="Categories"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
-            />
+          <NavLink
+            to="/admin/manageCategories"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
+            <img src={categories} alt="Categories" />
           </NavLink>
         </Tooltip>
         <Tooltip title="Subcategories" placement="right">
-          <NavLink to="/admin/manageSubcategories">
-            <img
-              src={subcategories}
-              alt="Subcategories"
-              className="w-8 h-8 hover:scale-110 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl"
-            />
+          <NavLink
+            to="/admin/manageSubcategories"
+            className={({ isActive }) => (isActive ? selected : not_Selected)}
+          >
+            <img src={subcategories} alt="Subcategories" />
           </NavLink>
         </Tooltip>
       </div>

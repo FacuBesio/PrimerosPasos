@@ -1,4 +1,5 @@
 import axios from "../../../src/config/axios";
+import showUpdateNotification from "../userProfile/showUpdateNotification";
 
 const putUser = async (user) => {
   const userDataStorage = JSON.parse(window.localStorage.getItem("userData"));
@@ -34,6 +35,7 @@ const putUser = async (user) => {
       const img = userDataStorage ? userDataStorage.img : null;
       const userData = { id, enabled, role, name, email, img };
       window.localStorage.setItem("userData", JSON.stringify(userData));
+      showUpdateNotification(`Tus datos fueron actualizados exitosamente.`);
     } else {
       console.error("Response data structure unexpected:", putUserUpdate.data);
     }

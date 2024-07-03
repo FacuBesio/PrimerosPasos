@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import putProducts from "../../utils/products/putProducts";
 import uploadImageCloudinary from "../../utils/products/uploadImageCloudinary";
-import Brand_input from "./InputsForm/Brand_input";
-import Name_input from "./InputsForm/Name_input";
+import BrandAndName_input from "./InputsForm/BrandAndName_input";
 import Categories_input from "./InputsForm/Categories_input";
-import Color_input from "./InputsForm/Color_input";
-import Size_input from "./InputsForm/Size_input";
+import ColorAndSize_input from "./InputsForm/ColorAndSize_input";
 import Image_input from "./InputsForm/Image_input";
 import Description_input from "./InputsForm/Description_input";
 import Price_input from "./InputsForm/Price_input";
-import Stock_input from "./InputsForm/Stock_input";
+import StockAndSize_input from "./InputsForm/StockAndSize_input";
 import createInputValidator from "../../utils/products/createInputValidator";
 import disabledSubmitValidator from "../../utils/products/disabledSubmitValidator";
 import getProductById_forUpdate from "../../utils/products/getProductById_forUpdate";
@@ -46,7 +44,7 @@ const UpdateProductForm = ({ id }) => {
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;
-    
+
     if (event.target.type === "file") {
       value = event.target.files[0];
     }
@@ -79,63 +77,53 @@ const UpdateProductForm = ({ id }) => {
   };
 
   return (
-    <div className="w-full rounded-lg flex flex-col items-center p-4 gap-5">
+    <div className="rounded-lg flex flex-col w-full items-center gap-2 pr-2">
       <form
-        className="w-1/2 bg-gray-600 bg-opacity-75 rounded-lg px-4 p-8 flex flex-col items-center"
+        className=" bg-gray-600 bg-opacity-75 p-4 rounded-lg flex flex-col items-center w-1/2"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold pt-2 text-xl rounded-md">
+        <h1 className="text-white font-bold  py-2 rounded-md text-[18px] md:text-[22px]">
           ACTUALIZAR PRODUCTO
         </h1>
-        <div className="w-full flex flex-col gap-1 items-center">
+        <div className="w-full flex flex-col gap-3 items-center">
           <Enabled_input
             newProduct={newProduct}
             setNewProduct={setNewProduct}
           />
-          <Brand_input
+
+          <BrandAndName_input
             handlerChange={handlerChange}
             errors={errors}
             newProduct={newProduct}
           />
-          <Name_input
+
+          <ColorAndSize_input
+            handlerChange={handlerChange}
+            newProduct={newProduct}
+            errors={errors}
+          />
+
+          <StockAndSize_input
             handlerChange={handlerChange}
             errors={errors}
             newProduct={newProduct}
           />
+
           <Categories_input
             handlerChange={handlerChange}
             newProduct={newProduct}
             errors={errors}
           />
-          <Color_input
-            handlerChange={handlerChange}
-            newProduct={newProduct}
-            errors={errors}
-          />
-          <Size_input
-            handlerChange={handlerChange}
-            newProduct={newProduct}
-            errors={errors}
-          />
+
+
           <Description_input
             handlerChange={handlerChange}
             errors={errors}
             newProduct={newProduct}
           />
-          <Price_input
-            handlerChange={handlerChange}
-            errors={errors}
-            newProduct={newProduct}
-          />
-          <Stock_input
-            handlerChange={handlerChange}
-            errors={errors}
-            newProduct={newProduct}
-          />
-          <Image_input handlerChange={handlerChange} errors={errors} />
         </div>
 
-        <div className="formButton w-full flex justify-center items-center ">
+        <div className="formButton w-full flex justify-center items-center">
           {disabledButton ? (
             <button
               id="buttonDisabled"

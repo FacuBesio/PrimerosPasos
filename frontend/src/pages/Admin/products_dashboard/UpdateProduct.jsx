@@ -5,21 +5,19 @@ import Title from "../../../components/Title/Title";
 import { mainPages } from "../../../styles";
 import { useParams } from "react-router-dom";
 
-
 const UpdateProduct = () => {
   const { id } = useParams();
 
   return (
-    <main className={mainPages}>
-      <div className="w-full flex">
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
-        <section className="right_section w-full px-10 flex flex-col items-center">
+        <section className="right_section w-full pb-4 pl-20 px-4 flex flex-col items-center gap-4">
           <Title />
           <UpdateProductForm id={id} />
         </section>
-      </div>
-     
-    </main>
+      </main>
+    </div>
   );
 };
 

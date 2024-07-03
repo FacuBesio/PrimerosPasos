@@ -9,7 +9,7 @@ const Role_input = ({ handlerChange, newUser, errors }) => {
   }, []);
 
   return (
-    <div className="w-full px-4 py-3 flex flex-col gap-2">
+    <div className="w-full px-4 py-1 flex flex-col gap-2 text-[12px] md:text-[18px]">
       <label htmlFor="role" className="w-full text-white font-bold">
         Permisos
       </label>

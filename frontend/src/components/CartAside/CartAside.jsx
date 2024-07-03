@@ -42,7 +42,7 @@ const CartAside = ({ handleButtonCart }) => {
           onClick={(e) => e.stopPropagation()}
           className={`fixed py-2 items-center right-0 top-0  w-[80%] sm:w-[70%] md:w-[50%] lg:w-[25%] bg-[#eee] px-2 text-center flex flex-col gap-2 transition-transform duration-500 transform ${
             isCartOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          } max-h-screen overflow-y-auto overflow-x-hidden`}
         >
           <div className="flex flex-col items-center">
             <div className="relative w-10 h-10 flex  justify-center">

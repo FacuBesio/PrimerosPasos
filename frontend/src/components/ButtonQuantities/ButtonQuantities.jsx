@@ -28,7 +28,7 @@ const ButtonQuantities = ({ product, cart, setCart}) => {
         <h3 className="text-sm mx-2">{product.cantidad}</h3>
         <button
           onClick={() => incrementQuantity(product)}
-          className="px-2 bg-green-200 bg-opacity-75 rounded-md"
+          className="px-2 bg-green-300 bg-opacity-75 rounded-md"
         >
           +
         </button>

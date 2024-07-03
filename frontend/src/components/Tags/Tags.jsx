@@ -94,7 +94,7 @@ const Tags = () => {
       {colorsTag ? (
         <h2
           onClick={handleRemoveColorTag}
-          className="border-2 bg-white border-white w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer capitalize hover:scale-105 transition-transform duration-150"
+          className={filterTags}
         >
           {colorsTag}
         </h2>
@@ -113,7 +113,7 @@ const Tags = () => {
       {sizesTag ? (
         <h2
           onClick={handleRemoveSizeTag}
-          className="border-2 bg-white border-white w-fit p-1 text-sm rounded-md h-fit hidden lg:block cursor-pointer capitalize hover:scale-105 transition-transform duration-150"
+          className={filterTags}
         >
           {sizesTag}
         </h2>

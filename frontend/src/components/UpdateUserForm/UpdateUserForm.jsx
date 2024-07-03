@@ -22,8 +22,8 @@ const UpdateUserForm = ({ id }) => {
       newUser.name,
       `Los datos del owner no pueden ser modificados por este medio.`
     );
-  navigate("/admin/manageUsers");
-}
+    navigate("/admin/manageUsers");
+  }
 
   const owner_id = 1;
 
@@ -52,15 +52,15 @@ const UpdateUserForm = ({ id }) => {
   };
 
   return (
-    <div className="w-full rounded-lg flex flex-col items-center p-4 gap-5">
+    <div className="rounded-lg flex flex-col w-full items-center gap-2 pr-2">
       <form
-        className="w-1/2 bg-gray-600 bg-opacity-75 rounded-lg px-4 p-8 flex flex-col items-center"
+        className=" bg-gray-600 bg-opacity-75 p-4 rounded-lg flex flex-col items-center w-1/2"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold  pt-2 rounded-md">
+        <h1 className="text-white font-bold  py-2 rounded-md text-[18px] md:text-[22px]">
           ACTUALIZAR PERMISOS Y ALCANCE DE USUARIO
         </h1>
-        <div className="w-full flex flex-col gap-1 items-center">
+        <div className="w-full flex flex-col gap-3 items-center">
           <Enabled_input newUser={newUser} setNewUser={setNewUser} />
           <Role_input
             handlerChange={handlerChange}
