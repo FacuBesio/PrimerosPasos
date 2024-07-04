@@ -43,8 +43,8 @@ const SortComponent = () => {
   // ]);
 
   return (
-    <div className="sort-section flex  gap-2  justify-end ">
-      <div className="category-section flex gap-4 items-center">
+    <div className="sort-section flex  gap-2   ">
+      <div className="category-section flex flex-col gap-4 ">
         <div>
           <select
             className={filterStyles}

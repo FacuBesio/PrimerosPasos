@@ -1,17 +1,26 @@
-import { useCallback, useContext } from "react";
+import { useCallback, useContext, useRef } from "react";
 import { Footer, Title } from "../../../components";
 import { Link } from "react-router-dom";
-import { PagesContext, ProductsContext, SearchContext } from "../../../context";
+import { FlagCartEffectContext, PagesContext, ProductsContext, SearchContext } from "../../../context";
 import Paginated from "../../../components/Paginated/Paginated";
 import SortComponent from "../../../components/SortComponent/SortComponent";
 import NavAside from "../../../components/NavAside/NavAside";
 import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
+import filter from "../../../assets/filter.png"
 import searchIcon from '../../../assets/VectorSearch.png'
 
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
   const { allProducts } = useContext(ProductsContext);
+  const { flagFilter, setFlagFilter } = useContext(FlagCartEffectContext);
+  const filterOpenRef = useRef(false); 
+
+  const handlerFilterActive = () => {
+    filterOpenRef.current = !filterOpenRef.current;
+    setFlagFilter(!flagFilter);
+  };
+
   const { searchBar, setSearchBar, setSearchBarTag } =
     useContext(SearchContext);
 

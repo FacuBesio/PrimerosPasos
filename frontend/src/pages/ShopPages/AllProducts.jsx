@@ -31,7 +31,7 @@ const AllProducts = ({ productsParams }) => {
       <Marquee />
       <Title />
       <Navbar />
-      <div className="flex border-y-2 border-white mt-4 md:px-10">
+      <div className="flex border-y-2 border-white mt-4 px-4 ">
         <ProductComponent loaderStates={loaderStates} />
       </div>
       <Footer />
