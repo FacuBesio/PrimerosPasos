@@ -57,7 +57,7 @@ const CartMain = () => {
                 </h1>
               </Link>
             ) : (
-              <h1 className="text-md uppercase text-[#ccc]">
+              <h1 className="text-md cursor-not-allowed uppercase text-[#ccc]">
                 Datos Personales
               </h1>
             )}
@@ -68,9 +68,15 @@ const CartMain = () => {
             <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
               3
             </div>
-            <Link to={"/cart/delivery"}>
-              <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
-            </Link>
+            {isAuthenticated ? (
+              <Link to={"/cart/delivery"}>
+                <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
+              </Link>
+            ) : (
+              <h1 className="text-md cursor-not-allowed uppercase text-[#ccc]">
+                Datos Envío
+              </h1>
+            )}
           </div>
           <div className="h-[1px] w-[100px] bg-[#ccc]" />
 
@@ -78,10 +84,12 @@ const CartMain = () => {
             <div className="bg-[#ccc] text-[white] w-8 h-8 flex items-center justify-center rounded-full">
               4
             </div>
-            <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
+            <h1 className="text-md uppercase text-[#ccc] cursor-not-allowed">
+              Compra
+            </h1>
           </div>
         </div>
-        <h1 className="text-center py-8 font-semibold text-[#5a5b5a] px-4">
+        <h1 className="text-center py-4 font-semibold text-[#5a5b5a] px-4">
           Confirma los productos de tu compra antes de continuar...
         </h1>
       </div>

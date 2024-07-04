@@ -10,20 +10,20 @@ import NameAndEmail_input from "./InputsForm/NameAndEmail_input";
 import getUserById from "../../utils/users/getUserById";
 import putUser from "../../utils/users/putUsers";
 
-const UserDataForm = () => {
+const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile }) => {
   const [disabledButton, setDisabledButton] = useState(true);
-  const [errors, setErrors] = useState({});
-  const [userProfile, setUserProfile] = useState({
-    name: "",
-    email: "",
-    country: "",
-    state: "",
-    city: "",
-    street_address: "",
-    street_number: "",
-    ZIP_Code: "",
-    phone: "",
-  });
+  // const [errors, setErrors] = useState({});
+  // const [userProfile, setUserProfile] = useState({
+  //   name: "",
+  //   email: "",
+  //   country: "",
+  //   state: "",
+  //   city: "",
+  //   street_address: "",
+  //   street_number: "",
+  //   ZIP_Code: "",
+  //   phone: "",
+  // });
   const [editable, setEditable] = useState(false);
 
   console.log("userProfile: ", userProfile);

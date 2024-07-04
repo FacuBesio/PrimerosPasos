@@ -1,36 +1,35 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import crossRed from "../../assets/crossRed.png";
-import { Link } from "react-router-dom";
-import getUserById from "../../utils/users/getUserById";
-import handlerFormLabel from "../../utils/cart/formLabelsPersonalInfo";
+import { Link, NavLink } from "react-router-dom";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import createPreference from "../../utils/mercadoPago/createPreference";
-import { MP_ACCESS_TOKEN_PUBLIC } from "../../config/config";
 import { tableStyle } from "../../styles";
-import putUser from "../../utils/users/putUsers";
-
 import UserDataForm from "../../components/UserDataForm/UserDataForm";
 import { CloseCircleOutlined } from "@ant-design/icons";
+import disabledSubmitValidator from "../../utils/userProfile/disabledSubmitValidator";
 
 const CartUserData = () => {
-  initMercadoPago(MP_ACCESS_TOKEN_PUBLIC, { locale: "es-AR" });
-
+  const dataInfoIsComplete = false;
   const { isAuthenticated } = useAuth0();
   const [cart, setCart] = useState(() =>
     JSON.parse(window.localStorage.getItem("cart"))
   );
+
   const [total, setTotal] = useState(0);
-  const [user, setUser] = useState();
+  const [errors, setErrors] = useState({});
+  const [userProfile, setUserProfile] = useState({
+    name: "",
+    email: "",
+    country: "",
+    state: "",
+    city: "",
+    street_address: "",
+    street_number: "",
+    ZIP_Code: "",
+    phone: "",
+  });
 
-  const [preferenceId, setPreferenceId] = useState();
-
-  const [updateUser, setUpdateUser] = useState({});
-  const [editable, setEditable] = useState(false);
-
-  const formLabel = handlerFormLabel(updateUser);
+  console.log("errors: ", errors);
 
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
@@ -42,38 +41,11 @@ const CartUserData = () => {
       setTotal(newTotal);
     };
     calculateTotal();
-
-    const userLocalStorage = JSON.parse(
-      window.localStorage.getItem("userData")
-    );
-    getUserById(userLocalStorage.id, (userData) => {
-      setUser(userData);
-      setUpdateUser(userData);
-    });
   }, [cart]);
 
-  const handleBuy = async (products) => {
-    const id = await createPreference(products);
-    id && setPreferenceId(id);
-  };
-
-  const handleModifyUser = async (e) => {
-    e.preventDefault();
-    await putUser(updateUser);
-    setEditable(false);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUpdateUser({
-      ...updateUser,
-      [name]: value,
-    });
-  };
-
-  const handleModify = (event) => {
+  const handlerDisabledButton = (event) => {
     event.preventDefault();
-    setEditable(!editable);
+    disabledSubmitValidator(userProfile, errors, setErrors);
   };
 
   return (
@@ -118,14 +90,19 @@ const CartUserData = () => {
             <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
           </div>
         </div>
-        <h1 className="text-center py-8 font-semibold text-[#5a5b5a] px-4">
+        <h1 className="text-center py-4 font-semibold text-[#5a5b5a] px-4">
           Revisa tus datos personales, recordá que todos los campos deben estar
           completos para continuar...
         </h1>
       </div>
 
       <div className="flex items-start bg-white justify-center p-4 gap-2">
-        <UserDataForm />
+        <UserDataForm
+          errors={errors}
+          setErrors={setErrors}
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+        />
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col bg-gray-100  p-2 px-4 rounded-md h-fit border ">
@@ -199,12 +176,21 @@ const CartUserData = () => {
           </div>
 
           <div className="flex flex-col bg-gray-100 h-fit p-4 rounded-md gap-4 justify-center items-center text-[12px] md:text-[18px] font-bold ">
-            <Link
-              to={"/cart/delivery"}
-              className="px-8 py-3 text-[12px] md:text-[18px] bg-slate-400 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-500 focus:outline-none"
-            >
-              Continuar
-            </Link>
+            {dataInfoIsComplete ? (
+              <NavLink
+                to="/cart/userdata"
+                className="px-8 py-3 text-[12px] md:text-[18px] bg-slate-400 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400"
+              >
+                Continuar
+              </NavLink>
+            ) : (
+              <button
+                onClick={handlerDisabledButton}
+                className="px-8 py-3 text-[12px] md:text-[18px] bg-stone-300 bg-opacity-90 text-white font-bold rounded-md hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-stone-200"
+              >
+                Completar datos para continuar
+              </button>
+            )}
 
             <Link
               className="px-6 py-3 mb-2 text-[12px] md:text-[18px] bg-red-200 text-white font-bold rounded-md hover:bg-red-300

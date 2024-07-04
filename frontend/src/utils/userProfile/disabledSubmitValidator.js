@@ -11,6 +11,9 @@ function disabledSubmitValidator(user, errors, setErrors) {
     errors_aux = { ...errors_aux, email: true, email_message: obligatoryField };
   }
 
+  // if (user.country === "") {
+  //   errors_aux = { ...errors_aux, country: true, country_message: obligatoryField };
+  // }
 
   
 

@@ -1,5 +1,4 @@
 import UpdateProductForm from "../../../components/UpdateProductForm/UpdateProductForm";
-import Footer from "../../../components/Footer/Footer";
 import NavAside from "../../../components/NavAside/NavAside";
 import Title from "../../../components/Title/Title";
 import { mainPages } from "../../../styles";

@@ -118,7 +118,7 @@ const CartDelivery = () => {
             <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
           </div>
         </div>
-        <h1 className="text-center py-8 font-semibold text-[#5a5b5a] px-4">
+        <h1 className="text-center py-4 font-semibold text-[#5a5b5a] px-4">
           Estas a un paso! Indica en que dirección queres recibir tu compra...
         </h1>
       </div>
