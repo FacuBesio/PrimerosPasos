@@ -35,13 +35,6 @@ const SortComponent_Dashboard = () => {
     }
   }, [sorterByPrice, sorterByRating, setSorter]);
 
-  // useEffect(() => {}, [
-  //   sorterByPrice,
-  //   onChangeSorterPrice,
-  //   sorterByRating,
-  //   onChangeSorterRating,
-  // ]);
-
   return (
     <div className="sort-section flex  gap-2  justify-end ">
       <div className="category-section flex gap-4 items-center">

@@ -9,6 +9,9 @@ import Products_Table from "../../../components/Products_Table/Products_Table";
 import Filter from "../../../components/Filter/Filter";
 import filter from "../../../assets/filter.png"
 import searchIcon from '../../../assets/VectorSearch.png'
+import Filter_Dashboard from "../../../components/Filter_Dashboard/Filter_Dashboard";
+import SortComponent_Dashboard from "../../../components/SortComponent_Dashboard/SortComponent_Dashboard";
+import SearchBar_Dashboard from "../../../components/SearchBar_Dashboard/SearchBar_Dashboard";
 
 const ManageProducts = () => {
   const { page, setPage } = useContext(PagesContext);
@@ -39,7 +42,7 @@ const ManageProducts = () => {
         <NavAside />
         <section className="right_section w-full pb-2 pl-20 px-4 flex flex-col items-center gap-4">
           <Title />
-          <div className="flex w-full gap-2 md:gap-4 items-center justify-between overflow-x-auto">
+          <div className="flex w-full gap-2 md:gap-4 items-center justify-between overflow-x-auto bg-amber-200">
             <Link
               className="bg-slate-400 hover:bg-slate-500 rounded-md p-3 text-center"
               to={"/admin/manageProducts/create"}
@@ -51,24 +54,9 @@ const ManageProducts = () => {
                 + Agregar Producto
               </label>
             </Link>
-            <form className="flex gap-2">
-              <input
-                placeholder="Buscar"
-                className="px-1 rounded-md border border-red-100 max-w-[160px] text-[12px] md:text-[18px]"
-                type="text"
-                value={searchBar}
-                onChange={onChangeSearchBar}
-              />
-              <button>
-                <img
-                  className="w-[30px] hover:scale-110"
-                  src={searchIcon}
-                  alt="Search Icon"
-                />
-              </button>
-            </form>
-            <Filter />
-            <SortComponent />
+            <SearchBar_Dashboard />
+            <Filter_Dashboard />
+            <SortComponent_Dashboard />
           </div>
           <Products_Table />
           <Paginated

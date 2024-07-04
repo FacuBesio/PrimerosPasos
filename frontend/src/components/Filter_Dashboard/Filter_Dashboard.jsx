@@ -113,12 +113,11 @@ const Filter_Dashboard = () => {
 
   const filterPriceInputs = useMemo(
     () => (
-      <div className="items-center whitespace-nowrap hidden lg:flex gap-2">
-        <h2 className={filterStyles}>Rango de precio</h2>
-        <form className="flex gap-2" action="">
+      <div className="items-center">
+        <form className="flex gap-4" action="">
           <label htmlFor="">
             <input
-              className="max-w-[60px] text-center border rounded-md border-white"
+              className="max-w-[100px] py-1 text-center border rounded-md border-white"
               type="text"
               placeholder="$ mín"
               value={filterPrices[0] === 0 ? "" : filterPrices[0]}
@@ -127,7 +126,7 @@ const Filter_Dashboard = () => {
           </label>
           <label htmlFor="">
             <input
-              className="max-w-[60px] text-center rounded-md border border-white"
+              className="max-w-[100px] py-1 text-center rounded-md border border-white"
               type="text"
               placeholder="$ máx"
               value={filterPrices[1] === 0 ? "" : filterPrices[1]}
@@ -210,7 +209,7 @@ const Filter_Dashboard = () => {
       </select>
 
       <select
-        className="text-[#5a5b5a] border border-white bg-white rounded-md w-[100px] md:w-fit px-1 capitalize text-[12px] md:text-[18px]"
+        className="text-[#5a5b5a] p-1 border border-white bg-white rounded-md w-[100px] md:w-fit px-1 capitalize text-[12px] md:text-[18px]"
         name="filterByColor"
         id="filterByColor"
         onChange={onColorChange}
@@ -220,7 +219,7 @@ const Filter_Dashboard = () => {
       </select>
 
       <select
-        className="text-[#5a5b5a] border border-white bg-white rounded-md w-[100px] md:w-fit px-1 capitalize text-[12px] md:text-[18px]"
+        className="text-[#5a5b5a] border p-1 border-white bg-white rounded-md w-[100px] md:w-fit px-1 capitalize text-[12px] md:text-[18px]"
         name="filterBySizes"
         id="filterBySizes"
         onChange={onSizeChange}
