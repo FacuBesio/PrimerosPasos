@@ -42,7 +42,7 @@ const ManageProducts = () => {
         <NavAside />
         <section className="right_section w-full pb-2 pl-20 px-4 flex flex-col items-center gap-4">
           <Title />
-          <div className="flex w-full gap-2 md:gap-4 items-center justify-between overflow-x-auto bg-amber-200">
+          <div className="flex w-full gap-2 md:gap-4 items-center justify-between overflow-x-auto">
             <Link
               className="bg-slate-400 hover:bg-slate-500 rounded-md p-3 text-center"
               to={"/admin/manageProducts/create"}
