@@ -49,7 +49,7 @@ const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile, disabled
   return (
     <div className="items-center rounded-lg w-fit h-fit">
       <form
-        className="w-full bg-gray-100 rounded-lg p-4 text-[16px]  flex flex-col items-center"
+        className="w-full bg-gray-100 rounded-lg p-4 text-[16px] flex flex-col items-center"
         onSubmit={handlerSubmit}
       >
         <h1 className="text-black font-bold text-xl rounded-md">
