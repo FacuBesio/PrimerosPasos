@@ -22,7 +22,6 @@ const CategoryLinks = () => {
     setPage(1);
   };
 
-  console.log("flag: ", flag);
   useEffect(() => {
     getCategories(setAllCategories);
   }, []);

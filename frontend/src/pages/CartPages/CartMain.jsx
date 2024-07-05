@@ -46,47 +46,57 @@ const CartMain = () => {
           </div>
           <div className="h-[1px] w-[100px] bg-[#ccc]" />
 
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="bg-[#ccc] text-[white] w-8 h-8 flex items-center justify-center rounded-full">
-              2
-            </div>
+          <>
             {isAuthenticated ? (
-              <Link to="/cart/userdata">
+              <div className="flex items-center gap-2 cursor-pointer">
+                <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                  2
+                </div>
+                <Link to={"/cart/userdata"}>
+                  <h1 className="text-md uppercase text-[#ccc]">
+                    Datos Personales
+                  </h1>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 cursor-not-allowed ">
+                <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                  2
+                </div>
                 <h1 className="text-md uppercase text-[#ccc]">
                   Datos Personales
                 </h1>
-              </Link>
-            ) : (
-              <h1 className="text-md cursor-not-allowed uppercase text-[#ccc]">
-                Datos Personales
-              </h1>
+              </div>
             )}
-          </div>
-          <div className="h-[1px] w-[100px] bg-[#ccc]" />
+            <div className="h-[1px] w-[100px] bg-[#ccc]" />
+          </>
 
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
-              3
-            </div>
+          <>
             {isAuthenticated ? (
-              <Link to={"/cart/delivery"}>
-                <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
-              </Link>
+              <div className="flex items-center gap-2 cursor-pointer">
+                <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                  3
+                </div>
+                <Link to={"/cart/delivery"}>
+                  <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
+                </Link>
+              </div>
             ) : (
-              <h1 className="text-md cursor-not-allowed uppercase text-[#ccc]">
-                Datos Envío
-              </h1>
+              <div className="flex items-center gap-2 cursor-not-allowed ">
+                <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                  3
+                </div>
+                <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
+              </div>
             )}
-          </div>
           <div className="h-[1px] w-[100px] bg-[#ccc]" />
+          </>
 
-          <div className="flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center gap-2 cursor-not-allowed">
             <div className="bg-[#ccc] text-[white] w-8 h-8 flex items-center justify-center rounded-full">
               4
             </div>
-            <h1 className="text-md uppercase text-[#ccc] cursor-not-allowed">
-              Compra
-            </h1>
+            <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
           </div>
         </div>
         <h1 className="text-center py-4 font-semibold text-[#5a5b5a] px-4">
@@ -94,7 +104,7 @@ const CartMain = () => {
         </h1>
       </div>
 
-      <div className="flex flex-col bg-white lg:flex-row h-1/2 justify-center p-4 gap-2 overflow-auto">
+      <div className="flex flex-col lg:flex-row justify-center p-4 gap-2 overflow-auto">
         <div className="flex flex-col bg-gray-100 p-2 px-4 rounded-md h-fit ">
           <div>
             <table className="responsive-table text-center w-full">
@@ -155,7 +165,7 @@ const CartMain = () => {
                               user
                             )
                           }
-                          className="transition-transform duration-300 hover:scale-110"
+                          className="transition-transform duration-150 hover:scale-105"
                         >
                           <CloseCircleOutlined className="bg-white text-xl rounded-full" />
                         </button>
@@ -175,10 +185,12 @@ const CartMain = () => {
         </div>
 
         <div className="flex flex-col bg-gray-100 h-fit p-4 rounded-md gap-4 justify-center items-center text-[12px] md:text-[18px] font-bold ">
-          <h2>Total : ${total}</h2>
-          <h3>
-            Envio: <span className="text-green-400">Gratis</span>
-          </h3>
+          <div className=" flex flex-col gap-1 text-center text-[16x] font-bold py-2">
+            <h2>Total : ${total}</h2>
+            <h3 className="">
+              Envío: <span className="text-green-400">Gratis</span>
+            </h3>
+          </div>
           {isAuthenticated ? (
             <NavLink
               to="/cart/userdata"

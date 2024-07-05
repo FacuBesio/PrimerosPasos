@@ -126,11 +126,15 @@ const CartDelivery = () => {
       <div className="flex items-start lg:flex-row bg-white justify-center p-4 gap-2">
         <DeliveryForm />
 
-        <div className="flex flex-col bg-gray-100  h-fit p-4 rounded-md gap-4 justify-center items-center text-[12px] md:text-[18px] font-bold ">
-          <h2>Total : ${total}</h2>
-          <h3>
-            Envio: <span className="text-green-400">gratis</span>
-          </h3>
+        <div className="flex flex-col bg-gray-100 h-fit p-4 rounded-md gap-4 justify-center items-center text-[12px] md:text-[18px] font-bold ">
+          <div className=" flex flex-col gap-1 text-center text-[16x] font-bold py-2">
+            <h2 >
+              Total : ${total}
+            </h2>
+            <h3 className="">
+              Envío: <span className="text-green-400">Gratis</span>
+            </h3>
+          </div>
           <Link
             className="px-8 py-3 text-[12px] md:text-[18px] bg-slate-400 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-500 focus:outline-none"
             onClick={() => handleBuy(cart.products)}

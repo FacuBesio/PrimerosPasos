@@ -1,14 +1,13 @@
 const City_input = ({ handlerChange, errors, userProfile, editable }) => {
-  
   const inputStyle = editable
-    ? "w-full px-4 py-2 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
-    : "w-full px-4 py-2 bg-slate-200 font-bold rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400";
+    ? "w-full px-4 py-2 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 placeholder-red-300"
+    : "w-full px-4 py-2 bg-slate-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400 placeholder-red-300 ";
 
   return (
     <div className="w-full px-4 py-1 flex gap-10">
       <div className="w-1/2 flex flex-col gap-2">
         <label htmlFor="city" className="w-full font-bold">
-          Localidad / Ciudad
+          Localidad
         </label>
         <input
           type="text"
@@ -17,7 +16,7 @@ const City_input = ({ handlerChange, errors, userProfile, editable }) => {
           className={inputStyle}
           value={userProfile?.city ? userProfile.city : ""}
           onChange={handlerChange}
-          placeholder="San Fernando..."
+          placeholder="Localidad o Ciudad"
           disabled={!editable}
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
@@ -32,7 +31,7 @@ const City_input = ({ handlerChange, errors, userProfile, editable }) => {
 
       <div className="w-1/2 flex flex-col gap-2">
         <label htmlFor="ZIP_Code" className="w-full font-bold">
-          C.P. / ZIP
+          C.P.
         </label>
         <input
           type="text"
@@ -41,7 +40,7 @@ const City_input = ({ handlerChange, errors, userProfile, editable }) => {
           className={inputStyle}
           value={userProfile?.ZIP_Code ? userProfile.ZIP_Code : ""}
           onChange={handlerChange}
-          placeholder="1644..."
+          placeholder="Código Postal o ZIP"
           disabled={!editable}
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>

@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import createInputValidator from "../../utils/userProfile/createInputValidator";
-import disabledSubmitValidator from "../../utils/userProfile/disabledSubmitValidator";
+
 import CountryAndState_input from "./InputsForm/CountryAndState_input";
 import City_input from "./InputsForm/City_input";
 import Street_input from "./InputsForm/Street_input";
@@ -9,33 +7,17 @@ import Phone_input from "./InputsForm/Phone_input";
 import NameAndEmail_input from "./InputsForm/NameAndEmail_input";
 import getUserById from "../../utils/users/getUserById";
 import putUser from "../../utils/users/putUsers";
+import disabledSubmitValidator from "../../utils/cart/disabledSubmitValidator";
 
-const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile }) => {
-  const [disabledButton, setDisabledButton] = useState(true);
-  // const [errors, setErrors] = useState({});
-  // const [userProfile, setUserProfile] = useState({
-  //   name: "",
-  //   email: "",
-  //   country: "",
-  //   state: "",
-  //   city: "",
-  //   street_address: "",
-  //   street_number: "",
-  //   ZIP_Code: "",
-  //   phone: "",
-  // });
+const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile, disabledUpdateButton, setDisabledContinueButton}) => {
+
   const [editable, setEditable] = useState(false);
-
-  console.log("userProfile: ", userProfile);
 
   useEffect(() => {
     const userData = JSON.parse(window.localStorage.getItem("userData"));
-    getUserById(userData.id, setUserProfile);
+    getUserById(userData.id, setUserProfile, setDisabledContinueButton);
   }, [editable]);
 
-  useEffect(() => {
-    createInputValidator(userProfile, errors, setErrors, setDisabledButton);
-  }, [userProfile]);
 
   const handlerChange = (event) => {
     const property = event.target.name;
@@ -73,7 +55,7 @@ const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile }) => {
         <h1 className="text-black font-bold text-xl rounded-md">
           DATOS PERSONALES
         </h1>
-        <div className="w-full flex flex-col gap-1 items-center">
+        <div className="w-full flex flex-col gap-3 items-center">
           <NameAndEmail_input
             handlerChange={handlerChange}
             errors={errors}
@@ -106,7 +88,7 @@ const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile }) => {
           />
         </div>
 
-        <div className="formButton w-full flex justify-center items-center ">
+        <div className="formButton w-full flex justify-center items-center mt-4">
           {!editable ? (
             <button
               onClick={handleModify}
@@ -114,8 +96,8 @@ const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile }) => {
             >
               ACTUALIZAR
             </button>
-          ) : disabledButton ? (
-            <div className="flex gap-2">
+          ) : disabledUpdateButton ? (
+            <div className="flex gap-4">
               <button
                 id="buttonDisabled"
                 onClick={handlerDisabledButton}
@@ -143,7 +125,7 @@ const UserDataForm = ({ errors, setErrors, userProfile, setUserProfile }) => {
               <button
                 id="buttonDisabled"
                 onClick={handleCancel}
-                className="px-8 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-red-500/75 focus:outline-none focus:ring-2 focus:ring-red-200"
+                className="px-8 py-3 bg-red-300 text-white font-bold rounded-md hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-red-200"
               >
                 CANCELAR
               </button>
