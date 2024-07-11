@@ -26,8 +26,8 @@ const ProductComponent = ({ loaderStates }) => {
 
   return (
     <section className="w-full ">
-      <section className="flex  ">
-        <div className="flex items-center  flex-col pl-2   ">
+      <section className="flex">
+        <div className="flex items-center flex-col pl-2">
           <div
             onClick={handlerFilterActive}
             className="bg-white    rounded-full h-fit w-10 p-2 mt-4 hover:scale-105 hover:border-2 border-red-200 cursor-pointer"
