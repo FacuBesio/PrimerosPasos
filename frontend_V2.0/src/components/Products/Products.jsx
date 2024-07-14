@@ -1,23 +1,24 @@
-import { useEffect, useRef, useState } from "react";
 import useProducts from "../../hooks/Products/useProducts";
-import { productBox, products_invisible, products_visible } from "../../styles";
+import {
+  product_content,
+  products_invisible,
+  products_visible,
+  productsStyle,
+} from "../../styles";
 
-const Products = ({ categoryQuery }) => {
-  let { allProducts, areProductsLoaded } = useProducts(categoryQuery);
+const Products = () => {
+  const { allProducts, areProductsLoaded } = useProducts();
+  console.log("allProducts.products: ", allProducts.products);
+  console.log("areProductsLoaded: ", areProductsLoaded);
 
-  const productsStyle = areProductsLoaded
+  const product_visibility = areProductsLoaded
     ? products_visible
     : products_invisible;
 
-  // console.log("allProducts.products: ", allProducts.products);
-  // console.log("areProductsLoaded: ", areProductsLoaded);
-
-
-
   return (
-    <div className={productsStyle}>
+    <div className={`${productsStyle} ${product_visibility}`}>
       {allProducts?.products?.map((product) => (
-        <div key={product.id} className={productBox}>
+        <div key={product.id} className={product_content}>
           <img
             className="object-contain rounded-lg h-full p-2"
             src={product.img}

@@ -2,13 +2,21 @@ import { useState, useEffect } from "react";
 import getCategories from "../../services/Categories/getCategories";
 
 const useCategories = () => {
-  const [allCategories, setAllCategories] = useState([]);
+  const [allCategories, setAllCategories] = useState({ categories: [] });
+
+  let areCategoriesLoaded;
+  allCategories.categories.length > 0
+    ? (areCategoriesLoaded = true)
+    : (areCategoriesLoaded = false);
 
   useEffect(() => {
-    getCategories().then((data) => setAllCategories(data));
+    setTimeout(() => {
+      getCategories().then((data) => setAllCategories(data));
+    }, 200);
+    return () => setAllCategories({ categories: [] });
   }, []);
 
-  return { allCategories };
+  return { allCategories, areCategoriesLoaded };
 };
 
 export default useCategories;

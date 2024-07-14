@@ -1,16 +1,18 @@
+import { Link, useLocation } from "react-router-dom";
 import cartIcon from "../../assets/cart.png";
 import isAdminIcon from "../../assets/adminIcon.png";
-import { Link } from "react-router-dom";
 import MainLinks from "../NavBar_Links/MainLinks";
 import CategoryLinks from "../NavBar_Links/CategoryLinks";
 import SearchBar from "../SearchBar/SearchBar";
+import { navBarStyle } from "../../styles";
 
 const Navbar = () => {
+  const location = useLocation();
+  const showCategory = location.pathname === "/shop" ? true : false;
+
   return (
     <div>
-      <nav
-        className={`flex items-center flex-col justify-center md:flex-row gap-2 pb-2`}
-      >
+      <nav className={navBarStyle}>
         <MainLinks />
         <SearchBar />
         <div className="flex justify-center items-center">
@@ -40,7 +42,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <CategoryLinks />
+      <CategoryLinks showCategory={showCategory} />
     </div>
   );
 };

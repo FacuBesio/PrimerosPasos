@@ -1,15 +1,22 @@
 import { NavLink } from "react-router-dom";
-import { navbarLinkStyle, navbarLinkStyle_Selected } from "../../styles";
+import { mainLink_style, mainLinkSelected_style } from "../../styles";
+import { CategoriesContext } from "../../context";
+import { useContext } from "react";
 
 const MainLinks = () => {
   const isAuthenticated = true;
+  const { setCategory } = useContext(CategoriesContext);
+
+  const handlerResetCategory = () => {
+    setCategory("");
+  };
 
   return (
     <div className="flex gap-4 justify-center text-[16px] md:text-[22px]">
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive ? navbarLinkStyle_Selected : navbarLinkStyle
+          isActive ? mainLinkSelected_style : mainLink_style
         }
       >
         Home
@@ -18,9 +25,9 @@ const MainLinks = () => {
       <NavLink
         to="/shop"
         className={({ isActive }) =>
-          isActive ? navbarLinkStyle_Selected : navbarLinkStyle
+          isActive ? mainLinkSelected_style : mainLink_style
         }
-        onClick={() => handlerClickShop(category, setCategoryTag, setPage)}
+        onClick={handlerResetCategory}
       >
         Shop
       </NavLink>
@@ -28,20 +35,16 @@ const MainLinks = () => {
       <NavLink
         to="/contacto"
         className={({ isActive }) =>
-          isActive ? navbarLinkStyle_Selected : navbarLinkStyle
+          isActive ? mainLinkSelected_style : mainLink_style
         }
       >
         Contacto
       </NavLink>
 
       {!isAuthenticated ? (
-        <button className={navbarLinkStyle}>
-          Login
-        </button>
+        <button className={mainLink_style}>Login</button>
       ) : (
-        <button className={navbarLinkStyle}>
-          Logout
-        </button>
+        <button className={mainLink_style}>Logout</button>
       )}
     </div>
   );

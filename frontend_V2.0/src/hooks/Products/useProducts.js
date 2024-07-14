@@ -8,6 +8,7 @@ const useProducts = () => {
   const { serach } = useContext(SearchContext);
   const [allProducts, setAllProducts] = useState({ products: [] });
   const querysInput = { category, filter, serach };
+
   let areProductsLoaded;
   allProducts.products.length > 0
     ? (areProductsLoaded = true)
@@ -15,17 +16,10 @@ const useProducts = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      getProducts(querysInput).then((data) =>
-        setAllProducts(data)
-      );
-    }, 150);
-
-    return () =>
-      setAllProducts({
-        products: [],
-        totalResults: 0,
-      });
-  }, [category, serach]);
+      getProducts(querysInput).then((data) => setAllProducts(data));
+    }, 200);
+    return () => setAllProducts({ products: [] });
+  }, [category, filter, serach]);
 
   return { allProducts, areProductsLoaded };
 };

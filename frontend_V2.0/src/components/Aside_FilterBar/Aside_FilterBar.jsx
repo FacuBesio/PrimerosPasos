@@ -1,18 +1,26 @@
 import { useState } from "react";
 import filterIcon from "../../assets/filter.png";
 import Filter from "../../components/Filter/Filter";
+import { asideFilter_invisible, asideFilter_visible, asideFilterStyles } from "../../styles";
+import useProducts from "../../hooks/Products/useProducts";
+import useLoadEffect from "../../hooks/Effects/useLoadEffect";
 
 const Aside_FilterBar = () => {
-  const [visibleFilter, setVisibleFiter] = useState(false);
+  const { loadEffect } = useLoadEffect();
+  const [showFilter, setShowFilter] = useState(false);
+
+  const asideFilter_visibility = loadEffect
+  ? asideFilter_visible
+  : asideFilter_invisible;
 
   const handlerShowFilter = () => {
-    setVisibleFiter(!visibleFilter);
+    setShowFilter(!showFilter);
   };
 
   return (
-    <div className="flex items-center flex-col w-1/12 p-4 transition-all duration-500 ease-in-out ">
+    <div className={`${asideFilterStyles} ${asideFilter_visibility}`}>
       <button
-        className="bg-white rounded-full h-fit w-10 p-2 mt-2 hover:scale-105 hover:border-2 border-red-200 cursor-pointer"
+        className="bg-white rounded-full h-fit w-10 p-2 mt-4 hover:scale-105 hover:border-2 border-red-200 cursor-pointer"
         onClick={handlerShowFilter}
       >
         <img className="" src={filterIcon} alt="filter_icon" />
@@ -20,7 +28,7 @@ const Aside_FilterBar = () => {
 
       <div
         className={`w-full flex flex-col py-4 transition-all duration-500 ease-in-out transform ${
-          visibleFilter ? "opacity-100 visible" : "opacity-0 invisible"
+          showFilter ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         <Filter />

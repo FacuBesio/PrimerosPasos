@@ -1,16 +1,22 @@
-import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 import Products from "../../components/Products/Products";
-import filterIcon from "../../assets/filter.png";
 import Aside_FilterBar from "../../components/Aside_FilterBar/Aside_FilterBar";
+import { shop_invisible, shop_visible, shopStyle } from "../../styles";
+import useProducts from "../../hooks/Products/useProducts";
+import useLoadEffect from "../../hooks/Effects/useLoadEffect";
 
 const Shop = () => {
-  const { name } = useParams();
+  // const { name } = useParams();
+  const { loadEffect } = useLoadEffect();
+
+  const shop_visibility = loadEffect
+  ? shop_visible
+  : shop_invisible;
 
   return (
-    <section className="flex border-y-2 border-white mt-4 flex-grow">
+    <section className={`${shopStyle}`}>
       <Aside_FilterBar />
-      <Products categoryQuery={name} />
+      <Products />
     </section>
   );
 };
