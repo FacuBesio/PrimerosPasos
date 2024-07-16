@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <section className={homeStyle}>
       <div className={home_content}>
-        <h1>HOME TEST</h1>
+        <h1>HOME TEST - MERGE</h1>
       </div>
     </section>
   );
