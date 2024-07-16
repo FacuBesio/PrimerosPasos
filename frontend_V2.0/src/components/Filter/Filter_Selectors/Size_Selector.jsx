@@ -1,8 +1,12 @@
 import { filterSelectorStyle } from "../../../styles";
 import useSizes from "../../../hooks/Size/useSizes";
+import { FilterContext } from "../../../context";
+import { useContext } from "react";
 
 function Size_Selector({ handlerChange }) {
   const { allSizes } = useSizes();
+  const { filter } = useContext(FilterContext);
+  const { size_selector } = filter;
 
   return (
     <>
@@ -11,6 +15,7 @@ function Size_Selector({ handlerChange }) {
         name="size_selector"
         id="size_selector"
         onChange={handlerChange}
+        value={size_selector}
       >
         <option className="bg-slate-200" value="" disabled>
           Talle

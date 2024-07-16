@@ -4,8 +4,16 @@ export const CategoriesContext = createContext();
 
 export const CategoriesProvider = ({ children }) => {
   const [category, setCategory] = useState("");
-  const value = useMemo(() => ({ category, setCategory }), [category]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const value = useMemo(
+    () => ({ category, setCategory, selectedCategory, setSelectedCategory }),
+    [category]
+  );
+  
   return (
-    <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>
+    <CategoriesContext.Provider value={value}>
+      {children}
+    </CategoriesContext.Provider>
   );
 };

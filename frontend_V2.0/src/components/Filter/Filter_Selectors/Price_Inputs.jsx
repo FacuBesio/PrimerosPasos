@@ -1,10 +1,11 @@
 import { filterInputsStyle } from "../../../styles";
 import { useContext, useState } from "react";
-import { FilterContext } from "../../../context";
+import { FilterContext, TagsContext } from "../../../context";
 import { RightCircleOutlined } from "@ant-design/icons";
 
 function Price_Inputs() {
   const { filter, setFilter } = useContext(FilterContext);
+  const { setFilterTags} = useContext(TagsContext);
   const [pricesInputs, setPricesInputs] = useState([0, 0]);
 
   const handlerMinPrice = (event) => {
@@ -22,6 +23,9 @@ function Price_Inputs() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setFilter({ ...filter, price_inputs: pricesInputs });
+    setTimeout(() => {
+      setFilterTags({ ...filter, price_inputs: pricesInputs });
+    }, [150]);
   };
 
   return (

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import filterIcon from "../../assets/filter.png";
 import Filter from "../../components/Filter/Filter";
-import { asideFilter_invisible, asideFilter_visible, asideFilterStyles } from "../../styles";
-import useProducts from "../../hooks/Products/useProducts";
+import {
+  asideFilter_invisible,
+  asideFilter_visible,
+  asideFilterStyles,
+} from "../../styles";
 import useLoadEffect from "../../hooks/Effects/useLoadEffect";
 
 const Aside_FilterBar = () => {
@@ -10,8 +13,8 @@ const Aside_FilterBar = () => {
   const [showFilter, setShowFilter] = useState(false);
 
   const asideFilter_visibility = loadEffect
-  ? asideFilter_visible
-  : asideFilter_invisible;
+    ? asideFilter_visible
+    : asideFilter_invisible;
 
   const handlerShowFilter = () => {
     setShowFilter(!showFilter);
@@ -32,8 +35,6 @@ const Aside_FilterBar = () => {
         }`}
       >
         <Filter />
-        {/* <Tags />
-        <SortComponent /> */}
       </div>
     </div>
   );

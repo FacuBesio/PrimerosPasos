@@ -7,24 +7,25 @@ import {
   categoryLinksStyle,
 } from "../../styles";
 import useCategories from "../../hooks/Categories/useCategories";
-import { CategoriesContext } from "../../context";
+import { CategoriesContext, TagsContext } from "../../context";
 
 const CategoryLinks = ({ showCategory }) => {
   const { allCategories, areCategoriesLoaded } = useCategories();
-  const { setCategory } = useContext(CategoriesContext);
-  const selectedCategory = useRef();
-//  console.log("allCategories: ", allCategories);
-//  console.log("areCategoriesLoaded: ", areCategoriesLoaded);
-
+  const { setCategory, selectedCategory, setSelectedCategory } =
+    useContext(CategoriesContext);
+  const { setCategoryTag } = useContext(TagsContext);
 
   const categoryLinks_visibility =
     areCategoriesLoaded && showCategory
       ? categoryLinks_visible
       : categoryLinks_invisible;
 
-  const handlerClickCategories = (category_id) => {
+  const handlerClickCategories = (category_id, category_name) => {
     setCategory(category_id);
-    selectedCategory.current = category_id;
+    setSelectedCategory(category_id);
+    setTimeout(() => {
+      setCategoryTag(category_name);
+    }, [150]);
   };
 
   return (
@@ -32,9 +33,9 @@ const CategoryLinks = ({ showCategory }) => {
       {allCategories?.categories?.map((category) => (
         <button
           key={category.id}
-          onClick={() => handlerClickCategories(category.id)}
+          onClick={() => handlerClickCategories(category.id, category.name)}
           className={
-            category.id === selectedCategory.current
+            category.id === selectedCategory
               ? categoryLinkSelected_style
               : categoryLink_style
           }

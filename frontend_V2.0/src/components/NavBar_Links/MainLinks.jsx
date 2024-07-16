@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { mainLink_style, mainLinkSelected_style } from "../../styles";
-import { CategoriesContext } from "../../context";
+import { CategoriesContext, TagsContext } from "../../context";
 import { useContext } from "react";
 
 const MainLinks = () => {
   const isAuthenticated = true;
-  const { setCategory } = useContext(CategoriesContext);
+  const { setCategory, setSelectedCategory } = useContext(CategoriesContext);
+  const { setCategoryTag } = useContext(TagsContext);
 
   const handlerResetCategory = () => {
     setCategory("");
+    setSelectedCategory("");
+    setCategoryTag("");
   };
 
   return (

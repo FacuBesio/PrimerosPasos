@@ -1,15 +1,18 @@
 import { useContext } from "react";
 import searchIcon from "../../assets/VectorSearch.png";
 import { SearchContext } from "../../context/SearchContext";
+import { TagsContext } from "../../context";
 
 const SearchBar = () => {
   const { setSearch } = useContext(SearchContext);
+  const { setSearchTag } = useContext(TagsContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = Object.fromEntries(new window.FormData(event.target));
     const { searchDataInput } = data;
     setSearch(searchDataInput);
+    setSearchTag(searchDataInput);
   };
 
   return (

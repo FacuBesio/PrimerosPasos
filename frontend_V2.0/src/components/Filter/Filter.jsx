@@ -1,17 +1,23 @@
 import Brand_Selector from "./Filter_Selectors/Brand_Selector";
 import Color_Selector from "./Filter_Selectors/Color_Selector";
 import Size_Selector from "./Filter_Selectors/Size_Selector";
-import { FilterContext } from "../../context";
+import { FilterContext, TagsContext } from "../../context";
 import { useContext } from "react";
 import Price_Inputs from "./Filter_Selectors/Price_Inputs";
 
 const Filter = () => {
   const { filter, setFilter } = useContext(FilterContext);
+  const { setFilterTags } = useContext(TagsContext);
+
+  console.log("filter: ", filter);
 
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;
     setFilter({ ...filter, [property]: value });
+    setTimeout(() => {
+      setFilterTags({ ...filter, [property]: value });
+    }, [150]);
   };
 
   return (

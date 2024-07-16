@@ -4,7 +4,7 @@ export const appStyle =
 
 //? FILTER
 export const asideFilterStyles =
-  "flex items-center flex-col w-fit transition-all duration-300 ease-in-out transform";
+  "flex items-center flex-col w-fit px-4 transition-all duration-300 ease-in-out transform";
 export const asideFilter_visible = "opacity-100 visible";
 export const asideFilter_invisible = "opacity-0 invisible";
 export const filterSelectorStyle =
@@ -38,19 +38,24 @@ export const categoryLinkSelected_style =
 
 //? PRODUCTS
 export const productsStyle =
-  "w-full p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-300 ease-in-out transform";
+  "w-full p-4 transition-all duration-200 ease-in-out transform";
 export const products_visible = "opacity-100 visible";
 export const products_invisible = "opacity-0 invisible";
 export const product_content =
   "bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] cursor-pointer";
+export const product_no_content =
+  "flex flex-col items-center justify-center w-full";
 
 //? SHOP
-export const shopStyle =
-  "flex border-y-2 border-white mt-4 flex-grow transition-all duration-300 ease-in-out transform";
-export const shop_visible = "opacity-100 visible";
-export const shop_invisible = "opacity-0 invisible";
+export const shopStyle = "flex border-y-2 border-white mt-4 flex-grow";
 
-// export const filterTags = "text-[#5a5b5a] text-[12px] md:text-[18px] border-2 bg-white border-white w-fit p-1 text-sm rounded-md hidden lg:block cursor-pointer hover:scale-105 transition-transform duration-150"
+//? TAGS
+export const tagsStyle =
+  "flex items-center justify-start px-4 py-2 mt-2 w-full gap-4 transition-all duration-200 ease-in-out transform";
+export const tags_visible = "opacity-100 visible";
+export const tags_invisible = "opacity-0 invisible";
+export const tag_style =
+  "text-[#5a5b5a] text-[12px] md:text-[16px] border-2 bg-white border-white w-fit p-2 text-sm rounded-md hidden lg:block cursor-pointer  hover:bg-red-200 hover:border-red-200 hover:scale-105 transition-transform duration-150";
 
 // export const tableStyle = "px-2 py-2 text-black text-[12px] md:text-[18px]"
 

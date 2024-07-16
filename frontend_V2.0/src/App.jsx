@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Shop from "./pages/Shop_Pages/Shop.jsx";
+import Shop from "./pages//Shop.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import { appStyle } from "./styles.js";
@@ -16,11 +16,10 @@ function App() {
       </header>
 
       <div className="w-full flex flex-col flex-grow">
-        <main className="flex flex-grow">
+        <main className="flex flex-grow min-h-screen">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop/*" element={<Shop />} />
-            {/* <Route path="/shop/:name" element={<Shop />} /> */}
           </Routes>
         </main>
         <footer>

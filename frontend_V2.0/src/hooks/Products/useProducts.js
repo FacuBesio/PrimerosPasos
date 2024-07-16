@@ -10,7 +10,7 @@ const useProducts = () => {
   const querysInput = { category, filter, serach };
 
   let areProductsLoaded;
-  allProducts.products.length > 0
+  allProducts.hasOwnProperty("totalResults")
     ? (areProductsLoaded = true)
     : (areProductsLoaded = false);
 
