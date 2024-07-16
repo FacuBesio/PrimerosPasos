@@ -9,8 +9,6 @@ const Filter = () => {
   const { filter, setFilter } = useContext(FilterContext);
   const { setFilterTags } = useContext(TagsContext);
 
-  console.log("filter: ", filter);
-
   const handlerChange = (event) => {
     const property = event.target.name;
     let value = event.target.value;

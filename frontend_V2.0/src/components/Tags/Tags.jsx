@@ -17,7 +17,6 @@ const Tags = () => {
 
   return (
     <div className={`${tagsStyle} ${tags_visibility}`}>
-      {/* {allProducts?.products?.length > 0 && ( */}
       <>
         <Category_Tag />
         <Search_Tag />
@@ -26,7 +25,6 @@ const Tags = () => {
         <SizeSelector_Tag />
         <PriceSelector_Tag />
       </>
-      {/* )} */}
     </div>
   );
 };

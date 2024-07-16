@@ -12,7 +12,7 @@ const useCategories = () => {
   useEffect(() => {
     setTimeout(() => {
       getCategories().then((data) => setAllCategories(data));
-    }, 300);
+    }, 200);
     return () => setAllCategories({ categories: [] });
   }, []);
 

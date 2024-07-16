@@ -7,10 +7,10 @@ import {
 } from "../styles";
 
 const Home = () => {
-  const { allCategories } = useCategories();
-  const { loadEffect } = useLoadEffect();
+  const { areCategoriesLoaded } = useCategories();
+  // const { loadEffect } = useLoadEffect();
 
-  const home_content = loadEffect ? home_content_visible : home_content_invisible;
+  const home_content = areCategoriesLoaded ? home_content_visible : home_content_invisible;
 
   return (
     <section className={homeStyle}>

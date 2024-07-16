@@ -6,13 +6,14 @@ import {
   asideFilter_visible,
   asideFilterStyles,
 } from "../../styles";
-import useLoadEffect from "../../hooks/Effects/useLoadEffect";
+import useProducts from "../../hooks/Products/useProducts";
 
 const Aside_FilterBar = () => {
-  const { loadEffect } = useLoadEffect();
+  const { areProductsLoaded } = useProducts();
+
   const [showFilter, setShowFilter] = useState(false);
 
-  const asideFilter_visibility = loadEffect
+  const asideFilter_visibility = areProductsLoaded
     ? asideFilter_visible
     : asideFilter_invisible;
 

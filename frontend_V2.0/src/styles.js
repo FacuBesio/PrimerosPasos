@@ -4,7 +4,7 @@ export const appStyle =
 
 //? FILTER
 export const asideFilterStyles =
-  "flex items-center flex-col w-fit px-4 transition-all duration-300 ease-in-out transform";
+  "flex items-center flex-col w-fit px-4 transition-all duration-200 ease-in-out transform";
 export const asideFilter_visible = "opacity-100 visible";
 export const asideFilter_invisible = "opacity-0 invisible";
 export const filterSelectorStyle =
