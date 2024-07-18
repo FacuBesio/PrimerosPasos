@@ -18,7 +18,7 @@ const useProducts = () => {
   useEffect(() => {
     setTimeout(() => {
       getProducts(querysInput).then((data) => setAllProducts(data));
-    }, 200);
+    }, 150);
     return () => setAllProducts({ products: [] });
   }, [category, filter, serach]);
 

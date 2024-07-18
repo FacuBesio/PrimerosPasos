@@ -5,26 +5,6 @@ import banner2 from "../../assets/banner2.png";
 import banner3 from "../../assets/banner3.png";
 import banner4 from "../../assets/banner4.png";
 
-import { motion } from "framer-motion";
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 1,
-    slidesToSlide: 3, 
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 1,
-    slidesToSlide: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-    slidesToSlide: 1, 
-  },
-};
-
 const Banner = () => {
   const carouselImg = [
     { image: banner1 },
@@ -33,16 +13,29 @@ const Banner = () => {
     { image: banner4 },
   ];
 
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
+
   return (
-    // <motion.div
-    // initial={{ opacity: 0, y: 250 }}
-    // animate={{ opacity: 1, y: 0 ,}}
-    // transition={{ duration: 0.5 }}
-    // >
     <Carousel
-      swipeable={false}
-      draggable={false}
-      showDots={false}
+      swipeable={true}
+      draggable={true}
+      showDots={true}
       responsive={responsive}
       ssr={true}
       infinite={true}
@@ -53,18 +46,17 @@ const Banner = () => {
       transitionDuration={500}
       containerClass="carousel-container"
       removeArrowOnDeviceType={["tablet", "mobile"]}
-      deviceType={null} // assuming you're not passing deviceType as a prop
+      deviceType={null}
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
-      className="max-h-[660px] h-full w-full"
+      className="max-h-[660px] w-full transition-all duration-300 ease-in-out transform"
     >
-      {carouselImg.map((car) => (
-        <div key={car} className="max-w-full h-full bg-red-200  ">
-          <img className=" w-full h-full " src={car.image} alt="" />
+      {carouselImg.map((car, index) => (
+        <div key={index} className="w-full h-full">
+          <img className="w-full h-full object-cover" src={car.image} alt="" />
         </div>
       ))}
     </Carousel>
-    // </motion.div>
   );
 };
 

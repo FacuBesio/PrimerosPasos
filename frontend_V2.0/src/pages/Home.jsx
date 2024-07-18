@@ -1,3 +1,6 @@
+import AditionalInfo from "../components/AditionalInfo/AditionalInfo";
+import Banner from "../components/Banner/Banner";
+import PromotedProducts from "../components/PromotedProducts/PromotedProducts";
 import useCategories from "../hooks/Categories/useCategories";
 import useLoadEffect from "../hooks/Effects/useLoadEffect";
 import {
@@ -7,15 +10,19 @@ import {
 } from "../styles";
 
 const Home = () => {
-  const { areCategoriesLoaded } = useCategories();
-  // const { loadEffect } = useLoadEffect();
+  // const { areCategoriesLoaded } = useCategories();
+  const { loadEffect } = useLoadEffect();
 
-  const home_content = areCategoriesLoaded ? home_content_visible : home_content_invisible;
+  const home_visibility = loadEffect
+    ? home_content_visible
+    : home_content_invisible;
 
   return (
     <section className={homeStyle}>
-      <div className={home_content}>
-        <h1>HOME TEST - MERGE</h1>
+      <div className={home_visibility}>
+        <Banner />
+        <AditionalInfo />
+        <PromotedProducts />
       </div>
     </section>
   );

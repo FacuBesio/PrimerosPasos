@@ -2,6 +2,11 @@
 export const appStyle =
   "min-w-screen min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6]";
 
+//? CONTACT US
+export const contactUsStyle = "m-4 p-4 flex gap-6 overflow-hidden justify-center bg-[#e8ced5] border-white border-2 rounded-lg relative text-[12px] md:text-[18px] transition-all duration-150 ease-in-out transform";
+export const contactUs_visible = "opacity-100 visible";
+export const contactUs_invisible = "opacity-0 invisible";
+
 //? FILTER
 export const asideFilterStyles =
   "flex items-center flex-col w-fit px-4 transition-all duration-200 ease-in-out transform";
@@ -14,9 +19,11 @@ export const filterInputsStyle =
 
 //? HOME
 export const homeStyle =
-  "flex mt-4 border-y-2 border-white flex-grow transition-all duration-300 ease-in-out transform";
-export const home_content_visible = "opacity-100 visible";
-export const home_content_invisible = "opacity-0 invisible";
+  "mt-4 border-y-2 border-white flex-grow transition-all duration-150 ease-in-out transform";
+export const home_content_visible =
+  "transition-all duration-200 ease-in-out transform opacity-100 visible";
+export const home_content_invisible =
+  "transition-all duration-200 ease-in-out transform opacity-0 invisible";
 
 //? NAVBAR
 export const navBarStyle =
@@ -38,7 +45,7 @@ export const categoryLinkSelected_style =
 
 //? PRODUCTS
 export const productsStyle =
-  "w-full p-4 transition-all duration-200 ease-in-out transform";
+  "w-full p-4 transition-all duration-150 ease-in-out transform";
 export const products_visible = "opacity-100 visible";
 export const products_invisible = "opacity-0 invisible";
 export const product_content =
