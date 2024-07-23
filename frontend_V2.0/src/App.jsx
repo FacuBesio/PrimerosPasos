@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import Shop from "./pages//Shop.jsx";
 import { appStyle } from "./styles.js";
 import "./App.css";
+import ProductDetail from "./components/ProductDetail/ProductDetail.jsx";
 
 function App() {
   console.log("Render TEST desde App");
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/shop/*" element={<Shop />} />
+            <Route path="/shop/productDetail/:id" element={<ProductDetail />} />
             <Route path="/contacto" element={<ContactUs />} />
           </Routes>
         </main>

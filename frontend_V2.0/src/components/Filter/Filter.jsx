@@ -19,30 +19,30 @@ const Filter = () => {
   };
 
   return (
-    <section className="flex flex-col w-fit items-center justify-center gap-6 mt-2">
-      <div className="flex flex-col w-fit items-center justify-center">
-        <label htmlFor="brand" className="w-full text-lg px-2">
+    <section className="flex flex-col w-full items-center justify-center gap-6">
+      <div className="flex flex-col w-full items-center justify-center">
+        <div className="w-full text-lg px-2 overflow-hidden">
           Marca
-        </label>
+        </div>
         <Brand_Selector handlerChange={handlerChange} />
       </div>
 
-      <div className="flex flex-col w-fit items-center justify-center">
-        <label htmlFor="color" className="w-full text-lg px-2">
+      <div className="flex flex-col w-full items-center justify-center">
+        <label htmlFor="color" className="w-full text-lg px-2 overflow-hidden">
           Color
         </label>
         <Color_Selector handlerChange={handlerChange} />
       </div>
 
-      <div className="flex flex-col w-fit items-center justify-center">
-        <label htmlFor="size" className="w-full text-lg px-2">
+      <div className="flex flex-col w-full items-center justify-center">
+        <label htmlFor="size" className="w-full text-lg px-2 overflow-hidden">
           Talle
         </label>
         <Size_Selector handlerChange={handlerChange} />
       </div>
 
-      <div className="flex flex-col w-fit items-center justify-center">
-        <label htmlFor="price" className="w-full text-lg px-2">
+      <div className="flex flex-col w-full items-center justify-center">
+        <label htmlFor="price" className="w-full text-lg px-2 overflow-hidden">
           Precio
         </label>
         <Price_Inputs />

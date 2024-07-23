@@ -3,7 +3,7 @@ import { product_no_content } from "../../styles";
 const Products_NoResult = () => {
   return (
     <div className={product_no_content}>
-      <h2 className="bg-white relative rounded-lg p-4 mr-60">
+      <h2 className="bg-white relative rounded-lg p-4">
         No se encontraron resultados para esta consulta
       </h2>
     </div>

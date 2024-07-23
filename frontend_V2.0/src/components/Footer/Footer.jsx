@@ -6,7 +6,7 @@ import {
 
 const Footer = () => {
   return (
-    <section className="flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px]">
+    <section className="flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white">
       <div className="flex flex-col">
         <a className=" hover:text-[#DBB1BC] text-black/50 " href="/">
           Home

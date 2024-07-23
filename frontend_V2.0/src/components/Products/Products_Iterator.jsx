@@ -1,12 +1,23 @@
+import { useNavigate } from "react-router-dom";
 import { product_content } from "../../styles";
 
-const Products_Iterator = ({allProducts}) => {
+const Products_Iterator = ({ allProducts }) => {
+  const navigate = useNavigate();
+
+  const onClickNavigate = (id) => {
+    navigate(`/shop/productDetail/${id}`);
+  };
+
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {allProducts?.products?.map((product) => (
-        <div key={product.id} className={product_content}>
+        <div
+          key={product.id}
+          className={product_content}
+          onClick={() => onClickNavigate(product.id)}
+        >
           <img
-            className="object-contain rounded-lg h-full p-2"
+            className="object-contain rounded-lg h-[500px] p-2"
             src={product.img}
             alt={product.name}
             onClick={() => navigate(`/shop/productDetail/${product.id}`)}

@@ -10,7 +10,9 @@ const Category_Tag = () => {
   const handleRemoveCategoryTag = () => {
     setCategory("");
     setSelectedCategory("");
-    setCategoryTag("");
+    setTimeout(() => {
+      setCategoryTag("");
+    }, 150);
   };
 
   return (
