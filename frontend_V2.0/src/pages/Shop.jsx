@@ -10,6 +10,7 @@ import {
 } from "../styles";
 import Tags from "../components/Tags/Tags";
 import useLoadEffect_0 from "../hooks/Effects/useLoadEffect_0";
+import SortComponent from "../components/SortComponent/SortComponent";
 
 const Shop = () => {
   // const { name } = useParams();
@@ -24,7 +25,10 @@ const Shop = () => {
       <section className={`${shopStyle} ${shop_visibility}`}>
         <Aside_FilterBar />
         <div className={`${shop_content_style}`}>
-          <Tags />
+          <div className="flex items-center justify-between w-full">
+            <Tags />
+            <SortComponent />
+          </div>
           <Products />
           <Paginated />
         </div>

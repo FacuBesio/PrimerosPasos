@@ -6,6 +6,7 @@ import {
   PagesContext,
   SearchContext,
   ShopContext,
+  SortContext,
 } from "../../context";
 
 const useProducts = () => {
@@ -13,9 +14,10 @@ const useProducts = () => {
   const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
   const { serach } = useContext(SearchContext);
+  const { sorter } = useContext(SortContext);
   const { setWasShopActive } = useContext(ShopContext);
   const [allProducts, setAllProducts] = useState({ products: [] });
-  const querysInput = { category, filter, page, serach };
+  const querysInput = { category, filter, page, serach, sorter };
 
   let areProductsLoaded;
   allProducts.hasOwnProperty("totalResults")
@@ -25,13 +27,13 @@ const useProducts = () => {
   useEffect(() => {
     setWasShopActive(true);
   }, []);
-  
+
   useEffect(() => {
     setTimeout(() => {
       getProducts(querysInput).then((data) => setAllProducts(data));
     }, 150);
     return () => setAllProducts({ products: [] });
-  }, [category, filter, page, serach]);
+  }, [category, filter, page, serach, sorter]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -41,7 +43,7 @@ const useProducts = () => {
 
   useEffect(() => {
     setPage(1);
-  }, [category, filter, serach]);
+  }, [category, filter, serach, sorter]);
 
   return { allProducts, areProductsLoaded };
 };

@@ -4,7 +4,7 @@ export const appStyle =
 
 //? CONTACT US
 export const contactUsStyle =
-  "p-8 border-t-2 border-white transition-all duration-150 ease-in-out transform";
+  "p-8 border-t-4 border-white transition-all duration-150 ease-in-out transform";
 export const contactUs_visible = "opacity-100 visible";
 export const contactUs_invisible = "opacity-0 invisible";
 export const contactUs_position_up = "mt-0";
@@ -24,7 +24,7 @@ export const filterInputsStyle =
 
 //? HOME
 export const homeStyle =
-  "border-t-2 border-t-white flex-grow transition-all duration-200 ease-in-out transform";
+  "border-t-4 border-t-white flex-grow transition-all duration-200 ease-in-out transform";
 export const home_content_visible = "opacity-100 visible";
 export const home_content_invisible = "opacity-0 invisible";
 export const home_position_up = "mt-0";
@@ -76,7 +76,7 @@ export const productDetail_invisible = "opacity-0 invisible";
 
 //? SHOP
 export const shopStyle =
-  "flex flex-grow border-t-2 border-t-white transition-all duration-150 ease-in-out transform";
+  "flex flex-grow border-t-4 border-t-white transition-all duration-150 ease-in-out transform";
 export const shop_position_up =
   "transition-all duration-150 ease-in-out transform mt-3";
 export const shop_position_down =
@@ -88,7 +88,7 @@ export const shop_content_style =
 
 //? TAGS
 export const tagsStyle =
-  "flex items-center justify-start px-4 w-full h-10 gap-4 transition-all duration-200 ease-in-out transform";
+  "flex items-center justify-start px-4 h-10 gap-4 transition-all duration-200 ease-in-out transform";
 export const tags_visible = "opacity-100 visible";
 export const tags_invisible = "opacity-0 invisible";
 export const tag_style =

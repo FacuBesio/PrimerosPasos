@@ -39,7 +39,7 @@ const Aside_FilterBar = () => {
 
         <div
           className={`mt-2 transition-all duration-300 ease-in-out transform w-full ${
-            showFilter ? "opacity-100 visible" : "opacity-60 invisible"
+            showFilter ? "opacity-100 visible" : "opacity-50 invisible"
           }`}
         >
           <Filter />

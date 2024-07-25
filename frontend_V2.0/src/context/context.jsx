@@ -3,6 +3,7 @@ import { FilterProvider } from "./FilterContext";
 import { PagesProvider } from "./PagesContext";
 import { SearchProvider } from "./SearchContext";
 import { ShopProvider } from "./ShopContext";
+import { SortProvider } from "./SortContext";
 import { TagsProvider } from "./TagsContext";
 
 const AppProvider = ({ children }) => {
@@ -12,7 +13,9 @@ const AppProvider = ({ children }) => {
         <PagesProvider>
           <SearchProvider>
             <ShopProvider>
-              <TagsProvider>{children}</TagsProvider>
+              <SortProvider>
+                <TagsProvider>{children}</TagsProvider>
+              </SortProvider>
             </ShopProvider>
           </SearchProvider>
         </PagesProvider>

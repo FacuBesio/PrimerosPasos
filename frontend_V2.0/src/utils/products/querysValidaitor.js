@@ -1,7 +1,8 @@
 import filterValidator from "../filter/filterValidator";
+import sorterValidator from "../sorter/sorterValidator";
 
 function querysValidaitor(querysInput) {
-  const { category, filter, page, serach } = querysInput;
+  const { category, filter, page, serach, sorter } = querysInput;
   let isQueryActive = {
     result: false,
     querys: "",
@@ -28,6 +29,14 @@ function querysValidaitor(querysInput) {
   if (serach && serach !== "") {
     isQueryActive.result = true;
     isQueryActive.querys += `brand_or_name=${serach}`;
+  }
+
+  if (Object.keys(sorter).length > 0) {
+    const sorterQuery = sorterValidator(sorter);
+    if (sorterQuery !== "") {
+      isQueryActive.result = true;
+      isQueryActive.querys += sorterQuery;
+    }
   }
 
   return isQueryActive;
