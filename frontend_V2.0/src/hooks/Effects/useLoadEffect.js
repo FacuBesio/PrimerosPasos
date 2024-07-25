@@ -6,7 +6,7 @@ const useLoadEffect = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoadEffect(true);
-    }, 150);
+    }, 200);
   }, []);
 
   return { loadEffect };

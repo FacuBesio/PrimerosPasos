@@ -14,7 +14,7 @@ const useProductById = (id) => {
     setTimeout(() => {
       getProductById(id).then((data) => setResponse(data));
       window.scrollTo(0, 0);
-    }, 150);
+    }, 200);
   }, [id]);
 
   return { product, isProductLoaded };

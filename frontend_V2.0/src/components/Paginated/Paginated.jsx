@@ -2,11 +2,11 @@ import { useContext } from "react";
 import leftArrowIcon from "../../assets/LeftArrow.png";
 import rightArrowIcon from "../../assets/rightArrow.png";
 import {
-  paginated_invisible,
-  paginated_visible,
   next_or_previous_button,
   firts_or_last_page_button,
   paginatedStyle,
+  visible,
+  invisible,
 } from "../../styles";
 import { PagesContext } from "../../context";
 import useProducts from "../../hooks/Products/useProducts";
@@ -16,9 +16,7 @@ const Paginated = () => {
   const { allProducts, areProductsLoaded } = useProducts();
   const { totalPages } = allProducts;
 
-  const paginated_visibility = areProductsLoaded
-    ? paginated_visible
-    : paginated_invisible;
+  const paginated_visibility = areProductsLoaded ? visible : invisible;
 
   const goToFirstPage = () => {
     setPage(1);
@@ -34,8 +32,8 @@ const Paginated = () => {
       console.log("no se puede seguir bajando");
     } else {
       setTimeout(() => {
-      setPage(previousPage);
-    }, 150);
+        setPage(previousPage);
+      }, 150);
     }
   };
 
@@ -45,8 +43,8 @@ const Paginated = () => {
       console.log("nose puede seguir avanzando");
     } else {
       setTimeout(() => {
-      setPage(nextPage);
-    }, 150);
+        setPage(nextPage);
+      }, 150);
     }
   };
 

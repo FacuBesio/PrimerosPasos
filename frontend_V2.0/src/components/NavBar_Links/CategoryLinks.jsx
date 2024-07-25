@@ -1,10 +1,10 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import {
   categoryLink_style,
-  categoryLinks_invisible,
-  categoryLinks_visible,
   categoryLinkSelected_style,
   categoryLinksStyle,
+  invisible,
+  visible,
 } from "../../styles";
 import useCategories from "../../hooks/Categories/useCategories";
 import { CategoriesContext, TagsContext } from "../../context";
@@ -17,8 +17,8 @@ const CategoryLinks = ({ showCategory }) => {
 
   const categoryLinks_visibility =
     areCategoriesLoaded && showCategory
-      ? categoryLinks_visible
-      : categoryLinks_invisible;
+      ? `${visible} h-fit`
+      : `${invisible} h-0`;
 
   const handlerClickCategories = (category_id, category_name) => {
     setCategory(category_id);

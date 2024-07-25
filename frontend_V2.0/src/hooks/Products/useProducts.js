@@ -31,14 +31,14 @@ const useProducts = () => {
   useEffect(() => {
     setTimeout(() => {
       getProducts(querysInput).then((data) => setAllProducts(data));
-    }, 150);
+    }, 200);
     return () => setAllProducts({ products: [] });
   }, [category, filter, page, serach, sorter]);
 
   useEffect(() => {
     setTimeout(() => {
       window.scrollTo(0, 0);
-    }, 150);
+    }, 200);
   }, [page]);
 
   useEffect(() => {

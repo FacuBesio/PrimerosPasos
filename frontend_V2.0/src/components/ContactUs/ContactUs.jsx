@@ -7,11 +7,11 @@ import emailjs from "@emailjs/browser";
 import useLoadEffect from "../../hooks/Effects/useLoadEffect";
 import {
   contactUs_form_style,
-  contactUs_invisible,
   contactUs_position_down,
   contactUs_position_up,
-  contactUs_visible,
   contactUsStyle,
+  invisible,
+  visible,
 } from "../../styles";
 import useLoadEffect_0 from "../../hooks/Effects/useLoadEffect_0";
 import { ShopContext } from "../../context";
@@ -69,9 +69,7 @@ const ContactUs = () => {
       );
   };
 
-  const contactUs_visibility = loadEffect
-    ? contactUs_visible
-    : contactUs_invisible;
+  const contactUs_visibility = loadEffect ? visible : invisible;
 
   let contactUs_position = "";
   wasShopActive

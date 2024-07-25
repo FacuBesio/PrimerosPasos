@@ -1,8 +1,8 @@
 import useProducts from "../../hooks/Products/useProducts";
 import {
-  products_invisible,
-  products_visible,
   productsStyle,
+  invisible,
+  visible,
 } from "../../styles";
 import Products_Iterator from "./Products_Iterator";
 import Products_NoResult from "./Products_NoResult";
@@ -13,8 +13,8 @@ const Products = () => {
   console.log("areProductsLoaded: ", areProductsLoaded);
 
   const product_visibility = areProductsLoaded
-    ? products_visible
-    : products_invisible;
+    ? visible
+    : invisible;
 
   return (
     <div className={`${productsStyle} ${product_visibility}`}>

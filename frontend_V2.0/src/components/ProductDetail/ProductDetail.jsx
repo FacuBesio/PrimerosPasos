@@ -5,7 +5,7 @@ import enabledIcon from "../../assets/disponible.png";
 import deliveryIcon from "../../assets/entrega.png";
 import secureIcon from "../../assets/seguro.png";
 import useProductById from "../../hooks/Products/useProductById";
-import { productDetail_invisible, productDetail_visible, productDetailStyle } from "../../styles";
+import { productDetailStyle, invisible, visible } from "../../styles";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -14,9 +14,7 @@ const ProductDetail = () => {
   console.log("product: ", product);
   console.log("isProductLoaded: ", isProductLoaded);
 
-  const productDetail_visibility = isProductLoaded
-  ? productDetail_visible
-  : productDetail_invisible;
+  const productDetail_visibility = isProductLoaded ? visible : invisible;
 
   return (
     product && (
