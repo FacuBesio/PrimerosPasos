@@ -20,7 +20,7 @@ const Aside_FilterBar = () => {
     setShowFilter(!showFilter);
   };
 
-  const asideFilter_width = showFilter ? "w-1/6" : "w-10";
+  const asideFilter_width = showFilter ? "w-1/5" : "w-10";
   const button_ml = showFilter ? "ml-0" : "ml-10";
 
   return (
@@ -28,7 +28,7 @@ const Aside_FilterBar = () => {
       className={`${asideFilterStyles} ${asideFilter_width} ${asideFilter_visibility}`}
     >
       <button
-        className={`bg-white rounded-full h-fit w-10 p-2 mt-4 hover:scale-105 hover:border-2 border-red-200 cursor-pointer ${transition_500} ${button_ml}`}
+        className={`bg-white rounded-full h-fit w-10 p-2 mt-3 hover:scale-105 hover:border-2 border-red-200 cursor-pointer ${transition_500} ${button_ml}`}
         onClick={handlerShowFilter}
       >
         <img className="" src={filterIcon} alt="filter_icon" />

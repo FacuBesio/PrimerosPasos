@@ -8,6 +8,8 @@ const Products_Iterator = ({ allProducts }) => {
     navigate(`/shop/productDetail/${id}`);
   };
 
+  // className="object-fill rounded-lg h-[400px] w-[500px] p-2"aaaaaaaaa
+
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {allProducts?.products?.map((product) => (
@@ -17,7 +19,7 @@ const Products_Iterator = ({ allProducts }) => {
           onClick={() => onClickNavigate(product.id)}
         >
           <img
-            className="object-contain rounded-lg h-[500px] p-2"
+            className="object-contain rounded-lg p-2"
             src={product.img}
             alt={product.name}
             onClick={() => navigate(`/shop/productDetail/${product.id}`)}

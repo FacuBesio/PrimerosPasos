@@ -35,11 +35,6 @@ const useProducts = () => {
     return () => setAllProducts({ products: [] });
   }, [category, filter, page, serach, sorter]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 200);
-  }, [page]);
 
   useEffect(() => {
     setPage(1);

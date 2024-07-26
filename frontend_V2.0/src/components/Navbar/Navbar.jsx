@@ -15,7 +15,7 @@ const Navbar = () => {
       <nav className={navBarStyle}>
         <MainLinks />
         <SearchBar />
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center gap-2">
           <button>
             <img
               src={cartIcon}

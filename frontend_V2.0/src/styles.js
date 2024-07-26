@@ -1,7 +1,7 @@
 //* EFFECTS
 export const transition_150 =
   "transition-all ease-in-out transform duration-150";
-  export const transition_200 =
+export const transition_200 =
   "transition-all ease-in-out transform duration-200";
 export const transition_300 =
   "transition-all ease-in-out transform duration-300";
@@ -28,6 +28,9 @@ export const filterSelectorStyle =
 export const filterInputsStyle =
   "text-[#5a5b5a] border border-white bg-white rounded-md p-2 text-[12px] md:text-[18px] w-full";
 
+  //? FOOTER
+  export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white ${transition_200}`;
+
 //? HOME
 export const homeStyle = `border-t-4 border-t-white flex-grow ${transition_200}`;
 export const home_position_up = "mt-0";
@@ -47,31 +50,32 @@ export const categoryLinkSelected_style = `text-[#Dbb1bc] font-bold hover:text-[
 //? PAGINATED
 export const paginatedStyle =
   "flex justify-center items-center gap-6 pt-2 pb-4 px-4";
-export const next_or_previous_button = `hover:shadow-xl hover:shadow-[#fdd9e3] hover:scale-95 border border-white px-1 rounded-md bg-white text-[#5a5b5a] text-[12px] text-black/50 md:text-[18px] ${transition_200}`;
-export const firts_or_last_page_button = `hover:shadow-xl hover:shadow-[#fdd9e3] hover:scale-95 border border-white px-1 rounded-md bg-white text-[#5a5b5a] text-[12px] text-black/50 md:text-[18px] ${transition_200}`;
+export const paginated_button = `hover:shadow-xl hover:shadow-[#fdd9e3] hover:scale-90 border border-white px-1 rounded-md bg-white text-[#5a5b5a] text-[12px] text-black/50 md:text-[18px] ${transition_200}`;
 
 //? PRODUCTS
-export const productsStyle = `w-full ${transition_200}`;
+export const productsStyle = `w-full min-h-screen ${transition_200}`;
 export const product_content = `bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] cursor-pointer hover:scale-95 ${transition_200}`;
 export const product_no_content = "flex flex-col items-center justify-center";
 
 //? PRODUCT DEATAIL
-export const productDetailStyle = `flex justify-around p-6 bg-white flex-col md:flex-row text-[12px] md:text-[18px] ${transition_200}`;
+export const productDetailStyle = `bg-white flex flex-col md:flex-row p-10 justify-around text-[12px] md:text-[18px] ${transition_200}`;
+export const productDetail_content = `bg-white w-full flex flex-col md:flex-row justify-around text-[12px] md:text-[18px] ${transition_200}`;
+export const productDetail_position_up = "mt-0";
+export const productDetail_position_down = "mt-10";
 
 //? SHOP
 export const shopStyle = `flex flex-grow border-t-4 border-t-white ${transition_200}`;
-export const shop_position_up = `mt-3`;
-export const shop_position_down = `-mt-3`;
-export const shop_content_style =
- `flex flex-col items-center px-6 py-4 gap-4 justify-start w-full h-full`;
+export const shop_position_up = `-mt-3`;
+export const shop_position_down = `mt-3`;
+export const shop_content_style = `flex flex-col items-center px-6 py-3 gap-3 justify-start w-full h-full`;
+
+//? SORTER
+export const sorterSelectorStyle =
+  "text-[#5a5b5a] border border-white bg-white rounded-md p-1 text-[12px] md:text-[16px] w-full capitalize";
 
 //? TAGS
 export const tagsStyle = `flex items-center justify-start px-4 h-10 gap-4 ${transition_200}`;
-export const tag_style =
-`text-[#5a5b5a] text-[12px] md:text-[16px] border-2 bg-white border-white w-fit p-2 text-sm rounded-md hidden lg:block cursor-pointer  hover:bg-red-200 hover:border-red-200 hover:scale-105 ${transition_200}`;
-
-
+export const tag_style = `text-[#5a5b5a] text-[12px] md:text-[16px] border-2 bg-white border-white w-fit p-2 text-sm rounded-md hidden lg:block cursor-pointer  hover:bg-red-200 hover:border-red-200 hover:scale-105 ${transition_200}`;
 
 // export const tableStyle = "px-2 py-2 text-black text-[12px] md:text-[18px]"
 // export const buttonsCartAside = "items-center w-full flex bg-gray-200 p-2 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]"
-

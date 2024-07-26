@@ -1,4 +1,4 @@
-import { filterSelectorStyle } from "../../../styles";
+import { filterSelectorStyle, sorterSelectorStyle } from "../../../styles";
 import { useContext } from "react";
 import { SortContext } from "../../../context";
 
@@ -9,23 +9,23 @@ function Order_Price_Selector({ handlerChange }) {
   return (
     <div>
       <select
-        className={filterSelectorStyle}
+        className={sorterSelectorStyle}
         name="price_selector"
         id="price_selector"
         onChange={handlerChange}
         value={price_selector}
       >
-        <option className="text-[#5a5b5a] text-[12px] md:text-[18px]" value="">
+        <option className="text-[#5a5b5a] text-[12px] md:text-[16px]" value="">
           Precio
         </option>
         <option
-          className="text-[#5a5b5a] text-[12px] md:text-[18px]"
+          className="text-[#5a5b5a] text-[12px] md:text-[16px]"
           value="asc"
         >
           Menor precio
         </option>
         <option
-          className="text-[#5a5b5a] text-[12px] md:text-[18px]"
+          className="text-[#5a5b5a] text-[12px] md:text-[16px]"
           value="desc"
         >
           Mayor precio

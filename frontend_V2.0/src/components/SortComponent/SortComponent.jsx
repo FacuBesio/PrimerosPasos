@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { SortContext } from "../../context/index.js";
 import Order_Price_Selector from "./Sorter_Selectors/Order_Price_Selector.jsx";
 import Order_Rating_Selector from "./Sorter_Selectors/Order_Rating_Selector.jsx";
-import useProducts from "../../hooks/Products/useProducts.js";
+import useLoadEffect from "../../hooks/Effects/useLoadEffect.js";
 
 const SortComponent = () => {
   const { sorter, setSorter } = useContext(SortContext);
-  const { areProductsLoaded } = useProducts();
+  const { loadEffect } = useLoadEffect();
 
-  const sorter_visibility = areProductsLoaded ? "opacity-100 visible" : "opacity-0 invisible";
+  const sorter_visibility = loadEffect ? "opacity-100 visible" : "opacity-0 invisible";
 
   const handlerChange = (event) => {
     const property = event.target.name;

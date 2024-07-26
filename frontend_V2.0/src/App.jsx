@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className={`${appStyle}`}>
-      <header>
+      <header className="w-full" >
         <Hero />
       </header>
 

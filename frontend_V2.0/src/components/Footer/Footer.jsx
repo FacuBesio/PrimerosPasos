@@ -3,10 +3,15 @@ import {
   InstagramOutlined,
   WhatsAppOutlined,
 } from "@ant-design/icons";
+import { footerStyle, invisible, visible } from "../../styles";
+import useLoadEffect_0 from "../../hooks/Effects/useLoadEffect_0";
 
 const Footer = () => {
+  const { loadEffect_0 } = useLoadEffect_0();
+  const footer_visibility = loadEffect_0 ? visible : invisible;
+
   return (
-    <section className="flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white">
+    <section className={`${footerStyle} ${footer_visibility}`}>
       <div className="flex flex-col">
         <a className=" hover:text-[#DBB1BC] text-black/50 " href="/">
           Home

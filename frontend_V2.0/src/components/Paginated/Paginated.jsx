@@ -1,15 +1,18 @@
-import { useContext } from "react";
-import leftArrowIcon from "../../assets/LeftArrow.png";
-import rightArrowIcon from "../../assets/rightArrow.png";
+import { useContext, useEffect } from "react";
 import {
-  next_or_previous_button,
-  firts_or_last_page_button,
+  paginated_button,
   paginatedStyle,
   visible,
   invisible,
 } from "../../styles";
 import { PagesContext } from "../../context";
 import useProducts from "../../hooks/Products/useProducts";
+import {
+  VerticalLeftOutlined,
+  RightOutlined,
+  LeftOutlined,
+  VerticalRightOutlined,
+} from "@ant-design/icons";
 
 const Paginated = () => {
   const { page, setPage } = useContext(PagesContext);
@@ -19,51 +22,53 @@ const Paginated = () => {
   const paginated_visibility = areProductsLoaded ? visible : invisible;
 
   const goToFirstPage = () => {
-    setPage(1);
+    setTimeout(() => {
+      setPage(1);
+    }, 50);
   };
 
   const goToLastPage = () => {
-    setPage(totalPages);
+    setTimeout(() => {
+      setPage(totalPages);
+    }, 50);
   };
 
   const goToPreviousPage = () => {
-    const previousPage = page - 1;
-    if (page === 1) {
-      console.log("no se puede seguir bajando");
-    } else {
+    if (page > 1) {
       setTimeout(() => {
-        setPage(previousPage);
-      }, 150);
+        setPage(page - 1);
+      }, 50);
     }
   };
 
   const goToNextPage = () => {
-    const nextPage = page + 1;
-    if (page === totalPages) {
-      console.log("nose puede seguir avanzando");
-    } else {
+    if (page < totalPages) {
       setTimeout(() => {
-        setPage(nextPage);
-      }, 150);
+        setPage(page + 1);
+      }, 50);
     }
   };
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [page]);
+
   return (
     <div className={`${paginatedStyle} ${paginated_visibility}`}>
-      <button onClick={goToFirstPage} className={firts_or_last_page_button}>
-        ◄◄
+      <button onClick={goToFirstPage} className={paginated_button}>
+        <VerticalRightOutlined />
       </button>
-      <button onClick={goToPreviousPage} className={next_or_previous_button}>
-        ◄
+      <button onClick={goToPreviousPage} className={paginated_button}>
+        <LeftOutlined />
       </button>
       <h4 className="text-black/25 font-semibold text-[12px] md:text-[18px]">
         {page} / {totalPages}
       </h4>
-      <button onClick={goToNextPage} className={next_or_previous_button}>
-        ►
+      <button onClick={goToNextPage} className={paginated_button}>
+        <RightOutlined />
       </button>
-      <button onClick={goToLastPage} className={firts_or_last_page_button}>
-        ►►
+      <button onClick={goToLastPage} className={paginated_button}>
+        <VerticalLeftOutlined />
       </button>
     </div>
   );
