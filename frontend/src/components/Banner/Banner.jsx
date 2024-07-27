@@ -59,7 +59,7 @@ const Banner = () => {
       className="max-h-[660px] h-full w-full"
     >
       {carouselImg.map((car) => (
-        <div key={car} className="w-full h-full bg-red-200  ">
+        <div key={car} className="max-w-full h-full bg-red-200  ">
           <img className=" w-full h-full " src={car.image} alt="" />
         </div>
       ))}

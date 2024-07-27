@@ -68,13 +68,13 @@ const ProfileForm = () => {
   return (
     <div className="w-full rounded-lg flex flex-col items-center p-4 gap-4">
       <form
-        className="w-1/2 bg-[#D3C4E3] rounded-lg p-4  flex flex-col items-center"
+        className="w-1/2 bg-gray-100 rounded-lg p-4 text-[16px] flex flex-col items-center"
         onSubmit={handlerSubmit}
       >
-        <h1 className="text-white font-bold text-xl rounded-md">
+        <h1 className="text-black font-bold text-xl rounded-md">
           DATOS PERSONALES
         </h1>
-        <div className="w-full flex flex-col gap-1 items-center">
+        <div className="w-full flex flex-col items-center">
           <NameAndEmail_input
             handlerChange={handlerChange}
             errors={errors}

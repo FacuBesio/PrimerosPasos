@@ -8,7 +8,7 @@ export const navbarCategoryStyle_Selected = "text-[#Dbb1bc] font-bold hover:text
 export const productBox = "bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] ease-in duration-200 cursor-pointer"
 export const filterTags = "text-[#5a5b5a] text-[12px] md:text-[18px] border-2 bg-white border-white mb-1 w-[100px]  md:w-[190px] rounded-md   lg:block cursor-pointer hover:scale-105 transition-transform duration-150"
 
-export const filterStyles ="text-[#5a5b5a] mt-2 border border-white bg-white rounded-md w-[100px]  md:w-[190px]    text-[12px] md:text-[18px] "
+export const filterStyles ="text-[#5a5b5a] border border-white bg-white rounded-md  p-1 text-[12px] md:text-[18px] w-[120px]"
 
 
 export const mainPages = "bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden"

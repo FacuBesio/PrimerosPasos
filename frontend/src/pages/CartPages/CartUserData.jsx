@@ -1,79 +1,60 @@
 import { Footer, Marquee, Navbar, Title } from "../../components";
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import crossRed from "../../assets/crossRed.png";
-import { Link } from "react-router-dom";
-import getUserById from "../../utils/users/getUserById";
-import handlerFormLabel from "../../utils/cart/formLabelsPersonalInfo";
+import { Link, NavLink } from "react-router-dom";
 import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import createPreference from "../../utils/mercadoPago/createPreference";
-import { MP_ACCESS_TOKEN_PUBLIC } from "../../config/config";
 import { tableStyle } from "../../styles";
-import putUser from "../../utils/users/putUsers";
-
 import UserDataForm from "../../components/UserDataForm/UserDataForm";
 import { CloseCircleOutlined } from "@ant-design/icons";
+import calculateTotal from "../../utils/cart/calculateTotal";
+import updateProfile_InputValidator from "../../utils/cart/updateProfile_InputValidator";
+import disabledSubmitValidator from "../../utils/cart/disabledSubmitValidator";
 
 const CartUserData = () => {
-  initMercadoPago(MP_ACCESS_TOKEN_PUBLIC, { locale: "es-AR" });
-
   const { isAuthenticated } = useAuth0();
   const [cart, setCart] = useState(() =>
     JSON.parse(window.localStorage.getItem("cart"))
   );
+
   const [total, setTotal] = useState(0);
-  const [user, setUser] = useState();
+  const [errors, setErrors] = useState({});
+  const [disabledUpdateButton, setDisabledUpdateButton] = useState(true);
+  const [disabledContinueButton, setDisabledContinueButton] = useState(true);
+  const [userProfile, setUserProfile] = useState({
+    name: "",
+    email: "",
+    country: "",
+    state: "",
+    city: "",
+    street_address: "",
+    street_number: "",
+    ZIP_Code: "",
+    phone: "",
+  });
 
-  const [preferenceId, setPreferenceId] = useState();
+  // console.log("errors: ", errors);
+  // console.log("userProfile: ", userProfile);
+  // console.log("disabledUpdateButton: ", disabledUpdateButton);
 
-  const [updateUser, setUpdateUser] = useState({});
-  const [editable, setEditable] = useState(false);
-
-  const formLabel = handlerFormLabel(updateUser);
+  // console.log("disabledContinueButton: ", disabledContinueButton);z
 
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
-    const calculateTotal = () => {
-      let newTotal = cart.products.reduce(
-        (acc, product) => acc + product.price * product.cantidad,
-        0
-      );
-      setTotal(newTotal);
-    };
-    calculateTotal();
-
-    const userLocalStorage = JSON.parse(
-      window.localStorage.getItem("userData")
-    );
-    getUserById(userLocalStorage.id, (userData) => {
-      setUser(userData);
-      setUpdateUser(userData);
-    });
+    calculateTotal(cart, setTotal);
   }, [cart]);
 
-  const handleBuy = async (products) => {
-    const id = await createPreference(products);
-    id && setPreferenceId(id);
-  };
+  useEffect(() => {
+    updateProfile_InputValidator(
+      userProfile,
+      errors,
+      setErrors,
+      setDisabledUpdateButton
+    );
+  }, [userProfile]);
 
-  const handleModifyUser = async (e) => {
-    e.preventDefault();
-    await putUser(updateUser);
-    setEditable(false);
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setUpdateUser({
-      ...updateUser,
-      [name]: value,
-    });
-  };
-
-  const handleModify = (event) => {
+  const handlerDisabledButton = (event) => {
     event.preventDefault();
-    setEditable(!editable);
+    disabledSubmitValidator(userProfile, errors, setErrors);
   };
 
   return (
@@ -101,14 +82,26 @@ const CartUserData = () => {
           </div>
           <div className="h-[1px] w-[100px] bg-[#ccc]" />
 
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
-              3
-            </div>
-            <Link to={"/cart/delivery"}>
-              <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
-            </Link>
-          </div>
+          <>
+            {isAuthenticated && !disabledContinueButton ? (
+              <div className="flex items-center gap-2 cursor-pointer">
+                <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                  3
+                </div>
+                <Link to={"/cart/delivery"}>
+                  <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 cursor-not-allowed ">
+                <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
+                  3
+                </div>
+                <h1 className="text-md uppercase text-[#ccc]">Datos Envío</h1>
+              </div>
+            )}
+          </>
+
           <div className="h-[1px] w-[100px] bg-[#ccc]" />
 
           <div className="flex items-center gap-2 cursor-pointer">
@@ -118,17 +111,25 @@ const CartUserData = () => {
             <h1 className="text-md uppercase text-[#ccc]">Compra</h1>
           </div>
         </div>
-        <h1 className="text-center py-8 font-semibold text-[#5a5b5a] px-4">
+        <h1 className="text-center py-4 font-semibold text-[#5a5b5a] px-4">
           Revisa tus datos personales, recordá que todos los campos deben estar
           completos para continuar...
         </h1>
       </div>
 
       <div className="flex items-start bg-white justify-center p-4 gap-2">
-        <UserDataForm />
+        <UserDataForm
+          errors={errors}
+          setErrors={setErrors}
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+          disabledUpdateButton={disabledUpdateButton}
+          setDisabledUpdateButton={setDisabledUpdateButton}
+          setDisabledContinueButton={setDisabledContinueButton}
+        />
 
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col bg-gray-100  p-2 px-4 rounded-md h-fit border ">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-col bg-gray-100 p-2 px-4 rounded-md h-fit border ">
             <div>
               <table className="responsive-table text-center w-full relative">
                 <thead>
@@ -143,7 +144,7 @@ const CartUserData = () => {
                     cart.products.map((product) => (
                       <tr
                         key={product.id}
-                        className="border-b border-gray-200 relative font-bold"
+                        className="border-b border-gray-200 relative font-semibold"
                       >
                         <td
                           className="flex items-center gap-5 py-3 px-5"
@@ -179,7 +180,7 @@ const CartUserData = () => {
                                 user
                               )
                             }
-                            className="transition-transform duration-300 hover:scale-110"
+                            className="transition-transform duration-150 hover:scale-105"
                           >
                             <CloseCircleOutlined className="bg-white text-xl rounded-full" />
                           </button>
@@ -195,16 +196,28 @@ const CartUserData = () => {
                   )}
                 </tbody>
               </table>
+              <h2 className=" text-center text-[16x] font-bold py-2">
+                Total : ${total}
+              </h2>
             </div>
           </div>
 
           <div className="flex flex-col bg-gray-100 h-fit p-4 rounded-md gap-4 justify-center items-center text-[12px] md:text-[18px] font-bold ">
-            <Link
-              to={"/cart/delivery"}
-              className="px-8 py-3 text-[12px] md:text-[18px] bg-slate-400 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-500 focus:outline-none"
-            >
-              Continuar
-            </Link>
+            {disabledContinueButton ? (
+              <button
+                onClick={handlerDisabledButton}
+                className="px-8 py-3 text-[12px] md:text-[18px] bg-stone-300 bg-opacity-90 text-white font-bold rounded-md hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-stone-200"
+              >
+                Completar datos para continuar
+              </button>
+            ) : (
+              <NavLink
+                to="/cart/delivery"
+                className="px-8 py-3 text-[12px] md:text-[18px] bg-slate-400 bg-opacity-90 text-white font-bold rounded-md hover:bg-green-500"
+              >
+                Continuar
+              </NavLink>
+            )}
 
             <Link
               className="px-6 py-3 mb-2 text-[12px] md:text-[18px] bg-red-200 text-white font-bold rounded-md hover:bg-red-300

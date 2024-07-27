@@ -30,8 +30,8 @@ const ProductComponent = ({ loaderStates }) => {
   };
   return (
     <section className="w-full ">
-      <section className="flex  ">
-        <div className="flex items-center   flex-col pl-2    ">
+      <section className="flex">
+        <div className="flex items-center flex-col pl-2">
           <div
             onClick={handlerFilterActive}
             className={`${flagFilter == true ? "w-[146px] md:w-[220px]" : "w-8"} border border-gray opacity-70 transition-all duration-500 ease-in-out transform rounded-r-md fixed flex justify-center items-center  top-1/3 left-0 bg-red-200 h-[460px] md:h-[560px] z-50 `}

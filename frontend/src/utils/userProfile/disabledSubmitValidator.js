@@ -1,4 +1,3 @@
-
 function disabledSubmitValidator(user, errors, setErrors) {
   const obligatoryField = "*Campo obligatorio";
   let errors_aux = { ...errors };
@@ -10,9 +9,6 @@ function disabledSubmitValidator(user, errors, setErrors) {
   if (user.email === "") {
     errors_aux = { ...errors_aux, email: true, email_message: obligatoryField };
   }
-
-
-  
 
   setErrors(errors_aux);
 }
