@@ -66,13 +66,13 @@ const Tags = () => {
   }, [setFilterSizes, setSizesTag, setPage]);
 
   return (
-    <div className="flex gap-2 w-[90px]">
+    <div className="  ">
       {searchBarTag ? (
         <h2 onClick={handleRemoveSearchBarTag} className={filterTags}>
           {searchBarTag}
         </h2>
       ) : (
-        <div className="hidden "></div>
+        <div className=" "></div>
       )}
 
       {categoryTag !== "" ? (
@@ -80,7 +80,7 @@ const Tags = () => {
           {categoryTag}
         </h2>
       ) : (
-        <div className="hidden "></div>
+        <div className=" "></div>
       )}
 
       {brandsTag ? (
@@ -88,7 +88,7 @@ const Tags = () => {
           {brandsTag}
         </h2>
       ) : (
-        <div className="hidden"></div>
+        <div className=""></div>
       )}
 
       {colorsTag ? (
@@ -99,7 +99,7 @@ const Tags = () => {
           {colorsTag}
         </h2>
       ) : (
-        <div className="hidden"></div>
+        <div className=""></div>
       )}
 
       {pricesTag.length === 2 && pricesTag[1] > 0 ? (
@@ -107,7 +107,7 @@ const Tags = () => {
           {pricesTag.join(" - ")}
         </h2>
       ) : (
-        <div className="hidden "></div>
+        <div className=" "></div>
       )}
      
       {sizesTag ? (
@@ -118,7 +118,7 @@ const Tags = () => {
           {sizesTag}
         </h2>
       ) : (
-        <div className="hidden"></div>
+        <div className=""></div>
       )}
     </div>
   );

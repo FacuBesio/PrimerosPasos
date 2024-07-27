@@ -113,12 +113,12 @@ const Filter = () => {
 
   const filterPriceInputs = useMemo(
     () => (
-      <div className="flex-col whitespace-nowrap hidden lg:flex gap-2">
+      <div className="flex-col   lg:flex gap-2">
         <h2 className={filterStyles}>Precio</h2>
-        <form className="flex flex-col gap-2" action="">
+        <form className="flex flex-col " action="">
           <label htmlFor="">
             <input
-              className="max-w-[90px] text-center border rounded-md border-white"
+              className="  w-[100px] mt-1  md:w-[190px] text-center border rounded-md border-white text-[12px] md:text-[18px]"
               type="text"
               placeholder="$ mín"
               value={filterPrices[0] === 0 ? "" : filterPrices[0]}
@@ -127,7 +127,7 @@ const Filter = () => {
           </label>
           <label htmlFor="">
             <input
-              className="max-w-[90px] text-center rounded-md border border-white"
+              className=" w-[100px]  md:w-[190px] text-center rounded-md border border-white text-[12px] md:text-[18px]"
               type="text"
               placeholder="$ máx"
               value={filterPrices[1] === 0 ? "" : filterPrices[1]}
@@ -196,7 +196,7 @@ const Filter = () => {
   );
 
   return (
-    <section className="left-side flex flex-col  gap-2 w-[90px]">
+    <section className="flex flex-col   w-[100px]  md:w-[190px]  gap-2   ">
       {filterPriceInputs}
 
       <select
@@ -220,7 +220,7 @@ const Filter = () => {
       </select>
 
       <select
-        className="text-[#5a5b5a] border mb-2 border-white bg-white rounded-md w-[90px]  px-1 capitalize text-[12px] md:text-[18px]"
+        className="text-[#5a5b5a] border mb-2 border-white bg-white rounded-md  px-1 capitalize text-[12px] md:text-[18px]"
         name="filterBySizes"
         id="filterBySizes"
         onChange={onSizeChange}

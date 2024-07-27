@@ -20,11 +20,14 @@ const CartAside = ({ handleButtonCart }) => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  useEffect(() => {
-    setIsCartOpen(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsCartOpen(true);
+  //   document.body.style.overflow = "hidden"; 
+  //   return () => {
+  //     document.body.style.overflow = "auto"; 
+  //   };
+  // }, []);
 
-  // Manejar el clic en el fondo difuminado
   const handleBackdropClick = (event) => {
     if (event.target === event.currentTarget) {
       setIsCartOpen(false);
@@ -33,20 +36,18 @@ const CartAside = ({ handleButtonCart }) => {
   };
 
   return (
-    <div className="z-[9999] text-[12px] md:text-[18px]">
+    <div className="z-[9999] text-[12px] md:text-[18px]  ">
       <div
-        className="fixed left-0 top-0 h-screen w-[100%] bg-black bg-opacity-50 backdrop-blur-sm transition-all overflow-auto"
+        className=" fixed left-0 top-0 h-screen  w-[100vw] bg-black bg-opacity-50 backdrop-blur-sm transition-all"
         onClick={handleBackdropClick}
       >
         <div
           onClick={(e) => e.stopPropagation()}
-          className={`fixed py-2 items-center right-0 top-0  w-[80%] sm:w-[70%] md:w-[50%] lg:w-[25%] bg-[#eee] px-2 text-center flex flex-col gap-2 transition-transform duration-500 transform ${
-            isCartOpen ? "translate-x-0" : "translate-x-full"
-          } max-h-screen overflow-y-auto overflow-x-hidden`}
+          className={`fixed overflow-y-scroll py-2 items-center h-screen  right-0 top-0 w-[80%] sm:w-[70%] md:w-[50%] lg:w-[25%] bg-[#eee] px-2 text-center flex flex-col gap-2 transition-transform duration-500 transform`}
         >
           <div className="flex flex-col items-center">
-            <div className="relative w-10 h-10 flex  justify-center">
-              <div className="absolute top-0 right-0 w-5 h-5 bg-red-200 rounded-full flex  justify-center">
+            <div className="relative w-10 h-10 flex justify-center">
+              <div className="absolute top-0 right-0 w-5 h-5 bg-red-200 rounded-full flex justify-center">
                 <p>{cart.products.length > 0 ? cart.products.length : "0"}</p>
               </div>
               <img src={CartIcon} className="w-10" />
@@ -81,7 +82,7 @@ const CartAside = ({ handleButtonCart }) => {
                 alt=""
               />
               <div className="flex flex-col justify-center items-center gap-1">
-                <h3 className="  mb-2 mr-2 font-semibold">
+                <h3 className="mb-2 mr-2 font-semibold">
                   {product.name}
                 </h3>
                 <h3 className="">Stock: {product.stock}</h3>
@@ -99,7 +100,7 @@ const CartAside = ({ handleButtonCart }) => {
             <Link className={buttonsCartAside} to="/cart">
               Realizar compra
             </Link>
-            <button className={buttonsCartAside} onClick={() => setIsCartOpen(false)}>
+            <button className={buttonsCartAside} onClick={handleBackdropClick}>
               Volver al menú
             </button>
           </div>
