@@ -12,12 +12,12 @@ const Products = () => {
   console.log("allProducts: ", allProducts);
   console.log("areProductsLoaded: ", areProductsLoaded);
 
-  const product_visibility = areProductsLoaded
+  const products_visibility = areProductsLoaded
     ? visible
     : invisible;
 
   return (
-    <div className={`${productsStyle} ${product_visibility}`}>
+    <div className={`${productsStyle} ${products_visibility}`}>
       {areProductsLoaded && allProducts.totalResults > 0 && (
         <Products_Iterator allProducts={allProducts} />
       )}

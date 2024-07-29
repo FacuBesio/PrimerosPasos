@@ -14,6 +14,16 @@ export const invisible = "opacity-0 invisible";
 export const appStyle =
   "min-w-screen min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6]";
 
+//? ADMIN
+// NavAside
+export const selected =
+  "w-10 h-10 scale-125 transition-transform duration-200 rounded-md p-1 bg-red-300 drop-shadow-md hover:drop-shadow-xl";
+export const not_Selected =
+  "w-10 h-10 hover:scale-125 hover:bg-red-100 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl";
+// Products_Table
+export const th_style =
+  "p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]";
+
 //? CONTACT US
 export const contactUsStyle = `p-8 border-t-4 border-white ${transition_200}`;
 export const contactUs_position_up = "mt-0";
@@ -28,8 +38,8 @@ export const filterSelectorStyle =
 export const filterInputsStyle =
   "text-[#5a5b5a] border border-white bg-white rounded-md p-2 text-[12px] md:text-[18px] w-full";
 
-  //? FOOTER
-  export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white ${transition_200}`;
+//? FOOTER
+export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white ${transition_200}`;
 
 //? HOME
 export const homeStyle = `border-t-4 border-t-white flex-grow ${transition_200}`;
@@ -37,8 +47,7 @@ export const home_position_up = "mt-0";
 export const home_position_down = "mt-9";
 
 //? NAVBAR
-export const navBarStyle =
-  "flex items-center flex-col justify-center md:flex-row gap-2 pb-2";
+export const navBarStyle = `flex items-center flex-col justify-center md:flex-row gap-2 pb-2 ${transition_200}`;
 // MAIN LINKS
 export const mainLink_style = `md:text-lg hover:text-[#DBB1BC] hover:scale-105 ${transition_200}`;
 export const mainLinkSelected_style = `md:text-lg text-[#DBB1BC] font-bold hover:text-[#DBB1BC] scale-105 ${transition_200}`;
