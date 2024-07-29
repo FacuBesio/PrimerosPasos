@@ -4,15 +4,18 @@ import isAdminIcon from "../../assets/adminIcon.png";
 import MainLinks from "../NavBar_Links/MainLinks";
 import CategoryLinks from "../NavBar_Links/CategoryLinks";
 import SearchBar from "../SearchBar/SearchBar";
-import { navBarStyle } from "../../styles";
+import { invisible, navBarStyle, visible } from "../../styles";
+import useLoadEffect from "../../hooks/Effects/useLoadEffect";
 
 const Navbar = () => {
   const location = useLocation();
   const showCategory = location.pathname === "/shop" ? true : false;
+  const { loadEffect } = useLoadEffect();
+  const navBar_visibility = loadEffect ? visible : invisible;
 
   return (
     <div>
-      <nav className={navBarStyle}>
+      <nav className={`${navBarStyle} ${navBar_visibility}`}>
         <MainLinks />
         <SearchBar />
         <div className="flex justify-center items-center gap-2">

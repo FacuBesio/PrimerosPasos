@@ -16,11 +16,11 @@ const Footer = () => {
         <a className=" hover:text-[#DBB1BC] text-black/50 " href="/">
           Home
         </a>
+        <a className=" hover:text-[#DBB1BC] text-black/50" href="/shop">
+          Shop
+        </a>
         <a className=" hover:text-[#DBB1BC] text-black/50" href="/contacto">
           Contacto
-        </a>
-        <a className=" hover:text-[#DBB1BC] text-black/50" href="/shop">
-          Categorias
         </a>
       </div>
 
