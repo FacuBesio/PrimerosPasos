@@ -6,7 +6,6 @@ import subcategories from "../../../assets/subcategories.png";
 import compras from "../../../assets/compras.png";
 import dashboard from "../../../assets/dashboard.png";
 import users from "../../../assets/users.png";
-import adminIcon from "../../../assets/adminIcon.png";
 import {
   invisible,
   not_Selected,
@@ -29,7 +28,7 @@ const NavAside = () => {
         <Tooltip title="Inicio" placement="right">
           <NavLink
             to="/"
-            className={({ isActive }) => (isActive ? `${selected}` : `w-10 h-10 hover:scale-125 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl hover:bg-slate-200`)}
+            className={({ isActive }) => (isActive ? `${selected}` : `w-10 h-10 scale-105 hover:scale-125 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl hover:bg-slate-200`)}
           >
             <button>
               <img src={home_icon} alt="Home" />
@@ -38,7 +37,7 @@ const NavAside = () => {
         </Tooltip>
       </div>
 
-      <div className="flex flex-col items-center pt-14 text-white gap-5">
+      <div className="flex flex-col items-center pt-12 text-white gap-5">
         <Tooltip title="Products" placement="right">
           <NavLink
             to="/admin/manageProducts"
@@ -65,15 +64,6 @@ const NavAside = () => {
             <img src={compras} alt="Compras" />
           </NavLink>
         </Tooltip>
-
-        {/* <Tooltip title="Products" placement="right">
-          <NavLink
-            to="/admin/manageProducts"
-            className={({ isActive }) => (isActive ? selected : not_Selected)}
-          >
-            <img src={products} alt="Products" />
-          </NavLink>
-        </Tooltip> */}
 
         <Tooltip title="Categories" placement="right">
           <NavLink

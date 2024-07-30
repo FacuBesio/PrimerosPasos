@@ -23,6 +23,8 @@ export const not_Selected =
 // Products_Table
 export const th_style =
   "p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]";
+export const td_style =
+  "p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]";
 
 //? CONTACT US
 export const contactUsStyle = `p-8 border-t-4 border-white ${transition_200}`;
@@ -52,13 +54,13 @@ export const navBarStyle = `flex items-center flex-col justify-center md:flex-ro
 export const mainLink_style = `md:text-lg hover:text-[#DBB1BC] hover:scale-105 ${transition_200}`;
 export const mainLinkSelected_style = `md:text-lg text-[#DBB1BC] font-bold hover:text-[#DBB1BC] scale-105 ${transition_200}`;
 // CATEGORY LINKS
-export const categoryLinksStyle = `flex justify-start md:justify-center items-center w-full gap-4 overflow-x-auto text-[12px] md:text-[18px] overflow-y-hidden ${transition_300}`;
+export const categoryLinksStyle = `flex justify-start md:justify-center items-center w-full gap-4 overflow-x-auto text-[12px] md:text-[18px] overflow-y-hidden ${transition_200}`;
 export const categoryLink_style = `hover:text-[#Dbb1bc] ${transition_200}`;
 export const categoryLinkSelected_style = `text-[#Dbb1bc] font-bold hover:text-[#DBB1BC] ${transition_200}`;
 
 //? PAGINATED
 export const paginatedStyle =
-  "flex justify-center items-center gap-6 pt-2 pb-4 px-4";
+  "flex justify-center items-center gap-6 px-4 mt-2";
 export const paginated_button = `hover:shadow-xl hover:shadow-[#fdd9e3] hover:scale-90 border border-white px-1 rounded-md bg-white text-[#5a5b5a] text-[12px] text-black/50 md:text-[18px] ${transition_200}`;
 
 //? PRODUCTS

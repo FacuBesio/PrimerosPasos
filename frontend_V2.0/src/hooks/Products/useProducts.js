@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import getProducts from "../../services/Products/getProducts";
 import {
+  AdminContext,
   CategoriesContext,
   FilterContext,
   PagesContext,
@@ -10,6 +11,7 @@ import {
 } from "../../context";
 
 const useProducts = () => {
+  const { productRemoved, setProductRemoved } = useContext(AdminContext);
   const { category } = useContext(CategoriesContext);
   const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
@@ -32,9 +34,20 @@ const useProducts = () => {
     setTimeout(() => {
       getProducts(querysInput).then((data) => setAllProducts(data));
     }, 200);
-    return () => setAllProducts({ products: [] });
+    return () => {
+      setAllProducts({ products: [] });
+    };
   }, [category, filter, page, serach, sorter]);
 
+  useEffect(() => {
+    if (productRemoved) {
+      setAllProducts({ products: [] });
+      setTimeout(() => {
+        getProducts(querysInput).then((data) => setAllProducts(data));
+      }, 200);
+      setProductRemoved(false);
+    }
+  }, [productRemoved]);
 
   useEffect(() => {
     setPage(1);

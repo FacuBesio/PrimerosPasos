@@ -17,7 +17,6 @@ function App() {
     adminNavegationActive = true;
   }
 
-
   return (
     <div className={`${appStyle}`}>
       {!adminNavegationActive && (

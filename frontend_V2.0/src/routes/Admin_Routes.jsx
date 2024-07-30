@@ -4,6 +4,7 @@ import NavAside from "../components/DashboardAdmin/NavAside/NavAside";
 import Title from "../components/Title/Title";
 import { useContext, useEffect } from "react";
 import { ShopContext } from "../context";
+import CreateNewProduct from "../components/DashboardAdmin/Dashboard_Products/CreateProduct/CreateNewProduct";
 
 const Admin_Routes = () => {
   const { setWasShopActive } = useContext(ShopContext);
@@ -16,13 +17,13 @@ const Admin_Routes = () => {
     <div className="flex flex-col min-h-screen">
       <main className="flex-grow flex w-full bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6] overflow-hidden">
         <NavAside />
-        <section className="w-full pb-2 px-6 flex flex-col gap-4">
+        <section className="w-full px-6 pb-6 flex flex-col gap-2">
           <Title />
           <Routes>
             //? PRODUCTS
             <Route path="/manageProducts/" element={<ManageProducts />} />
-            {/* <Route path="/admin/manageProducts/create" element={<CreateNewProduct />} />
-            <Route path="/admin/manageProducts/update/:id" element={<UpdateProduct />} /> */}
+            <Route path="/manageProducts/create" element={<CreateNewProduct />} />
+            {/* <Route path="/admin/manageProducts/update/:id" element={<UpdateProduct />} /> */}
             //? CATEGORIES
             {/* <Route path="/admin/manageCategories/*" element={<CategoriesDashboard />} />
             <Route path="/admin/manageSubcategories/*" element={<SubcategoriesDashboard />} />

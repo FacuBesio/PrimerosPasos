@@ -1,3 +1,4 @@
+import { AdminProvider } from "./AdminContext";
 import { CategoriesProvider } from "./CategoriesContext";
 import { FilterProvider } from "./FilterContext";
 import { PagesProvider } from "./PagesContext";
@@ -8,19 +9,21 @@ import { TagsProvider } from "./TagsContext";
 
 const AppProvider = ({ children }) => {
   return (
-    <CategoriesProvider>
-      <FilterProvider>
-        <PagesProvider>
-          <SearchProvider>
-            <ShopProvider>
-              <SortProvider>
-                <TagsProvider>{children}</TagsProvider>
-              </SortProvider>
-            </ShopProvider>
-          </SearchProvider>
-        </PagesProvider>
-      </FilterProvider>
-    </CategoriesProvider>
+    <AdminProvider>
+      <CategoriesProvider>
+        <FilterProvider>
+          <PagesProvider>
+            <SearchProvider>
+              <ShopProvider>
+                <SortProvider>
+                  <TagsProvider>{children}</TagsProvider>
+                </SortProvider>
+              </ShopProvider>
+            </SearchProvider>
+          </PagesProvider>
+        </FilterProvider>
+      </CategoriesProvider>
+    </AdminProvider>
   );
 };
 
