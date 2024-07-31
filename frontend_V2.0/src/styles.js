@@ -10,6 +10,13 @@ export const transition_500 =
 export const visible = "opacity-100 visible";
 export const invisible = "opacity-0 invisible";
 
+//* BUTTONS
+export const back_button =
+  "px-6 py-3 text-[12px] md:text-[18px] bg-red-300 text-white font-bold rounded-md hover:bg-red-400 hover:ring-red-400 focus:outline-none focus:ring-2 focus:ring-red-200";
+export const enabled_button =
+  "px-8 py-3 bg-green-500 bg-opacity-90 text-white text-[12px] md:text-[18px] font-bold rounded-md hover:bg-green-600 hover:scale-105 focus:outline-none focus:ring-2 focus:bg-green-500 focus:ring-green-500 focus:scale-95";
+  export const disabled_button = "px-8 py-3 bg-slate-400 text-[12px] md:text-[18px] text-white font-bold rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200"
+
 //? APP
 export const appStyle =
   "min-w-screen min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6]";

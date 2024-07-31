@@ -12,34 +12,37 @@ const CategoriesAndImage_input = ({ handlerChange, newProduct, errors }) => {
 
   return (
     <div className="w-full px-4 pt-1 pb-0 flex gap-10">
-      <div className="w-1/2 flex flex-col gap-2 text-[12px] md:text-[18px]">
-        <label htmlFor="category" className="w-full text-white font-bold">
-          Categoría
-        </label>
-        <select
-          id="category"
-          name="category"
-          className="w-full px-4 py-2 text-[12px] md:text-[18px] bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
-          onChange={handlerChange}
-          value={newProduct.category}
-        >
-          <option
-            value=""
-            className="bg-gray-300 rounded-md hover:bg-gray-400 bg-opacity-75"
-            disabled
+      <div className="w-1/2 flex flex-col gap-4 text-[12px] md:text-[18px]">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="category" className="w-full text-white font-bold">
+            Categoría
+          </label>
+          <select
+            id="category"
+            name="category"
+            className="w-full px-4 py-2 text-[12px] md:text-[18px] bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+            onChange={handlerChange}
+            value={newProduct.category}
           >
-            Seleccioná una categoría...
-          </option>
-          {allCategories?.categories?.map((category) => {
-            return (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            );
-          })}
-        </select>
+            <option
+              value=""
+              className="bg-gray-300 rounded-md hover:bg-gray-400 bg-opacity-75"
+              disabled
+            >
+              Seleccioná una categoría...
+            </option>
+            {allCategories?.categories?.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
         {selectedCategory?.subcategories?.length > 0 && (
-          <div>
+          <div className="flex flex-col gap-2">
             <label
               htmlFor="subcategory"
               className="w-full text-white font-bold"

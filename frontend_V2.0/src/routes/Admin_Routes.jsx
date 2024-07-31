@@ -1,10 +1,11 @@
+import { useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import ManageProducts from "../components/DashboardAdmin/Dashboard_Products/ManageProducts/ManageProducts";
 import NavAside from "../components/DashboardAdmin/NavAside/NavAside";
 import Title from "../components/Title/Title";
-import { useContext, useEffect } from "react";
+import CreateNewProduct from "../components/DashboardAdmin/Dashboard_Products/CreateNewProduct";
+import ManageProducts from "../components/DashboardAdmin/Dashboard_Products/ManageProducts";
+import UpdateProduct from "../components/DashboardAdmin/Dashboard_Products/UpdateProduct";
 import { ShopContext } from "../context";
-import CreateNewProduct from "../components/DashboardAdmin/Dashboard_Products/CreateProduct/CreateNewProduct";
 
 const Admin_Routes = () => {
   const { setWasShopActive } = useContext(ShopContext);
@@ -23,7 +24,7 @@ const Admin_Routes = () => {
             //? PRODUCTS
             <Route path="/manageProducts/" element={<ManageProducts />} />
             <Route path="/manageProducts/create" element={<CreateNewProduct />} />
-            {/* <Route path="/admin/manageProducts/update/:id" element={<UpdateProduct />} /> */}
+            <Route path="/manageProducts/update/:id" element={<UpdateProduct />} />
             //? CATEGORIES
             {/* <Route path="/admin/manageCategories/*" element={<CategoriesDashboard />} />
             <Route path="/admin/manageSubcategories/*" element={<SubcategoriesDashboard />} />
