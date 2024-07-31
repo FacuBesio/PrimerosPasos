@@ -11,7 +11,7 @@ import {
 } from "../../context";
 
 const useProducts = () => {
-  const { productRemoved, setProductRemoved } = useContext(AdminContext);
+  const { itemRemoved, setItemRemoved } = useContext(AdminContext);
   const { category } = useContext(CategoriesContext);
   const { filter } = useContext(FilterContext);
   const { page, setPage } = useContext(PagesContext);
@@ -40,14 +40,14 @@ const useProducts = () => {
   }, [category, filter, page, serach, sorter]);
 
   useEffect(() => {
-    if (productRemoved) {
+    if (itemRemoved) {
       setAllProducts({ products: [] });
       setTimeout(() => {
         getProducts(querysInput).then((data) => setAllProducts(data));
       }, 200);
-      setProductRemoved(false);
+      setItemRemoved(false);
     }
-  }, [productRemoved]);
+  }, [itemRemoved]);
 
   useEffect(() => {
     setPage(1);

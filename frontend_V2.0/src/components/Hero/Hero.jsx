@@ -1,7 +1,3 @@
-// import Title from "../Title/Title";
-// import Marquee from "../Marquee/Marquee";
-// import Navbar from "../Navbar/Navbar";
-
 import Marquee from "../Marquee/Marquee";
 import Title from "../Title/Title";
 import Navbar from "../Navbar/Navbar";

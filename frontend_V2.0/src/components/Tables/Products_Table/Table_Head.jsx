@@ -1,10 +1,6 @@
-import useLoadEffect from "../../../hooks/Effects/useLoadEffect";
-import { invisible, th_style, transition_200, visible } from "../../../styles";
+import { th_style, transition_200 } from "../../../styles";
 
 const Table_Head = () => {
-  const { loadEffect } = useLoadEffect();
-
-  const tr_visibility = loadEffect ? visible : invisible;
 
   return (
     <>

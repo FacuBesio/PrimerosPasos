@@ -1,25 +1,25 @@
 import { useContext } from "react";
 import { Modal } from "antd";
 import { AdminContext } from "../../context";
-import deleteProductById from "../../services/Products/deleteProductById";
-import showDeleteNotification from "../../utils/products/showDeleteNotification";
+import showDeleteNotification from "../../utils/subcategories/showDeleteNotification";
+import deleteSubcategoryById from "../../services/Subcategories/deleteSubcategoryById";
 
-const useDeleteProduct = () => {
+const useDeleteSubcategory = () => {
   const { setItemRemoved } = useContext(AdminContext);
 
   const confirmDeleteAccion = async (id, name) => {
-    const response = await deleteProductById(id);
+    const response = await deleteSubcategoryById(id);
     if (response.removed) {
       setItemRemoved(true);
       showDeleteNotification(
-        `El producto '${name}' se ha eliminado correctamente.`
+        `La subcategoría '${name}' se ha eliminado correctamente.`
       );
     }
   };
 
   const deleteWarning = (id, name) => {
     Modal.confirm({
-      title: "¿Estás seguro de que quieres eliminar este producto?",
+      title: "¿Estás seguro de que quieres eliminar esta subcategoría?",
       content: "Esta acción no se puede deshacer.",
       okText: "Sí",
       okType: "danger",
@@ -33,4 +33,4 @@ const useDeleteProduct = () => {
   return { deleteWarning };
 };
 
-export default useDeleteProduct;
+export default useDeleteSubcategory;

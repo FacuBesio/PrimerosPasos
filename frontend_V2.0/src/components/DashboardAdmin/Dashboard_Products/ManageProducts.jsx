@@ -1,6 +1,6 @@
 import FilterBar from "../FilterBar/FilterBar";
 import Paginated from "../../Paginated/Paginated";
-import Products_Table from "../Products_Table/Products_Table";
+import Products_Table from "../../Tables/Products_Table/Products_Table";
 import { transition_200 } from "../../../styles";
 
 const ManageProducts = () => {
