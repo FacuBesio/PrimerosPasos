@@ -3,7 +3,7 @@ import useUpdateProduct from "../../../../hooks/Products/useUpdateProduct";
 import eventValidator from "../../../../utils/products/eventValidator";
 import image_validator from "../../../../utils/products/image_validator";
 import putProducts from "../../../../services/Products/putProducts";
-import showUpdateNotification from "../../../../../../frontend/src/utils/products/showUpdateNotification";
+import showUpdateNotification from "../../../../utils/products/showUpdateNotification";
 import Enabled_input from "./InputsForm/Enabled_input";
 import BrandAndName_input from "./InputsForm/BrandAndName_input";
 import ColorAndSize_input from "./InputsForm/ColorAndSize_input";

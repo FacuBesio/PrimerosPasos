@@ -8,6 +8,10 @@ import UpdateProduct from "../components/DashboardAdmin/Dashboard_Products/Updat
 import ManageCategories from "../components/DashboardAdmin/Dashboard_Categories/ManageCategories";
 import { ShopContext } from "../context";
 import ManageSubcategories from "../components/DashboardAdmin/Dashboard_Subcategories/ManageSubcategories";
+import CreateNewCategory from "../components/DashboardAdmin/Dashboard_Categories/CreateNewCategory";
+import CreateNewSubcategory from "../components/DashboardAdmin/Dashboard_Subcategories/CreateNewSubcategory";
+import UpdateCategory from "../components/DashboardAdmin/Dashboard_Categories/UpdateCategory";
+import UpdateSubcategory from "../components/DashboardAdmin/Dashboard_Subcategories/UpdateSubcategory";
 
 const Admin_Routes = () => {
   const { setWasShopActive } = useContext(ShopContext);
@@ -35,9 +39,27 @@ const Admin_Routes = () => {
             />
             //? CATEGORIES
             <Route path="/manageCategories/" element={<ManageCategories />} />
+            <Route
+              path="/manageCategories/create"
+              element={<CreateNewCategory />}
+            />
+             <Route
+              path="/manageCategories/update/:id"
+              element={<UpdateCategory />}
+            />
             //? SUBCATEGORIES
-            <Route path="/manageSubcategories/" element={<ManageSubcategories />} />
-  
+            <Route
+              path="/manageSubcategories/"
+              element={<ManageSubcategories />}
+            />
+            <Route
+              path="/manageSubcategories/create"
+              element={<CreateNewSubcategory />}
+            />
+             <Route
+              path="/manageSubcategories/update/:id"
+              element={<UpdateSubcategory />}
+            />
             {/* <Route path="/admin/managePurchases/*" element={<PurchasesDashboard />} /> */}
             {/* <Route path="/admin/manageUsers/*" element={<UsersDashboard />} /> */}
           </Routes>

@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import cartIcon from "../../assets/cart.png";
 import isAdminIcon from "../../assets/adminIcon.png";
 import MainLinks from "../NavBar_Links/MainLinks";
@@ -6,12 +6,22 @@ import CategoryLinks from "../NavBar_Links/CategoryLinks";
 import SearchBar from "../SearchBar/SearchBar";
 import { invisible, navBarStyle, visible } from "../../styles";
 import useLoadEffect from "../../hooks/Effects/useLoadEffect";
+import { useContext } from "react";
+import { CategoriesContext, TagsContext } from "../../context";
 
 const Navbar = () => {
+  const { setCategory, setSelectedCategory } = useContext(CategoriesContext);
+  const { setCategoryTag } = useContext(TagsContext);
   const location = useLocation();
   const showCategory = location.pathname === "/shop" ? true : false;
   const { loadEffect } = useLoadEffect();
   const navBar_visibility = loadEffect ? visible : invisible;
+
+  const handlerResetCategory = () => {
+    setCategory("");
+    setSelectedCategory("");
+    setCategoryTag("");
+  };
 
   return (
     <div>
@@ -35,13 +45,13 @@ const Navbar = () => {
             />
           </Link>
 
-          <Link to="/admin/manageProducts">
+          <NavLink to="/admin/manageProducts" onClick={handlerResetCategory}>
             <img
               src={isAdminIcon}
               alt="Admin Icon"
               className="w-9 h-9 cursor-pointer my-1 rounded-full hover:scale-110 transition-transform duration-200"
             />
-          </Link>
+          </NavLink>
         </div>
       </nav>
 

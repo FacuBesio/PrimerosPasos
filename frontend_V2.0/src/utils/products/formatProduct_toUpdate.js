@@ -1,6 +1,7 @@
 const formatProduct_toUpdate = (product) => {
   const {
     id,
+    enabled,
     brand,
     name,
     color,
@@ -21,6 +22,7 @@ const formatProduct_toUpdate = (product) => {
 
   const current_product = {
     id,
+    enabled,
     brand,
     name,
     color,

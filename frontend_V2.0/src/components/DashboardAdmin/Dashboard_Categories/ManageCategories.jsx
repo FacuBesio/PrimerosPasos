@@ -19,7 +19,7 @@ const ManageCategories = () => {
     >
       <Link
         className={`${add_button} w-fit`}
-        to={"/admin/manageProducts/create"}
+        to={"/admin/manageCategories/create"}
       >
         <label htmlFor="addCategory" className={add_button_label}>
           + Agregar Categoría

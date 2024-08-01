@@ -3,7 +3,7 @@ import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import update_icon from "../../../assets/update_icon.png";
 import garbage from "../../../assets/garbage.png";
 import useDeleteProduct from "../../../hooks/Products/useDeleteProduct";
-import { td_style } from "../../../styles";
+import { icon_style, td_style } from "../../../styles";
 
 const Table_Products_Iterator = ({ allProducts }) => {
   const { deleteWarning } = useDeleteProduct();
@@ -57,7 +57,7 @@ const Table_Products_Iterator = ({ allProducts }) => {
                 <img
                   src={update_icon}
                   alt="Update"
-                  className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                  className={icon_style}
                 />
               </button>
             </Link>
@@ -67,7 +67,7 @@ const Table_Products_Iterator = ({ allProducts }) => {
               <img
                 src={garbage}
                 alt="Eliminar"
-                className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                className={icon_style}
               />
             </button>
           </td>

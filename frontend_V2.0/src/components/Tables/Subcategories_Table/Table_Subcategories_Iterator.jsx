@@ -3,6 +3,7 @@ import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import update_icon from "../../../assets/update_icon.png";
 import garbage from "../../../assets/garbage.png";
 import useDeleteSubcategory from "../../../hooks/Subcategories/useDeleteSubcategory";
+import { icon_style } from "../../../styles";
 // import { td_style } from "../../../styles";
 
 const Table_Subcategories_Iterator = ({ allSubcategories }) => {
@@ -48,7 +49,7 @@ const Table_Subcategories_Iterator = ({ allSubcategories }) => {
                   <img
                     src={update_icon}
                     alt="Update"
-                    className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                    className={icon_style}
                   />
                 </button>
               </Link>
@@ -60,7 +61,7 @@ const Table_Subcategories_Iterator = ({ allSubcategories }) => {
                 <img
                   src={garbage}
                   alt="Eliminar"
-                  className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                  className={icon_style}
                 />
               </button>
             </td>

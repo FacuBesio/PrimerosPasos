@@ -18,6 +18,14 @@ export const enabled_button =
 export const disabled_button =
   "px-8 py-3 bg-slate-400 text-[12px] md:text-[18px] text-white font-bold rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200";
 
+//* ICONS
+export const icon_style =`w-8 h-8 hover:scale-90 ${transition_200}`
+
+//* FORM
+export const input_form_style ="w-full px-4 py-2 bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+export const input_label_style ="w-full px-4 flex flex-col gap-2 text-[12px] md:text-[18px]"
+
+
 //? APP
 export const appStyle =
   "min-w-screen min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-[#F8F8F8] to-[#e7d6d6]";

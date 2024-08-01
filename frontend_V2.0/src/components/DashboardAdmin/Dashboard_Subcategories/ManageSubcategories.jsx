@@ -19,7 +19,7 @@ const ManageSubcategories = () => {
     >
       <Link
         className={`${add_button} w-fit`}
-        to={"/admin/manageProducts/create"}
+        to={"/admin/manageSubcategories/create"}
       >
         <label htmlFor="addSubcategory" className={add_button_label}>
           + Agregar Subcategoría

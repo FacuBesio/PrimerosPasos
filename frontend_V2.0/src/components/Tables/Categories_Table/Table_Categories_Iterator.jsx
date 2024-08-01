@@ -5,6 +5,7 @@ import garbage from "../../../assets/garbage.png";
 import useDeleteCategory from "../../../hooks/Categories/useDeleteCategory";
 import emptyCategoryValidator from "../../../utils/categories/emptyCategoryValidator";
 import CanNot_DeleteNotification from "../../../utils/categories/CanNot_DeleteNotification";
+import { icon_style } from "../../../styles";
 // import useDeleteProduct from "../../../hooks/Products/useDeleteProduct";
 // import { td_style } from "../../../styles";
 
@@ -59,7 +60,7 @@ const Table_Categories_Iterator = ({ allCategories }) => {
                   <img
                     src={update_icon}
                     alt="Update"
-                    className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                    className={icon_style}
                   />
                 </button>
               </Link>
@@ -69,7 +70,7 @@ const Table_Categories_Iterator = ({ allCategories }) => {
                 <img
                   src={garbage}
                   alt="Eliminar"
-                  className="w-8 h-8 transition-transform duration-300 hover:scale-105"
+                  className={icon_style}
                 />
               </button>
             </td>
