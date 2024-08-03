@@ -42,9 +42,11 @@ export const not_Selected =
   "w-10 h-10 hover:scale-125 hover:bg-red-100 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl";
 // Products_Table
 export const th_style =
-  "p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]";
+  "p-1 md:p-4 border text-center text-[12px] md:text-[16px] lg:text-[18px]";
 export const td_style =
   "p-1 md:p-4 border text-[12px] md:text-[16px] lg:text-[18px]";
+  //Filter
+  export const label_filterBar_style = "w-full text-lg text-black/50 text-center rounded-lg bg-slate-200"
 
 //? CONTACT US
 export const contactUsStyle = `p-8 border-t-4 border-white ${transition_200}`;
@@ -57,8 +59,12 @@ export const contactUs_form_style =
 export const asideFilterStyles = `px-6 bg-red-200/50 flex flex-col items-center justify-start min-h-screen ${transition_500}`;
 export const filterSelectorStyle =
   "text-[#5a5b5a] border border-white bg-white rounded-md p-2 text-[12px] md:text-[18px] w-full capitalize";
+  export const filterSelectorStyle_dashboard =
+  "text-[#5a5b5a] border border-white bg-white rounded-md p-1 text-[12px] md:text-[18px] capitalize";
 export const filterInputsStyle =
   "text-[#5a5b5a] border border-white bg-white rounded-md p-2 text-[12px] md:text-[18px] w-full";
+  export const filterInputsStyle_dashboard =
+  "text-[#5a5b5a] border border-white bg-white rounded-md p-1 text-[12px] md:text-[18px] w-[150px]";
 
 //? FOOTER
 export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white ${transition_200}`;

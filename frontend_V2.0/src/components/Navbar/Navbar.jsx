@@ -10,18 +10,10 @@ import { useContext } from "react";
 import { CategoriesContext, TagsContext } from "../../context";
 
 const Navbar = () => {
-  const { setCategory, setSelectedCategory } = useContext(CategoriesContext);
-  const { setCategoryTag } = useContext(TagsContext);
   const location = useLocation();
   const showCategory = location.pathname === "/shop" ? true : false;
   const { loadEffect } = useLoadEffect();
   const navBar_visibility = loadEffect ? visible : invisible;
-
-  const handlerResetCategory = () => {
-    setCategory("");
-    setSelectedCategory("");
-    setCategoryTag("");
-  };
 
   return (
     <div>
@@ -45,7 +37,7 @@ const Navbar = () => {
             />
           </Link>
 
-          <NavLink to="/admin/manageProducts" onClick={handlerResetCategory}>
+          <NavLink to="/admin/manageProducts">
             <img
               src={isAdminIcon}
               alt="Admin Icon"

@@ -2,7 +2,14 @@ import { useContext, useEffect } from "react";
 import AditionalInfo from "../components/AditionalInfo/AditionalInfo";
 import Banner from "../components/Banner/Banner";
 import PromotedProducts from "../components/PromotedProducts/PromotedProducts";
-import { ShopContext } from "../context";
+import {
+  CategoriesContext,
+  FilterContext,
+  SearchContext,
+  ShopContext,
+  SortContext,
+  TagsContext,
+} from "../context";
 import useLoadEffect from "../hooks/Effects/useLoadEffect";
 import useLoadEffect_0 from "../hooks/Effects/useLoadEffect_0";
 import {
@@ -12,18 +19,21 @@ import {
   invisible,
   visible,
 } from "../styles";
+import useResetStates from "../hooks/Categories/useResetStates";
 
 const Home = () => {
+  useResetStates();
   const { loadEffect } = useLoadEffect();
   const { loadEffect_0 } = useLoadEffect_0();
+
   const { wasShopActive, setWasShopActive } = useContext(ShopContext);
 
   const home_visibility = loadEffect ? visible : invisible;
   let home_position = "";
   wasShopActive
-  ? (home_position = loadEffect_0 ? home_position_up : home_position_down)
-  : (home_position = `${home_position_up} + ${home_visibility}`);
-  
+    ? (home_position = loadEffect_0 ? home_position_up : home_position_down)
+    : (home_position = `${home_position_up} + ${home_visibility}`);
+
   useEffect(() => {
     wasShopActive && loadEffect && setWasShopActive(false);
   }, [loadEffect]);

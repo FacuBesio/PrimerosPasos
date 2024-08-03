@@ -1,15 +1,19 @@
 import { filterSelectorStyle, sorterSelectorStyle } from "../../../styles";
 import { useContext } from "react";
 import { SortContext } from "../../../context";
+import useAdminNavegation from "../../../hooks/Admin/useAdminNavegation";
 
 function Order_Price_Selector({ handlerChange }) {
   const { sorter } = useContext(SortContext);
   const { price_selector } = sorter;
+  const { adminNavegationActive } = useAdminNavegation();
 
   return (
     <div>
       <select
-        className={sorterSelectorStyle}
+        className={
+          adminNavegationActive ? filterSelectorStyle : sorterSelectorStyle
+        }
         name="price_selector"
         id="price_selector"
         onChange={handlerChange}

@@ -8,14 +8,11 @@ import { appStyle } from "./styles.js";
 import "./App.css";
 import ProductDetail from "./components/ProductDetail/ProductDetail.jsx";
 import Admin_Routes from "./routes/Admin_Routes.jsx";
+import useAdminNavegation from "./hooks/Admin/useAdminNavegation.js";
 
 function App() {
-  const location = useLocation();
+  const { adminNavegationActive } = useAdminNavegation();
   console.log("Render TEST desde App");
-  let adminNavegationActive = false;
-  if (location.pathname.includes("admin")) {
-    adminNavegationActive = true;
-  }
 
   return (
     <div className={`${appStyle}`}>
@@ -37,7 +34,7 @@ function App() {
             <Route path="/contacto" element={<ContactUs />} />
             //? ADMIN //*? "/manageProducts"
             <Route path="/admin/*" element={<Admin_Routes />} />
-           </Routes>
+          </Routes>
         </main>
         <footer>
           <Footer />

@@ -20,6 +20,13 @@ const NavAside = () => {
 
   const navAside_visibility = loadEffect ? visible : invisible;
 
+  const handlerResetCategory = () => {
+    setCategory("");
+    setSelectedCategory("");
+    setCategoryTag("");
+  };
+
+
   return (
     <section
       className={`w-16 bg-red-200 min-h-screen items-center pt-4 ${transition_200} ${navAside_visibility}`}
@@ -28,6 +35,7 @@ const NavAside = () => {
         <Tooltip title="Inicio" placement="right">
           <NavLink
             to="/"
+            // onClick={handlerResetCategory}
             className={({ isActive }) => (isActive ? `${selected}` : `w-10 h-10 scale-105 hover:scale-125 transition-transform duration-200 rounded-md p-1 bg-white drop-shadow-md hover:drop-shadow-xl hover:bg-slate-200`)}
           >
             <button>
