@@ -4,16 +4,15 @@ import { SearchContext } from "../../context/SearchContext";
 import { PagesContext, TagsContext } from "../../context";
 import { useNavigate } from "react-router-dom";
 import useAdminNavegation from "../../hooks/Admin/useAdminNavegation";
+import { SearchOutlined } from "@ant-design/icons";
 
 const SearchBar = () => {
   const navigate = useNavigate();
   const { setPage } = useContext(PagesContext);
-  const { serach, setSearch } = useContext(SearchContext);
-  const { setSearchTag } = useContext(TagsContext);
+  const { setSearch } = useContext(SearchContext);
+  const { searchTag, setSearchTag } = useContext(TagsContext);
   const { adminNavegationActive } = useAdminNavegation();
   const [inputData, setInputData] = useState("");
-
-  console.log("inputData: ", inputData);
 
   useEffect(() => {
     if (inputData === "") {
@@ -21,6 +20,12 @@ const SearchBar = () => {
       setSearchTag("");
     }
   }, [inputData]);
+
+  useEffect(() => {
+    if (searchTag === "") {
+      setInputData("");
+    }
+  }, [searchTag]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,13 +36,11 @@ const SearchBar = () => {
 
   const onChangeSearchBar = (event) => {
     setInputData(event.target.value);
-    if (adminNavegationActive) {
-      setTimeout(() => {
-        setSearch(event.target.value);
-        setSearchTag(event.target.value);
-        setPage(1);
-      }, 300);
-    }
+    setTimeout(() => {
+      setSearch(event.target.value);
+      setSearchTag(event.target.value);
+      setPage(1);
+    }, 750);
   };
 
   return (
@@ -45,18 +48,24 @@ const SearchBar = () => {
       <input
         name="searchDataInput"
         className="p-1 rounded-md border placeho border-red-100 max-w-[160px] h-fit text-[12px] md:text-[16px]"
-        type=""
+        type="text"
         onChange={onChangeSearchBar}
         value={inputData}
       />
 
-      <button>
-        <img
-          className="w-[30px] hover:scale-110 transition-transform duration-200"
-          src={searchIcon}
-          alt="Search Icon"
-        />
-      </button>
+      {inputData !== "" ? (
+        <button>
+          <img
+            className="w-[30px] hover:scale-110 transition-transform duration-200"
+            src={searchIcon}
+            alt="Search Icon"
+          />
+        </button>
+      ) : (
+        <button type="submit">
+          <SearchOutlined className="text-3xl text-gray-400/25 hover:text-red-100 hover:scale-110 transition-transform duration-200" />
+        </button>
+      )}
     </form>
   );
 };

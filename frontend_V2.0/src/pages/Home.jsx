@@ -2,14 +2,7 @@ import { useContext, useEffect } from "react";
 import AditionalInfo from "../components/AditionalInfo/AditionalInfo";
 import Banner from "../components/Banner/Banner";
 import PromotedProducts from "../components/PromotedProducts/PromotedProducts";
-import {
-  CategoriesContext,
-  FilterContext,
-  SearchContext,
-  ShopContext,
-  SortContext,
-  TagsContext,
-} from "../context";
+import { ShopContext } from "../context";
 import useLoadEffect from "../hooks/Effects/useLoadEffect";
 import useLoadEffect_0 from "../hooks/Effects/useLoadEffect_0";
 import {
@@ -19,7 +12,7 @@ import {
   invisible,
   visible,
 } from "../styles";
-import useResetStates from "../hooks/Categories/useResetStates";
+import useResetStates from "../hooks/Generals/useResetStates";
 
 const Home = () => {
   useResetStates();

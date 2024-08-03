@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import ContactUs from "./components/ContactUs/ContactUs.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Home from "./pages/Home.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -9,6 +9,7 @@ import "./App.css";
 import ProductDetail from "./components/ProductDetail/ProductDetail.jsx";
 import Admin_Routes from "./routes/Admin_Routes.jsx";
 import useAdminNavegation from "./hooks/Admin/useAdminNavegation.js";
+import Shop_Routes from "./routes/Shop_Routes.jsx";
 
 function App() {
   const { adminNavegationActive } = useAdminNavegation();
@@ -25,14 +26,9 @@ function App() {
       <div className="w-full flex flex-col flex-grow">
         <main className="min-h-screen">
           <Routes>
-            //? HOME
             <Route path="/" element={<Home />} />
-            //? SHOP
-            <Route path="/shop/*" element={<Shop />} />
-            <Route path="/shop/productDetail/:id" element={<ProductDetail />} />
-            //? CONTACT US
+            <Route path="/shop/*" element={<Shop_Routes />} />
             <Route path="/contacto" element={<ContactUs />} />
-            //? ADMIN //*? "/manageProducts"
             <Route path="/admin/*" element={<Admin_Routes />} />
           </Routes>
         </main>

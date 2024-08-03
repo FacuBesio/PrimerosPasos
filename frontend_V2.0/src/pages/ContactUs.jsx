@@ -1,10 +1,10 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import birdContact from "../../assets/birdContact.png";
-import flyContact from "../../assets/flyContact.png";
-import msjContact from "../../assets/msjContact.png";
-import msjContact2 from "../../assets/msjContact2.png";
+import birdContact from "../assets/birdContact.png";
+import flyContact from "../assets/flyContact.png";
+import msjContact from "../assets/msjContact.png";
+import msjContact2 from "../assets/msjContact2.png";
 import emailjs from "@emailjs/browser";
-import useLoadEffect from "../../hooks/Effects/useLoadEffect";
+import useLoadEffect from "../hooks/Effects/useLoadEffect";
 import {
   contactUs_form_style,
   contactUs_position_down,
@@ -12,9 +12,9 @@ import {
   contactUsStyle,
   invisible,
   visible,
-} from "../../styles";
-import useLoadEffect_0 from "../../hooks/Effects/useLoadEffect_0";
-import { ShopContext } from "../../context";
+} from "../styles";
+import useLoadEffect_0 from "../hooks/Effects/useLoadEffect_0";
+import { ShopContext } from "../context";
 
 const ContactUs = () => {
   const { loadEffect } = useLoadEffect();
