@@ -64,7 +64,7 @@ export const filterSelectorStyle =
 export const filterInputsStyle =
   "text-[#5a5b5a] border border-white bg-white rounded-md p-2 text-[12px] md:text-[18px] w-full";
   export const filterInputsStyle_dashboard =
-  "text-[#5a5b5a] border border-white bg-white rounded-md p-1 text-[12px] md:text-[18px] w-[150px]";
+  "text-[#5a5b5a] border border-white bg-white rounded-md p-1 text-[12px] md:text-[18px] w-[100px]";
 
 //? FOOTER
 export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white ${transition_200}`;

@@ -12,6 +12,9 @@ import CreateNewCategory from "../components/DashboardAdmin/Dashboard_Categories
 import CreateNewSubcategory from "../components/DashboardAdmin/Dashboard_Subcategories/CreateNewSubcategory";
 import UpdateCategory from "../components/DashboardAdmin/Dashboard_Categories/UpdateCategory";
 import UpdateSubcategory from "../components/DashboardAdmin/Dashboard_Subcategories/UpdateSubcategory";
+import ManageUsers from "../components/DashboardAdmin/Dashboard_Users/ManageUsers";
+import ManagePurchases from "../components/DashboardAdmin/Dashboard_Purchases/ManagePurchases";
+import UpdateUser from "../components/DashboardAdmin/Dashboard_Users/UpdateUser";
 
 const Admin_Routes = () => {
   const { setWasShopActive } = useContext(ShopContext);
@@ -37,13 +40,21 @@ const Admin_Routes = () => {
               path="/manageProducts/update/:id"
               element={<UpdateProduct />}
             />
+            //? USERS
+            <Route path="/manageUsers" element={<ManageUsers />} />
+            <Route
+              path="/manageUsers/update/:id"
+              element={<UpdateUser />}
+            />
+            //? PURCHASES
+            <Route path="/managePurchases" element={<ManagePurchases />} />
             //? CATEGORIES
             <Route path="/manageCategories/" element={<ManageCategories />} />
             <Route
               path="/manageCategories/create"
               element={<CreateNewCategory />}
             />
-             <Route
+            <Route
               path="/manageCategories/update/:id"
               element={<UpdateCategory />}
             />
@@ -56,12 +67,10 @@ const Admin_Routes = () => {
               path="/manageSubcategories/create"
               element={<CreateNewSubcategory />}
             />
-             <Route
+            <Route
               path="/manageSubcategories/update/:id"
               element={<UpdateSubcategory />}
             />
-            {/* <Route path="/admin/managePurchases/*" element={<PurchasesDashboard />} /> */}
-            {/* <Route path="/admin/manageUsers/*" element={<UsersDashboard />} /> */}
           </Routes>
         </div>
       </div>

@@ -19,7 +19,7 @@ const FilterBar = () => {
 
   return (
     <div
-      className={`flex w-full gap-2 md:gap-12 items-center justify-center overflow-x-auto ${transition_200} ${filterBar_visibility}`}
+      className={`flex w-full gap-2 md:gap-10 items-center justify-center overflow-x-auto ${transition_200} ${filterBar_visibility}`}
     >
       <Link className={add_button} to={"/admin/manageProducts/create"}>
         <label htmlFor="addProduct" className={add_button_label}>

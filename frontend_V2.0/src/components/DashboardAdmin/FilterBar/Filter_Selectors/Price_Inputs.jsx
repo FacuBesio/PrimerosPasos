@@ -48,7 +48,7 @@ function Price_Inputs() {
       />
       <div className="flex items-center">
         <button type="submit">
-          <RightCircleOutlined className="text-xl rounded-full bg-white transition-transform duration-300 hover:scale-105" />
+          <RightCircleOutlined className="text-xl rounded-full bg-white transition-transform duration-300 hover:scale-95" />
         </button>
       </div>
     </form>

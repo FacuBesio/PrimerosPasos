@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { invisible, transition_200, visible } from "../../../styles";
+import { back_button, invisible, transition_200, visible } from "../../../styles";
 import useLoadEffect from "../../../hooks/Effects/useLoadEffect";
 import UpdateCategory_Form from "../../Forms/categories/update/UpdateCategory_Form";
 
@@ -16,7 +16,7 @@ const UpdateCategory = () => {
 
       <Link
         to="/admin/manageCategories"
-        className="px-6 py-3 text-[12px] md:text-[18px] bg-red-300 text-white font-bold rounded-md hover:bg-red-400 hover:ring-red-400 focus:outline-none focus:ring-2 focus:ring-red-200"
+        className={back_button}
       >
         VOLVER
       </Link>

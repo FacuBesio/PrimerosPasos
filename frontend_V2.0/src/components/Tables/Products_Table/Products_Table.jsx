@@ -4,6 +4,7 @@ import Table_Products_Iterator from "./Table_Products_Iterator";
 import useProducts from "../../../hooks/Products/useProducts";
 import { invisible, transition_200, visible } from "../../../styles";
 import useLoadEffect from "../../../hooks/Effects/useLoadEffect";
+import Table_Products_NoResult from "./Table_Products_NoResult";
 
 const Products_Table = () => {
   const { loadEffect } = useLoadEffect();
@@ -25,7 +26,7 @@ const Products_Table = () => {
           )}
 
           {areProductsLoaded && allProducts.totalResults === 0 && (
-            <Products_NoResult />
+            <Table_Products_NoResult />
           )}
         </tbody>
       </table>
