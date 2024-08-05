@@ -5,6 +5,7 @@ import clothesImage from "../../assets/ropa.png";
 import shoesImage from "../../assets/shoes.png";
 import { useContext } from "react";
 import { CategoriesContext, TagsContext } from "../../context";
+import { transition_300 } from "../../styles";
 
 const PromotedProducts = () => {
   const { setCategory, setSelectedCategory } = useContext(CategoriesContext);
@@ -51,23 +52,27 @@ const PromotedProducts = () => {
           to={`/shop/categories/${category.name}`}
           key={category.id}
           onClick={() => handlerSubmitCategories(category.id, category.name)}
-          className="max-h-[360px] flex border-t-white border-t-2 cursor-pointer"
+          className="max-h-[360px] flex border-t-white border-t-2 border-l-white border-l-2 cursor-pointer"
         >
+          {/* <div className={`flex `}> */}
           <img
-            className="border-l-red-200 border-l-1 object-cover max-w-[320px]"
+            className="object-cover max-w-[320px]"
             src={category.image}
             alt={`Imagen de ${category.name}`}
           />
-          <div className="flex flex-col justify-center items-center w-full border-l-red-200 border-l-1  ">
-            <div className="flex gap-4 flex-col justify-center items-center transition-all duration-300 ease-in-out transform hover:scale-105 w-11/12 py-28">
+          <div className={`flex flex-col justify-center items-center w-full border-l-white border-l-2`}>
+            <div
+              className={`flex gap-4 flex-col justify-center items-center w-full py-32 hover:scale-90 ${transition_300}`}
+            >
               <h2 className="text-[rgb(90,91,90)] md:text-3xl text-center">
                 {category.name}
               </h2>
-              <div className="text-[#Dbb1bc] md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-slate-50 w-fit">
+              <div className="text-[#Dbb1bc] md:text-xl lg:min-w-[148px] text-center border p-1 mx-4 rounded-md border-red-200 bg-white w-fit">
                 {category.description}
               </div>
             </div>
           </div>
+          {/* </div> */}
         </Link>
       ))}
     </section>

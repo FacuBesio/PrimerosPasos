@@ -1,12 +1,20 @@
 import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import { mainLink_style, mainLinkSelected_style } from "../../styles";
 import { CategoriesContext, TagsContext } from "../../context";
 import { useContext } from "react";
 
 const MainLinks = () => {
-  const isAuthenticated = true;
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   const { setCategory, setSelectedCategory } = useContext(CategoriesContext);
   const { setCategoryTag } = useContext(TagsContext);
+
+  const handleLogout = () => {
+    window.localStorage.removeItem("userData");
+    const resetCart = { id: null, products: [] };
+    window.localStorage.setItem("cart", JSON.stringify(resetCart));
+    logout();
+  };
 
   const handlerResetCategory = () => {
     setCategory("");
@@ -45,9 +53,9 @@ const MainLinks = () => {
       </NavLink>
 
       {!isAuthenticated ? (
-        <button className={mainLink_style}>Login</button>
+        <button className={mainLink_style} onClick={() => loginWithRedirect()}>Login</button>
       ) : (
-        <button className={mainLink_style}>Logout</button>
+        <button className={mainLink_style} onClick={handleLogout}>Logout</button>
       )}
     </div>
   );

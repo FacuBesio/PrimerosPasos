@@ -1,4 +1,4 @@
-const appInitialzer = () => {
+const appInitializer = () => {
   if (window.sessionStorage.getItem("visited") === null) {
     if (window.localStorage.getItem("cart") !== null) {
       window.localStorage.removeItem("cart");
@@ -11,4 +11,4 @@ const appInitialzer = () => {
   }
 };
 
-export default appInitialzer;
+export default appInitializer;

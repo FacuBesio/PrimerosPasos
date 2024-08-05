@@ -67,7 +67,7 @@ export const filterInputsStyle =
   "text-[#5a5b5a] border border-white bg-white rounded-md p-1 text-[12px] md:text-[18px] w-[100px]";
 
 //? FOOTER
-export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-2 border-t-white ${transition_200}`;
+export const footerStyle = `flex justify-between items-center p-6 z-50 text-[12px] md:text-[18px] border-t-4 border-t-white ${transition_200}`;
 
 //? HOME
 export const homeStyle = `border-t-4 border-t-white flex-grow ${transition_200}`;

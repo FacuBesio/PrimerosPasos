@@ -35,7 +35,7 @@ const AditionalInfo = () => {
     },
   ];
   return (
-    <section className="flex justify-center p-4 md:p-6 lg:p-8 text-[12px] md:text-[18px] border-t-white border-t-2 ">
+    <section className="flex justify-center p-4 md:p-6 lg:p-8 text-[12px] md:text-[18px] border-t-white border-t-4 border-b-white border-b-2 ">
       <div className="flex gap-2 flex-col md:flex-row">
         {aditionalInfo.map((info) => (
           <a

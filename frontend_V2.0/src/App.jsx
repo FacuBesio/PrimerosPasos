@@ -1,17 +1,17 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import ContactUs from "./pages/ContactUs.jsx";
 import Hero from "./components/Hero/Hero.jsx";
 import Home from "./pages/Home.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Shop from "./pages//Shop.jsx";
 import { appStyle } from "./styles.js";
-import "./App.css";
-import ProductDetail from "./components/ProductDetail/ProductDetail.jsx";
 import Admin_Routes from "./routes/Admin_Routes.jsx";
 import useAdminNavegation from "./hooks/Admin/useAdminNavegation.js";
 import Shop_Routes from "./routes/Shop_Routes.jsx";
+import useAppInitializer from "./hooks/App/useAppInitializer.js";
 
 function App() {
+  useAppInitializer();
   const { adminNavegationActive } = useAdminNavegation();
   console.log("Render TEST desde App");
 
