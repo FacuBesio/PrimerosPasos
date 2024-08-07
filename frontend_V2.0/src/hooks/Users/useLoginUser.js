@@ -8,6 +8,9 @@ const useLoginUser = () => {
   const userData = JSON.parse(window.localStorage.getItem("userData"));
   const auth0_user = user;
 
+  let isUserLoaded;
+  auth0_user ? (isUserLoaded = true) : (isUserLoaded = false);
+
   useEffect(() => {
     if (isAuthenticated && auth0_user) {
       postUsers(auth0_user).then((data) => {
@@ -25,7 +28,7 @@ const useLoginUser = () => {
     }
   }, [isAuthenticated, userData]);
 
-  return { userData };
+  return { userData, auth0_user, isUserLoaded };
 };
 
 export default useLoginUser;

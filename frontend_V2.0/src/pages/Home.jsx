@@ -18,7 +18,6 @@ const Home = () => {
   useResetStates();
   const { loadEffect } = useLoadEffect();
   const { loadEffect_0 } = useLoadEffect_0();
-
   const { wasShopActive, setWasShopActive } = useContext(ShopContext);
 
   const home_visibility = loadEffect ? visible : invisible;

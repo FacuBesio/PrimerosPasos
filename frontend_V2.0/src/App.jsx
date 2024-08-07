@@ -9,6 +9,8 @@ import Admin_Routes from "./routes/Admin_Routes.jsx";
 import useAdminNavegation from "./hooks/Admin/useAdminNavegation.js";
 import Shop_Routes from "./routes/Shop_Routes.jsx";
 import useAppInitializer from "./hooks/App/useAppInitializer.js";
+import Cart_Routes from "./routes/Cart_Routes.jsx";
+import Profile_Routes from "./routes/Profile_Routes.jsx";
 
 function App() {
   useAppInitializer();
@@ -24,12 +26,14 @@ function App() {
       )}
 
       <div className="w-full flex flex-col flex-grow">
-        <main className="min-h-screen">
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/shop/*" element={<Shop_Routes />} />
-            <Route path="/contacto" element={<ContactUs />} />
             <Route path="/admin/*" element={<Admin_Routes />} />
+            <Route path="/cart/*" element={<Cart_Routes />} />
+            <Route path="/contacto" element={<ContactUs />} />
+            <Route path="/profile/*" element={<Profile_Routes />} />
+            <Route path="/shop/*" element={<Shop_Routes />} />
           </Routes>
         </main>
         <footer>

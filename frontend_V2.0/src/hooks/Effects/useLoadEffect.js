@@ -9,7 +9,7 @@ const useLoadEffect = () => {
     }, 200);
   }, []);
 
-  return { loadEffect };
+  return { loadEffect, setLoadEffect };
 };
 
 export default useLoadEffect;

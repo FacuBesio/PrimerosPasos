@@ -7,7 +7,7 @@ import Shop from "./pages/Shop.jsx";
 const Admin = lazy(() => import("./pages/Admin.jsx"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Profile = lazy(() => import("./pages/Profile.jsx"));
-import appInitialzer from "./utils/app/appInitialzer.js";
+import appInitializer from "./utils/app/appInitializer.js";
 import { motion, AnimatePresence } from "framer-motion";
 import { mainPages } from "./styles.js";
 import Lenis from "lenis";
@@ -24,7 +24,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    appInitialzer();
+    appInitializer();
   }, []);
 
 

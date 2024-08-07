@@ -52,17 +52,18 @@ const PromotedProducts = () => {
           to={`/shop/categories/${category.name}`}
           key={category.id}
           onClick={() => handlerSubmitCategories(category.id, category.name)}
-          className="max-h-[360px] flex border-t-white border-t-2 border-l-white border-l-2 cursor-pointer"
+          className="max-h-[360px] flex border-t-white border-t-4 border-l-white border-l-4 cursor-pointer"
         >
-          {/* <div className={`flex `}> */}
           <img
-            className="object-cover max-w-[320px]"
+            className="object-cover max-w-[320px] rounded-sm"
             src={category.image}
             alt={`Imagen de ${category.name}`}
           />
-          <div className={`flex flex-col justify-center items-center w-full border-l-white border-l-2`}>
+          <div
+            className={`flex flex-col justify-center rounded-sm items-center w-full border-l-white border-l-4`}
+          >
             <div
-              className={`flex gap-4 flex-col justify-center items-center w-full py-32 hover:scale-90 ${transition_300}`}
+              className={`flex gap-4 flex-col justify-center items-center w-full hover:scale-90 ${transition_300}`}
             >
               <h2 className="text-[rgb(90,91,90)] md:text-3xl text-center">
                 {category.name}
@@ -72,7 +73,6 @@ const PromotedProducts = () => {
               </div>
             </div>
           </div>
-          {/* </div> */}
         </Link>
       ))}
     </section>

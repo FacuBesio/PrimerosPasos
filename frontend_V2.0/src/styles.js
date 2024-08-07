@@ -9,6 +9,8 @@ export const transition_500 =
   "transition-all ease-in-out transform duration-500";
 export const visible = "opacity-100 visible";
 export const invisible = "opacity-0 invisible";
+export const position_up = "mt-0";
+export const position_down = "mt-9";
 
 //* BUTTONS
 export const back_button =
@@ -24,6 +26,8 @@ export const icon_style =`w-8 h-8 hover:scale-90 ${transition_200}`
 //* FORM
 export const input_form_style ="w-full px-4 py-2 bg-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
 export const input_label_style ="w-full px-4 flex flex-col gap-2 text-[12px] md:text-[18px]"
+export const input_editable_style ="w-full px-4 py-2 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+export const input_notEditable_style ="w-full px-4 py-2 font-bold bg-slate-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400";
 
 
 //? APP
@@ -99,6 +103,10 @@ export const productDetailStyle = `bg-white flex flex-col md:flex-row p-10 justi
 export const productDetail_content = `bg-white w-full flex flex-col md:flex-row justify-around text-[12px] md:text-[18px] ${transition_200}`;
 export const productDetail_position_up = "mt-0";
 export const productDetail_position_down = "mt-10";
+
+//? PROFILE
+export const profileStyle = `flex flex-grow border-t-4 border-t-white ${transition_200}`;
+export const profile_navAside = `border-t-4 border-t-white flex-grow ${transition_200}`;
 
 //? SHOP
 export const shopStyle = `flex flex-grow border-t-4 border-t-white ${transition_200}`;
