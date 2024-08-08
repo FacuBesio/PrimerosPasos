@@ -3,7 +3,7 @@ import { buttonsCartAside } from "../../styles";
 
 const Cart_Footer = ({ handleBackdropClick }) => {
   return (
-    <div className={`flex flex-col justify-end gap-2`}>
+    <div className={`flex flex-col pb-4 gap-2`}>
       <Link className={buttonsCartAside} to="/cart">
         Realizar compra
       </Link>

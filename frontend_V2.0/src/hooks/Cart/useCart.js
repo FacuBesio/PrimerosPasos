@@ -13,10 +13,8 @@ const useCart = () => {
   }, [cart]);
 
   const handlerRemoveProducts = (product_id) => {
-    // console.log("product: ", product);
-    // console.log("cart: ", cart);
-    const newProducts = cart.products.filter((e) => e.id !== product_id);
-    const updatedCart = { ...cart, products: newProducts };
+    const updatedProducts = cart.products.filter((e) => e.id !== product_id);
+    const updatedCart = { ...cart, products: updatedProducts };
     if (isAuthenticated && user) {
       // putOrder(cart.id, product);
     }

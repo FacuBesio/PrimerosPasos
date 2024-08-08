@@ -3,7 +3,7 @@ import { cartIterator_style } from "../../styles";
 
 const Cart_Iterator = ({ cart, handlerRemoveProducts }) => {
   return (
-    <>
+    <div className="flex flex-col w-full h-full gap-2">
       {cart.products.map((product) => (
         <div className={`${cartIterator_style}`} key={product.id}>
           <button onClick={() => handlerRemoveProducts(product.id)}>
@@ -27,7 +27,7 @@ const Cart_Iterator = ({ cart, handlerRemoveProducts }) => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

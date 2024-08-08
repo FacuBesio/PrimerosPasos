@@ -4,7 +4,7 @@ import {
   cartAsideStyle,
   invisible,
   transition_200,
-  transition_300,
+  transition_500,
   visible,
 } from "../../styles";
 import { CartContext } from "../../context";
@@ -23,11 +23,15 @@ const CartAside = () => {
   const { loadEffect_0, setLoadEffect_0 } = useLoadEffect_0();
   const { loadEffect_100, setLoadEffect_100 } = useLoadEffect_100();
 
-  const cartAside_visibility = loadEffect_100 ? visible : invisible;
+
+  const blur_efffect = loadEffect
+    ? "bg-black bg-opacity-50 backdrop-blur-sm"
+    : "";
   const content_visibility = loadEffect ? visible : invisible;
   const cartAside_width = loadEffect_0
     ? "w-[80%] sm:w-[70%] md:w-[50%] lg:w-[25%]"
     : "w-0";
+
 
   const handleBackdropClick = () => {
     setLoadEffect(false);
@@ -42,22 +46,24 @@ const CartAside = () => {
 
   return (
     <div
-      className={`${cartAside_Container}  ${cartAside_visibility}`}
+      className={`${cartAside_Container} ${transition_200} ${blur_efffect}`}
       onClick={handleBackdropClick}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`${cartAsideStyle} ${cartAside_width}`}
+        className={`${cartAsideStyle} ${cartAside_width} ${transition_500}`}
       >
         <div
-          className={`flex flex-col items-center justify-between w-full h-full ${transition_200} ${content_visibility}`}
+          className={`flex flex-col items-center justify-between gap-4 w-full h-full ${transition_200} ${content_visibility}`}
         >
+          <div className="flex flex-col items-center justify-start p-2 gap-4 w-full h-fit">
           <Cart_Header cart={cart} />
 
           <Cart_Iterator
             cart={cart}
             handlerRemoveProducts={handlerRemoveProducts}
           />
+          </div>
 
           <Cart_Footer handleBackdropClick={handleBackdropClick} />
         </div>

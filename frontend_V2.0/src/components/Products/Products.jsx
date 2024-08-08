@@ -10,7 +10,6 @@ import Products_NoResult from "./Products_NoResult";
 const Products = () => {
   const { allProducts, areProductsLoaded } = useProducts();
   console.log("allProducts: ", allProducts);
-  console.log("areProductsLoaded: ", areProductsLoaded);
 
   const products_visibility = areProductsLoaded
     ? visible

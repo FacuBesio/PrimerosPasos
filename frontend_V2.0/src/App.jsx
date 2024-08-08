@@ -21,7 +21,7 @@ function App() {
   const { isCartOpen } = useContext(CartContext);
 
   console.log("Render TEST desde App");
-  console.log("isCartOpen: ", isCartOpen);
+
 
   return (
     <div className={`${appStyle}`}>

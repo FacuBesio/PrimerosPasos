@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { product_content } from "../../styles";
+import ButtonAddToCart from "../Buttons/Cart_Buttons/ButtonAddToCart";
 
 const Products_Iterator = ({ allProducts }) => {
   const navigate = useNavigate();
@@ -11,18 +12,19 @@ const Products_Iterator = ({ allProducts }) => {
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {allProducts?.products?.map((product) => (
-        <div
-          key={product.id}
-          className={product_content}
-          onClick={() => onClickNavigate(product.id)}
-        >
+        <div key={product.id} className={product_content}>
+          <ButtonAddToCart product={product} />
+
           <img
             className="object-contain rounded-lg p-2"
             src={product.img}
             alt={product.name}
-            onClick={() => navigate(`/shop/productDetail/${product.id}`)}
+            onClick={() => onClickNavigate(product.id)}
           />
-          <div className="text-center">
+          <div
+            className="text-center"
+            onClick={() => onClickNavigate(product.id)}
+          >
             <h2 className="font-bold text-gray-400 text-[16px] md:text-[18px] lg:text-[22px] pt-2 pb-1">
               {product.name}
             </h2>
