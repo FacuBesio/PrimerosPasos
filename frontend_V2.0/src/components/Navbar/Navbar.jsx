@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import MainLinks from "../NavBar_Links/MainLinks";
-import CategoryLinks from "../NavBar_Links/CategoryLinks";
+import MainLinks from "./NavBar_Links/MainLinks";
+import CategoryLinks from "./NavBar_Links/CategoryLinks";
 import SearchBar from "../SearchBar/SearchBar";
 import { invisible, navBarStyle, visible } from "../../styles";
 import useLoadEffect from "../../hooks/Effects/useLoadEffect";

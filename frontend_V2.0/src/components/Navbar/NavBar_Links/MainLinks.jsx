@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { mainLink_style, mainLinkSelected_style } from "../../styles";
-import { CategoriesContext, TagsContext } from "../../context";
+import { mainLink_style, mainLinkSelected_style } from "../../../styles";
+import { CategoriesContext, TagsContext } from "../../../context";
 import { useContext } from "react";
 
 const MainLinks = () => {

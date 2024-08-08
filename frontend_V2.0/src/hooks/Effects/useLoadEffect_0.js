@@ -7,7 +7,7 @@ const useLoadEffect_0 = () => {
     setLoadEffect_0(true);
   }, []);
 
-  return { loadEffect_0 };
+  return { loadEffect_0, setLoadEffect_0 };
 };
 
 export default useLoadEffect_0;

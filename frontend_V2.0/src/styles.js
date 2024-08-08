@@ -57,8 +57,8 @@ export const td_style =
   export const label_filterBar_style = "w-full text-lg text-black/50 text-center rounded-lg bg-slate-200"
 
 //? CART
-export const cartAside_Container = `fixed left-0 top-0 h-screen w-[100vw] bg-black bg-opacity-50 backdrop-blur-sm transition-all z-[9999] text-[12px] md:text-[18px] ${transition_100}`
-export const cartAsideStyle = `fixed overflow-y-scroll py-2 items-center justify-between h-screen right-0 top-0 bg-[#eee] px-2 text-center flex flex-col gap-2 ${transition_500}`
+export const cartAside_Container = `fixed left-0 top-0 h-screen w-[100vw] bg-black bg-opacity-50 backdrop-blur-sm transition-all z-[9999] text-[12px] md:text-[18px] ${transition_200}`
+export const cartAsideStyle = `fixed overflow-y-scroll p-4 items-center justify-between h-screen right-0 top-0 bg-[#eee] px-2 text-center flex flex-col gap-2 ${transition_500}`
 export const cartIterator_style = "flex justify-center border border-red-200 p-2 rounded-md m-2 w-full bg-[#c9b7b7] bg-opacity-50 relative"
 export const buttonsCartAside = "items-center w-full flex bg-gray-200 p-2 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]"
 

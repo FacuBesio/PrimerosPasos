@@ -5,9 +5,9 @@ import {
   categoryLinksStyle,
   invisible,
   visible,
-} from "../../styles";
-import useCategories from "../../hooks/Categories/useCategories";
-import { CategoriesContext, TagsContext } from "../../context";
+} from "../../../styles";
+import useCategories from "../../../hooks/Categories/useCategories";
+import { CategoriesContext, TagsContext } from "../../../context";
 
 const CategoryLinks = ({ showCategory }) => {
   const { allCategories, areCategoriesLoaded } = useCategories();
