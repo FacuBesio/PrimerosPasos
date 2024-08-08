@@ -1,4 +1,5 @@
 import { AdminContext } from "./AdminContext";
+import { CartContext } from "./CartContext";
 import { CategoriesContext } from "./CategoriesContext";
 import { FilterContext } from "./FilterContext";
 import { PagesContext } from "./PagesContext";
@@ -10,6 +11,7 @@ import { TagsContext } from "./TagsContext";
 export {
   AdminContext,
   CategoriesContext,
+  CartContext,
   FilterContext,
   PagesContext,
   SearchContext,

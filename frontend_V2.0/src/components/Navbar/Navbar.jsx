@@ -1,21 +1,26 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import isAdminIcon from "../../assets/adminIcon.png";
+import { useLocation } from "react-router-dom";
 import MainLinks from "../NavBar_Links/MainLinks";
 import CategoryLinks from "../NavBar_Links/CategoryLinks";
 import SearchBar from "../SearchBar/SearchBar";
 import { invisible, navBarStyle, visible } from "../../styles";
 import useLoadEffect from "../../hooks/Effects/useLoadEffect";
 import { useAuth0 } from "@auth0/auth0-react";
-import useLoginUser from "../../hooks/Users/useLoginUser";
 import UserProfile_button from "../Buttons/Navbar_buttons/UserProfile_button";
 import Cart_button from "../Buttons/Navbar_buttons/Cart_button";
 import Admin_button from "../Buttons/Navbar_buttons/Admin_button";
+import { useContext } from "react";
+import { CartContext } from "../../context";
 
 const Navbar = () => {
   const location = useLocation();
   const { isAuthenticated } = useAuth0();
   const showCategory = location.pathname === "/shop" ? true : false;
   const { loadEffect } = useLoadEffect();
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+
+  const handleButtonCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
 
   const navBar_visibility = loadEffect ? visible : invisible;
 
@@ -25,7 +30,7 @@ const Navbar = () => {
         <MainLinks />
         <SearchBar />
         <div className="flex justify-center items-center gap-2">
-          <Cart_button />
+          <Cart_button handleButtonCart={handleButtonCart} />
           {isAuthenticated && <Admin_button />}
           {isAuthenticated && <UserProfile_button />}
         </div>

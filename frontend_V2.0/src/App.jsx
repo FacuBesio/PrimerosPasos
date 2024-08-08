@@ -11,20 +11,27 @@ import Shop_Routes from "./routes/Shop_Routes.jsx";
 import useAppInitializer from "./hooks/App/useAppInitializer.js";
 import Cart_Routes from "./routes/Cart_Routes.jsx";
 import Profile_Routes from "./routes/Profile_Routes.jsx";
+import { useContext } from "react";
+import { CartContext } from "./context/CartContext.jsx";
+import CartAside from "./components/CartAside/CartAside.jsx"
 
 function App() {
   useAppInitializer();
   const { adminNavegationActive } = useAdminNavegation();
+  const { isCartOpen } = useContext(CartContext);
+
   console.log("Render TEST desde App");
+  console.log("isCartOpen: ", isCartOpen);
 
   return (
     <div className={`${appStyle}`}>
+      {isCartOpen && <CartAside  />}
+
       {!adminNavegationActive && (
         <header className="w-full">
           <Hero />
         </header>
       )}
-
       <div className="w-full flex flex-col flex-grow">
         <main>
           <Routes>
@@ -36,6 +43,7 @@ function App() {
             <Route path="/shop/*" element={<Shop_Routes />} />
           </Routes>
         </main>
+
         <footer>
           <Footer />
         </footer>

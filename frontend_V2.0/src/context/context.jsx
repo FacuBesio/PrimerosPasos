@@ -1,4 +1,5 @@
 import { AdminProvider } from "./AdminContext";
+import { CartProvider } from "./CartContext";
 import { CategoriesProvider } from "./CategoriesContext";
 import { FilterProvider } from "./FilterContext";
 import { PagesProvider } from "./PagesContext";
@@ -10,19 +11,21 @@ import { TagsProvider } from "./TagsContext";
 const AppProvider = ({ children }) => {
   return (
     <AdminProvider>
-      <CategoriesProvider>
-        <FilterProvider>
-          <PagesProvider>
-            <SearchProvider>
-              <ShopProvider>
-                <SortProvider>
-                  <TagsProvider>{children}</TagsProvider>
-                </SortProvider>
-              </ShopProvider>
-            </SearchProvider>
-          </PagesProvider>
-        </FilterProvider>
-      </CategoriesProvider>
+      <CartProvider>
+        <CategoriesProvider>
+          <FilterProvider>
+            <PagesProvider>
+              <SearchProvider>
+                <ShopProvider>
+                  <SortProvider>
+                    <TagsProvider>{children}</TagsProvider>
+                  </SortProvider>
+                </ShopProvider>
+              </SearchProvider>
+            </PagesProvider>
+          </FilterProvider>
+        </CategoriesProvider>
+      </CartProvider>
     </AdminProvider>
   );
 };
