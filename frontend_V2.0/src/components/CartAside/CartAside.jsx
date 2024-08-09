@@ -3,6 +3,8 @@ import {
   cartAside_Container,
   cartAsideStyle,
   invisible,
+  transition_100,
+  transition_150,
   transition_200,
   transition_500,
   visible,
@@ -46,7 +48,7 @@ const CartAside = () => {
 
   return (
     <div
-      className={`${cartAside_Container} ${transition_200} ${blur_efffect}`}
+      className={`${cartAside_Container} ${transition_150} ${blur_efffect}`}
       onClick={handleBackdropClick}
     >
       <div
@@ -62,6 +64,7 @@ const CartAside = () => {
           <Cart_Iterator
             cart={cart}
             handlerRemoveProducts={handlerRemoveProducts}
+            content_visibility={content_visibility}
           />
           </div>
 

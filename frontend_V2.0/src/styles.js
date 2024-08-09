@@ -11,6 +11,8 @@ export const transition_500 =
   "transition-all ease-in-out transform duration-500";
   export const transition_700 =
   "transition-all ease-in-out transform duration-700";
+  export const transition_1000 =
+  "transition-all ease-in-out transform duration-700";
 export const visible = "opacity-100 visible";
 export const invisible = "opacity-0 invisible";
 export const position_up = "mt-0";
@@ -23,6 +25,7 @@ export const enabled_button =
   "px-8 py-3 bg-green-500 bg-opacity-90 text-white text-[12px] md:text-[18px] font-bold rounded-md hover:bg-green-600 hover:scale-105 focus:outline-none focus:ring-2 focus:bg-green-500 focus:ring-green-500 focus:scale-95";
 export const disabled_button =
   "px-8 py-3 bg-slate-400 text-[12px] md:text-[18px] text-white font-bold rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-200";
+  export const cartAside_purchaseButton = `bg-slate-400/50 hover:bg-slate-500 hover:scale-110  rounded-md p-3 text-center text-white font-bold cursor-pointer text-[12px] md:text-[18px] ${transition_200}`
 
 //* ICONS
 export const icon_style =`w-8 h-8 hover:scale-90 ${transition_200}`
@@ -59,7 +62,7 @@ export const td_style =
 //? CART
 export const cartAside_Container = `fixed left-0 top-0 h-screen w-[100vw] z-[9999] text-[12px] md:text-[18px]`
 export const cartAsideStyle = `fixed overflow-y-scroll p-4 items-center justify-between h-screen right-0 top-0 bg-[#eee] px-2 text-center flex flex-col gap-2 `
-export const cartIterator_style = "flex justify-center border border-red-200 p-2 rounded-md w-full bg-[#c9b7b7] bg-opacity-50 relative"
+export const cartIterator_style = "flex justify-between items-center p-4 rounded-md w-full bg-white relative"
 export const buttonsCartAside = "items-center w-full flex bg-gray-200 p-2 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]"
 
 //? CONTACT US

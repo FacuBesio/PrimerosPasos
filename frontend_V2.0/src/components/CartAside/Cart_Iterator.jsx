@@ -1,30 +1,35 @@
 import crossRed from "../../assets/crossRed.png";
-import { cartIterator_style } from "../../styles";
+import { cartIterator_style, transition_1000, transition_500, transition_700 } from "../../styles";
+import Quantities_Button from "../Buttons/Quantities_Button/Quantities_Button";
 
-const Cart_Iterator = ({ cart, handlerRemoveProducts }) => {
+const Cart_Iterator = ({ cart, handlerRemoveProducts, content_visibility }) => {
   return (
     <div className="flex flex-col w-full h-full gap-2">
       {cart.products.map((product) => (
-        <div className={`${cartIterator_style}`} key={product.id}>
+        <div className={`${cartIterator_style} ${content_visibility} ${transition_700}`} key={product.id}>
+          {/* <div className="absolute left-0"> */}
+          <img
+            className="max-w-[120px] rounded-md "
+            src={product.img}
+            alt={product.name}
+          />
+          {/* </div> */}
+          <div className="flex flex-col justify-center items-center p-1 gap-1">
+            {/* <div className={`${content_visibility} ${transition_1000}`}> */}
+              <h3 className="font-semibold text-black/50">{product.name}</h3>
+              <h3 className="text-black/50">Stock: {product.stock}</h3>
+              <h3 className="text-black/50">Precio: ${product.price}</h3>
+            {/* </div> */}
+            <Quantities_Button product={product} cart={cart} />
+          </div>
+
           <button onClick={() => handlerRemoveProducts(product.id)}>
             <img
-              className="absolute top-0 right-0 w-4 h-4 mt-2 mr-2 border border-red-200 rounded-md bg-white hover:scale-110"
+              className="absolute top-0 right-0 w-4 h-4 mt-2 mr-2 hover:scale-110"
               src={crossRed}
-              alt=""
+              alt="Delete Button"
             />
           </button>
-          <img
-            className="max-w-[120px] rounded-full border border-red-200"
-            src={product.img}
-            alt=""
-          />
-          <div className="flex flex-col justify-center items-center gap-1">
-            <h3 className="mb-2 mr-2 font-semibold">{product.name}</h3>
-            <h3 className="">Stock: {product.stock}</h3>
-            <h3 className="">Precio: ${product.price}</h3>
-
-            {/* <ButtonQuantities product={product} cart={cart} setCart={setCart} /> */}
-          </div>
         </div>
       ))}
     </div>

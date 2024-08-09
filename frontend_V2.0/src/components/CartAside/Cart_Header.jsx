@@ -9,7 +9,7 @@ const Cart_Header = ({ cart }) => {
         </div>
         <img src={CartIcon} className="w-10" />
       </div>
-      <h2 className="font-semibold">Carrito de compras</h2>
+      <h2 className="font-semibold text-black/50">Carrito de compras</h2>
     </div>
   );
 };
