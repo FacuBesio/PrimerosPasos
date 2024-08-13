@@ -1,8 +1,8 @@
-import crossRed from "../../assets/crossRed.png";
-import { cartIterator_style, transition_1000, transition_500, transition_700 } from "../../styles";
-import Quantities_Button from "../Buttons/Quantities_Button/Quantities_Button";
+import crossRed from "../../../assets/crossRed.png";
+import { cartIterator_style, transition_1000, transition_500, transition_700 } from "../../../styles";
+import Quantities_Button from "../../Buttons/Quantities_Button/Quantities_Button";
 
-const Cart_Iterator = ({ cart, handlerRemoveProducts, content_visibility }) => {
+const Cart_Iterator = ({ cart, setCart, handlerRemoveProducts, content_visibility }) => {
   return (
     <div className="flex flex-col w-full h-full gap-2">
       {cart.products.map((product) => (
@@ -20,7 +20,7 @@ const Cart_Iterator = ({ cart, handlerRemoveProducts, content_visibility }) => {
               <h3 className="text-black/50">Stock: {product.stock}</h3>
               <h3 className="text-black/50">Precio: ${product.price}</h3>
             {/* </div> */}
-            <Quantities_Button product={product} cart={cart} />
+            <Quantities_Button product={product} cart={cart} setCart={setCart} />
           </div>
 
           <button onClick={() => handlerRemoveProducts(product.id)}>

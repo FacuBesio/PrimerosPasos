@@ -7,10 +7,10 @@ import emailjs from "@emailjs/browser";
 import useLoadEffect from "../hooks/Effects/useLoadEffect";
 import {
   contactUs_form_style,
-  contactUs_position_down,
-  contactUs_position_up,
   contactUsStyle,
   invisible,
+  position_down,
+  position_up,
   visible,
 } from "../styles";
 import useLoadEffect_0 from "../hooks/Effects/useLoadEffect_0";
@@ -74,9 +74,9 @@ const ContactUs = () => {
   let contactUs_position = "";
   wasShopActive
     ? (contactUs_position = loadEffect_0
-        ? contactUs_position_up
-        : contactUs_position_down)
-    : (contactUs_position = `${contactUs_position_up} + ${contactUs_visibility}`);
+        ? position_up
+        : position_down)
+    : (contactUs_position = `${position_up} + ${contactUs_visibility}`);
 
   useEffect(() => {
     wasShopActive && loadEffect && setWasShopActive(false);

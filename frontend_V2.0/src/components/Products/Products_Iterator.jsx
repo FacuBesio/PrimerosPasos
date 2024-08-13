@@ -32,7 +32,7 @@ const Products_Iterator = ({ allProducts }) => {
               {product.brand}
             </h2>
             <h2 className="text-gray-400 text-[16px] md:text-[18px] lg:text-[20px] pt-1 pb-2">
-              ${product.price}
+              ${product.price.toLocaleString('es-ES')}
             </h2>
           </div>
         </div>

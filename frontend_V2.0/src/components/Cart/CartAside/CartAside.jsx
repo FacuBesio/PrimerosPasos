@@ -8,23 +8,22 @@ import {
   transition_200,
   transition_500,
   visible,
-} from "../../styles";
-import { CartContext } from "../../context";
+} from "../../../styles";
+import { CartContext } from "../../../context";
 import Cart_Iterator from "./Cart_Iterator";
 import Cart_Header from "./Cart_Header";
-import useCart from "../../hooks/Cart/useCart";
-import useLoadEffect_0 from "../../hooks/Effects/useLoadEffect_0";
-import useLoadEffect_100 from "../../hooks/Effects/useLoadEffect_100";
+import useCart from "../../../hooks/Cart/useCart";
+import useLoadEffect_0 from "../../../hooks/Effects/useLoadEffect_0";
+import useLoadEffect_100 from "../../../hooks/Effects/useLoadEffect_100";
 import Cart_Footer from "./Cart_Footer";
-import useLoadEffect from "../../hooks/Effects/useLoadEffect";
+import useLoadEffect from "../../../hooks/Effects/useLoadEffect";
 
 const CartAside = () => {
   const { setIsCartOpen } = useContext(CartContext);
-  const { cart, handlerRemoveProducts } = useCart();
+  const { cart, setCart, handlerRemoveProducts } = useCart();
   const { loadEffect, setLoadEffect } = useLoadEffect();
   const { loadEffect_0, setLoadEffect_0 } = useLoadEffect_0();
   const { loadEffect_100, setLoadEffect_100 } = useLoadEffect_100();
-
 
   const blur_efffect = loadEffect
     ? "bg-black bg-opacity-50 backdrop-blur-sm"
@@ -33,7 +32,6 @@ const CartAside = () => {
   const cartAside_width = loadEffect_0
     ? "w-[80%] sm:w-[70%] md:w-[50%] lg:w-[25%]"
     : "w-0";
-
 
   const handleBackdropClick = () => {
     setLoadEffect(false);
@@ -63,6 +61,7 @@ const CartAside = () => {
 
           <Cart_Iterator
             cart={cart}
+            setCart={setCart}
             handlerRemoveProducts={handlerRemoveProducts}
             content_visibility={content_visibility}
           />

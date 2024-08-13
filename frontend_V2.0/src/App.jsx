@@ -13,7 +13,7 @@ import Cart_Routes from "./routes/Cart_Routes.jsx";
 import Profile_Routes from "./routes/Profile_Routes.jsx";
 import { useContext } from "react";
 import { CartContext } from "./context/CartContext.jsx";
-import CartAside from "./components/CartAside/CartAside.jsx"
+import CartAside from "./components/Cart/CartAside/CartAside.jsx"
 
 function App() {
   useAppInitializer();

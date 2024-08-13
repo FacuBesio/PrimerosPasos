@@ -35,7 +35,7 @@ const Table_Products_Iterator = ({ allProducts }) => {
             {product.color}
           </td>
           <td className={`${td_style}`}>{product.size}</td>
-          <td className={`${td_style}`}>${product.price}</td>
+          <td className={`${td_style}`}>${product.price.toLocaleString('es-ES')}</td>
           <td className={`${td_style}`}>{product.stock}</td>
           <td className={`${td_style}`}>
             <button>

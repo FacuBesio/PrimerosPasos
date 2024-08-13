@@ -3,7 +3,7 @@ const productValidator = (cart, productToAdd) => {
     let isProductAlredyAdded = false;
     let enabledStock = { state: true, message: "" };
 
-    const verified_cart_products = cart.products.map((product) => {
+    const products_with_modifed_quantities = cart.products.map((product) => {
       if (product.id === productToAdd.id) {
         isProductAlredyAdded = true;
         if (product.stock > product.cantidad) {
@@ -16,7 +16,7 @@ const productValidator = (cart, productToAdd) => {
       }
       return product;
     });
-    return { enabledStock, isProductAlredyAdded, verified_cart_products };
+    return { enabledStock, isProductAlredyAdded, products_with_modifed_quantities };
   }
 };
 

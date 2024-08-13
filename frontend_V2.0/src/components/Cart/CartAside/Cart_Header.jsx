@@ -1,4 +1,4 @@
-import CartIcon from "../../assets/asideCart.png";
+import CartIcon from "../../../assets/asideCart.png";
 
 const Cart_Header = ({ cart }) => {
   return (

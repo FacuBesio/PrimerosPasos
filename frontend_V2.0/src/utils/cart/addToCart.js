@@ -6,12 +6,12 @@ const postOrder = () => {};
 const addToCart = (productToAdd, isAuthenticated) => {
   const user = JSON.parse(window.localStorage.getItem("userData"));
   const cart = JSON.parse(window.localStorage.getItem("cart"));
-  const { enabledStock, isProductAlredyAdded, verified_cart_products } =
+  const { enabledStock, isProductAlredyAdded, products_with_modifed_quantities } =
     productValidator(cart, productToAdd);
 
   if (isProductAlredyAdded && enabledStock.state) {
-    const updatedCart = { ...cart, products: verified_cart_products };
-    const foundProduct = verified_cart_products.find(
+    const updatedCart = { ...cart, products: products_with_modifed_quantities };
+    const foundProduct = products_with_modifed_quantities.find(
       (product) => product.id === productToAdd.id
     );
     isAuthenticated && user
@@ -25,6 +25,8 @@ const addToCart = (productToAdd, isAuthenticated) => {
       ? postOrder(user.id, productToAdd)
       : window.localStorage.setItem("cart", JSON.stringify(cart));
   }
+
+  return products_with_modifed_quantities;
 };
 
 export default addToCart;
