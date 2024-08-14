@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
+import putOrder from "../../services/Cart/putOrder";
 
 const useCart = () => {
   const { isAuthenticated } = useAuth0();
@@ -16,7 +17,7 @@ const useCart = () => {
     const updatedProducts = cart.products.filter((e) => e.id !== product_id);
     const updatedCart = { ...cart, products: updatedProducts };
     if (isAuthenticated && user) {
-      // putOrder(cart.id, product);
+      putOrder(cart.id, product);
     }
     setCart(updatedCart);
   };

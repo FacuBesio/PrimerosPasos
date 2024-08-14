@@ -4,7 +4,7 @@ const Cart_Header = ({ cart }) => {
   return (
     <div className={`flex flex-col items-center justify-center w-full h-full`}>
       <div className="relative w-10 h-10 flex justify-center">
-        <div className="absolute top-0 right-0 w-5 h-5 bg-red-200 rounded-full flex justify-center">
+        <div className="absolute top-0 right-0 w-5 h-5 p-2 text-sm bg-red-200 rounded-full flex justify-center items-center">
           <p>{cart.products.length > 0 ? cart.products.length : "0"}</p>
         </div>
         <img src={CartIcon} className="w-10" />

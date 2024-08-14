@@ -61,7 +61,7 @@ export const td_style =
 
 //? CART
 export const cartAside_Container = `fixed left-0 top-0 h-screen w-[100vw] z-[9999] text-[12px] md:text-[18px]`
-export const cartAsideStyle = `fixed overflow-y-scroll p-4 items-center justify-between h-screen right-0 top-0 bg-[#eee] px-2 text-center flex flex-col gap-2 `
+export const cartAsideStyle = `fixed overflow-y-scroll p-4 items-center justify-between h-full right-0 top-0 bg-[#eee] px-2 text-center flex flex-col gap-2 `
 export const cartIterator_style = "flex justify-between items-center p-4 rounded-md w-full bg-white relative"
 export const buttonsCartAside = "items-center w-full flex bg-gray-200 p-2 hover:scale-105 hover:bg-red-200 transition-all duration-200 rounded-xl border border-[#Dbb1bc] text-[#393334]"
 export const cartMainStyle = `flex flex-col bg-white justify-center items-center overflow-auto text-[12px] md:text-[18px]  border-white border-2 w-fit px-10 py-2 rounded-lg ${transition_200}`
