@@ -2,7 +2,6 @@ import useTotal from "../../../hooks/Cart/useTotal";
 
 const Total_CartMain = ({ cart }) => {
   const { total } = useTotal(cart);
-
   const formattedTotal = total.toLocaleString('es-ES');
 
   return (

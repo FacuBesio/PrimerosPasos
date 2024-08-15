@@ -104,7 +104,7 @@ export const paginated_button = `hover:shadow-xl hover:shadow-[#fdd9e3] hover:sc
 
 //? PRODUCTS
 export const productsStyle = `w-full min-h-screen ${transition_200}`;
-export const product_content = `bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] cursor-pointer hover:scale-95 ${transition_300}`;
+export const product_content = `bg-white relative rounded-lg flex flex-col items-center hover:shadow-2xl hover:shadow-[#d2afb8] cursor-pointer hover:scale-95 ${transition_200}`;
 export const product_no_content = "flex flex-col items-center justify-center";
 
 //? PRODUCT DEATAIL

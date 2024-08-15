@@ -16,10 +16,10 @@ const useCart = () => {
   const handlerRemoveProducts = (product_id) => {
     const updatedProducts = cart.products.filter((e) => e.id !== product_id);
     const updatedCart = { ...cart, products: updatedProducts };
-    if (isAuthenticated && user) {
-      putOrder(cart.id, product);
-    }
     setCart(updatedCart);
+    if (isAuthenticated && user) {
+      putOrder(cart.id, {id: product_id});
+    }
   };
 
   return { cart, setCart, handlerRemoveProducts };

@@ -1,18 +1,20 @@
 import axios from "../../config/axios";
+import getCartData from "../local_storage/getCartData ";
+import updateCartInLocalStorage from "../local_storage/updateCartInLocalStorage";
 
-const Order_Initializer = async (user_id, orders) => {
+const order_Initializer = async (userId, orders) => {
+  const cart = getCartData();
   const openOrderId = orders[orders.length - 1];
-  const orderByIdResponse = await axios.get(`/orders/${openOrderId}`);
-  const openOrder_products = orderByIdResponse.data.order.products;
+  const orderById = await axios.get(`/orders/${openOrderId}`);
+  const openOrder_products = orderById.data.order.products;
   const products = [];
-  const cart = JSON.parse(window.localStorage.getItem("cart"));
 
   //* VERIFICAMOS SI CART O LA ORDEN ABIERTA TIENEN PRODUCTOS
   if (cart.products.length > 0 || openOrder_products.length > 0) {
     //* SI LA ORDEN TIENE PRODUCTOS, Y EL CART ESTA VACIO, SE AGREGAN LOS PRODUCTOS DE LA ORDEN AL CART
     if (openOrder_products.length > 0 && cart.products.length === 0) {
       const updatedCart = { id: openOrderId, products: openOrder_products };
-      window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateCartInLocalStorage(updatedCart);
 
       //* SI CART TIENE PRODUCTOS, SE AGREGAN A LA ORDEN Y SE VUELVE A SETTEAR CART CON LA SUMA DE AMBOS PRODUCTOS
     } else if (cart.products.length > 0) {
@@ -20,16 +22,16 @@ const Order_Initializer = async (user_id, orders) => {
         const productToAdd = [product.id, product.cantidad];
         products.push(productToAdd);
       });
-      const response = await axios.post(`/orders`, { user_id, products });
+      const response = await axios.post(`/orders`, { userId, products });
       const updatedProducts = response.data.order.products;
       const updatedCart = { id: openOrderId, products: updatedProducts };
-      window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+      updateCartInLocalStorage(updatedCart);
     }
   } else {
     //* SI CART Y LA ORDEN ESTAN AMBOS SIN PRODUCTOS
     const updatedCart = { id: openOrderId, products };
-    window.localStorage.setItem("cart", JSON.stringify(updatedCart));
+    updateCartInLocalStorage(updatedCart);
   }
 };
 
-export default Order_Initializer;
+export default order_Initializer;

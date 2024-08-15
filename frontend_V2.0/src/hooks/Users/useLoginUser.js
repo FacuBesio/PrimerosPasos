@@ -1,15 +1,18 @@
 import { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import postUsers from "../../services/Users/postUsers";
-import Order_Initializer from "../../utils/users/Order_Initializer";
+import order_Initializer from "../../utils/users/order_Initializer"
+import getUserData from "../../utils/local_storage/getUserData";
 
 const useLoginUser = () => {
   const { isAuthenticated, user } = useAuth0();
-  const userData = JSON.parse(window.localStorage.getItem("userData"));
+  const userData = getUserData();
   const auth0_user = user;
 
   let isUserLoaded;
-  auth0_user ? (isUserLoaded = true) : (isUserLoaded = false);
+  auth0_user
+    ? (isUserLoaded = true)
+    : (isUserLoaded = false);
 
   useEffect(() => {
     if (isAuthenticated && auth0_user) {
@@ -19,7 +22,7 @@ const useLoginUser = () => {
           const img = auth0_user.picture;
           const userData = { id, enabled, role, name, email, img };
           window.localStorage.setItem("userData", JSON.stringify(userData));
-          Order_Initializer(id, orders).then();
+          order_Initializer(id, orders);
         }
       });
     }

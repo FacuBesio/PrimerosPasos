@@ -2,7 +2,7 @@ import showAddNotification from "../cart/showAddNotification";
 import updateCartInLocalStorage from "./updateCartInLocalStorage";
 import postOrder from "../../services/Cart/postOrder";
 
-const handleOrderAndUpdateCart = (userId, product, cart) => {
+const handleOrder = (userId, product) => {
   const response = postOrder(userId, product);
   const order = response?.order;
   if (order) {
@@ -11,8 +11,6 @@ const handleOrderAndUpdateCart = (userId, product, cart) => {
     showAddNotification(`Se agregó tu producto correctamente.`);
     return updatedCart;
   }
-
-  return cart;
 };
 
-export default handleOrderAndUpdateCart;
+export default handleOrder;

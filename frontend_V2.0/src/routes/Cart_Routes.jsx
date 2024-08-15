@@ -12,6 +12,7 @@ import useLoadEffect from "../hooks/Effects/useLoadEffect";
 import useLoadEffect_0 from "../hooks/Effects/useLoadEffect_0";
 import { useContext, useEffect } from "react";
 import { ShopContext } from "../context";
+import CartUserData from "../components/Cart/CartUserData/CartUserData";
 
 const Cart_Routes = () => {
   const { loadEffect } = useLoadEffect();
@@ -35,9 +36,8 @@ const Cart_Routes = () => {
     >
       <Routes>
         <Route path="/" element={<CartMain />} />
-        {/* <Route path="/" element={<CartMain />} /> */}
-        {/* <Route path="/userdata" element={<CartUserData />} />
-      <Route path="/delivery" element={<CartDelivery />} />
+        <Route path="/userdata" element={<CartUserData />} />
+        {/* <Route path="/delivery" element={<CartDelivery />} />
       <Route path="/purchase" element={<CartPurchase />} /> */}
       </Routes>
     </div>

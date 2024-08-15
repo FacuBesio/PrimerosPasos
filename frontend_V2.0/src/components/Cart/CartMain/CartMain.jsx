@@ -1,7 +1,5 @@
-// import ButtonQuantities from "../../components/ButtonQuantities/ButtonQuantities";
-// import handlerRemoveProducts from "../../utils/cart/cartAside/handlerRemoveProducts";
 import Table_CartMain from "./Table_CartMain";
-import Buttons_CartMain from "./Buttons_CartMain";
+import Buttons_CartMain from "../../Buttons/Cart_Buttons/Buttons_CartMain";
 import useCart from "../../../hooks/Cart/useCart";
 import Total_CartMain from "./Total_CartMain";
 import Header_CartMain from "./Header_CartMain";

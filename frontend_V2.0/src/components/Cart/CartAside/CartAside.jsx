@@ -3,7 +3,6 @@ import {
   cartAsideStyle,
   transition_100,
   transition_150,
-  transition_200,
   transition_500,
 } from "../../../styles";
 import Cart_Iterator from "./Cart_Iterator";
@@ -20,8 +19,6 @@ const CartAside = () => {
     content_visibility,
     handleBackdropClick
   } = useCartEffects();
-
-  console.log("cart: ", cart);
 
   return (
     <div

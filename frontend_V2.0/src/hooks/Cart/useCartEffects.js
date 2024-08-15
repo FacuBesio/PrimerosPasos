@@ -18,18 +18,11 @@ const useCartEffects = () => {
     : "w-0";
 
   const handleBackdropClick = () => {
-    //content_visibility
     setLoadVisibilityEffect(false);
-
-    //cartAside_width
     setLoadWidthEffect(false);
-
-    //blur_efffect
     setTimeout(() => {
       setLoadBlurEffect(false);
     }, 300);
-
-    //setIsCartOpen
     setTimeout(() => {
       setIsCartOpen(false);
     }, 500);
