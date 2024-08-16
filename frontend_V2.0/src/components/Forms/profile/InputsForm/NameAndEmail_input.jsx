@@ -1,4 +1,9 @@
-import { input_editable_style, input_label_style, input_notEditable_style } from "../../../../styles";
+import {
+  input_editable_style,
+  input_label_style,
+  input_notEditable_style,
+  span_error,
+} from "../../../../styles";
 
 const NameAndEmail_input = ({
   handlerChange,
@@ -6,12 +11,10 @@ const NameAndEmail_input = ({
   userProfile,
   editable,
 }) => {
-  const inputStyle = editable
-  ? input_editable_style
-  : input_notEditable_style
+  const inputStyle = editable ? input_editable_style : input_notEditable_style;
 
   return (
-    <div className="w-full mt-8 px-4 py-1 flex gap-10">
+    <div className="w-full mt-2 px-4 py-1 flex gap-10">
       <div className={input_label_style}>
         <label htmlFor="name" className="w-full text-white font-bold">
           Nombre
@@ -28,7 +31,7 @@ const NameAndEmail_input = ({
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
           <span
-            className="absolute w-full text-red-300 font-bold"
+            className={span_error}
             style={{ visibility: !errors.name ? "hidden" : "visible" }}
           >
             {errors.name_message}
@@ -52,7 +55,7 @@ const NameAndEmail_input = ({
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
           <span
-            className="absolute w-full text-red-300 font-bold"
+            className={span_error}
             style={{ visibility: !errors.email ? "hidden" : "visible" }}
           >
             {errors.email_message}

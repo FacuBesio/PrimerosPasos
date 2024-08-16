@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import createInputValidator from "../../utils/profile/createInputValidator";
 import getUserById from "../../services/Users/getUserById";
+import { useLocation } from "react-router-dom";
 
 const useUpdateProfile = () => {
+  const location = useLocation();
   const [errors, setErrors] = useState({});
   const [disabled, setDisabled] = useState(true);
   const [editable, setEditable] = useState(false);
@@ -18,10 +20,15 @@ const useUpdateProfile = () => {
     phone: "",
   });
 
+  let cartNavegationActive;
+  if (location.pathname.includes("cart")) {
+    cartNavegationActive = true;
+  }
   useEffect(() => {
     const { errors_states, disabled_result } = createInputValidator(
       userProfile,
-      errors
+      errors,
+      cartNavegationActive
     );
     setErrors(errors_states);
     setDisabled(disabled_result);

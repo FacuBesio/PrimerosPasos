@@ -14,7 +14,7 @@ import { disabled_button, enabled_button } from "../../../../styles";
 
 const UpdateProduct_Form = ({ id }) => {
   const navigate = useNavigate();
-  const { updateProduct, setUpdateProduct, errors, isProductLoaded, disabled } =
+  const { updateProduct, setUpdateProduct, errors, disabled } =
     useUpdateProduct(id);
 
   const handlerChange = (event) => {

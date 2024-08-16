@@ -63,7 +63,7 @@ const PromotedProducts = () => {
             className={`flex flex-col justify-center rounded-sm items-center w-full border-l-white border-l-4`}
           >
             <div
-              className={`flex gap-4 flex-col justify-center items-center w-full hover:scale-90 ${transition_300}`}
+              className={`flex gap-4 flex-col justify-center items-center p-10 hover:scale-90 ${transition_300}`}
             >
               <h2 className="text-[rgb(90,91,90)] md:text-3xl text-center">
                 {category.name}

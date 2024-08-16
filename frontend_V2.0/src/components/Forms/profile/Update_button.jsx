@@ -1,4 +1,4 @@
-import { disabled_button, enabled_button } from "../../../styles";
+import { disabled_button, enabled_button, transition_200 } from "../../../styles";
 
 const Update_button = ({ editable, setEditable, disabled }) => {
   const handleModify = (event) => {
@@ -12,7 +12,7 @@ const Update_button = ({ editable, setEditable, disabled }) => {
   };
 
   return (
-    <div className="formButton w-full flex justify-center mb-2 items-center">
+    <div className={`formButton w-full flex justify-center mt-4 mb-4 items-center ${transition_200}`}>
       {!editable ? (
         <button
           onClick={handleModify}
@@ -41,7 +41,7 @@ const Update_button = ({ editable, setEditable, disabled }) => {
           <button
             id="buttonDisabled"
             onClick={handleCancel}
-            className="px-8 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-red-500/75 focus:outline-none focus:ring-2 focus:ring-red-200"
+            className="px-8 py-3 bg-slate-400 text-white font-bold rounded-md hover:bg-red-500/50 focus:outline-none focus:ring-2 focus:ring-red-200"
           >
             CANCELAR
           </button>

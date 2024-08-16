@@ -1,4 +1,9 @@
-import { input_editable_style, input_label_style, input_notEditable_style } from "../../../../styles";
+import {
+  input_editable_style,
+  input_label_style,
+  input_notEditable_style,
+  span_error,
+} from "../../../../styles";
 
 const CountryAndState_input = ({
   handlerChange,
@@ -6,9 +11,7 @@ const CountryAndState_input = ({
   userProfile,
   editable,
 }) => {
-  const inputStyle = editable
-  ? input_editable_style
-  : input_notEditable_style
+  const inputStyle = editable ? input_editable_style : input_notEditable_style;
 
   return (
     <div className="w-full px-4 pt-3 pb-1 flex gap-10">
@@ -28,7 +31,7 @@ const CountryAndState_input = ({
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
           <span
-            className="absolute w-full text-red-300 font-bold"
+            className={span_error}
             style={{ visibility: !errors.country ? "hidden" : "visible" }}
           >
             {errors.country_message}
@@ -52,7 +55,7 @@ const CountryAndState_input = ({
         />
         <div className="relative w-full" style={{ minHeight: "1rem" }}>
           <span
-            className="absolute w-full text-red-300 font-bold"
+            className={span_error}
             style={{ visibility: !errors.state ? "hidden" : "visible" }}
           >
             {errors.state_message}

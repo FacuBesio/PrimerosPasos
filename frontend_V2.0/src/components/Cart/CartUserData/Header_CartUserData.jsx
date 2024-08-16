@@ -24,7 +24,9 @@ const Header_CartUserData = () => {
       <div className="h-[1px] w-[100px] bg-[#ccc]" />
 
       <>
-        {isAuthenticated && !disabledContinueButton ? (
+        {isAuthenticated 
+        // && !disabledContinueButton 
+        ? (
           <div className="flex items-center gap-2 cursor-pointer">
             <div className="bg-[#ccc] text-white w-8 h-8 flex items-center justify-center rounded-full">
               3

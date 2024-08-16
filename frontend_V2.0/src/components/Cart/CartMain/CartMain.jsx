@@ -17,7 +17,7 @@ const CartMain = () => {
       <Header_CartMain />
 
       <div className="rounded-md w-full">
-        <h1 className="text-center py-2 font-bold text-2xl text-black/50 px-4 ">
+        <h1 className="text-center py-2 font-bold text-xl text-black/50 px-4 ">
           Confirma los productos de tu compra antes de continuar...
         </h1>
       </div>
